@@ -1,0 +1,26 @@
+[
+    {
+        "id": 1,
+        "name": "vinoth",
+        "email": "kishore@gmail.com",
+        "course": "python"
+    },
+    {
+        "id": 3,
+        "name": "kavin",
+        "email": "kavin@gmail.com",
+        "course": "react"
+    },
+    {
+        "id": 4,
+        "name": "abi",
+        "email": "abi@gmail.com",
+        "course": "nodejs"
+    },
+    {
+        "id": 5,
+        "name": "nithish",
+        "email": "nithish@gmail.com",
+        "course": "devops"
+    }
+]
