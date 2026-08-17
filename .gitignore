@@ -1,0 +1,46 @@
+# Virtual environments
+venv/
+env/
+.venv/
+.env
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Environment variables
+.env
+
+# IDE
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# logs
+*.log
+
+# uploads
+uploads/
+
+# build files
+dist/
+build/
+*.egg-info/
+
+# jupyter
+.ipynb_checkpoints
+
+
+
+echo "# internsharks" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/kishoreGittt/internsharks.git
+git push -u origin main
