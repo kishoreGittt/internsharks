@@ -1,8 +1,8 @@
 [
     {
         "id": 1,
-        "name": "vinoth",
-        "email": "kishore@gmail.com",
+        "name": "shiva",
+        "email": "shive@gmail.com",
         "course": "python"
     },
     {
@@ -12,15 +12,27 @@
         "course": "react"
     },
     {
-        "id": 4,
-        "name": "abi",
-        "email": "abi@gmail.com",
-        "course": "nodejs"
-    },
-    {
         "id": 5,
         "name": "nithish",
         "email": "nithish@gmail.com",
         "course": "devops"
+    },
+    {
+        "id": 6,
+        "name": "vinoth",
+        "email": "nithish@gmail.com",
+        "course": "python"
+    },
+    {
+        "id": 7,
+        "name": "rock",
+        "email": "rock@gmail.com",
+        "course": "MERN"
+    },
+    {
+        "id": 8,
+        "name": "pavi",
+        "email": "pavi@gmail.com",
+        "course": "python"
     }
 ]
