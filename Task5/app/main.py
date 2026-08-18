@@ -11,13 +11,13 @@ from app.routes.student_routes import router
 
 app = FastAPI(
     title="Student Management API",
-    description="Student CRUD API with MongoDB and Search",
+    description="Student CRUD API with MongoDB, Search and Filtering",
     version="5.0.0"
 )
 
 
 # ============================================================
-# Custom Validation Error Handler
+# Validation Error Handler
 # ============================================================
 
 @app.exception_handler(RequestValidationError)
@@ -35,29 +35,7 @@ async def validation_exception_handler(
             for item in error["loc"]
         )
 
-        if error["type"] == "missing":
-
-            message = f"{field} is required"
-
-        elif error["type"] == "int_parsing":
-
-            message = f"{field} must be a number"
-
-        elif error["type"] == "value_error.email":
-
-            message = (
-                f"{field} must be a valid email address"
-            )
-
-        elif error["type"] == "value_error":
-
-            message = (
-                f"{field} contains an invalid value"
-            )
-
-        else:
-
-            message = error["msg"]
+        message = error["msg"]
 
         errors.append({
             "field": field,
@@ -68,15 +46,36 @@ async def validation_exception_handler(
         status_code=422,
         content={
             "status": "error",
+            "error_code": 422,
             "message": "Request validation failed",
-            "error": "Invalid input data",
-            "details": errors
+            "data": errors
         }
     )
 
 
 # ============================================================
-# HOME ENDPOINT
+# Global HTTP Exception Handler
+# ============================================================
+
+@app.exception_handler(Exception)
+async def global_exception_handler(
+    request: Request,
+    exc: Exception
+):
+
+    return JSONResponse(
+        status_code=500,
+        content={
+            "status": "error",
+            "error_code": 500,
+            "message": "Internal server error",
+            "data": None
+        }
+    )
+
+
+# ============================================================
+# Home Endpoint
 # ============================================================
 
 @app.get("/")
@@ -84,9 +83,12 @@ async def home_endpoint():
 
     return {
         "status": "success",
+        "error_code": 0,
         "message": "Student Management API is running",
-        "version": "5.0.0",
-        "storage": "MongoDB"
+        "data": {
+            "version": "5.0.0",
+            "storage": "MongoDB"
+        }
     }
 
 

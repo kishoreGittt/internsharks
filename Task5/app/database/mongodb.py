@@ -15,8 +15,16 @@ load_dotenv()
 # ============================================================
 
 MONGO_URI = os.getenv("MONGO_URI")
-DATABASE_NAME = os.getenv("DATABASE_NAME", "student_management")
 
+DATABASE_NAME = os.getenv(
+    "DATABASE_NAME",
+    "student_management"
+)
+
+
+# ============================================================
+# Validate MongoDB URI
+# ============================================================
 
 if not MONGO_URI:
     raise ValueError(
