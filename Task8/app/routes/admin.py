@@ -4,24 +4,24 @@ from fastapi import (
     APIRouter,
     Depends,
     HTTPException,
-    Query,
-    status
+    Query
 )
 
-from app.auth.dependencies import require_admin
+from app.auth.dependencies import (
+    require_admin
+)
 
 from app.models.user import (
-    UserResponse,
-    RoleUpdateRequest,
-    StatusUpdateRequest
+    RoleUpdate,
+    StatusUpdate
 )
 
 from app.services.user_service import (
     get_all_users,
     get_user_by_id,
     serialize_user,
-    update_user_role,
-    update_user_status,
+    change_user_role,
+    change_user_status,
     delete_user
 )
 
@@ -32,48 +32,107 @@ router = APIRouter(
 )
 
 
-@router.get("/users")
+# ============================================================
+# GET ALL USERS
+# ============================================================
+
+@router.get(
+    "/users"
+)
 async def get_users(
+
     role: Optional[str] = Query(
-        default=None,
-        pattern="^(user|admin)$"
+        default=None
     ),
 
-    department: Optional[str] = None,
+    department: Optional[str] = Query(
+        default=None
+    ),
 
-    is_active: Optional[bool] = None,
+    is_active: Optional[bool] = Query(
+        default=None
+    ),
 
-    current_admin=Depends(require_admin)
+    admin=Depends(
+        require_admin
+    )
 ):
 
+    # Validate role filter
+    if role is not None:
+
+        if role not in [
+            "user",
+            "admin"
+        ]:
+
+            raise HTTPException(
+                status_code=422,
+                detail={
+                    "success": False,
+                    "message": "Invalid role. Use user or admin",
+                    "error_code": "INVALID_ROLE"
+                }
+            )
+
+
     users = await get_all_users(
+
         role=role,
+
         department=department,
+
         is_active=is_active
     )
 
+
     return {
+
         "success": True,
+
         "message": "Users retrieved successfully",
+
         "data": users
     }
 
 
+# ============================================================
+# GET USER BY ID
+# ============================================================
+
 @router.get(
-    "/users/{user_id}",
-    response_model=UserResponse
+    "/users/{user_id}"
 )
-async def get_single_user(
+async def get_specific_user(
+
     user_id: str,
-    current_admin=Depends(require_admin)
+
+    admin=Depends(
+        require_admin
+    )
 ):
 
-    user = await get_user_by_id(user_id)
+    user, error = await get_user_by_id(
+        user_id
+    )
 
-    if not user:
+
+    if error == "INVALID_ID":
 
         raise HTTPException(
-            status_code=status.HTTP_404_NOT_FOUND,
+            status_code=400,
+            detail={
+                "success": False,
+                "message": "Invalid user ID",
+                "error_code": "INVALID_USER_ID"
+            }
+        )
+
+
+    if error == "USER_NOT_FOUND":
+
+        raise HTTPException(
+            status_code=404,
             detail={
                 "success": False,
                 "message": "User not found",
@@ -81,42 +140,61 @@ async def get_single_user(
             }
         )
 
-    return serialize_user(user)
 
+    return {
+
+        "success": True,
+
+        "message": "User retrieved successfully",
+
+        "data": serialize_user(
+            user
+        )
+    }
+
+
+# ============================================================
+# CHANGE ROLE
+# ============================================================
 
 @router.patch(
-    "/users/{user_id}/role",
-    response_model=UserResponse
+    "/users/{user_id}/role"
 )
-async def change_user_role(
+async def update_role(
+
     user_id: str,
-    data: RoleUpdateRequest,
-    current_admin=Depends(require_admin)
+
+    data: RoleUpdate,
+
+    admin=Depends(
+        require_admin
+    )
 ):
 
-    # Prevent admin from accidentally removing
-    # their own admin access.
-    if str(current_admin["_id"]) == user_id:
+    user, error = await change_user_role(
 
-        raise HTTPException(
-            status_code=status.HTTP_400_BAD_REQUEST,
-            detail={
-                "success": False,
-                "message": "You cannot change your own role",
-                "error_code": "SELF_ROLE_CHANGE_NOT_ALLOWED"
-            }
-        )
-
-
-    updated_user = await update_user_role(
         user_id,
+
         data.role
     )
 
-    if not updated_user:
+
+    if error == "INVALID_ID":
 
         raise HTTPException(
-            status_code=status.HTTP_404_NOT_FOUND,
+            status_code=400,
+            detail={
+                "success": False,
+                "message": "Invalid user ID",
+                "error_code": "INVALID_USER_ID"
+            }
+        )
+
+
+    if error == "USER_NOT_FOUND":
+
+        raise HTTPException(
+            status_code=404,
             detail={
                 "success": False,
                 "message": "User not found",
@@ -125,41 +203,60 @@ async def change_user_role(
         )
 
 
-    return serialize_user(updated_user)
+    return {
 
+        "success": True,
+
+        "message": "User role updated successfully",
+
+        "data": serialize_user(
+            user
+        )
+    }
+
+
+# ============================================================
+# CHANGE STATUS
+# ============================================================
 
 @router.patch(
-    "/users/{user_id}/status",
-    response_model=UserResponse
+    "/users/{user_id}/status"
 )
-async def change_user_status(
+async def update_status(
+
     user_id: str,
-    data: StatusUpdateRequest,
-    current_admin=Depends(require_admin)
+
+    data: StatusUpdate,
+
+    admin=Depends(
+        require_admin
+    )
 ):
 
-    # Prevent admin from deactivating themselves.
-    if str(current_admin["_id"]) == user_id:
+    user, error = await change_user_status(
 
-        raise HTTPException(
-            status_code=status.HTTP_400_BAD_REQUEST,
-            detail={
-                "success": False,
-                "message": "You cannot change your own account status",
-                "error_code": "SELF_STATUS_CHANGE_NOT_ALLOWED"
-            }
-        )
-
-
-    updated_user = await update_user_status(
         user_id,
+
         data.is_active
     )
 
-    if not updated_user:
+
+    if error == "INVALID_ID":
 
         raise HTTPException(
-            status_code=status.HTTP_404_NOT_FOUND,
+            status_code=400,
+            detail={
+                "success": False,
+                "message": "Invalid user ID",
+                "error_code": "INVALID_USER_ID"
+            }
+        )
+
+
+    if error == "USER_NOT_FOUND":
+
+        raise HTTPException(
+            status_code=404,
             detail={
                 "success": False,
                 "message": "User not found",
@@ -168,35 +265,55 @@ async def change_user_status(
         )
 
 
-    return serialize_user(updated_user)
+    return {
 
+        "success": True,
+
+        "message": "User status updated successfully",
+
+        "data": serialize_user(
+            user
+        )
+    }
+
+
+# ============================================================
+# DELETE USER
+# ============================================================
 
 @router.delete(
     "/users/{user_id}"
 )
 async def remove_user(
+
     user_id: str,
-    current_admin=Depends(require_admin)
+
+    admin=Depends(
+        require_admin
+    )
 ):
 
-    if str(current_admin["_id"]) == user_id:
+    user, error = await delete_user(
+        user_id
+    )
+
+
+    if error == "INVALID_ID":
 
         raise HTTPException(
-            status_code=status.HTTP_400_BAD_REQUEST,
+            status_code=400,
             detail={
                 "success": False,
-                "message": "You cannot delete your own account",
-                "error_code": "SELF_DELETE_NOT_ALLOWED"
+                "message": "Invalid user ID",
+                "error_code": "INVALID_USER_ID"
             }
         )
 
 
-    deleted = await delete_user(user_id)
-
-    if not deleted:
+    if error == "USER_NOT_FOUND":
 
         raise HTTPException(
-            status_code=status.HTTP_404_NOT_FOUND,
+            status_code=404,
             detail={
                 "success": False,
                 "message": "User not found",
@@ -206,7 +323,10 @@ async def remove_user(
 
 
     return {
+
         "success": True,
+
         "message": "User deleted successfully",
+
         "data": None
     }

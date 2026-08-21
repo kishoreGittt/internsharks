@@ -1,15 +1,15 @@
 from fastapi import (
     APIRouter,
     Depends,
-    HTTPException,
-    status
+    HTTPException
 )
 
-from app.auth.dependencies import get_current_user
+from app.auth.dependencies import (
+    get_current_user
+)
 
 from app.models.user import (
-    UserResponse,
-    ProfileUpdateRequest
+    UserUpdate
 )
 
 from app.services.user_service import (
@@ -23,50 +23,56 @@ router = APIRouter(
 )
 
 
-@router.get(
-    "/me",
-    response_model=UserResponse
-)
+# ============================================================
+# GET /me
+# ============================================================
+
+@router.get("/me")
 async def get_my_profile(
-    current_user=Depends(get_current_user)
+    current_user=Depends(
+        get_current_user
+    )
 ):
 
-    return serialize_user(current_user)
-
-
-@router.put(
-    "/me",
-    response_model=UserResponse
-)
-async def update_my_profile(
-    data: ProfileUpdateRequest,
-    current_user=Depends(get_current_user)
-):
-
-    updated_user, success, error = (
-        await update_own_profile(
-            current_user,
-            data
+    return {
+        "success": True,
+        "message": "Profile retrieved successfully",
+        "data": serialize_user(
+            current_user
         )
+    }
+
+
+# ============================================================
+# PUT /me
+# ============================================================
+
+@router.put("/me")
+async def update_my_profile(
+
+    data: UserUpdate,
+
+    current_user=Depends(
+        get_current_user
+    )
+):
+
+    updated_user, error = await update_own_profile(
+
+        current_user,
+
+        data
     )
 
 
-    if error == "NO_UPDATE_FIELDS":
-
-        raise HTTPException(
-            status_code=status.HTTP_400_BAD_REQUEST,
-            detail={
-                "success": False,
-                "message": "No profile fields provided for update",
-                "error_code": "NO_UPDATE_FIELDS"
-            }
-        )
-
+    # --------------------------------------------------------
+    # Duplicate username
+    # --------------------------------------------------------
 
     if error == "USERNAME_EXISTS":
 
         raise HTTPException(
-            status_code=status.HTTP_409_CONFLICT,
+            status_code=409,
             detail={
                 "success": False,
                 "message": "Username already exists",
@@ -75,4 +81,17 @@ async def update_my_profile(
         )
 
 
-    return serialize_user(updated_user)
+    # --------------------------------------------------------
+    # Success
+    # --------------------------------------------------------
+
+    return {
+
+        "success": True,
+
+        "message": "Profile updated successfully",
+
+        "data": serialize_user(
+            updated_user
+        )
+    }

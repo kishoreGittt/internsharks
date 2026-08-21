@@ -3,17 +3,12 @@ from typing import Optional, Literal
 from pydantic import BaseModel, Field
 
 
-class UserResponse(BaseModel):
-    username: str
-    email: str
-    full_name: str
-    phone: str
-    department: str
-    role: Literal["user", "admin"]
-    is_active: bool
+# ============================================================
+# USER PROFILE UPDATE
+# ============================================================
 
+class UserUpdate(BaseModel):
 
-class ProfileUpdateRequest(BaseModel):
     username: Optional[str] = Field(
         default=None,
         min_length=3,
@@ -28,8 +23,8 @@ class ProfileUpdateRequest(BaseModel):
 
     phone: Optional[str] = Field(
         default=None,
-        min_length=7,
-        max_length=20
+        min_length=10,
+        max_length=15
     )
 
     department: Optional[str] = Field(
@@ -39,9 +34,22 @@ class ProfileUpdateRequest(BaseModel):
     )
 
 
-class RoleUpdateRequest(BaseModel):
-    role: Literal["user", "admin"]
+# ============================================================
+# ROLE UPDATE
+# ============================================================
+
+class RoleUpdate(BaseModel):
+
+    role: Literal[
+        "user",
+        "admin"
+    ]
 
 
-class StatusUpdateRequest(BaseModel):
+# ============================================================
+# STATUS UPDATE
+# ============================================================
+
+class StatusUpdate(BaseModel):
+
     is_active: bool

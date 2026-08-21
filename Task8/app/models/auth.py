@@ -1,7 +1,16 @@
-from pydantic import BaseModel, EmailStr, Field
+from pydantic import (
+    BaseModel,
+    EmailStr,
+    Field
+)
 
+
+# ============================================================
+# NORMAL USER REGISTRATION
+# ============================================================
 
 class RegisterRequest(BaseModel):
+
     username: str = Field(
         ...,
         min_length=3,
@@ -24,8 +33,8 @@ class RegisterRequest(BaseModel):
 
     phone: str = Field(
         ...,
-        min_length=7,
-        max_length=20
+        min_length=10,
+        max_length=15
     )
 
     department: str = Field(
@@ -35,7 +44,18 @@ class RegisterRequest(BaseModel):
     )
 
 
-class LoginRequest(BaseModel):
+# ============================================================
+# ADMIN REGISTRATION
+# ============================================================
+
+class AdminRegisterRequest(BaseModel):
+
+    username: str = Field(
+        ...,
+        min_length=3,
+        max_length=50
+    )
+
     email: EmailStr
 
     password: str = Field(
@@ -44,7 +64,33 @@ class LoginRequest(BaseModel):
         max_length=100
     )
 
+    full_name: str = Field(
+        ...,
+        min_length=2,
+        max_length=100
+    )
 
-class TokenResponse(BaseModel):
-    access_token: str
-    token_type: str
+    phone: str = Field(
+        ...,
+        min_length=10,
+        max_length=15
+    )
+
+    department: str = Field(
+        ...,
+        min_length=2,
+        max_length=100
+    )
+
+    admin_setup_key: str
+
+
+# ============================================================
+# LOGIN
+# ============================================================
+
+class LoginRequest(BaseModel):
+
+    email: EmailStr
+
+    password: str

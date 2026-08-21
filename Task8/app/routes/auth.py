@@ -1,14 +1,22 @@
-from fastapi import APIRouter, HTTPException, status
+from fastapi import (
+    APIRouter,
+    HTTPException,
+    status
+)
 
 from app.models.auth import (
     RegisterRequest,
+    AdminRegisterRequest,
     LoginRequest
 )
 
 from app.services.auth_service import (
     register_user,
+    register_admin,
     authenticate_user
 )
+
+from app.config import ADMIN_SETUP_KEY
 
 
 router = APIRouter(
@@ -18,22 +26,26 @@ router = APIRouter(
 
 
 # ============================================================
-# REGISTER
+# NORMAL USER REGISTER
 # ============================================================
 
 @router.post(
     "/register",
-    status_code=status.HTTP_201_CREATED
+    status_code=201
 )
-async def register(data: RegisterRequest):
+async def register(
+    data: RegisterRequest
+):
 
-    user, error = await register_user(data)
+    user, error = await register_user(
+        data
+    )
 
 
     if error == "EMAIL_EXISTS":
 
         raise HTTPException(
-            status_code=status.HTTP_409_CONFLICT,
+            status_code=409,
             detail={
                 "success": False,
                 "message": "Email already registered",
@@ -45,7 +57,7 @@ async def register(data: RegisterRequest):
     if error == "USERNAME_EXISTS":
 
         raise HTTPException(
-            status_code=status.HTTP_409_CONFLICT,
+            status_code=409,
             detail={
                 "success": False,
                 "message": "Username already exists",
@@ -55,17 +67,113 @@ async def register(data: RegisterRequest):
 
 
     return {
+
         "success": True,
+
         "message": "User registered successfully",
+
         "data": {
-            "id": str(user["_id"]),
+
+            "id": str(
+                user["_id"]
+            ),
+
             "username": user["username"],
+
             "email": user["email"],
+
             "full_name": user["full_name"],
+
             "phone": user["phone"],
+
             "department": user["department"],
+
             "role": user["role"],
+
             "is_active": user["is_active"]
+        }
+    }
+
+
+# ============================================================
+# ADMIN REGISTER
+# ============================================================
+
+@router.post(
+    "/register-admin",
+    status_code=201
+)
+async def register_admin_account(
+    data: AdminRegisterRequest
+):
+
+    # Verify secret key
+    if data.admin_setup_key != ADMIN_SETUP_KEY:
+
+        raise HTTPException(
+            status_code=403,
+            detail={
+                "success": False,
+                "message": "Invalid admin setup key",
+                "error_code": "INVALID_ADMIN_SETUP_KEY"
+            }
+        )
+
+
+    admin, error = await register_admin(
+        data
+    )
+
+
+    if error == "EMAIL_EXISTS":
+
+        raise HTTPException(
+            status_code=409,
+            detail={
+                "success": False,
+                "message": "Email already registered",
+                "error_code": "EMAIL_ALREADY_EXISTS"
+            }
+        )
+
+
+    if error == "USERNAME_EXISTS":
+
+        raise HTTPException(
+            status_code=409,
+            detail={
+                "success": False,
+                "message": "Username already exists",
+                "error_code": "USERNAME_ALREADY_EXISTS"
+            }
+        )
+
+
+    return {
+
+        "success": True,
+
+        "message": "Admin registered successfully",
+
+        "data": {
+
+            "id": str(
+                admin["_id"]
+            ),
+
+            "username": admin["username"],
+
+            "email": admin["email"],
+
+            "full_name": admin["full_name"],
+
+            "phone": admin["phone"],
+
+            "department": admin["department"],
+
+            "role": "admin",
+
+            "is_active": True
         }
     }
 
@@ -74,31 +182,25 @@ async def register(data: RegisterRequest):
 # LOGIN
 # ============================================================
 
-@router.post("/login")
-async def login(data: LoginRequest):
+@router.post(
+    "/login"
+)
+async def login(
+    data: LoginRequest
+):
 
     token, error = await authenticate_user(
+
         data.email,
+
         data.password
     )
-
-
-    if error == "INVALID_CREDENTIALS":
-
-        raise HTTPException(
-            status_code=status.HTTP_401_UNAUTHORIZED,
-            detail={
-                "success": False,
-                "message": "Invalid email or password",
-                "error_code": "INVALID_CREDENTIALS"
-            }
-        )
 
 
     if error == "ACCOUNT_INACTIVE":
 
         raise HTTPException(
-            status_code=status.HTTP_403_FORBIDDEN,
+            status_code=403,
             detail={
                 "success": False,
                 "message": "Account is deactivated",
@@ -107,11 +209,28 @@ async def login(data: LoginRequest):
         )
 
 
+    if error == "INVALID_CREDENTIALS":
+
+        raise HTTPException(
+            status_code=401,
+            detail={
+                "success": False,
+                "message": "Invalid email or password",
+                "error_code": "INVALID_CREDENTIALS"
+            }
+        )
+
+
     return {
+
         "success": True,
+
         "message": "Login successful",
+
         "data": {
+
             "access_token": token,
+
             "token_type": "bearer"
         }
     }

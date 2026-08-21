@@ -1,18 +1,32 @@
-from datetime import datetime, timedelta, timezone
+from datetime import (
+    datetime,
+    timedelta,
+    timezone
+)
 
-from jose import jwt, JWTError
+from jose import jwt
 
 from app.config import (
     JWT_SECRET_KEY,
     JWT_ALGORITHM,
-    JWT_EXPIRE_MINUTES
+    ACCESS_TOKEN_EXPIRE_MINUTES
 )
 
 
-def create_access_token(email: str) -> str:
+# ============================================================
+# CREATE TOKEN
+# ============================================================
 
-    expire = datetime.now(timezone.utc) + timedelta(
-        minutes=JWT_EXPIRE_MINUTES
+def create_access_token(
+    email: str
+):
+
+    expire = (
+        datetime.now(timezone.utc)
+        +
+        timedelta(
+            minutes=ACCESS_TOKEN_EXPIRE_MINUTES
+        )
     )
 
     payload = {
@@ -29,18 +43,20 @@ def create_access_token(email: str) -> str:
     return token
 
 
-def decode_access_token(token: str):
+# ============================================================
+# DECODE TOKEN
+# ============================================================
 
-    try:
+def decode_access_token(
+    token: str
+):
 
-        payload = jwt.decode(
-            token,
-            JWT_SECRET_KEY,
-            algorithms=[JWT_ALGORITHM]
-        )
+    payload = jwt.decode(
+        token,
+        JWT_SECRET_KEY,
+        algorithms=[
+            JWT_ALGORITHM
+        ]
+    )
 
-        return payload
-
-    except JWTError:
-
-        return None
+    return payload

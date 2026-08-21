@@ -1,7 +1,12 @@
 from passlib.context import CryptContext
 
-from app.database.mongodb import users_collection
-from app.auth.jwt_handler import create_access_token
+from app.database.mongodb import (
+    users_collection
+)
+
+from app.auth.jwt_handler import (
+    create_access_token
+)
 
 
 pwd_context = CryptContext(
@@ -11,21 +16,26 @@ pwd_context = CryptContext(
 
 
 # ============================================================
-# Password Hashing
+# HASH PASSWORD
 # ============================================================
 
-def hash_password(password: str) -> str:
-    return pwd_context.hash(password)
+def hash_password(
+    password: str
+):
+
+    return pwd_context.hash(
+        password
+    )
 
 
 # ============================================================
-# Password Verification
+# VERIFY PASSWORD
 # ============================================================
 
 def verify_password(
     plain_password: str,
     hashed_password: str
-) -> bool:
+):
 
     return pwd_context.verify(
         plain_password,
@@ -34,12 +44,13 @@ def verify_password(
 
 
 # ============================================================
-# Register User
+# NORMAL USER REGISTER
 # ============================================================
 
-async def register_user(data):
+async def register_user(
+    data
+):
 
-    # Check duplicate email
     existing_email = await users_collection.find_one(
         {
             "email": data.email
@@ -47,10 +58,10 @@ async def register_user(data):
     )
 
     if existing_email:
+
         return None, "EMAIL_EXISTS"
 
 
-    # Check duplicate username
     existing_username = await users_collection.find_one(
         {
             "username": data.username
@@ -58,44 +69,106 @@ async def register_user(data):
     )
 
     if existing_username:
+
         return None, "USERNAME_EXISTS"
 
 
-    # Hash password
-    hashed_password = hash_password(
-        data.password
-    )
+    user = {
 
-
-    # Create user document
-    user_document = {
         "username": data.username,
+
         "email": data.email,
-        "password": hashed_password,
+
+        "password": hash_password(
+            data.password
+        ),
+
         "full_name": data.full_name,
+
         "phone": data.phone,
+
         "department": data.department,
 
-        # IMPORTANT
-        # User can NEVER choose these during registration
+        # ALWAYS USER
         "role": "user",
+
         "is_active": True
     }
 
 
-    # Insert into MongoDB
     result = await users_collection.insert_one(
-        user_document
+        user
     )
 
+    user["_id"] = result.inserted_id
 
-    user_document["_id"] = result.inserted_id
-
-    return user_document, None
+    return user, None
 
 
 # ============================================================
-# Login / Authentication
+# ADMIN REGISTER
+# ============================================================
+
+async def register_admin(
+    data
+):
+
+    existing_email = await users_collection.find_one(
+        {
+            "email": data.email
+        }
+    )
+
+    if existing_email:
+
+        return None, "EMAIL_EXISTS"
+
+
+    existing_username = await users_collection.find_one(
+        {
+            "username": data.username
+        }
+    )
+
+    if existing_username:
+
+        return None, "USERNAME_EXISTS"
+
+
+    admin = {
+
+        "username": data.username,
+
+        "email": data.email,
+
+        "password": hash_password(
+            data.password
+        ),
+
+        "full_name": data.full_name,
+
+        "phone": data.phone,
+
+        "department": data.department,
+
+        # ADMIN
+        "role": "admin",
+
+        "is_active": True
+    }
+
+
+    result = await users_collection.insert_one(
+        admin
+    )
+
+    admin["_id"] = result.inserted_id
+
+    return admin, None
+
+
+# ============================================================
+# LOGIN
 # ============================================================
 
 async def authenticate_user(
@@ -103,7 +176,6 @@ async def authenticate_user(
     password: str
 ):
 
-    # Find user using email
     user = await users_collection.find_one(
         {
             "email": email
@@ -111,13 +183,11 @@ async def authenticate_user(
     )
 
 
-    # User does not exist
     if not user:
 
         return None, "INVALID_CREDENTIALS"
 
 
-    # Check account status
     if not user.get(
         "is_active",
         True
@@ -126,22 +196,16 @@ async def authenticate_user(
         return None, "ACCOUNT_INACTIVE"
 
 
-    # Verify password
-    password_valid = verify_password(
+    if not verify_password(
         password,
         user["password"]
-    )
-
-
-    if not password_valid:
+    ):
 
         return None, "INVALID_CREDENTIALS"
 
 
-    # Generate JWT
     token = create_access_token(
         user["email"]
     )
-
 
     return token, None
