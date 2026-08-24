@@ -37,7 +37,62 @@
           ]
         }
       },
-      "response": []
+      "response": [
+        {
+          "name": "User_register",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"username\": \"varun\",\r\n    \"email\": \"varun@gmail.com\",\r\n    \"password\": \"varun666\",\r\n    \"full_name\": \"varun m\",\r\n    \"phone\": \"9345678911\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/auth/register",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "auth",
+                "register"
+              ]
+            }
+          },
+          "status": "Created",
+          "code": 201,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "date",
+              "value": "Mon, 24 Aug 2026 10:59:12 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "143"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"success\": true,\n    \"message\": \"User registered successfully\",\n    \"data\": {\n        \"id\": \"6a8c24026f6dad91709c9adb\",\n        \"username\": \"varun\",\n        \"email\": \"varun@gmail.com\"\n    }\n}"
+        }
+      ]
     },
     {
       "name": "user_login",
@@ -69,7 +124,62 @@
           ]
         }
       },
-      "response": []
+      "response": [
+        {
+          "name": "user_login",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"email\": \"varun@gmail.com\",\r\n    \"password\": \"varun666\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/auth/login",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "auth",
+                "login"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "date",
+              "value": "Mon, 24 Aug 2026 11:41:19 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "516"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"success\": true,\n    \"message\": \"Login successful\",\n    \"data\": {\n        \"access_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2YThjMjQwMjZmNmRhZDkxNzA5YzlhZGIiLCJ0eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzg3NTcyNTgwfQ.tM5y5WPCYavsYGC6ld71r7P_QhPqrSV3Ryolu42IPyM\",\n        \"refresh_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2YThjMjQwMjZmNmRhZDkxNzA5YzlhZGIiLCJ0eXBlIjoicmVmcmVzaCIsImp0aSI6IjE5Njc3ZWRmLTIxZGYtNDY3Yi1iNTZlLWFkNTM5MDVmMGMzZCIsImV4cCI6MTc4ODE3NjQ4MX0.7iL0lECF4Qpwtr3b5yeFi3XmM6-LqF0raW9LQLLoKbM\",\n        \"token_type\": \"bearer\"\n    }\n}"
+        }
+      ]
     },
     {
       "name": "testing with access token",
@@ -77,7 +187,61 @@
         "method": "GET",
         "header": []
       },
-      "response": []
+      "response": [
+        {
+          "name": "testing with access token",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/me",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "me"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "date",
+              "value": "Mon, 24 Aug 2026 11:00:45 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "219"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"success\": true,\n    \"message\": \"Profile retrieved successfully\",\n    \"data\": {\n        \"id\": \"6a8c24026f6dad91709c9adb\",\n        \"username\": \"varun\",\n        \"email\": \"varun@gmail.com\",\n        \"full_name\": \"varun m\",\n        \"phone\": \"9345678911\",\n        \"role\": \"user\",\n        \"is_active\": true\n    }\n}"
+        }
+      ]
     },
     {
       "name": "testing with Refresh Token",
@@ -85,7 +249,53 @@
         "method": "GET",
         "header": []
       },
-      "response": []
+      "response": [
+        {
+          "name": "testing with Refresh Token",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "http://127.0.0.1:8000/auth/refresh",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "auth",
+                "refresh"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "date",
+              "value": "Mon, 24 Aug 2026 11:48:13 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "284"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"success\": true,\n    \"message\": \"Access token refreshed successfully\",\n    \"data\": {\n        \"access_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2YThjMjQwMjZmNmRhZDkxNzA5YzlhZGIiLCJ0eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzg3NTcyOTk0fQ.fhjG0VgLs5njj4FyJimu9-3rLJ3BcMuwXlx84-UzZG8\",\n        \"token_type\": \"bearer\"\n    }\n}"
+        }
+      ]
     },
     {
       "name": "user_logout",
@@ -93,7 +303,53 @@
         "method": "GET",
         "header": []
       },
-      "response": []
+      "response": [
+        {
+          "name": "user_logout",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "http://127.0.0.1:8000/auth/logout",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "auth",
+                "logout"
+              ]
+            }
+          },
+          "status": "Unauthorized",
+          "code": 401,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "date",
+              "value": "Mon, 24 Aug 2026 11:46:01 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "126"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"detail\": {\n        \"success\": false,\n        \"error_code\": \"SESSION_NOT_FOUND\",\n        \"message\": \"Refresh session is already revoked or does not exist\"\n    }\n}"
+        }
+      ]
     },
     {
       "name": "error_reg",
@@ -125,7 +381,62 @@
           ]
         }
       },
-      "response": []
+      "response": [
+        {
+          "name": "error_reg",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"username\": \"hari\",\r\n    \"email\": \"hari@gmail.com\",\r\n    \"password\": \"hari199\",\r\n    \"full_name\": \"hari m\",\r\n    \"phone\": \"9345678910\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/auth/register",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "auth",
+                "register"
+              ]
+            }
+          },
+          "status": "Conflict",
+          "code": 409,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "date",
+              "value": "Mon, 24 Aug 2026 11:48:32 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "101"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"detail\": {\n        \"success\": false,\n        \"error_code\": \"EMAIL_ALREADY_EXISTS\",\n        \"message\": \"Email already registered\"\n    }\n}"
+        }
+      ]
     },
     {
       "name": "invalid login",
@@ -157,7 +468,62 @@
           ]
         }
       },
-      "response": []
+      "response": [
+        {
+          "name": "invalid login",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"email\": \"kavin@gmail.com\",\r\n    \"password\": \"kavin123\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/auth/login",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "auth",
+                "login"
+              ]
+            }
+          },
+          "status": "Unauthorized",
+          "code": 401,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "date",
+              "value": "Mon, 24 Aug 2026 11:48:42 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "101"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"detail\": {\n        \"success\": false,\n        \"error_code\": \"INVALID_CREDENTIALS\",\n        \"message\": \"Invalid email or password\"\n    }\n}"
+        }
+      ]
     },
     {
       "name": "error testing with access token",
@@ -165,7 +531,52 @@
         "method": "GET",
         "header": []
       },
-      "response": []
+      "response": [
+        {
+          "name": "error testing with access token",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://127.0.0.1:8000/me",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "me"
+              ]
+            }
+          },
+          "status": "Unauthorized",
+          "code": 401,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "date",
+              "value": "Mon, 24 Aug 2026 11:48:52 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "108"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"detail\": {\n        \"success\": false,\n        \"error_code\": \"INVALID_ACCESS_TOKEN\",\n        \"message\": \"Invalid or expired access token\"\n    }\n}"
+        }
+      ]
     },
     {
       "name": "error with refresh",
@@ -173,7 +584,106 @@
         "method": "GET",
         "header": []
       },
-      "response": []
+      "response": [
+        {
+          "name": "error with refresh",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "http://127.0.0.1:8000/auth/",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "auth",
+                ""
+              ]
+            }
+          },
+          "status": "Not Found",
+          "code": 404,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "date",
+              "value": "Mon, 24 Aug 2026 11:49:01 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "22"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"detail\": \"Not Found\"\n}"
+        }
+      ]
+    },
+    {
+      "name": "tested with /me",
+      "request": {
+        "method": "GET",
+        "header": []
+      },
+      "response": [
+        {
+          "name": "tested with /me",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://127.0.0.1:8000/me",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "me"
+              ]
+            }
+          },
+          "status": "Unauthorized",
+          "code": 401,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "date",
+              "value": "Mon, 24 Aug 2026 11:43:20 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "96"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"detail\": {\n        \"success\": false,\n        \"error_code\": \"INVALID_TOKEN_TYPE\",\n        \"message\": \"Access token required\"\n    }\n}"
+        }
+      ]
     }
   ]
 }
