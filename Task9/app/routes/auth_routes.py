@@ -77,7 +77,7 @@ async def login(request: LoginRequest):
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail={
                 "success": False,
-                "error_code": "INVALID_CREDENTIALS",
+                "error_code": "401",
                 "message": "Invalid email or password"
             }
         )
@@ -88,7 +88,7 @@ async def login(request: LoginRequest):
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail={
                 "success": False,
-                "error_code": "INVALID_CREDENTIALS",
+                "error_code": "401",
                 "message": "Invalid email or password"
             }
         )
@@ -99,7 +99,7 @@ async def login(request: LoginRequest):
             status_code=status.HTTP_403_FORBIDDEN,
             detail={
                 "success": False,
-                "error_code": "USER_INACTIVE",
+                "error_code": "403",
                 "message": "User account is inactive"
             }
         )
@@ -136,7 +136,7 @@ async def refresh_token(
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail={
                 "success": False,
-                "error_code": "INVALID_REFRESH_TOKEN",
+                "error_code": "401",
                 "message": "Invalid or expired refresh token"
             }
         )
@@ -149,7 +149,7 @@ async def refresh_token(
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail={
                 "success": False,
-                "error_code": "INVALID_TOKEN_TYPE",
+                "error_code": "401",
                 "message": "Refresh token required"
             }
         )
@@ -163,7 +163,7 @@ async def refresh_token(
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail={
                 "success": False,
-                "error_code": "INVALID_REFRESH_TOKEN",
+                "error_code": "401",
                 "message": "Refresh token is missing required information"
             }
         )
@@ -177,7 +177,7 @@ async def refresh_token(
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail={
                 "success": False,
-                "error_code": "USER_NOT_FOUND",
+                "error_code": "401",
                 "message": "User no longer exists"
             }
         )
@@ -189,7 +189,7 @@ async def refresh_token(
             status_code=status.HTTP_403_FORBIDDEN,
             detail={
                 "success": False,
-                "error_code": "USER_INACTIVE",
+                "error_code": "403",
                 "message": "User account is inactive"
             }
         )
@@ -208,7 +208,7 @@ async def refresh_token(
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail={
                 "success": False,
-                "error_code": "SESSION_NOT_FOUND",
+                "error_code": "401",
                 "message": "Refresh session is invalid or revoked"
             }
         )
@@ -220,7 +220,7 @@ async def refresh_token(
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail={
                 "success": False,
-                "error_code": "SESSION_REVOKED",
+                "error_code": "401",
                 "message": "Refresh session has been revoked"
             }
         )
@@ -256,7 +256,7 @@ async def logout(
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail={
                 "success": False,
-                "error_code": "INVALID_REFRESH_TOKEN",
+                "error_code": "401",
                 "message": "Invalid or expired refresh token"
             }
         )
@@ -268,7 +268,7 @@ async def logout(
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail={
                 "success": False,
-                "error_code": "INVALID_TOKEN_TYPE",
+                "error_code": "401",
                 "message": "Refresh token required for logout"
             }
         )
@@ -282,7 +282,7 @@ async def logout(
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail={
                 "success": False,
-                "error_code": "INVALID_REFRESH_TOKEN",
+                "error_code": "401",
                 "message": "Invalid refresh token"
             }
         )
@@ -300,7 +300,7 @@ async def logout(
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail={
                 "success": False,
-                "error_code": "SESSION_NOT_FOUND",
+                "error_code": "401",
                 "message": "Refresh session is already revoked or does not exist"
             }
         )

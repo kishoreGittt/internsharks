@@ -22,7 +22,7 @@ async def get_current_user(
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail={
                 "success": False,
-                "error_code": "INVALID_ACCESS_TOKEN",
+                "error_code": "401",
                 "message": "Invalid or expired access token"
             }
         )
@@ -37,7 +37,7 @@ async def get_current_user(
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail={
                 "success": False,
-                "error_code": "INVALID_TOKEN_TYPE",
+                "error_code": "401",
                 "message": "Access token required"
             }
         )
@@ -50,7 +50,7 @@ async def get_current_user(
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail={
                 "success": False,
-                "error_code": "INVALID_TOKEN",
+                "error_code": "401",
                 "message": "User information missing from token"
             }
         )
@@ -63,7 +63,7 @@ async def get_current_user(
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail={
                 "success": False,
-                "error_code": "USER_NOT_FOUND",
+                "error_code": "401",
                 "message": "User no longer exists"
             }
         )
@@ -74,7 +74,7 @@ async def get_current_user(
             status_code=status.HTTP_403_FORBIDDEN,
             detail={
                 "success": False,
-                "error_code": "USER_INACTIVE",
+                "error_code": "403",
                 "message": "User account is inactive"
             }
         )
