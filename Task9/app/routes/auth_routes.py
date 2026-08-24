@@ -1,34 +1,24 @@
-from datetime import datetime, timezone
-
-from fastapi import APIRouter, HTTPException, status, Depends
+from fastapi import APIRouter, Depends, HTTPException, status
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 
-from uuid import uuid4
-
-from app.database.mongodb import (
-    users_collection,
-    refresh_sessions_collection
-)
-
-from app.schemas.auth_schema import (
+from app.schemas.auth import (
     RegisterRequest,
     LoginRequest
 )
 
 from app.services.auth_service import (
-    hash_password,
-    verify_password
+    register_user,
+    authenticate_user,
+    create_login_tokens,
+    get_user_by_id,
+    get_refresh_session,
+    revoke_refresh_session
 )
 
 from app.services.token_service import (
-    create_access_token,
-    create_refresh_token,
     decode_token,
-    hash_jti
-)
-
-from app.models.refresh_session import (
-    create_refresh_session_document
+    hash_jti,
+    create_access_token
 )
 
 
@@ -40,20 +30,18 @@ router = APIRouter(
 security = HTTPBearer()
 
 
-# ============================================================
-# REGISTER
-# ============================================================
+@router.post("/register", status_code=status.HTTP_201_CREATED)
+async def register(request: RegisterRequest):
 
-@router.post("/register")
-async def register_user(
-    request: RegisterRequest
-):
-
-    existing_user = await users_collection.find_one(
-        {"email": request.email}
+    user = await register_user(
+        username=request.username,
+        email=request.email,
+        password=request.password,
+        full_name=request.full_name,
+        phone=request.phone
     )
 
-    if existing_user:
+    if not user:
 
         raise HTTPException(
             status_code=status.HTTP_409_CONFLICT,
@@ -64,69 +52,26 @@ async def register_user(
             }
         )
 
-    existing_username = await users_collection.find_one(
-        {"username": request.username}
-    )
-
-    if existing_username:
-
-        raise HTTPException(
-            status_code=status.HTTP_409_CONFLICT,
-            detail={
-                "success": False,
-                "error_code": "USERNAME_ALREADY_EXISTS",
-                "message": "Username already exists"
-            }
-        )
-
-    user_id = str(uuid4())
-
-    hashed_password = hash_password(
-        request.password
-    )
-
-    user_document = {
-        "_id": user_id,
-        "username": request.username,
-        "email": request.email,
-        "password": hashed_password,
-        "full_name": request.full_name,
-        "phone": request.phone,
-        "is_active": True
-    }
-
-    await users_collection.insert_one(
-        user_document
-    )
-
     return {
         "success": True,
         "message": "User registered successfully",
         "data": {
-            "id": user_id,
-            "username": request.username,
-            "email": request.email,
-            "full_name": request.full_name,
-            "phone": request.phone,
-            "is_active": True
+            "id": user["id"],
+            "username": user["username"],
+            "email": user["email"]
         }
     }
 
 
-# ============================================================
-# LOGIN
-# ============================================================
-
 @router.post("/login")
-async def login_user(
-    request: LoginRequest
-):
+async def login(request: LoginRequest):
 
-    user = await users_collection.find_one(
-        {"email": request.email}
+    user, error = await authenticate_user(
+        email=request.email,
+        password=request.password
     )
 
-    if not user:
+    if error == "USER_NOT_FOUND":
 
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
@@ -137,12 +82,7 @@ async def login_user(
             }
         )
 
-    password_valid = verify_password(
-        request.password,
-        user["password"]
-    )
-
-    if not password_valid:
+    if error == "INVALID_PASSWORD":
 
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
@@ -153,7 +93,7 @@ async def login_user(
             }
         )
 
-    if not user.get("is_active", True):
+    if error == "USER_INACTIVE":
 
         raise HTTPException(
             status_code=status.HTTP_403_FORBIDDEN,
@@ -164,24 +104,8 @@ async def login_user(
             }
         )
 
-    access_token = create_access_token(
-        user["_id"]
-    )
-
-    refresh_token, jti, expires_at = create_refresh_token(
-        user["_id"]
-    )
-
-    jti_hash = hash_jti(jti)
-
-    session_document = create_refresh_session_document(
-        user_id=user["_id"],
-        jti_hash=jti_hash,
-        expires_at=expires_at
-    )
-
-    await refresh_sessions_collection.insert_one(
-        session_document
+    access_token, refresh_token = await create_login_tokens(
+        user
     )
 
     return {
@@ -195,20 +119,18 @@ async def login_user(
     }
 
 
-# ============================================================
-# REFRESH TOKEN
-# ============================================================
-
 @router.post("/refresh")
-async def refresh_access_token(
+async def refresh_token(
     credentials: HTTPAuthorizationCredentials = Depends(security)
 ):
 
     token = credentials.credentials
 
-    payload = decode_token(token)
+    # Decode and validate JWT.
+    try:
+        payload = decode_token(token)
 
-    if payload is None:
+    except ValueError:
 
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
@@ -219,16 +141,16 @@ async def refresh_access_token(
             }
         )
 
-    token_type = payload.get("type")
-
-    if token_type != "refresh":
+    # IMPORTANT:
+    # Access tokens cannot be used here.
+    if payload.get("type") != "refresh":
 
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail={
                 "success": False,
                 "error_code": "INVALID_TOKEN_TYPE",
-                "message": "Access token cannot be used as a refresh token"
+                "message": "Refresh token required"
             }
         )
 
@@ -246,61 +168,8 @@ async def refresh_access_token(
             }
         )
 
-    jti_hash = hash_jti(jti)
-
-    session = await refresh_sessions_collection.find_one(
-        {
-            "jti_hash": jti_hash,
-            "user_id": user_id
-        }
-    )
-
-    if not session:
-
-        raise HTTPException(
-            status_code=status.HTTP_401_UNAUTHORIZED,
-            detail={
-                "success": False,
-                "error_code": "SESSION_NOT_FOUND",
-                "message": "Refresh session is invalid or has been revoked"
-            }
-        )
-
-    if session.get("revoked", False):
-
-        raise HTTPException(
-            status_code=status.HTTP_401_UNAUTHORIZED,
-            detail={
-                "success": False,
-                "error_code": "REFRESH_TOKEN_REVOKED",
-                "message": "Refresh token has been revoked"
-            }
-        )
-
-    expires_at = session.get("expires_at")
-
-    if expires_at:
-
-        if expires_at.tzinfo is None:
-
-            expires_at = expires_at.replace(
-                tzinfo=timezone.utc
-            )
-
-        if expires_at <= datetime.now(timezone.utc):
-
-            raise HTTPException(
-                status_code=status.HTTP_401_UNAUTHORIZED,
-                detail={
-                    "success": False,
-                    "error_code": "REFRESH_TOKEN_EXPIRED",
-                    "message": "Refresh token has expired"
-                }
-            )
-
-    user = await users_collection.find_one(
-        {"_id": user_id}
-    )
+    # Check user.
+    user = await get_user_by_id(user_id)
 
     if not user:
 
@@ -313,6 +182,7 @@ async def refresh_access_token(
             }
         )
 
+    # Check active status.
     if not user.get("is_active", True):
 
         raise HTTPException(
@@ -324,6 +194,38 @@ async def refresh_access_token(
             }
         )
 
+    # Find refresh session.
+    jti_hash = hash_jti(jti)
+
+    session = await get_refresh_session(
+        user_id=user_id,
+        jti_hash=jti_hash
+    )
+
+    if not session:
+
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail={
+                "success": False,
+                "error_code": "SESSION_NOT_FOUND",
+                "message": "Refresh session is invalid or revoked"
+            }
+        )
+
+    # Check revoked.
+    if session.get("revoked", False):
+
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail={
+                "success": False,
+                "error_code": "SESSION_REVOKED",
+                "message": "Refresh session has been revoked"
+            }
+        )
+
+    # Create new access token.
     new_access_token = create_access_token(
         user_id
     )
@@ -338,30 +240,28 @@ async def refresh_access_token(
     }
 
 
-# ============================================================
-# LOGOUT
-# ============================================================
-
 @router.post("/logout")
-async def logout_user(
+async def logout(
     credentials: HTTPAuthorizationCredentials = Depends(security)
 ):
 
     token = credentials.credentials
 
-    payload = decode_token(token)
+    try:
+        payload = decode_token(token)
 
-    if payload is None:
+    except ValueError:
 
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail={
                 "success": False,
-                "error_code": "INVALID_TOKEN",
+                "error_code": "INVALID_REFRESH_TOKEN",
                 "message": "Invalid or expired refresh token"
             }
         )
 
+    # Logout requires a refresh token.
     if payload.get("type") != "refresh":
 
         raise HTTPException(
@@ -369,60 +269,41 @@ async def logout_user(
             detail={
                 "success": False,
                 "error_code": "INVALID_TOKEN_TYPE",
-                "message": "Logout requires a refresh token"
+                "message": "Refresh token required for logout"
             }
         )
 
+    user_id = payload.get("sub")
     jti = payload.get("jti")
 
-    if not jti:
+    if not user_id or not jti:
 
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail={
                 "success": False,
                 "error_code": "INVALID_REFRESH_TOKEN",
-                "message": "Refresh token is missing session information"
+                "message": "Invalid refresh token"
             }
         )
 
     jti_hash = hash_jti(jti)
 
-    session = await refresh_sessions_collection.find_one(
-        {"jti_hash": jti_hash}
+    revoked = await revoke_refresh_session(
+        user_id=user_id,
+        jti_hash=jti_hash
     )
 
-    if not session:
+    if not revoked:
 
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail={
                 "success": False,
                 "error_code": "SESSION_NOT_FOUND",
-                "message": "Refresh session not found"
+                "message": "Refresh session is already revoked or does not exist"
             }
         )
-
-    if session.get("revoked", False):
-
-        raise HTTPException(
-            status_code=status.HTTP_401_UNAUTHORIZED,
-            detail={
-                "success": False,
-                "error_code": "SESSION_ALREADY_REVOKED",
-                "message": "Refresh session is already logged out"
-            }
-        )
-
-    await refresh_sessions_collection.update_one(
-        {"jti_hash": jti_hash},
-        {
-            "$set": {
-                "revoked": True,
-                "revoked_at": datetime.now(timezone.utc)
-            }
-        }
-    )
 
     return {
         "success": True,

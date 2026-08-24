@@ -1,13 +1,14 @@
+import hashlib
+import uuid
+
 from datetime import datetime, timedelta, timezone
-from hashlib import sha256
-from uuid import uuid4
 
 from jose import jwt, JWTError
 
 from app.config import settings
 
 
-def create_access_token(user_id: str):
+def create_access_token(user_id: str) -> str:
 
     expire = datetime.now(timezone.utc) + timedelta(
         minutes=settings.ACCESS_TOKEN_EXPIRE_MINUTES
@@ -19,22 +20,20 @@ def create_access_token(user_id: str):
         "exp": expire
     }
 
-    token = jwt.encode(
+    return jwt.encode(
         payload,
         settings.JWT_SECRET_KEY,
         algorithm=settings.JWT_ALGORITHM
     )
 
-    return token
-
 
 def create_refresh_token(user_id: str):
+
+    jti = str(uuid.uuid4())
 
     expire = datetime.now(timezone.utc) + timedelta(
         days=settings.REFRESH_TOKEN_EXPIRE_DAYS
     )
-
-    jti = str(uuid4())
 
     payload = {
         "sub": user_id,
@@ -52,10 +51,9 @@ def create_refresh_token(user_id: str):
     return token, jti, expire
 
 
-def decode_token(token: str):
+def decode_token(token: str) -> dict:
 
     try:
-
         payload = jwt.decode(
             token,
             settings.JWT_SECRET_KEY,
@@ -65,12 +63,11 @@ def decode_token(token: str):
         return payload
 
     except JWTError:
+        raise ValueError("Invalid or expired token")
 
-        return None
 
+def hash_jti(jti: str) -> str:
 
-def hash_jti(jti: str):
-
-    return sha256(
+    return hashlib.sha256(
         jti.encode("utf-8")
     ).hexdigest()

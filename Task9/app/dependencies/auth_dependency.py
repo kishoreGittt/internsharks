@@ -1,8 +1,8 @@
 from fastapi import Depends, HTTPException, status
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 
-from app.database.mongodb import users_collection
 from app.services.token_service import decode_token
+from app.services.auth_service import get_user_by_id
 
 
 security = HTTPBearer()
@@ -14,21 +14,23 @@ async def get_current_user(
 
     token = credentials.credentials
 
-    payload = decode_token(token)
+    try:
+        payload = decode_token(token)
 
-    if payload is None:
-
+    except ValueError:
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail={
                 "success": False,
-                "error_code": "INVALID_TOKEN",
+                "error_code": "INVALID_ACCESS_TOKEN",
                 "message": "Invalid or expired access token"
             }
         )
 
     token_type = payload.get("type")
 
+    # IMPORTANT:
+    # Only access tokens are allowed here.
     if token_type != "access":
 
         raise HTTPException(
@@ -36,7 +38,7 @@ async def get_current_user(
             detail={
                 "success": False,
                 "error_code": "INVALID_TOKEN_TYPE",
-                "message": "Refresh token cannot be used for protected APIs"
+                "message": "Access token required"
             }
         )
 
@@ -49,13 +51,11 @@ async def get_current_user(
             detail={
                 "success": False,
                 "error_code": "INVALID_TOKEN",
-                "message": "Token does not contain user information"
+                "message": "User information missing from token"
             }
         )
 
-    user = await users_collection.find_one(
-        {"_id": user_id}
-    )
+    user = await get_user_by_id(user_id)
 
     if not user:
 

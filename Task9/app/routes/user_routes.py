@@ -1,8 +1,6 @@
 from fastapi import APIRouter, Depends
 
-from app.dependencies.auth_dependency import (
-    get_current_user
-)
+from app.dependencies.auth_dependency import get_current_user
 
 
 router = APIRouter(
@@ -17,13 +15,14 @@ async def get_my_profile(
 
     return {
         "success": True,
-        "message": "User profile retrieved successfully",
+        "message": "Profile retrieved successfully",
         "data": {
-            "id": current_user["_id"],
+            "id": str(current_user["_id"]),
             "username": current_user["username"],
             "email": current_user["email"],
-            "full_name": current_user.get("full_name"),
-            "phone": current_user.get("phone"),
+            "full_name": current_user["full_name"],
+            "phone": current_user["phone"],
+            "role": current_user.get("role", "user"),
             "is_active": current_user.get("is_active", True)
         }
     }

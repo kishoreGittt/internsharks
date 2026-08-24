@@ -2,7 +2,6 @@ from pydantic import BaseModel, EmailStr, Field
 
 
 class RegisterRequest(BaseModel):
-
     username: str = Field(
         ...,
         min_length=3,
@@ -13,37 +12,39 @@ class RegisterRequest(BaseModel):
 
     password: str = Field(
         ...,
-        min_length=6,
+        min_length=6
+    )
+
+    full_name: str = Field(
+        ...,
+        min_length=2,
         max_length=100
     )
 
-    full_name: str | None = None
-
-    phone: str | None = None
+    phone: str = Field(
+        ...,
+        min_length=10,
+        max_length=15
+    )
 
 
 class LoginRequest(BaseModel):
-
     email: EmailStr
-
     password: str
 
 
-class TokenResponse(BaseModel):
-
+class TokenResponseData(BaseModel):
     access_token: str
     refresh_token: str
     token_type: str
 
 
-class RefreshResponse(BaseModel):
-
+class RefreshResponseData(BaseModel):
     access_token: str
     token_type: str
 
 
 class MessageResponse(BaseModel):
-
     success: bool
     message: str
     data: dict | None = None
