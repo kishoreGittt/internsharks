@@ -1,0 +1,2242 @@
+{
+  "info": {
+    "_postman_id": "6454828c-d59c-46aa-8cd0-bf4467a4ef60",
+    "name": "Task10",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "57366509",
+    "_collection_link": "https://go.postman.co/collection/57366509-6454828c-d59c-46aa-8cd0-bf4467a4ef60?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "user_register",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"username\": \"malai\",\r\n    \"email\": \"malai@gmail.com\",\r\n    \"password\": \"malai454\",\r\n    \"full_name\": \"Malai\",\r\n    \"phone\": \"9876543212\",\r\n    \"department\": \"Python\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/auth/register",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "auth",
+            "register"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "user_register",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"username\": \"kavin\",\r\n    \"email\": \"kavin@gmail.com\",\r\n    \"password\": \"kavin321\",\r\n    \"full_name\": \"kavin\",\r\n    \"phone\": \"9876543210\",\r\n    \"department\": \"Python\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/auth/register",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "auth",
+                "register"
+              ]
+            }
+          },
+          "status": "Created",
+          "code": 201,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "date",
+              "value": "Tue, 25 Aug 2026 08:48:19 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "242"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"success\": true,\n    \"message\": \"User registered successfully\",\n    \"data\": {\n        \"username\": \"kavin\",\n        \"email\": \"kavin@gmail.com\",\n        \"full_name\": \"kavin\",\n        \"role\": \"user\",\n        \"is_active\": true,\n        \"created_at\": \"2026-08-25T08:48:19.865367+00:00\",\n        \"id\": \"6a8d56d32faddc8f911819b8\"\n    }\n}"
+        }
+      ]
+    },
+    {
+      "name": "error_reg",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"username\": \"malai\",\r\n    \"email\": \"malai@gmail.com\",\r\n    \"password\": \"123\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/auth/register",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "auth",
+            "register"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "error_reg",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"username\": \"malai\",\r\n    \"email\": \"malai@gmail.com\",\r\n    \"password\": \"123\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/auth/register",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "auth",
+                "register"
+              ]
+            }
+          },
+          "status": "Unprocessable Entity",
+          "code": 422,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "date",
+              "value": "Tue, 25 Aug 2026 09:07:56 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "165"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"success\": false,\n    \"error_code\": 422,\n    \"message\": \"Request validation failed\",\n    \"errors\": [\n        {\n            \"field\": \"body -> password\",\n            \"message\": \"String should have at least 8 characters\"\n        }\n    ]\n}"
+        }
+      ]
+    },
+    {
+      "name": "admin_reg",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"username\": \"admin\",\r\n    \"email\": \"admin@gmail.com\",\r\n    \"password\": \"Admin@12345\",\r\n    \"role\": \"admin\"\r\n}\r\n",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/auth/register",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "auth",
+            "register"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "admin_reg",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"username\": \"admin\",\r\n    \"email\": \"admin@gmail.com\",\r\n    \"password\": \"Admin@12345\",\r\n    \"role\": \"admin\"\r\n}\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/auth/register",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "auth",
+                "register"
+              ]
+            }
+          },
+          "status": "Created",
+          "code": 201,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "date",
+              "value": "Tue, 25 Aug 2026 09:13:50 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "174"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"success\": true,\n    \"message\": \"User registered successfully\",\n    \"data\": {\n        \"id\": \"6a8d5ccfae234eb92534156c\",\n        \"username\": \"admin\",\n        \"email\": \"admin@gmail.com\",\n        \"role\": \"user\",\n        \"is_active\": true\n    }\n}"
+        }
+      ]
+    },
+    {
+      "name": "user_login",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"email\": \"vijay@gmail.com\",\r\n    \"password\": \"vijaycm26\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/auth/login",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "auth",
+            "login"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "user_login",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"email\": \"vijay@gmail.com\",\r\n    \"password\": \"vijaycm26\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/auth/login",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "auth",
+                "login"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "date",
+              "value": "Tue, 25 Aug 2026 09:17:37 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "370"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"success\": true,\n    \"message\": \"Login successful\",\n    \"data\": {\n        \"access_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2YThkNDJmNjU3ZWIyMmYxOTBlMGI3YTkiLCJ0eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzg3NjUwMzU5fQ.KFbzu5dbupR-01wD3Sd0_R9VODpDfCtmnJE30sza2dU\",\n        \"refresh_token\": \"uTzpyWBjYuuqU2dZwJh8yy5WqVCY8C4ysX8a1LFoJIweRVYxqQSPO1dYKFKc1Ma1nV1uq0tTVmevC4EkF5fHAA\",\n        \"token_type\": \"bearer\"\n    }\n}"
+        }
+      ]
+    },
+    {
+      "name": "error_login",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"email\": \"kishore@gmail.com\",\r\n    \"password\": \"kishore123\"\r\n}"
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/auth/login",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "auth",
+            "login"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "error_login",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"email\": \"kishore@gmail.com\",\r\n    \"password\": \"kishore123\"\r\n}"
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/auth/login",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "auth",
+                "login"
+              ]
+            }
+          },
+          "status": "Unprocessable Entity",
+          "code": 422,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "date",
+              "value": "Tue, 25 Aug 2026 09:19:00 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "180"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"success\": false,\n    \"error_code\": 422,\n    \"message\": \"Request validation failed\",\n    \"errors\": [\n        {\n            \"field\": \"body\",\n            \"message\": \"Input should be a valid dictionary or object to extract fields from\"\n        }\n    ]\n}"
+        }
+      ]
+    },
+    {
+      "name": "access_token",
+      "request": {
+        "method": "GET",
+        "header": []
+      },
+      "response": [
+        {
+          "name": "access_token",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"email\": \"kishore@gmail.com\",\r\n    \"password\": \"kishore123\"\r\n}"
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/users/me",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "users",
+                "me"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "date",
+              "value": "Tue, 25 Aug 2026 09:20:57 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "176"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"success\": true,\n    \"message\": \"Profile retrieved successfully\",\n    \"data\": {\n        \"id\": \"6a8d42f657eb22f190e0b7a9\",\n        \"username\": \"vijay\",\n        \"email\": \"vijay@gmail.com\",\n        \"role\": \"user\",\n        \"is_active\": true\n    }\n}"
+        }
+      ]
+    },
+    {
+      "name": "error_access",
+      "request": {
+        "method": "GET",
+        "header": []
+      },
+      "response": [
+        {
+          "name": "error_access",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://127.0.0.1:8000/users/me",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "users",
+                "me"
+              ]
+            }
+          },
+          "status": "Unauthorized",
+          "code": 401,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "date",
+              "value": "Tue, 25 Aug 2026 09:21:55 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "89"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"detail\": {\n        \"success\": false,\n        \"error_code\": 401,\n        \"message\": \"Invalid or expired access token\"\n    }\n}"
+        }
+      ]
+    },
+    {
+      "name": "error_refeash_token",
+      "request": {
+        "method": "GET",
+        "header": []
+      },
+      "response": [
+        {
+          "name": "error_refeash_token",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://127.0.0.1:8000/users/me",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "users",
+                "me"
+              ]
+            }
+          },
+          "status": "Unauthorized",
+          "code": 401,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "date",
+              "value": "Tue, 25 Aug 2026 09:24:06 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "89"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"detail\": {\n        \"success\": false,\n        \"error_code\": 401,\n        \"message\": \"Invalid or expired access token\"\n    }\n}"
+        }
+      ]
+    },
+    {
+      "name": "refresh_token",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "uTzpyWBjYuuqU2dZwJh8yy5WqVCY8C4ysX8a1LFoJIweRVYxqQSPO1dYKFKc1Ma1nV1uq0tTVmevC4EkF5fHAA",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"refresh_token\": \"uTzpyWBjYuuqU2dZwJh8yy5WqVCY8C4ysX8a1LFoJIweRVYxqQSPO1dYKFKc1Ma1nV1uq0tTVmevC4EkF5fHAA\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/auth/refresh",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "auth",
+            "refresh"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "refresh_token",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"refresh_token\": \"uTzpyWBjYuuqU2dZwJh8yy5WqVCY8C4ysX8a1LFoJIweRVYxqQSPO1dYKFKc1Ma1nV1uq0tTVmevC4EkF5fHAA\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/auth/refresh",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "auth",
+                "refresh"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "date",
+              "value": "Tue, 25 Aug 2026 11:33:36 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "284"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"success\": true,\n    \"message\": \"Access token refreshed successfully\",\n    \"data\": {\n        \"access_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2YThkNDJmNjU3ZWIyMmYxOTBlMGI3YTkiLCJ0eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzg3NjU4NTE2fQ.ZdRtL1szoN_jzxcwmIBmri5vAeYp8nfyWMJzIuUyWgM\",\n        \"token_type\": \"bearer\"\n    }\n}"
+        }
+      ]
+    },
+    {
+      "name": "logout",
+      "request": {
+        "method": "GET",
+        "header": []
+      },
+      "response": [
+        {
+          "name": "logout",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"refresh_token\": \"uTzpyWBjYuuqU2dZwJh8yy5WqVCY8C4ysX8a1LFoJIweRVYxqQSPO1dYKFKc1Ma1nV1uq0tTVmevC4EkF5fHAA\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/auth/logout",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "auth",
+                "logout"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "date",
+              "value": "Tue, 25 Aug 2026 11:37:26 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "58"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"success\": true,\n    \"message\": \"Logout successful\",\n    \"data\": null\n}"
+        }
+      ]
+    },
+    {
+      "name": "after logout token",
+      "request": {
+        "method": "GET",
+        "header": []
+      },
+      "response": [
+        {
+          "name": "after logout token",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"refresh_token\": \"uTzpyWBjYuuqU2dZwJh8yy5WqVCY8C4ysX8a1LFoJIweRVYxqQSPO1dYKFKc1Ma1nV1uq0tTVmevC4EkF5fHAA\"\r\n}"
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/auth/refresh",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "auth",
+                "refresh"
+              ]
+            }
+          },
+          "status": "Unprocessable Entity",
+          "code": 422,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "date",
+              "value": "Tue, 25 Aug 2026 11:39:35 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "270"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"detail\": [\n        {\n            \"type\": \"model_attributes_type\",\n            \"loc\": [\n                \"body\"\n            ],\n            \"msg\": \"Input should be a valid dictionary or object to extract fields from\",\n            \"input\": \"{\\r\\n    \\\"refresh_token\\\": \\\"uTzpyWBjYuuqU2dZwJh8yy5WqVCY8C4ysX8a1LFoJIweRVYxqQSPO1dYKFKc1Ma1nV1uq0tTVmevC4EkF5fHAA\\\"\\r\\n}\"\n        }\n    ]\n}"
+        }
+      ]
+    },
+    {
+      "name": "tasks with error",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2YThkNDJmNjU3ZWIyMmYxOTBlMGI3YTkiLCJ0eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzg3NjUwMzU5fQ.KFbzu5dbupR-01wD3Sd0_R9VODpDfCtmnJE30sza2dU",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"title\": \"Complete FastAPI Task 10\",\r\n    \"description\": \"Build production-style task management backend\",\r\n    \"status\": \"todo\",\r\n    \"priority\": \"high\",\r\n    \"assigned_to\": null,\r\n    \"due_date\": \"2026-09-01T18:00:00\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/tasks",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "tasks"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "New Request",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"title\": \"Complete FastAPI Task 10\",\r\n    \"description\": \"Build production-style task management backend\",\r\n    \"status\": \"todo\",\r\n    \"priority\": \"high\",\r\n    \"assigned_to\": null,\r\n    \"due_date\": \"2026-09-01T18:00:00\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/tasks",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "tasks"
+              ]
+            }
+          },
+          "status": "Unauthorized",
+          "code": 401,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "date",
+              "value": "Tue, 25 Aug 2026 11:43:28 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "89"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"detail\": {\n        \"success\": false,\n        \"error_code\": 401,\n        \"message\": \"Invalid or expired access token\"\n    }\n}"
+        }
+      ]
+    },
+    {
+      "name": "tasks creatation",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2YThkNjk2ZWYwNDNjOWJmNGExYWVmZmIiLCJ0eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzg3NjU5MjQ3fQ.UgeSermXYEryS1Q-2YOgPGci3wIrMp2gRNGd3vEMxEQ",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"title\": \"Complete FastAPI Task 10\",\r\n    \"description\": \"Build production-style task management backend\",\r\n    \"status\": \"todo\",\r\n    \"priority\": \"high\",\r\n    \"assigned_to\": null,\r\n    \"due_date\": \"2026-09-01T18:00:00\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/tasks",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "tasks"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "tasks creatation",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"title\": \"Complete FastAPI Task 10\",\r\n    \"description\": \"Build production-style task management backend\",\r\n    \"status\": \"todo\",\r\n    \"priority\": \"high\",\r\n    \"assigned_to\": null,\r\n    \"due_date\": \"2026-09-01T18:00:00\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/tasks",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "tasks"
+              ]
+            }
+          },
+          "status": "Created",
+          "code": 201,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "date",
+              "value": "Tue, 25 Aug 2026 11:48:40 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "403"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"success\": true,\n    \"message\": \"Task created successfully\",\n    \"data\": {\n        \"title\": \"Complete FastAPI Task 10\",\n        \"description\": \"Build production-style task management backend\",\n        \"status\": \"todo\",\n        \"priority\": \"high\",\n        \"created_by\": \"6a8d696ef043c9bf4a1aeffb\",\n        \"assigned_to\": null,\n        \"due_date\": \"2026-09-01T18:00:00\",\n        \"created_at\": \"2026-08-25T11:48:41.788000\",\n        \"updated_at\": \"2026-08-25T11:48:41.788000\",\n        \"id\": \"6a8d8119b1ae12c4f433e5f1\"\n    }\n}"
+        }
+      ]
+    },
+    {
+      "name": "invalid_task",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2YThkNjk2ZWYwNDNjOWJmNGExYWVmZmIiLCJ0eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzg3NjU5MjQ3fQ.UgeSermXYEryS1Q-2YOgPGci3wIrMp2gRNGd3vEMxEQ",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"title\": \"Invalid Priority Task\",\r\n    \"description\": \"Testing\",\r\n    \"status\": \"todo\",\r\n    \"priority\": \"urgent\",\r\n    \"due_date\": \"2026-09-01T18:00:00\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/tasks",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "tasks"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "invalid_task",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"title\": \"Invalid Priority Task\",\r\n    \"description\": \"Testing\",\r\n    \"status\": \"todo\",\r\n    \"priority\": \"urgent\",\r\n    \"due_date\": \"2026-09-01T18:00:00\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/tasks",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "tasks"
+              ]
+            }
+          },
+          "status": "Unprocessable Entity",
+          "code": 422,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "date",
+              "value": "Tue, 25 Aug 2026 11:51:40 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "168"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"detail\": [\n        {\n            \"type\": \"enum\",\n            \"loc\": [\n                \"body\",\n                \"priority\"\n            ],\n            \"msg\": \"Input should be 'low', 'medium' or 'high'\",\n            \"input\": \"urgent\",\n            \"ctx\": {\n                \"expected\": \"'low', 'medium' or 'high'\"\n            }\n        }\n    ]\n}"
+        },
+        {
+          "name": "invalid_task",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"title\": \"Invalid Priority Task\",\r\n    \"description\": \"Testing\",\r\n    \"status\": \"todo\",\r\n    \"priority\": \"urgent\",\r\n    \"due_date\": \"2026-09-01T18:00:00\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/tasks",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "tasks"
+              ]
+            }
+          },
+          "status": "Unprocessable Entity",
+          "code": 422,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "date",
+              "value": "Tue, 25 Aug 2026 11:51:40 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "168"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"detail\": [\n        {\n            \"type\": \"enum\",\n            \"loc\": [\n                \"body\",\n                \"priority\"\n            ],\n            \"msg\": \"Input should be 'low', 'medium' or 'high'\",\n            \"input\": \"urgent\",\n            \"ctx\": {\n                \"expected\": \"'low', 'medium' or 'high'\"\n            }\n        }\n    ]\n}"
+        }
+      ]
+    },
+    {
+      "name": "get my task",
+      "request": {
+        "method": "GET",
+        "header": []
+      },
+      "response": [
+        {
+          "name": "get my task",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/tasks",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "tasks"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "date",
+              "value": "Tue, 25 Aug 2026 11:56:58 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "397"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"success\": true,\n    \"page\": 1,\n    \"limit\": 10,\n    \"total\": 1,\n    \"data\": [\n        {\n            \"title\": \"Complete FastAPI Task 10\",\n            \"description\": \"Build production-style task management backend\",\n            \"status\": \"todo\",\n            \"priority\": \"high\",\n            \"created_by\": \"6a8d696ef043c9bf4a1aeffb\",\n            \"assigned_to\": null,\n            \"due_date\": \"2026-09-01T18:00:00\",\n            \"created_at\": \"2026-08-25T11:48:41.788000\",\n            \"updated_at\": \"2026-08-25T11:48:41.788000\",\n            \"id\": \"6a8d8119b1ae12c4f433e5f1\"\n        }\n    ]\n}"
+        }
+      ]
+    },
+    {
+      "name": "pagination",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2YThkNjk2ZWYwNDNjOWJmNGExYWVmZmIiLCJ0eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzg3NzE5MzczfQ.snK93H-P0bu7jE16yQUnAlnG5g4uZS3T6KL9_AGwrC4",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/tasks?page=1&limit=10",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "tasks"
+          ],
+          "query": [
+            {
+              "key": "page",
+              "value": "1"
+            },
+            {
+              "key": "limit",
+              "value": "10"
+            }
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "pagination",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/tasks?page=1&limit=10",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "tasks"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "limit",
+                  "value": "10"
+                }
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "date",
+              "value": "Wed, 26 Aug 2026 04:35:11 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "397"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"success\": true,\n    \"page\": 1,\n    \"limit\": 10,\n    \"total\": 1,\n    \"data\": [\n        {\n            \"title\": \"Complete FastAPI Task 10\",\n            \"description\": \"Build production-style task management backend\",\n            \"status\": \"todo\",\n            \"priority\": \"high\",\n            \"created_by\": \"6a8d696ef043c9bf4a1aeffb\",\n            \"assigned_to\": null,\n            \"due_date\": \"2026-09-01T18:00:00\",\n            \"created_at\": \"2026-08-25T11:48:41.788000\",\n            \"updated_at\": \"2026-08-25T11:48:41.788000\",\n            \"id\": \"6a8d8119b1ae12c4f433e5f1\"\n        }\n    ]\n}"
+        }
+      ]
+    },
+    {
+      "name": "error_pagination",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2YThkNjk2ZWYwNDNjOWJmNGExYWVmZmIiLCJ0eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzg3NzE5MzczfQ.snK93H-P0bu7jE16yQUnAlnG5g4uZS3T6KL9_AGwrC4",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": ""
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/tasks?page=1&limit=10",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "tasks"
+          ],
+          "query": [
+            {
+              "key": "page",
+              "value": "1"
+            },
+            {
+              "key": "limit",
+              "value": "10"
+            }
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "error_pagination",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/tasks?page=1&limit=10",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "tasks"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "limit",
+                  "value": "10"
+                }
+              ]
+            }
+          },
+          "status": "Unauthorized",
+          "code": 401,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "date",
+              "value": "Wed, 26 Aug 2026 04:36:40 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "89"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"detail\": {\n        \"success\": false,\n        \"error_code\": 401,\n        \"message\": \"Invalid or expired access token\"\n    }\n}"
+        }
+      ]
+    },
+    {
+      "name": "status filter",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2YThkNjk2ZWYwNDNjOWJmNGExYWVmZmIiLCJ0eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzg3NzIwMjU5fQ.N4fH35rVwe8gIoj7yvFOPBX75M6GM3EE1He1Ixi3n-8",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://127.0.0.1:8000/tasks?status=in_progress",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "tasks"
+          ],
+          "query": [
+            {
+              "key": "status",
+              "value": "in_progress"
+            }
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "status filter",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://127.0.0.1:8000/tasks?status=in_progress",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "tasks"
+              ],
+              "query": [
+                {
+                  "key": "status",
+                  "value": "in_progress"
+                }
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "date",
+              "value": "Wed, 26 Aug 2026 04:43:48 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "56"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"success\": true,\n    \"page\": 1,\n    \"limit\": 10,\n    \"total\": 0,\n    \"data\": []\n}"
+        }
+      ]
+    },
+    {
+      "name": "priority filter",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2YThkNjk2ZWYwNDNjOWJmNGExYWVmZmIiLCJ0eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzg3NzIwMjU5fQ.N4fH35rVwe8gIoj7yvFOPBX75M6GM3EE1He1Ixi3n-8",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://127.0.0.1:8000/tasks?priority=high",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "tasks"
+          ],
+          "query": [
+            {
+              "key": "priority",
+              "value": "high"
+            }
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "priority filter",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://127.0.0.1:8000/tasks?priority=high",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "tasks"
+              ],
+              "query": [
+                {
+                  "key": "priority",
+                  "value": "high"
+                }
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "date",
+              "value": "Wed, 26 Aug 2026 04:44:50 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "397"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"success\": true,\n    \"page\": 1,\n    \"limit\": 10,\n    \"total\": 1,\n    \"data\": [\n        {\n            \"title\": \"Complete FastAPI Task 10\",\n            \"description\": \"Build production-style task management backend\",\n            \"status\": \"todo\",\n            \"priority\": \"high\",\n            \"created_by\": \"6a8d696ef043c9bf4a1aeffb\",\n            \"assigned_to\": null,\n            \"due_date\": \"2026-09-01T18:00:00\",\n            \"created_at\": \"2026-08-25T11:48:41.788000\",\n            \"updated_at\": \"2026-08-25T11:48:41.788000\",\n            \"id\": \"6a8d8119b1ae12c4f433e5f1\"\n        }\n    ]\n}"
+        }
+      ]
+    },
+    {
+      "name": "combined filters",
+      "request": {
+        "method": "GET",
+        "header": []
+      },
+      "response": []
+    },
+    {
+      "name": "search by title",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2YThkNjk2ZWYwNDNjOWJmNGExYWVmZmIiLCJ0eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzg3NzIwMjU5fQ.N4fH35rVwe8gIoj7yvFOPBX75M6GM3EE1He1Ixi3n-8",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://127.0.0.1:8000/tasks?search=MongoDB",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "tasks"
+          ],
+          "query": [
+            {
+              "key": "search",
+              "value": "MongoDB"
+            }
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "search by title",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://127.0.0.1:8000/tasks?search=MongoDB",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "tasks"
+              ],
+              "query": [
+                {
+                  "key": "search",
+                  "value": "MongoDB"
+                }
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "date",
+              "value": "Wed, 26 Aug 2026 04:51:19 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "367"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"success\": true,\n    \"page\": 1,\n    \"limit\": 10,\n    \"total\": 1,\n    \"data\": [\n        {\n            \"title\": \"Learn MongoDB Aggregation\",\n            \"description\": \"Study MongoDB\",\n            \"status\": \"todo\",\n            \"priority\": \"medium\",\n            \"created_by\": \"6a8d696ef043c9bf4a1aeffb\",\n            \"assigned_to\": null,\n            \"due_date\": \"2026-09-05T18:00:00\",\n            \"created_at\": \"2026-08-26T04:50:02.426000\",\n            \"updated_at\": \"2026-08-26T04:50:02.426000\",\n            \"id\": \"6a8e707a5ab1f55b467224af\"\n        }\n    ]\n}"
+        }
+      ]
+    },
+    {
+      "name": "Get Specific Task",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2YThkNjk2ZWYwNDNjOWJmNGExYWVmZmIiLCJ0eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzg3NzIwMjU5fQ.N4fH35rVwe8gIoj7yvFOPBX75M6GM3EE1He1Ixi3n-8",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://127.0.0.1:8000/tasks/6a8e707a5ab1f55b467224af",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "tasks",
+            "6a8e707a5ab1f55b467224af"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Get Specific Task",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://127.0.0.1:8000/tasks/6a8e707a5ab1f55b467224af",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "tasks",
+                "6a8e707a5ab1f55b467224af"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "date",
+              "value": "Wed, 26 Aug 2026 04:53:57 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "375"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"success\": true,\n    \"message\": \"Task retrieved successfully\",\n    \"data\": {\n        \"title\": \"Learn MongoDB Aggregation\",\n        \"description\": \"Study MongoDB\",\n        \"status\": \"todo\",\n        \"priority\": \"medium\",\n        \"created_by\": \"6a8d696ef043c9bf4a1aeffb\",\n        \"assigned_to\": null,\n        \"due_date\": \"2026-09-05T18:00:00\",\n        \"created_at\": \"2026-08-26T04:50:02.426000\",\n        \"updated_at\": \"2026-08-26T04:50:02.426000\",\n        \"id\": \"6a8e707a5ab1f55b467224af\"\n    }\n}"
+        }
+      ]
+    },
+    {
+      "name": "update task",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2YThkNjk2ZWYwNDNjOWJmNGExYWVmZmIiLCJ0eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzg3NzIwMjU5fQ.N4fH35rVwe8gIoj7yvFOPBX75M6GM3EE1He1Ixi3n-8",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"title\": \"Complete Task 10 Updated\",\r\n    \"description\": \"Updated task description\",\r\n    \"status\": \"in_progress\",\r\n    \"priority\": \"high\",\r\n    \"assigned_to\": null,\r\n    \"due_date\": \"2026-09-10T18:00:00\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/tasks/6a8e707a5ab1f55b467224af",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "tasks",
+            "6a8e707a5ab1f55b467224af"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "update task",
+          "originalRequest": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"title\": \"Complete Task 10 Updated\",\r\n    \"description\": \"Updated task description\",\r\n    \"status\": \"in_progress\",\r\n    \"priority\": \"high\",\r\n    \"assigned_to\": null,\r\n    \"due_date\": \"2026-09-10T18:00:00\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/tasks/6a8e707a5ab1f55b467224af",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "tasks",
+                "6a8e707a5ab1f55b467224af"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "date",
+              "value": "Wed, 26 Aug 2026 04:56:34 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "388"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"success\": true,\n    \"message\": \"Task updated successfully\",\n    \"data\": {\n        \"title\": \"Complete Task 10 Updated\",\n        \"description\": \"Updated task description\",\n        \"status\": \"in_progress\",\n        \"priority\": \"high\",\n        \"created_by\": \"6a8d696ef043c9bf4a1aeffb\",\n        \"assigned_to\": null,\n        \"due_date\": \"2026-09-10T18:00:00\",\n        \"created_at\": \"2026-08-26T04:50:02.426000\",\n        \"updated_at\": \"2026-08-26T04:56:35.876000\",\n        \"id\": \"6a8e707a5ab1f55b467224af\"\n    }\n}"
+        }
+      ]
+    },
+    {
+      "name": "delete_task",
+      "request": {
+        "method": "GET",
+        "header": []
+      },
+      "response": [
+        {
+          "name": "delete_task",
+          "originalRequest": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://127.0.0.1:8000/tasks/6a8d8119b1ae12c4f433e5f1",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "tasks",
+                "6a8d8119b1ae12c4f433e5f1"
+              ]
+            }
+          },
+          "status": "Not Found",
+          "code": 404,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "date",
+              "value": "Wed, 26 Aug 2026 05:01:34 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "72"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"detail\": {\n        \"success\": false,\n        \"error_code\": 404,\n        \"message\": \"Task not found\"\n    }\n}"
+        }
+      ]
+    },
+    {
+      "name": "admin login",
+      "request": {
+        "method": "GET",
+        "header": []
+      },
+      "response": [
+        {
+          "name": "admin login",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"email\": \"admin@gmail.com\",\r\n    \"password\": \"Admin@12345\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/auth/login",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "auth",
+                "login"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "date",
+              "value": "Wed, 26 Aug 2026 05:04:02 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "370"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"success\": true,\n    \"message\": \"Login successful\",\n    \"data\": {\n        \"access_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2YThkNWNjZmFlMjM0ZWI5MjUzNDE1NmMiLCJ0eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzg3NzIxNTQzfQ.d1s7In-toubKwAJgq4NvnnqnezBuII33JSgbmrN8ifU\",\n        \"refresh_token\": \"lxz7BGXEXuNP11Nbu92qwP6S5zaZP4py5PqB6GX3Dunl-PIErNAgaQ4TmKFKj7c0nvay4JXTr2chpPiKzFGtfw\",\n        \"token_type\": \"bearer\"\n    }\n}"
+        }
+      ]
+    },
+    {
+      "name": "admin get all users",
+      "request": {
+        "method": "GET",
+        "header": []
+      },
+      "response": [
+        {
+          "name": "admin get all users",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://127.0.0.1:8000/admin/users",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "admin",
+                "users"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "date",
+              "value": "Wed, 26 Aug 2026 08:51:54 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "1635"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"success\": true,\n    \"message\": \"Users retrieved successfully\",\n    \"data\": [\n        {\n            \"id\": \"6a8e94a8d1de4a4aea6b1861\",\n            \"username\": \"adminajithar\",\n            \"email\": \"adminajitharaa@gmail.com\",\n            \"full_name\": null,\n            \"role\": \"admin\",\n            \"is_active\": true,\n            \"created_at\": \"2026-08-26T07:24:24.329000\"\n        },\n        {\n            \"id\": \"6a8e8f89ffad349c911def58\",\n            \"username\": \"adminajith\",\n            \"email\": \"adminajith@gmail.com\",\n            \"full_name\": null,\n            \"role\": \"user\",\n            \"is_active\": true,\n            \"created_at\": \"2026-08-26T07:02:33.448000\"\n        },\n        {\n            \"id\": \"6a8e8b9633c4c021fee847bf\",\n            \"username\": \"admin\",\n            \"email\": \"admin@gmail.com\",\n            \"full_name\": null,\n            \"role\": \"user\",\n            \"is_active\": true,\n            \"created_at\": \"2026-08-26T06:45:42.095000\"\n        },\n        {\n            \"id\": \"6a8d696ef043c9bf4a1aeffb\",\n            \"username\": \"vimal\",\n            \"email\": \"vimal@gmail.com\",\n            \"full_name\": null,\n            \"role\": \"user\",\n            \"is_active\": true,\n            \"created_at\": \"2026-08-25T10:07:42.685000\"\n        },\n        {\n            \"id\": \"6a8d6307ae234eb92534156e\",\n            \"username\": \"bala\",\n            \"email\": \"bala@gmail.com\",\n            \"full_name\": null,\n            \"role\": \"user\",\n            \"is_active\": true,\n            \"created_at\": \"2026-08-25T09:40:23.737000\"\n        },\n        {\n            \"id\": \"6a8d56d32faddc8f911819b8\",\n            \"username\": \"kavin\",\n            \"email\": \"kavin@gmail.com\",\n            \"full_name\": \"kavin\",\n            \"role\": \"user\",\n            \"is_active\": true,\n            \"created_at\": \"2026-08-25T08:48:19.865000\"\n        },\n        {\n            \"id\": \"6a8d435757eb22f190e0b7aa\",\n            \"username\": \"malai\",\n            \"email\": \"malai@gmail.com\",\n            \"full_name\": \"Malai\",\n            \"role\": \"user\",\n            \"is_active\": true,\n            \"created_at\": \"2026-08-25T07:25:11.117000\"\n        },\n        {\n            \"id\": \"6a8d42f657eb22f190e0b7a9\",\n            \"username\": \"vijay\",\n            \"email\": \"vijay@gmail.com\",\n            \"full_name\": \"cm vijay\",\n            \"role\": \"user\",\n            \"is_active\": true,\n            \"created_at\": \"2026-08-25T07:23:34.382000\"\n        },\n        {\n            \"id\": \"6a8d428557eb22f190e0b7a8\",\n            \"username\": \"kishore\",\n            \"email\": \"kishore@gmail.com\",\n            \"full_name\": \"Kishore R\",\n            \"role\": \"user\",\n            \"is_active\": true,\n            \"created_at\": \"2026-08-25T07:21:41.712000\"\n        }\n    ]\n}"
+        }
+      ]
+    },
+    {
+      "name": "get all task by admin",
+      "request": {
+        "method": "GET",
+        "header": []
+      },
+      "response": [
+        {
+          "name": "get all task by admin",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://127.0.0.1:8000/admin/tasks",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "admin",
+                "tasks"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "date",
+              "value": "Wed, 26 Aug 2026 08:52:35 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "382"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"success\": true,\n    \"page\": 1,\n    \"limit\": 10,\n    \"total\": 1,\n    \"data\": [\n        {\n            \"title\": \"Complete Task 10 Updated\",\n            \"description\": \"Updated task description\",\n            \"status\": \"in_progress\",\n            \"priority\": \"high\",\n            \"created_by\": \"6a8d696ef043c9bf4a1aeffb\",\n            \"assigned_to\": null,\n            \"due_date\": \"2026-09-10T18:00:00\",\n            \"created_at\": \"2026-08-26T04:50:02.426000\",\n            \"updated_at\": \"2026-08-26T04:56:35.876000\",\n            \"id\": \"6a8e707a5ab1f55b467224af\"\n        }\n    ]\n}"
+        }
+      ]
+    },
+    {
+      "name": "filter by tasks",
+      "request": {
+        "method": "GET",
+        "header": []
+      },
+      "response": [
+        {
+          "name": "filter by tasks",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://127.0.0.1:8000/admin/tasks?status=in_progress",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "admin",
+                "tasks"
+              ],
+              "query": [
+                {
+                  "key": "status",
+                  "value": "in_progress"
+                }
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "date",
+              "value": "Wed, 26 Aug 2026 08:53:53 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "382"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"success\": true,\n    \"page\": 1,\n    \"limit\": 10,\n    \"total\": 1,\n    \"data\": [\n        {\n            \"title\": \"Complete Task 10 Updated\",\n            \"description\": \"Updated task description\",\n            \"status\": \"in_progress\",\n            \"priority\": \"high\",\n            \"created_by\": \"6a8d696ef043c9bf4a1aeffb\",\n            \"assigned_to\": null,\n            \"due_date\": \"2026-09-10T18:00:00\",\n            \"created_at\": \"2026-08-26T04:50:02.426000\",\n            \"updated_at\": \"2026-08-26T04:56:35.876000\",\n            \"id\": \"6a8e707a5ab1f55b467224af\"\n        }\n    ]\n}"
+        }
+      ]
+    },
+    {
+      "name": "assigning task",
+      "request": {
+        "method": "GET",
+        "header": []
+      },
+      "response": [
+        {
+          "name": "assigning task",
+          "originalRequest": {
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"user_id\": \"6a8eafbbd1de4a4aea6b1868\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/admin/tasks/6a8eae7ed1de4a4aea6b1866/assign",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "admin",
+                "tasks",
+                "6a8eae7ed1de4a4aea6b1866",
+                "assign"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "date",
+              "value": "Wed, 26 Aug 2026 09:30:08 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "394"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"success\": true,\n    \"message\": \"Task assigned successfully\",\n    \"data\": {\n        \"title\": \"Learn books Aggregation\",\n        \"description\": \"Study MongoDB\",\n        \"status\": \"todo\",\n        \"priority\": \"medium\",\n        \"created_by\": \"6a8e94a8d1de4a4aea6b1861\",\n        \"assigned_to\": \"6a8eafbbd1de4a4aea6b1868\",\n        \"due_date\": \"2026-09-05T18:00:00\",\n        \"created_at\": \"2026-08-26T09:14:38.763000\",\n        \"updated_at\": \"2026-08-26T09:30:08.552000\",\n        \"id\": \"6a8eae7ed1de4a4aea6b1866\"\n    }\n}"
+        }
+      ]
+    }
+  ]
+}
