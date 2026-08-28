@@ -5,7 +5,7 @@ from app.routes.ai import router as ai_router
 
 app = FastAPI(
     title="Task 12 - AI Text Assistant API",
-    description="FastAPI application integrated with Groq AI",
+    description="FastAPI AI Text Assistant using OpenRouter",
     version="1.0.0"
 )
 
@@ -15,6 +15,7 @@ app.include_router(ai_router)
 
 @app.get("/")
 async def root():
+
     return {
         "success": True,
         "status_code": 200,

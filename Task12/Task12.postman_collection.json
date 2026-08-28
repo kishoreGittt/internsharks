@@ -1,0 +1,328 @@
+{
+  "info": {
+    "_postman_id": "1d81badd-3538-423d-bd4c-ccecf483d62e",
+    "name": "Task12",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "57366509",
+    "_collection_link": "https://go.postman.co/collection/57366509-1d81badd-3538-423d-bd4c-ccecf483d62e?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "request1",
+      "protocolProfileBehavior": {
+        "disabledSystemHeaders": {}
+      },
+      "request": {
+        "auth": {
+          "type": "apikey",
+          "apikey": [
+            {
+              "key": "key",
+              "value": "",
+              "type": "string"
+            },
+            {
+              "key": "in",
+              "value": "header",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"prompt\": \"give me the best things for peace\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/ai/generate",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "ai",
+            "generate"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "request1",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"prompt\": \"give me the best things for peace\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/ai/generate",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "ai",
+                "generate"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "date",
+              "value": "Fri, 28 Aug 2026 07:17:39 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "1915"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"success\": true,\n    \"status_code\": 200,\n    \"response\": \"# The Best Things for Peace\\n\\n## Inner Peace (Personal)\\n\\n- **Mindfulness & meditation** – Regular practice calms the mind and reduces stress\\n- **Gratitude journaling** – Focusing on what you have shifts perspective from lack to abundance\\n- **Living in the present moment** – Anxiety often comes from worrying about the future; peace lives in now\\n- **Compassion toward yourself** – Self-criticism creates internal conflict; kindness does not\\n\\n## Social Peace (Community)\\n\\n- **Empathy and active listening** – Understanding others' perspectives reduces conflict\\n- **Respectful communication** – Speaking kindly and clearly prevents unnecessary friction\\n- **Conflict resolution skills** – Knowing how to resolve disagreements constructively keeps communities harmonious\\n- **Building trust** – Consistent honesty and reliability create safe spaces for cooperation\\n\\n## Environmental Peace\\n\\n- **Sustainable living** – Reducing waste and conserving resources lessens competition over scarce resources\\n- **Nature connection** – Spending time outdoors lowers cortisol and fosters appreciation for shared ecosystems\\n- **Peaceful coexistence with wildlife** – Respecting local ecosystems maintains balance\\n\\n## Daily Habits That Promote Peace\\n\\n| Practice | Why It Helps |\\n|----------|--------------|\\n| Deep breathing exercises | Immediately lowers stress hormones |\\n| Walking in silence | Quiets mental chatter and restores focus |\\n| Acts of kindness | Creates positive feedback loops in relationships |\\n| Limiting negative media | Reduces anxiety and anger triggers |\\n\\n---\\n\\n**Bottom line:** True peace starts within—cultivating inner calm through mindfulness, gratitude, and self-compassion—and then extends outward through empathy, respect, and sustainable actions. Small consistent choices compound into lasting peace.\"\n}"
+        }
+      ]
+    },
+    {
+      "name": "Request 2",
+      "request": {
+        "auth": {
+          "type": "apikey",
+          "apikey": [
+            {
+              "key": "key",
+              "value": "",
+              "type": "string"
+            },
+            {
+              "key": "in",
+              "value": "header",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"prompt\": \"Write a Python program to check whether a number is even or odd\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/ai/generate",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "ai",
+            "generate"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Request 2",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"prompt\": \"Write a Python program to check whether a number is even or odd\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/ai/generate",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "ai",
+                "generate"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "date",
+              "value": "Fri, 28 Aug 2026 07:21:24 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "582"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"success\": true,\n    \"status_code\": 200,\n    \"response\": \"```python\\n# Get input from the user\\nnumber = int(input(\\\"Enter a number: \\\"))\\n\\n# Check if the number is even or odd\\nif number % 2 == 0:\\n    print(f\\\"{number} is even\\\")\\nelse:\\n    print(f\\\"{number} is odd\\\")\\n```\\n\\nThis program:\\n1. Takes an integer input from the user\\n2. Uses the modulo operator (`%`) to check if the remainder when divided by 2 is 0\\n3. Prints \\\"even\\\" if the number is divisible by 2, otherwise prints \\\"odd\\\"\\n\\nExample outputs:\\n- Input: `4` → Output: `4 is even`\\n- Input: `7` → Output: `7 is odd`\"\n}"
+        }
+      ]
+    },
+    {
+      "name": "without req",
+      "request": {
+        "auth": {
+          "type": "apikey",
+          "apikey": [
+            {
+              "key": "key",
+              "value": "",
+              "type": "string"
+            },
+            {
+              "key": "in",
+              "value": "header",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"prompt\": \"\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/ai/generate",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "ai",
+            "generate"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "without req",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"prompt\": \"\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/ai/generate",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "ai",
+                "generate"
+              ]
+            }
+          },
+          "status": "Unprocessable Entity",
+          "code": 422,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "date",
+              "value": "Fri, 28 Aug 2026 07:22:36 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "146"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"detail\": [\n        {\n            \"type\": \"string_too_short\",\n            \"loc\": [\n                \"body\",\n                \"prompt\"\n            ],\n            \"msg\": \"String should have at least 1 character\",\n            \"input\": \"\",\n            \"ctx\": {\n                \"min_length\": 1\n            }\n        }\n    ]\n}"
+        }
+      ]
+    },
+    {
+      "name": "New Request",
+      "request": {
+        "method": "GET",
+        "header": []
+      },
+      "response": []
+    }
+  ]
+}
