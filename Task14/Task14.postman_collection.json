@@ -1,0 +1,446 @@
+{
+  "info": {
+    "_postman_id": "dae406e3-3fab-4371-8f99-5a5472763c0e",
+    "name": "Task14",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "57366509",
+    "_collection_link": "https://go.postman.co/collection/57366509-dae406e3-3fab-4371-8f99-5a5472763c0e?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "text summarize",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"text\": \"The development team is working on integrating a payment API into the existing backend. The integration is currently blocked because the client has not provided the required authentication credentials. The backend team has completed the initial API structure and is waiting for the credentials before continuing testing.\",\r\n    \"summary_type\": \"brief\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/ai/summarize",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "ai",
+            "summarize"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "text summarize",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"text\": \"The development team is working on integrating a payment API into the existing backend. The integration is currently blocked because the client has not provided the required authentication credentials. The backend team has completed the initial API structure and is waiting for the credentials before continuing testing.\",\r\n    \"summary_type\": \"brief\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/ai/summarize",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "ai",
+                "summarize"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "date",
+              "value": "Mon, 31 Aug 2026 04:58:21 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "460"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"success\": true,\n  \"status_code\": 200,\n  \"data\": {\n    \"summary_type\": \"brief\",\n    \"summary\": \"The development team is integrating a payment API but is blocked because the client has not provided required authentication credentials. The backend team has completed the initial API structure and is awaiting credentials to proceed with testing.\",\n    \"main_topic\": \"Payment API Integration\",\n    \"keywords\": [\n      \"payment API\",\n      \"integration\",\n      \"authentication credentials\",\n      \"backend team\",\n      \"testing\"\n    ]\n  }\n}"
+        }
+      ]
+    },
+    {
+      "name": "details test",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"text\": \"The development team is working on integrating a payment API into the existing backend. The integration is currently blocked because the client has not provided the required authentication credentials. The backend team has completed the initial API structure and is waiting for the credentials before continuing testing.\",\r\n    \"summary_type\": \"detailed\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/ai/summarize",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "ai",
+            "summarize"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "details test",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"text\": \"The development team is working on integrating a payment API into the existing backend. The integration is currently blocked because the client has not provided the required authentication credentials. The backend team has completed the initial API structure and is waiting for the credentials before continuing testing.\",\r\n    \"summary_type\": \"detailed\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/ai/summarize",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "ai",
+                "summarize"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "date",
+              "value": "Mon, 31 Aug 2026 05:01:14 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "599"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"success\": true,\n  \"status_code\": 200,\n  \"data\": {\n    \"summary_type\": \"detailed\",\n    \"summary\": \"The development team is actively working on integrating a payment API into the existing backend system. However, this integration is currently blocked because the client has not provided the required authentication credentials. Despite completing the initial API structure, the backend team is unable to proceed with testing until the necessary credentials are received.\",\n    \"main_topic\": \"Payment API Integration Blockage\",\n    \"keywords\": [\n      \"payment API\",\n      \"integration\",\n      \"backend\",\n      \"authentication credentials\",\n      \"client\",\n      \"testing\"\n    ]\n  }\n}"
+        }
+      ]
+    },
+    {
+      "name": "bullet_points",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"text\": \"The development team is working on integrating a payment API into the existing backend. The integration is currently blocked because the client has not provided the required authentication credentials. The backend team has completed the initial API structure and is waiting for the credentials before continuing testing.\",\r\n    \"summary_type\": \"bullet_points\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/ai/summarize",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "ai",
+            "summarize"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "bullet_points",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"text\": \"The development team is working on integrating a payment API into the existing backend. The integration is currently blocked because the client has not provided the required authentication credentials. The backend team has completed the initial API structure and is waiting for the credentials before continuing testing.\",\r\n    \"summary_type\": \"bullet_points\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/ai/summarize",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "ai",
+                "summarize"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "date",
+              "value": "Mon, 31 Aug 2026 05:06:16 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "545"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"success\": true,\n  \"status_code\": 200,\n  \"data\": {\n    \"summary_type\": \"bullet_points\",\n    \"summary\": \"- Development team is integrating a payment API into the existing backend\\n- Integration is blocked because the client has not provided required authentication credentials\\n- Backend team has completed the initial API structure\\n- Team is waiting for credentials before continuing testing\",\n    \"main_topic\": \"Payment API Integration Blocked by Missing Credentials\",\n    \"keywords\": [\n      \"payment API\",\n      \"integration\",\n      \"backend\",\n      \"authentication credentials\",\n      \"testing\",\n      \"blocked\"\n    ]\n  }\n}"
+        }
+      ]
+    },
+    {
+      "name": "invalid summary",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"text\": \"The payment API integration is in progress.\",\r\n    \"summary_type\": \"medium\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/ai/summarize",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "ai",
+            "summarize"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "invalid summary",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"text\": \"The payment API integration is in progress.\",\r\n    \"summary_type\": \"medium\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/ai/summarize",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "ai",
+                "summarize"
+              ]
+            }
+          },
+          "status": "Unprocessable Entity",
+          "code": 422,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "date",
+              "value": "Mon, 31 Aug 2026 05:07:55 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "207"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"detail\": [\n    {\n      \"type\": \"literal_error\",\n      \"loc\": [\n        \"body\",\n        \"summary_type\"\n      ],\n      \"msg\": \"Input should be 'brief', 'detailed' or 'bullet_points'\",\n      \"input\": \"medium\",\n      \"ctx\": {\n        \"expected\": \"'brief', 'detailed' or 'bullet_points'\"\n      }\n    }\n  ]\n}"
+        }
+      ]
+    },
+    {
+      "name": "empty test",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"text\": \"\",\r\n    \"summary_type\": \"brief\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/ai/summarize",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "ai",
+            "summarize"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "empty test",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"text\": \"\",\r\n    \"summary_type\": \"brief\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/ai/summarize",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "ai",
+                "summarize"
+              ]
+            }
+          },
+          "status": "Unprocessable Entity",
+          "code": 422,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "date",
+              "value": "Mon, 31 Aug 2026 05:09:10 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "129"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"detail\": [\n    {\n      \"type\": \"value_error\",\n      \"loc\": [\n        \"body\",\n        \"text\"\n      ],\n      \"msg\": \"Value error, Text cannot be empty\",\n      \"input\": \"\",\n      \"ctx\": {\n        \"error\": {}\n      }\n    }\n  ]\n}"
+        }
+      ]
+    }
+  ]
+}
