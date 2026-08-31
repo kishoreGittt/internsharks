@@ -1,0 +1,7 @@
+FastAPI is a modern Python framework used to build APIs quickly and efficiently.
+
+MongoDB is a NoSQL database commonly used for storing application data.
+
+JWT authentication can be used to protect private API endpoints and prevent unauthorized access.
+
+A good backend should include validation, error handling, logging and security features.
