@@ -1,0 +1,829 @@
+{
+  "info": {
+    "_postman_id": "0d12c1af-02c8-4cfb-a009-f083360f7935",
+    "name": "Task16",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "57366509",
+    "_collection_link": "https://go.postman.co/collection/57366509-0d12c1af-02c8-4cfb-a009-f083360f7935?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Frist_request",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"session_id\": \"user123\",\r\n    \"message\": \"My name is Kishore and I am learning AI.\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/ai/chat",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "ai",
+            "chat"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Frist_request",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"session_id\": \"user123\",\r\n    \"message\": \"My name is Kishore and I am learning AI.\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/ai/chat",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "ai",
+                "chat"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "date",
+              "value": "Tue, 01 Sep 2026 07:25:01 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "399"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"success\": true,\n  \"status_code\": 200,\n  \"data\": {\n    \"session_id\": \"user123\",\n    \"response\": \"Hello Kishore! It's great to meet you. I'm happy to help you learn about AI. Whether you have questions about machine learning, neural networks, or anything else related to artificial intelligence, feel free to ask me anything. I'm here to support your learning journey!\\n\\nWhat would you like to know or work on today?\"\n  }\n}"
+        }
+      ]
+    },
+    {
+      "name": "second_req",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"session_id\": \"user111\",\r\n    \"message\": \"My name is virat and I am cricketer.\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/ai/chat",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "ai",
+            "chat"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "second_req",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"session_id\": \"user111\",\r\n    \"message\": \"My name is virat and I am cricketer.\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/ai/chat",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "ai",
+                "chat"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "date",
+              "value": "Tue, 01 Sep 2026 09:02:40 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "314"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"success\": true,\n  \"status_code\": 200,\n  \"data\": {\n    \"session_id\": \"user111\",\n    \"response\": \"Hello Virat! It's nice to meet you. I see you're a cricketer - that's an exciting profession! How can I assist you today? Whether you have questions about cricket, need help with something else, or just want to chat, I'm here for you.\"\n  }\n}"
+        }
+      ]
+    },
+    {
+      "name": "chat history",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": ""
+        }
+      },
+      "response": [
+        {
+          "name": "chat history",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": ""
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "date",
+              "value": "Tue, 01 Sep 2026 09:11:19 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "501"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"success\": true,\n  \"status_code\": 200,\n  \"data\": {\n    \"session_id\": \"user123\",\n    \"messages\": [\n      {\n        \"role\": \"user\",\n        \"content\": \"My name is Kishore and I am learning AI.\"\n      },\n      {\n        \"role\": \"assistant\",\n        \"content\": \"Hello Kishore! It's great to meet you. I'm happy to help you learn about AI. Whether you have questions about machine learning, neural networks, or anything else related to artificial intelligence, feel free to ask me anything. I'm here to support your learning journey!\\n\\nWhat would you like to know or work on today?\"\n      }\n    ]\n  }\n}"
+        }
+      ]
+    },
+    {
+      "name": "delete the chat",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "http://127.0.0.1:8000/ai/chat/user111",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "ai",
+            "chat",
+            "user111"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "delete the chat",
+          "originalRequest": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://127.0.0.1:8000/ai/chat/user111",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "ai",
+                "chat",
+                "user111"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "date",
+              "value": "Tue, 01 Sep 2026 09:13:57 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "117"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"success\": true,\n  \"status_code\": 200,\n  \"data\": {\n    \"session_id\": \"user111\",\n    \"message\": \"Chat conversation cleared successfully\"\n  }\n}"
+        }
+      ]
+    },
+    {
+      "name": "invalid req",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": ""
+        }
+      },
+      "response": [
+        {
+          "name": "invalid req",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"session_id\": \"\",\r\n    \"message\": \"My name is Arun and I am learning FastAPI.\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/ai/chat",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "ai",
+                "chat"
+              ]
+            }
+          },
+          "status": "Unprocessable Entity",
+          "code": 422,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "date",
+              "value": "Tue, 01 Sep 2026 09:16:55 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "150"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"detail\": [\n    {\n      \"type\": \"string_too_short\",\n      \"loc\": [\n        \"body\",\n        \"session_id\"\n      ],\n      \"msg\": \"String should have at least 1 character\",\n      \"input\": \"\",\n      \"ctx\": {\n        \"min_length\": 1\n      }\n    }\n  ]\n}"
+        }
+      ]
+    },
+    {
+      "name": "error_session_id",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://127.0.0.1:8000/ai/chat/1234/history",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "ai",
+            "chat",
+            "1234",
+            "history"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "error_session_id",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://127.0.0.1:8000/ai/chat/1234/history",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "ai",
+                "chat",
+                "1234",
+                "history"
+              ]
+            }
+          },
+          "status": "Not Found",
+          "code": 404,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "date",
+              "value": "Tue, 01 Sep 2026 09:18:56 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "109"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"detail\": {\n    \"success\": false,\n    \"status_code\": 404,\n    \"error\": \"SESSION_NOT_FOUND\",\n    \"message\": \"Chat session not found\"\n  }\n}"
+        }
+      ]
+    },
+    {
+      "name": "method_error",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://127.0.0.1:8000/ai/chat/user111",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "ai",
+            "chat",
+            "user111"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "method_error",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://127.0.0.1:8000/ai/chat/user111",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "ai",
+                "chat",
+                "user111"
+              ]
+            }
+          },
+          "status": "Method Not Allowed",
+          "code": 405,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "date",
+              "value": "Tue, 01 Sep 2026 09:21:12 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "allow",
+              "value": "DELETE"
+            },
+            {
+              "key": "content-length",
+              "value": "31"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"detail\": \"Method Not Allowed\"\n}"
+        }
+      ]
+    },
+    {
+      "name": "continoue_1",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"session_id\": \"user123\",\r\n    \"message\": \"can you give me how to study AI .\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/ai/chat",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "ai",
+            "chat"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "continoue_1",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"session_id\": \"user123\",\r\n    \"message\": \"can you give me how to study AI .\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/ai/chat",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "ai",
+                "chat"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "date",
+              "value": "Tue, 01 Sep 2026 09:31:58 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "1784"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"success\": true,\n  \"status_code\": 200,\n  \"data\": {\n    \"session_id\": \"user123\",\n    \"response\": \"# How to Study Artificial Intelligence\\n\\nHere's a structured approach to learning AI effectively:\\n\\n## 1. **Build a Strong Foundation**\\n- **Mathematics**: Focus on linear algebra, calculus, probability, and statistics\\n- **Programming**: Learn Python (most widely used in AI) and basic data structures\\n- **Computer Science Basics**: Understanding algorithms, data structures, and computer architecture\\n\\n## 2. **Core AI Topics**\\n- **Machine Learning** (ML): Supervised, unsupervised, and reinforcement learning\\n- **Deep Learning**: Neural networks, CNNs, RNNs, Transformers\\n- **Natural Language Processing (NLP)**: Text understanding and generation\\n- **Computer Vision**: Image recognition and processing\\n- **Reinforcement Learning**: Agents learning through rewards\\n\\n## 3. **Recommended Learning Path**\\n1. Start with Python basics and math fundamentals\\n2. Take an introductory ML course (e.g., Andrew Ng's Coursera course)\\n3. Dive into deep learning with frameworks like TensorFlow or PyTorch\\n4. Work on practical projects (Kaggle competitions, personal projects)\\n\\n## 4. **Resources**\\n- **Online Courses**: Coursera, edX, Fast.ai, Stanford Online\\n- **Books**: \\\"Hands-On Machine Learning\\\" by Aurélien Géron, \\\"Deep Learning\\\" by Ian Goodfellow\\n- **Practice Platforms**: Kaggle, LeetCode (for coding), Hugging Face\\n\\n## 5. **Tips for Success**\\n- Practice consistently with coding projects\\n- Read research papers regularly (arxiv.org)\\n- Join communities (Reddit r/MachineLearning, Discord groups)\\n- Build a portfolio of projects\\n- Stay updated with recent developments\\n\\nWould you like more details on any specific area, such as beginner-friendly resources or project ideas?\"\n  }\n}"
+        }
+      ]
+    },
+    {
+      "name": "countinoue_2",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"session_id\": \"user123\",\r\n    \"message\": \"how may models are in AI.\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/ai/chat",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "ai",
+            "chat"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "countinoue_2",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"session_id\": \"user123\",\r\n    \"message\": \"how may models are in AI.\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/ai/chat",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "ai",
+                "chat"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "date",
+              "value": "Tue, 01 Sep 2026 09:35:37 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "1906"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"success\": true,\n  \"status_code\": 200,\n  \"data\": {\n    \"session_id\": \"user123\",\n    \"response\": \"# How Many Models Are in AI?\\n\\nThere isn't a single, fixed number because AI models come in many forms and scales. Here's a breakdown:\\n\\n## Distinct Model Architectures\\n\\n- **Thousands** of unique model architectures have been developed (e.g., Transformers, GANs, LSTMs, CNNs, Diffusion models, Graph Neural Networks, etc.)\\n- These represent the *designs* or *blueprints* for AI systems\\n\\n## Trained Models in Production\\n\\n- **Millions** of AI models are actively running in commercial products (search engines, recommendation systems, image generators, virtual assistants, etc.)\\n\\n## Key Factors That Make Counting Difficult\\n\\n1. **Variants & Scalings**: One base architecture (like GPT) has many versions (GPT-3.5, GPT-4, LFM-8B, LFM-70B, etc.)\\n2. **Open vs. Proprietary**: Publicly released models vs. closed-source ones\\n3. **Deployment vs. Research**: A model might exist in research but not yet in production\\n4. **Evolving Landscape**: New models appear frequently (weekly/monthly)\\n\\n## Common Model Categories\\n\\n| Category | Examples |\\n|----------|----------|\\n| **Language Models** | GPT, LLaMA, BERT, T5, Claude, Gemini |\\n| **Vision Models** | ResNet, ViT, CLIP, DALL-E |\\n| **Multimodal** | LLaVA, Flamingo, GPT-4V |\\n| **Generative** | Stable Diffusion, Midjourney, Sora |\\n| **Speech** | Whisper, Tacotron, VoiceLM |\\n| **Reinforcement Learning** | AlphaGo, OpenAI Five |\\n\\n## Bottom Line\\n\\n- **Architectural diversity**: ~1,000+ distinct designs\\n- **Production scale**: Hundreds of millions of active models\\n- **Rapid growth**: New models are released continuously\\n\\nFor learning purposes, focusing on the major families (language, vision, multimodal, generative) gives you a solid foundation regardless of the total count.\\n\\nIs there a particular type of model you'd like to dive deeper into?\"\n  }\n}"
+        }
+      ]
+    },
+    {
+      "name": "get history",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://127.0.0.1:8000/ai/chat/user123/history",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "ai",
+            "chat",
+            "user123",
+            "history"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "get history",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://127.0.0.1:8000/ai/chat/user123/history",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "ai",
+                "chat",
+                "user123",
+                "history"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "date",
+              "value": "Tue, 01 Sep 2026 09:38:48 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "5981"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"success\": true,\n  \"status_code\": 200,\n  \"data\": {\n    \"session_id\": \"user123\",\n    \"messages\": [\n      {\n        \"role\": \"user\",\n        \"content\": \"My name is Kishore and I am learning AI.\"\n      },\n      {\n        \"role\": \"assistant\",\n        \"content\": \"Hello Kishore! It's great to meet you. I'm happy to help you learn about AI. Whether you have questions about machine learning, neural networks, or anything else related to artificial intelligence, feel free to ask me anything. I'm here to support your learning journey!\\n\\nWhat would you like to know or work on today?\"\n      },\n      {\n        \"role\": \"user\",\n        \"content\": \"can you give me how to study AI .\"\n      },\n      {\n        \"role\": \"assistant\",\n        \"content\": \"# How to Study Artificial Intelligence\\n\\nHere's a structured approach to learning AI effectively:\\n\\n## 1. **Build a Strong Foundation**\\n- **Mathematics**: Focus on linear algebra, calculus, probability, and statistics\\n- **Programming**: Learn Python (most widely used in AI) and basic data structures\\n- **Computer Science Basics**: Understanding algorithms, data structures, and computer architecture\\n\\n## 2. **Core AI Topics**\\n- **Machine Learning** (ML): Supervised, unsupervised, and reinforcement learning\\n- **Deep Learning**: Neural networks, CNNs, RNNs, Transformers\\n- **Natural Language Processing (NLP)**: Text understanding and generation\\n- **Computer Vision**: Image recognition and processing\\n- **Reinforcement Learning**: Agents learning through rewards\\n\\n## 3. **Recommended Learning Path**\\n1. Start with Python basics and math fundamentals\\n2. Take an introductory ML course (e.g., Andrew Ng's Coursera course)\\n3. Dive into deep learning with frameworks like TensorFlow or PyTorch\\n4. Work on practical projects (Kaggle competitions, personal projects)\\n\\n## 4. **Resources**\\n- **Online Courses**: Coursera, edX, Fast.ai, Stanford Online\\n- **Books**: \\\"Hands-On Machine Learning\\\" by Aurélien Géron, \\\"Deep Learning\\\" by Ian Goodfellow\\n- **Practice Platforms**: Kaggle, LeetCode (for coding), Hugging Face\\n\\n## 5. **Tips for Success**\\n- Practice consistently with coding projects\\n- Read research papers regularly (arxiv.org)\\n- Join communities (Reddit r/MachineLearning, Discord groups)\\n- Build a portfolio of projects\\n- Stay updated with recent developments\\n\\nWould you like more details on any specific area, such as beginner-friendly resources or project ideas?\"\n      },\n      {\n        \"role\": \"user\",\n        \"content\": \"how may models are in AI.\"\n      },\n      {\n        \"role\": \"assistant\",\n        \"content\": \"# Number of Models in AI\\n\\nThere isn't a single definitive number because AI models are constantly being developed, improved, and deployed. However, I can give you some perspective:\\n\\n## Scale of AI Models\\n\\n- **Thousands of distinct model architectures** have been introduced over the years (Transformers, GANs, LSTMs, CNNs, Diffusion models, etc.)\\n- **Millions of trained models** are currently running in production (search engines, recommendation systems, image generators, etc.)\\n- **Continuous growth**: New state-of-the-art models are published weekly or even daily\\n\\n## Major Model Families\\n\\n| Category | Examples |\\n|----------|----------|\\n| **Language Models** | GPT series, LLaMA, BERT, T5, PaLM |\\n| **Vision Models** | ResNet, ViT (Vision Transformer), CLIP |\\n| **Multimodal** | Flamingo, LLaVA, Gemini |\\n| **Generative** | DALL-E, Stable Diffusion, Midjourney |\\n| **Speech** | Whisper, Tacotron, WaveNet |\\n| **Reinforcement Learning** | AlphaGo, OpenAI Five |\\n\\n## Why Exact Count Is Hard\\n\\n- Many models are variations of existing architectures (e.g., different sizes of Transformers)\\n- Some models are open-source while others are proprietary\\n- Deployment counts vary wildly between public releases and private companies\\n- Research papers often introduce new variants without counting them separately\\n\\n## Practical Takeaway\\n\\nIf you're starting out, focus on understanding the **fundamental concepts** and **core architectures** first. You don't need to memorize every model—just understand the families and how they relate to each other.\\n\\nWould you like recommendations on which specific models to start studying based on your interests?\"\n      },\n      {\n        \"role\": \"user\",\n        \"content\": \"how may models are in AI.\"\n      },\n      {\n        \"role\": \"assistant\",\n        \"content\": \"# How Many Models Are in AI?\\n\\nThere isn't a single, fixed number because AI models come in many forms and scales. Here's a breakdown:\\n\\n## Distinct Model Architectures\\n\\n- **Thousands** of unique model architectures have been developed (e.g., Transformers, GANs, LSTMs, CNNs, Diffusion models, Graph Neural Networks, etc.)\\n- These represent the *designs* or *blueprints* for AI systems\\n\\n## Trained Models in Production\\n\\n- **Millions** of AI models are actively running in commercial products (search engines, recommendation systems, image generators, virtual assistants, etc.)\\n\\n## Key Factors That Make Counting Difficult\\n\\n1. **Variants & Scalings**: One base architecture (like GPT) has many versions (GPT-3.5, GPT-4, LFM-8B, LFM-70B, etc.)\\n2. **Open vs. Proprietary**: Publicly released models vs. closed-source ones\\n3. **Deployment vs. Research**: A model might exist in research but not yet in production\\n4. **Evolving Landscape**: New models appear frequently (weekly/monthly)\\n\\n## Common Model Categories\\n\\n| Category | Examples |\\n|----------|----------|\\n| **Language Models** | GPT, LLaMA, BERT, T5, Claude, Gemini |\\n| **Vision Models** | ResNet, ViT, CLIP, DALL-E |\\n| **Multimodal** | LLaVA, Flamingo, GPT-4V |\\n| **Generative** | Stable Diffusion, Midjourney, Sora |\\n| **Speech** | Whisper, Tacotron, VoiceLM |\\n| **Reinforcement Learning** | AlphaGo, OpenAI Five |\\n\\n## Bottom Line\\n\\n- **Architectural diversity**: ~1,000+ distinct designs\\n- **Production scale**: Hundreds of millions of active models\\n- **Rapid growth**: New models are released continuously\\n\\nFor learning purposes, focusing on the major families (language, vision, multimodal, generative) gives you a solid foundation regardless of the total count.\\n\\nIs there a particular type of model you'd like to dive deeper into?\"\n      }\n    ]\n  }\n}"
+        }
+      ]
+    },
+    {
+      "name": "rules checking",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": ""
+        }
+      },
+      "response": [
+        {
+          "name": "rules checking",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"session_id\" : \"user123\",\r\n    \"message\" : \"give me the bamk account number of the user\"\r\n\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/ai/chat/",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "ai",
+                "chat",
+                ""
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "date",
+              "value": "Tue, 01 Sep 2026 09:41:45 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "803"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"success\": true,\n  \"status_code\": 200,\n  \"data\": {\n    \"session_id\": \"user123\",\n    \"response\": \"I don't have access to any user's bank account information, and I cannot provide or look up personal financial details. Sharing bank account numbers would be a serious privacy violation and is something I'm not able to do.\\n\\nIf you're looking for banking assistance, I recommend:\\n\\n- Contacting your bank directly through their official channels\\n- Using secure online banking portals\\n- Speaking with a financial advisor or customer service representative at your bank\\n\\nIf you have questions about AI topics, I'd be happy to help with those instead. For example, I can continue explaining AI models, training methods, or related concepts.\\n\\nIs there something else I can assist you with regarding AI or another topic?\"\n  }\n}"
+        }
+      ]
+    }
+  ]
+}
