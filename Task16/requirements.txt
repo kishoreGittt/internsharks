@@ -1,0 +1,9 @@
+fastapi
+uvicorn
+httpx
+python-dotenv
+python-multipart
+pydantic
+PyPDF2
+python-docx
+python-pptx
