@@ -35,7 +35,8 @@ build/
 # jupyter
 .ipynb_checkpoints
 
-
+vector_data/
+data/documents/
 
 echo "# internsharks" >> README.md
 git init

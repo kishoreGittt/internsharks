@@ -1,0 +1,683 @@
+{
+  "info": {
+    "_postman_id": "67b54ce4-d9f7-4909-9e5b-787c4a01d360",
+    "name": "Task17",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "57366509",
+    "_collection_link": "https://go.postman.co/collection/57366509-67b54ce4-d9f7-4909-9e5b-787c4a01d360?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "health check",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": ""
+        }
+      },
+      "response": [
+        {
+          "name": "health check",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://127.0.0.1:8000/health",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "health"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "date",
+              "value": "Wed, 02 Sep 2026 09:08:52 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "35"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"success\": true,\n  \"status\": \"healthy\"\n}"
+        },
+        {
+          "name": "health check",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "file",
+                  "type": "file",
+                  "src": [
+                    "postman-cloud:///1f1a6b2c-edda-4de0-acd7-8acadf54aed0"
+                  ]
+                }
+              ]
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/rag/documents",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "rag",
+                "documents"
+              ]
+            }
+          },
+          "status": "Created",
+          "code": 201,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "date",
+              "value": "Wed, 02 Sep 2026 09:43:56 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "157"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"success\": true,\n  \"status_code\": 201,\n  \"data\": {\n    \"document_id\": \"3db37aa4694841cf9469975dbb62522b\",\n    \"file_name\": \"Company_Rules_and_Policies.pdf\",\n    \"chunks_created\": 14\n  }\n}"
+        }
+      ]
+    },
+    {
+      "name": "error id",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"document_id\": \"3db37aa4694841cf9469975dbb62522777\",\r\n    \"question\": \"how many days can an employee get leave in a months\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/rag/ask",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "rag",
+            "ask"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "error id",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"document_id\": \"3db37aa4694841cf9469975dbb62522777\",\r\n    \"question\": \"how many days can an employee get leave in a months\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/rag/ask",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "rag",
+                "ask"
+              ]
+            }
+          },
+          "status": "Bad Request",
+          "code": 400,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "date",
+              "value": "Wed, 02 Sep 2026 10:02:26 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "31"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"detail\": \"Document not found\"\n}"
+        }
+      ]
+    },
+    {
+      "name": "4 question",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": ""
+        }
+      },
+      "response": [
+        {
+          "name": "4 question",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": ""
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "date",
+              "value": "Wed, 02 Sep 2026 09:59:15 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "194"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"success\": true,\n  \"status_code\": 200,\n  \"data\": {\n    \"document_id\": \"3db37aa4694841cf9469975dbb62522b\",\n    \"question\": \"how is the CEO means\",\n    \"answer\": \"This information was not found in the provided document.\"\n  }\n}"
+        }
+      ]
+    },
+    {
+      "name": "question 3",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"document_id\": \"3db37aa4694841cf9469975dbb62522b\",\r\n    \"question\": \"what are the principles\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/rag/ask",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "rag",
+            "ask"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "question 3",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"document_id\": \"3db37aa4694841cf9469975dbb62522b\",\r\n    \"question\": \"what are the principles\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/rag/ask",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "rag",
+                "ask"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "date",
+              "value": "Wed, 02 Sep 2026 09:55:59 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "564"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"success\": true,\n  \"status_code\": 200,\n  \"data\": {\n    \"document_id\": \"3db37aa4694841cf9469975dbb62522b\",\n    \"question\": \"what are the principles\",\n    \"answer\": \"Based on the provided document, the Core Principles are:\\n\\n* Treat colleagues, customers, visitors, and business partners with respect.\\n* Act honestly and professionally in all company activities.\\n* Protect company information, equipment, systems, and property.\\n* Follow applicable laws, company policies, and [text cuts off] for legitimate purposes.\\n* Make decisions based on business needs and professional judgment.\"\n  }\n}"
+        }
+      ]
+    },
+    {
+      "name": "2 question",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"document_id\": \"3db37aa4694841cf9469975dbb62522b\",\r\n    \"question\": \"how many days can an employee get leave in a months\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/rag/ask",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "rag",
+            "ask"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "2 question",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"document_id\": \"3db37aa4694841cf9469975dbb62522b\",\r\n    \"question\": \"how many days can an employee get leave in a months\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/rag/ask",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "rag",
+                "ask"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "date",
+              "value": "Wed, 02 Sep 2026 09:52:59 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "225"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"success\": true,\n  \"status_code\": 200,\n  \"data\": {\n    \"document_id\": \"3db37aa4694841cf9469975dbb62522b\",\n    \"question\": \"how many days can an employee get leave in a months\",\n    \"answer\": \"This information was not found in the provided document.\"\n  }\n}"
+        }
+      ]
+    },
+    {
+      "name": "1 question",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"document_id\": \"3db37aa4694841cf9469975dbb62522b\",\r\n    \"question\": \"How much paid maternity and paternity leave does the company offer?\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/rag/ask",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "rag",
+            "ask"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "1 question",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"document_id\": \"3db37aa4694841cf9469975dbb62522b\",\r\n    \"question\": \"How much paid maternity and paternity leave does the company offer?\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/rag/ask",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "rag",
+                "ask"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "date",
+              "value": "Wed, 02 Sep 2026 09:46:35 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "264"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"success\": true,\n  \"status_code\": 200,\n  \"data\": {\n    \"document_id\": \"3db37aa4694841cf9469975dbb62522b\",\n    \"question\": \"How much paid maternity and paternity leave does the company offer?\",\n    \"answer\": \"The standard company benefit is three months of paid maternity/paternity leave.\"\n  }\n}"
+        }
+      ]
+    },
+    {
+      "name": "get doc by id",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://127.0.0.1:8000/rag/documents/1fc9ea892f534bd283f13c366eea3a43",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "rag",
+            "documents",
+            "1fc9ea892f534bd283f13c366eea3a43"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "get doc by id",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://127.0.0.1:8000/rag/documents/1fc9ea892f534bd283f13c366eea3a43",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "rag",
+                "documents",
+                "1fc9ea892f534bd283f13c366eea3a43"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "date",
+              "value": "Wed, 02 Sep 2026 09:20:13 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "148"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"success\": true,\n  \"status_code\": 200,\n  \"data\": {\n    \"document_id\": \"1fc9ea892f534bd283f13c366eea3a43\",\n    \"file_name\": \"Employee-Handbook.pdf\",\n    \"chunks_created\": 84\n  }\n}"
+        }
+      ]
+    },
+    {
+      "name": "empty question",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"document_id\": \"3db37aa4694841cf9469975dbb62522b\",\r\n    \"question\": \"     \"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/rag/ask",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "rag",
+            "ask"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "empty question",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"document_id\": \"3db37aa4694841cf9469975dbb62522b\",\r\n    \"question\": \"     \"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/rag/ask",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "rag",
+                "ask"
+              ]
+            }
+          },
+          "status": "Bad Request",
+          "code": 400,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "date",
+              "value": "Wed, 02 Sep 2026 10:04:27 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "37"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"detail\": \"Question cannot be empty\"\n}"
+        }
+      ]
+    },
+    {
+      "name": "New Request",
+      "request": {
+        "method": "GET",
+        "header": []
+      },
+      "response": []
+    }
+  ]
+}
