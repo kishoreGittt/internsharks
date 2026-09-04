@@ -519,3 +519,33 @@ Does AI Need a Tool?
 
 ```
 
+## Task 19 -- AI Tool Calling
+
+                 USER
+                   ↓
+             AI Assistant
+                   ↓
+        get_leave_balance(101)
+                   ↓
+             Backend
+                   ↓
+          casual_leave = 8
+                   ↓
+             8 >= 1 ?
+                YES
+                   ↓
+        apply_leave(101,...)
+                   ↓
+             Backend
+                   ↓
+          Leave created
+                   ↓
+       get_leave_requests(101)
+                   ↓
+             Backend
+                   ↓
+            Leave results
+                   ↓
+             AI Assistant
+                   ↓
+           Final Response

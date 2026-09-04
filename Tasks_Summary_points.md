@@ -163,4 +163,12 @@ Task 18 -- AI Tool Calling
 5.  Validated tool arguments before execution.
 6.  Sent tool results back to the AI for the final response.
 
+Task 19 — AI Employee Assistant with Multi-Tool Calling
 
+1.Understand normal human language.
+2.Find the correct backend tool.
+3.Call multiple tools when necessary.
+4.Use the result of one tool to decide what to do next.
+5.Remember previous messages using session_id.
+6.Perform actions such as applying leave.
+7.Let the backend, not the AI, control business rules.
