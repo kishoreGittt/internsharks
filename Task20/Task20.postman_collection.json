@@ -1,0 +1,1122 @@
+{
+  "info": {
+    "_postman_id": "040ff068-99c8-468f-ae64-27dd5ecce645",
+    "name": "Task20",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "57366509",
+    "_collection_link": "https://go.postman.co/collection/57366509-040ff068-99c8-468f-ae64-27dd5ecce645?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "project_creation",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": ""
+        }
+      },
+      "response": [
+        {
+          "name": "project_creation",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"goal\": \"Create a project called Alpha.\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/agent/run",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "agent",
+                "run"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "date",
+              "value": "Mon, 07 Sep 2026 08:49:30 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "367"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"success\": true,\n  \"status_code\": 200,\n  \"data\": {\n    \"run_id\": \"run_3befe021d7c3\",\n    \"goal\": \"Create a project called Alpha.\",\n    \"status\": \"completed\",\n    \"steps_executed\": 1,\n    \"tools_used\": [\n      \"create_project\"\n    ],\n    \"response\": \"The project \\\"Alpha\\\" has been successfully created.\\n\\n- **Project ID:** 1\\n- **Name:** Alpha\\n- **Status:** Active\\n- **Description:** (none)\\n- **Members:** (none yet)\"\n  }\n}"
+        }
+      ]
+    },
+    {
+      "name": "pro_2",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": ""
+        }
+      },
+      "response": [
+        {
+          "name": "pro_2",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"goal\": \"Create a project called Caremeal.\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/agent/run",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "agent",
+                "run"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "date",
+              "value": "Mon, 07 Sep 2026 08:56:31 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "433"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"success\": true,\n  \"status_code\": 200,\n  \"data\": {\n    \"run_id\": \"run_e76f4ae8c519\",\n    \"goal\": \"Create a project called Caremeal.\",\n    \"status\": \"completed\",\n    \"steps_executed\": 1,\n    \"tools_used\": [\n      \"create_project\"\n    ],\n    \"response\": \"The project **Caremeal** has been created successfully.\\n\\n- **Project ID:** 2\\n- **Name:** Caremeal\\n- **Status:** Active\\n- **Members:** None yet\\n\\nLet me know if you'd like to add members, create tasks, or make any other changes.\"\n  }\n}"
+        }
+      ]
+    },
+    {
+      "name": "testing_multiple",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"goal\": \"Create a project called Beta and add Arun to it.\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/agent/run",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "agent",
+            "run"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "testing_multiple",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"goal\": \"Create a project called Beta and add Arun to it.\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/agent/run",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "agent",
+                "run"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "date",
+              "value": "Mon, 07 Sep 2026 09:00:02 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "1171"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"success\": true,\n  \"status_code\": 200,\n  \"data\": {\n    \"run_id\": \"run_52eee82aea9a\",\n    \"goal\": \"Create a project called Beta and add Arun to it.\",\n    \"status\": \"partially_completed\",\n    \"steps_executed\": 3,\n    \"tools_used\": [\n      \"create_project\",\n      \"find_employee\",\n      \"get_project\"\n    ],\n    \"response\": \"I need the project ID to retrieve it. Let me note what I have and check if there's another way. Since the create tool said \\\"Beta\\\" already exists but didn't return an ID, and `get_project` requires a project_id I don't have, let me try adding Arun by attempting common ID patterns — but actually I should not invent IDs.\\n\\nLet me try retrieving with a likely ID — but per the rules, I must not invent IDs. I'll inform you of the issue.\\n\\n**Summary so far:**\\n- ❌ Could not create \\\"Beta\\\" — it already exists (no ID was returned by the backend).\\n- ✅ Found Arun — employee_id is **101** (Backend Developer).\\n- ⚠️ Cannot add Arun to the project because the existing project \\\"Beta\\\" ID was not provided by the backend, and I cannot invent project IDs.\\n\\nTo proceed, could you please provide the existing project ID for \\\"Beta\\\"? Once I have it, I can add Arun (employee_id 101) to it immediately.\"\n  }\n}"
+        }
+      ]
+    },
+    {
+      "name": "multiple tools",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": ""
+        }
+      },
+      "response": [
+        {
+          "name": "muliti tools",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"goal\": \"Create a project called Gamma, add Arun and Priya, and create tasks for API development and UI design.\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/agent/run",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "agent",
+                "run"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "date",
+              "value": "Mon, 07 Sep 2026 09:01:41 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "981"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"success\": true,\n  \"status_code\": 200,\n  \"data\": {\n    \"run_id\": \"run_343064541f76\",\n    \"goal\": \"Create a project called Gamma, add Arun and Priya, and create tasks for API development and UI design.\",\n    \"status\": \"completed\",\n    \"steps_executed\": 7,\n    \"tools_used\": [\n      \"create_project\",\n      \"find_employee\",\n      \"find_employee\",\n      \"add_project_member\",\n      \"add_project_member\",\n      \"create_project_task\",\n      \"create_project_task\"\n    ],\n    \"response\": \"All steps completed successfully. Here's a summary of what was done:\\n\\n### ✅ Project \\\"Gamma\\\" Setup Complete\\n\\n| Step | Result |\\n|------|--------|\\n| **Project Created** | Gamma (ID: 4) |\\n| **Members Added** | Arun (ID: 101, Backend Developer) |\\n| | Priya (ID: 102, UI/UX Designer) |\\n| **Task Created** | API development (ID: 1, high priority, assigned to Arun) |\\n| **Task Created** | UI design (ID: 2, medium priority, assigned to Priya) |\\n\\nBoth tasks are currently in `todo` status. Let me know if you'd like to update their statuses, add more members, or create additional tasks!\"\n  }\n}"
+        }
+      ]
+    },
+    {
+      "name": "multi_step",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": ""
+        }
+      },
+      "response": [
+        {
+          "name": "multi_step",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"goal\": \"Create a project called Alpha, add Arun and Priya, create a high priority backend API task assigned to Arun, and create a medium priority UI design task assigned to Priya.\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/agent/run",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "agent",
+                "run"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "date",
+              "value": "Mon, 07 Sep 2026 09:06:55 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "1079"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"success\": true,\n  \"status_code\": 200,\n  \"data\": {\n    \"run_id\": \"run_fbd72e83dc4f\",\n    \"goal\": \"Create a project called Alpha, add Arun and Priya, create a high priority backend API task assigned to Arun, and create a medium priority UI design task assigned to Priya.\",\n    \"status\": \"partially_completed\",\n    \"steps_executed\": 8,\n    \"tools_used\": [\n      \"find_employee\",\n      \"find_employee\",\n      \"create_project\",\n      \"get_project\",\n      \"add_project_member\",\n      \"add_project_member\",\n      \"create_project_task\",\n      \"create_project_task\"\n    ],\n    \"response\": \"All operations completed successfully. Here's a summary of what was accomplished:\\n\\n## Summary\\n\\n**Project:** Alpha (ID: 1)\\n- Note: The \\\"Alpha\\\" project already existed in the system, so it was reused rather than recreated.\\n\\n**Members Added:**\\n- ✅ Arun (ID: 101, Backend Developer)\\n- ✅ Priya (ID: 102, UI/UX Designer)\\n\\n**Tasks Created:**\\n- ✅ **Backend API** (Task ID: 3) — High priority, assigned to Arun (status: todo)\\n- ✅ **UI Design** (Task ID: 4) — Medium priority, assigned to Priya (status: todo)\\n\\nAll tasks are currently in \\\"todo\\\" status and ready to be worked on.\"\n  }\n}"
+        }
+      ]
+    },
+    {
+      "name": "user_too_call",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": ""
+        }
+      },
+      "response": [
+        {
+          "name": "user_too_call",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"goal\": \"Create a project called Phoenix and add Priya to it.\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/agent/run",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "agent",
+                "run"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "date",
+              "value": "Mon, 07 Sep 2026 09:17:11 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "556"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"success\": true,\n  \"status_code\": 200,\n  \"data\": {\n    \"run_id\": \"run_714cbae1a889\",\n    \"goal\": \"Create a project called Phoenix and add Priya to it.\",\n    \"status\": \"completed\",\n    \"steps_executed\": 3,\n    \"tools_used\": [\n      \"create_project\",\n      \"find_employee\",\n      \"add_project_member\"\n    ],\n    \"response\": \"Done! Here's a summary of what was completed:\\n\\n- ✅ **Created project \\\"Phoenix\\\"** (Project ID: 5)\\n- ✅ **Found employee Priya** (Employee ID: 102, UI/UX Designer)\\n- ✅ **Added Priya to the Phoenix project** — confirmed by the backend with the message: *\\\"Priya added to project Phoenix.\\\"*\"\n  }\n}"
+        }
+      ]
+    },
+    {
+      "name": "conditional_execution",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": ""
+        }
+      },
+      "response": [
+        {
+          "name": "conditional_execution",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"goal\": \"Create project Orion and add Arun if he exists.\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/agent/run",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "agent",
+                "run"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "date",
+              "value": "Mon, 07 Sep 2026 09:19:31 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "520"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"success\": true,\n  \"status_code\": 200,\n  \"data\": {\n    \"run_id\": \"run_25e8096a8466\",\n    \"goal\": \"Create project Orion and add Arun if he exists.\",\n    \"status\": \"completed\",\n    \"steps_executed\": 3,\n    \"tools_used\": [\n      \"create_project\",\n      \"find_employee\",\n      \"add_project_member\"\n    ],\n    \"response\": \"Done. Here's a summary of what was completed:\\n\\n- ✅ **Created project \\\"Orion\\\"** (Project ID: 6)\\n- ✅ **Verified Arun exists** (Employee ID: 101, Backend Developer)\\n- ✅ **Added Arun to project Orion**\\n\\nArun is now a member of the newly created Orion project.\"\n  }\n}"
+        }
+      ]
+    },
+    {
+      "name": "Conditional Execution_exist_data",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": ""
+        }
+      },
+      "response": [
+        {
+          "name": "Conditional Execution_exist_data",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"goal\": \"Create project Orion2 and add Suresh if he exists.\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/agent/run",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "agent",
+                "run"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "date",
+              "value": "Mon, 07 Sep 2026 09:22:47 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "690"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"success\": true,\n  \"status_code\": 200,\n  \"data\": {\n    \"run_id\": \"run_69cdbd7a5bb0\",\n    \"goal\": \"Create project Orion2 and add Suresh if he exists.\",\n    \"status\": \"completed\",\n    \"steps_executed\": 2,\n    \"tools_used\": [\n      \"create_project\",\n      \"find_employee\"\n    ],\n    \"response\": \"The project \\\"Orion2\\\" was successfully created with project ID **7**.\\n\\nHowever, the employee **Suresh** does not exist in the system, so I could not add him to the project.\\n\\n**Summary:**\\n- ✅ Project \\\"Orion2\\\" created (ID: 7)\\n- ❌ Suresh not found — no employee with that name exists in the backend, so no member was added\\n\\nIf Suresh should be added under a different name or employee ID, please provide the correct identifier and I can retry.\"\n  }\n}"
+        }
+      ]
+    },
+    {
+      "name": "partial_completion",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": ""
+        }
+      },
+      "response": [
+        {
+          "name": "partial_completion",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"goal\": \"Create Project Atlas and add Arun and Karthik.\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/agent/run",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "agent",
+                "run"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "date",
+              "value": "Mon, 07 Sep 2026 09:27:24 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "1377"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"success\": true,\n  \"status_code\": 200,\n  \"data\": {\n    \"run_id\": \"run_73a3f5f29907\",\n    \"goal\": \"Create Project Atlas and add Arun and Karthik.\",\n    \"status\": \"partially_completed\",\n    \"steps_executed\": 8,\n    \"tools_used\": [\n      \"create_project\",\n      \"find_employee\",\n      \"find_employee\",\n      \"get_project\",\n      \"get_project\",\n      \"get_project\",\n      \"get_project\",\n      \"get_project\"\n    ],\n    \"response\": \"I've checked project IDs 1–5, and none of them are named \\\"Atlas\\\". The backend reports that a project named \\\"Atlas\\\" already exists, but I cannot retrieve it without knowing its ID, and I shouldn't guess IDs.\\n\\n## Summary\\n\\nHere's the status of your request:\\n\\n1. ❌ **Create Project Atlas**: The backend reports that a project named \\\"Atlas\\\" already exists, so a new one could not be created.\\n2. ⚠️ **Add Arun to Project Atlas**: Arun exists (Employee ID: 101), but I cannot add him because I don't have the Atlas project's ID. The visible projects (IDs 1–5) are: Alpha, Caremeal, Beta, Gamma, and Phoenix — none named Atlas.\\n3. ❌ **Add Karthik**: Employee \\\"Karthik\\\" was not found in the system, so they cannot be added regardless.\\n\\n### What I need from you to proceed:\\n- **The Atlas project ID** (the backend already has a project with this name, but I need its numeric ID to add members to it).\\n- **Clarification on Karthik**: Is the name spelled differently, or does Karthik need to be added to the employee system first?\"\n  }\n}"
+        }
+      ]
+    },
+    {
+      "name": "duplicate_pro",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": ""
+        }
+      },
+      "response": [
+        {
+          "name": "duplicate_pro",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"goal\": \"Create a project called Testing.\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/agent/run",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "agent",
+                "run"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "date",
+              "value": "Mon, 07 Sep 2026 09:31:50 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "678"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"success\": true,\n  \"status_code\": 200,\n  \"data\": {\n    \"run_id\": \"run_c88e54e27d34\",\n    \"goal\": \"Create a project called Testing.\",\n    \"status\": \"failed\",\n    \"steps_executed\": 1,\n    \"tools_used\": [\n      \"create_project\"\n    ],\n    \"response\": \"The project \\\"Testing\\\" already exists in the system. I didn't create a new one because the backend reported that a project with that name already exists.If you'd like, I can:\\n- Retrieve the existing \\\"Testing\\\" project details (I'd need its project ID — could you provide it, or should I try to look it up? Note: I don't have a \\\"list projects\\\" or \\\"find project by name\\\" tool available),\\n- Add members to it,\\n- Create tasks for it.\\n\\nLet me know how you'd like to proceed.\"\n  }\n}"
+        }
+      ]
+    },
+    {
+      "name": "invalid_pro_id",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": ""
+        }
+      },
+      "response": [
+        {
+          "name": "invalid_pro_id",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"goal\": \"Show me the details of project 999.\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/agent/run",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "agent",
+                "run"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "date",
+              "value": "Mon, 07 Sep 2026 09:33:48 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "466"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"success\": true,\n  \"status_code\": 200,\n  \"data\": {\n    \"run_id\": \"run_d9bc4c8a264a\",\n    \"goal\": \"Show me the details of project 999.\",\n    \"status\": \"failed\",\n    \"steps_executed\": 1,\n    \"tools_used\": [\n      \"get_project\"\n    ],\n    \"response\": \"Project 999 could not be retrieved because it does not exist in the backend. The `get_project` tool returned the error: **\\\"Project 999 not found.\\\"**\\n\\nIf you intended to reference a different project, please provide the correct project ID and I'll look it up for you.\"\n  }\n}"
+        }
+      ]
+    },
+    {
+      "name": "invalid_task",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": ""
+        }
+      },
+      "response": [
+        {
+          "name": "invalid_task",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"goal\": \"Update task 1 status to cancelled.\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/agent/run",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "agent",
+                "run"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "date",
+              "value": "Mon, 07 Sep 2026 09:35:48 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "969"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"success\": true,\n  \"status_code\": 200,\n  \"data\": {\n    \"run_id\": \"run_00f95e155f6c\",\n    \"goal\": \"Update task 1 status to cancelled.\",\n    \"status\": \"completed\",\n    \"steps_executed\": 0,\n    \"tools_used\": [],\n    \"response\": \"I'd be happy to help update task 1's status, but I should flag a couple of concerns before proceeding:\\n\\n1. **\\\"Cancelled\\\" is not a valid status** — The available statuses are: `todo`, `in_progress`, and `completed`.\\n2. **Task ID 1 may not exist** — I shouldn't assume task IDs without verifying them with the backend.\\n\\nLet me first check if task 1 actually exists by finding which project it belongs to. Do you have the project ID for task 1? Alternatively, I can list tasks in a specific project if you provide the project ID.\\n\\nCould you clarify:\\n- Which project contains task 1 (so I can look it up)?\\n- Would you like to set the status to `completed` instead, or keep it as `todo`?\\n\\nOnce I have the project ID, I can look up the task and update it to a valid status.\"\n  }\n}"
+        }
+      ]
+    },
+    {
+      "name": "list_pro_tasks",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": ""
+        }
+      },
+      "response": [
+        {
+          "name": "list_pro_tasks",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"goal\": \"Create project TaskList and create a high priority API task.\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/agent/run",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "agent",
+                "run"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "date",
+              "value": "Mon, 07 Sep 2026 09:39:05 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "601"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"success\": true,\n  \"status_code\": 200,\n  \"data\": {\n    \"run_id\": \"run_06e0e7e6c7ff\",\n    \"goal\": \"Create project TaskList and create a high priority API task.\",\n    \"status\": \"completed\",\n    \"steps_executed\": 1,\n    \"tools_used\": [\n      \"create_project\"\n    ],\n    \"response\": \"The project \\\"TaskList\\\" was created successfully with project ID 10. Now, to create a task, I need to assign it to an employee who must be a project member. Could you please provide the name or ID of the employee you'd like to assign the API task to? \\n\\nOnce you provide an employee, I'll:\\n1. Add them to the project\\n2. Create the high priority API task assigned to them\"\n  }\n}"
+        },
+        {
+          "name": "list_pro_tasks",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"goal\": \"Create project TaskList and create a high priority API task.\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/agent/run",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "agent",
+                "run"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "date",
+              "value": "Mon, 07 Sep 2026 09:43:28 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "1554"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"success\": true,\n  \"status_code\": 200,\n  \"data\": {\n    \"run_id\": \"run_04bfb8046d18\",\n    \"goal\": \"Create project TaskList and create a high priority API task.\",\n    \"status\": \"partially_completed\",\n    \"steps_executed\": 9,\n    \"tools_used\": [\n      \"create_project\",\n      \"get_project\",\n      \"list_project_tasks\",\n      \"get_project\",\n      \"get_project\",\n      \"get_project\",\n      \"get_project\",\n      \"find_employee\",\n      \"find_employee\"\n    ],\n    \"response\": \"I need to stop and clarify with you, because I have hit blocking issues:\\n\\n**What I found:**\\n1. I attempted to create the project \\\"TaskList\\\" but the backend returned: `\\\"Project 'TaskList' already exists.\\\"`\\n2. However, I cannot retrieve its project ID. I checked projects 1–5 (Alpha, Caremeal, Beta, Gamma, Phoenix) and none of them are named \\\"TaskList.\\\"\\n3. Creating a task requires the **project ID** and an **assigned employee ID**, and the assigned employee must already be a member of the project.\\n\\n**What I need from you to proceed:**\\n- The **project ID** for the existing \\\"TaskList\\\" project, OR confirmation that you'd like me to create a new project under a different name.\\n- The **name or ID** of the employee who should be assigned to the \\\"high priority API task.\\\"\\n\\n**What I have NOT done** (because the backend wouldn't allow it without the above):\\n- No project was created (one already exists with this name, but its ID is unknown to me).\\n- No task was created (cannot create a task without a valid project ID and assigned employee).\\n\\nPlease provide the project ID (or a different project name) and the assignee's name/ID so I can complete the task creation.\"\n  }\n}"
+        }
+      ]
+    },
+    {
+      "name": "error_cheacking",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": ""
+        }
+      },
+      "response": [
+        {
+          "name": "error_cheacking",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"goal\": \"1\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/agent/run",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "agent",
+                "run"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "date",
+              "value": "Mon, 07 Sep 2026 09:46:47 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "490"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"success\": true,\n  \"status_code\": 200,\n  \"data\": {\n    \"run_id\": \"run_656474e41bb1\",\n    \"goal\": \"1\",\n    \"status\": \"completed\",\n    \"steps_executed\": 0,\n    \"tools_used\": [],\n    \"response\": \"It looks like your message only contains \\\"1\\\" and doesn't specify a project-management goal. Could you clarify what you'd like me to do? For example, would you like me to:\\n\\n- Create a new project?\\n- Find an employee?\\n- Add members to a project?\\n- Create or update tasks?\\n\\nPlease provide the details of what you want to accomplish.\"\n  }\n}"
+        },
+        {
+          "name": "error_cheacking",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"goal\": \"\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/agent/run",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "agent",
+                "run"
+              ]
+            }
+          },
+          "status": "Unprocessable Entity",
+          "code": 422,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "date",
+              "value": "Mon, 07 Sep 2026 09:47:26 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "144"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"detail\": [\n    {\n      \"type\": \"string_too_short\",\n      \"loc\": [\n        \"body\",\n        \"goal\"\n      ],\n      \"msg\": \"String should have at least 1 character\",\n      \"input\": \"\",\n      \"ctx\": {\n        \"min_length\": 1\n      }\n    }\n  ]\n}"
+        },
+        {
+          "name": "error_cheacking",
+          "originalRequest": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"goal\": \"\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/agent/run",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "agent",
+                "run"
+              ]
+            }
+          },
+          "status": "Method Not Allowed",
+          "code": 405,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "date",
+              "value": "Mon, 07 Sep 2026 09:47:44 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "allow",
+              "value": "POST"
+            },
+            {
+              "key": "content-length",
+              "value": "31"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"detail\": \"Method Not Allowed\"\n}"
+        }
+      ]
+    }
+  ]
+}
