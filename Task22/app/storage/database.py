@@ -1,11 +1,30 @@
+import os
+
+from dotenv import load_dotenv
 from pymongo import MongoClient
-from app.config import MONGO_URI, MONGO_DB
 
-client = MongoClient(MONGO_URI, serverSelectionTimeoutMS=3000)
-db = client[MONGO_DB]
+load_dotenv()
 
-runs_collection = db["runs"]
-actions_collection = db["actions"]
-projects_collection = db["projects"]
-employees_collection = db["employees"]
-tasks_collection = db["tasks"]
+
+MONGO_URI = os.getenv(
+    "MONGO_URI",
+    "mongodb://localhost:27017",
+)
+
+MONGO_DATABASE = os.getenv(
+    "MONGO_DATABASE",
+    "task22_db",
+)
+
+
+client = MongoClient(
+    MONGO_URI,
+    serverSelectionTimeoutMS=5000,
+)
+
+database = client[MONGO_DATABASE]
+
+
+def check_database_connection():
+    client.admin.command("ping")
+    return True

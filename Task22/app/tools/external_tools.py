@@ -1,36 +1,58 @@
-from app.config import EXTERNAL_TOOL_TIMEOUT
-from app.services.external_project_service import get_external_project_status
-from app.reliability.retry import retry_call
-from app.reliability.timeout import run_with_timeout
+import time
 
-def resilient_external_status(project_id, failure_mode="success", trace=None):
-    def operation(attempt):
-        if trace is not None:
-            trace.append({
-                "tool": "get_external_project_status",
-                "attempt": attempt,
-                "status": "started"
-            })
-        try:
-            result = run_with_timeout(
-                lambda: get_external_project_status(project_id, failure_mode, attempt),
-                EXTERNAL_TOOL_TIMEOUT
-            )
-            if trace is not None:
-                trace.append({
-                    "tool": "get_external_project_status",
-                    "attempt": attempt,
-                    "status": "success"
-                })
-            return result
-        except Exception as exc:
-            if trace is not None:
-                trace.append({
-                    "tool": "get_external_project_status",
-                    "attempt": attempt,
-                    "status": getattr(exc, "code", "failure"),
-                    "message": str(exc)
-                })
-            raise
+from app.reliability.errors import AgentError
 
-    return retry_call(operation)
+
+def get_external_project_status(
+    project_id: str,
+    failure_mode: str = "success",
+):
+    """
+    Simulated external project-status service.
+
+    Supported modes:
+    - success
+    - temporary_failure
+    - timeout
+    - permanent_failure
+    """
+
+    if failure_mode == "success":
+        return {
+            "project_id": project_id,
+            "status": "active",
+            "source": "external_project_service",
+        }
+
+    if failure_mode == "temporary_failure":
+        raise AgentError(
+            message="Temporary external service failure",
+            code="EXTERNAL_TEMPORARY_FAILURE",
+            retryable=True,
+            status_code=503,
+        )
+
+    if failure_mode == "timeout":
+        time.sleep(10)
+
+        raise AgentError(
+            message="External service timed out",
+            code="EXTERNAL_TIMEOUT",
+            retryable=True,
+            status_code=504,
+        )
+
+    if failure_mode == "permanent_failure":
+        raise AgentError(
+            message="Project does not exist in external service",
+            code="PROJECT_NOT_FOUND",
+            retryable=False,
+            status_code=404,
+        )
+
+    raise AgentError(
+        message=f"Unknown failure mode: {failure_mode}",
+        code="INVALID_FAILURE_MODE",
+        retryable=False,
+        status_code=400,
+    )

@@ -1,63 +1,142 @@
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel, Field
-from app.agent.runner import create_run, run_agent
-from app.storage.database import runs_collection
-from app.reliability.errors import AgentError
 
-router = APIRouter(prefix="/agent", tags=["Agent"])
+from app.reliability.errors import AgentError
+from app.services.project_service import ProjectService
+from app.storage.database import database
+
+
+router = APIRouter(
+    prefix="/agent",
+    tags=["Agent"],
+)
+
+
+project_service = ProjectService(database)
+
 
 class RunRequest(BaseModel):
-    goal: str = Field(min_length=1)
-    failure_mode: str = "success"
+    project_id: str = Field(
+        default="project-001",
+        min_length=1,
+    )
+
+    failure_mode: str = Field(
+        default="success",
+    )
+
+    max_retries: int = Field(
+        default=3,
+        ge=0,
+        le=10,
+    )
+
 
 @router.post("/runs")
-def start_run(request: RunRequest):
-    run_id = create_run(request.goal)
+def create_run(payload: RunRequest):
+    run_id = project_service.create_run(
+        payload.model_dump()
+    )
+
     try:
-        result = run_agent(run_id, request.goal, request.failure_mode)
-        return {"success": True, "status_code": 200, "data": result}
-    except AgentError as exc:
+        result = project_service.execute_run(
+            run_id
+        )
+
+        return {
+            "success": True,
+            "run_id": run_id,
+            "status": "completed",
+            "result": result,
+        }
+
+    except AgentError as error:
         raise HTTPException(
-            status_code=exc.status_code,
+            status_code=error.status_code,
             detail={
                 "success": False,
-                "status_code": exc.status_code,
-                "error": exc.code,
-                "message": exc.message,
-                "run_id": run_id
-            }
+                "run_id": run_id,
+                "error_code": error.code,
+                "message": error.message,
+            },
         )
-    except Exception as exc:
-        raise HTTPException(status_code=500, detail={
-            "success": False, "status_code": 500,
-            "error": "AGENT_ERROR", "message": str(exc), "run_id": run_id
-        })
+
 
 @router.get("/runs/{run_id}")
 def get_run(run_id: str):
-    run = runs_collection.find_one({"run_id": run_id}, {"_id": 0})
+    run = project_service.get_run(run_id)
+
     if not run:
-        raise HTTPException(status_code=404, detail={
-            "success": False, "status_code": 404,
-            "error": "RUN_NOT_FOUND", "message": "Run not found"
-        })
-    return {"success": True, "status_code": 200, "data": run}
+        raise HTTPException(
+            status_code=404,
+            detail={
+                "success": False,
+                "error_code": "RUN_NOT_FOUND",
+                "message": "Run not found",
+            },
+        )
+
+    run["_id"] = str(run["_id"])
+
+    if run.get("created_at"):
+        run["created_at"] = (
+            run["created_at"].isoformat()
+        )
+
+    if run.get("updated_at"):
+        run["updated_at"] = (
+            run["updated_at"].isoformat()
+        )
+
+    return {
+        "success": True,
+        "data": run,
+    }
+
 
 @router.post("/runs/{run_id}/resume")
 def resume_run(run_id: str):
-    run = runs_collection.find_one({"run_id": run_id}, {"_id": 0})
+    run = project_service.get_run(run_id)
+
     if not run:
-        raise HTTPException(status_code=404, detail="Run not found")
-    if run["status"] == "completed":
-        raise HTTPException(status_code=409, detail={
-            "success": False, "status_code": 409,
-            "error": "RUN_NOT_RESUMABLE", "message": "Completed run cannot resume"
-        })
+        raise HTTPException(
+            status_code=404,
+            detail={
+                "success": False,
+                "error_code": "RUN_NOT_FOUND",
+                "message": "Run not found",
+            },
+        )
+
+    if run.get("status") == "completed":
+        raise HTTPException(
+            status_code=409,
+            detail={
+                "success": False,
+                "error_code": "RUN_ALREADY_COMPLETED",
+                "message": "Completed run cannot be resumed",
+            },
+        )
+
     try:
-        result = run_agent(run_id, run["goal"], "success")
-        return {"success": True, "status_code": 200, "data": result}
-    except AgentError as exc:
-        raise HTTPException(status_code=exc.status_code, detail={
-            "success": False, "status_code": exc.status_code,
-            "error": exc.code, "message": exc.message
-        })
+        result = project_service.execute_run(
+            run_id
+        )
+
+        return {
+            "success": True,
+            "run_id": run_id,
+            "status": "completed",
+            "result": result,
+        }
+
+    except AgentError as error:
+        raise HTTPException(
+            status_code=error.status_code,
+            detail={
+                "success": False,
+                "run_id": run_id,
+                "error_code": error.code,
+                "message": error.message,
+            },
+        )
