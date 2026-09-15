@@ -1,58 +1,72 @@
-import time
-
-from app.reliability.errors import AgentError
-
-
-def get_external_project_status(
-    project_id: str,
-    failure_mode: str = "success",
-):
+class AgentError(Exception):
     """
-    Simulated external project-status service.
+    Base exception for all agent-related errors.
 
-    Supported modes:
-    - success
-    - temporary_failure
-    - timeout
-    - permanent_failure
+    Attributes:
+        message: Human-readable error message.
+        code: Application-specific error code.
+        retryable: Whether the operation can be retried.
+        status_code: HTTP status code returned by the API.
     """
 
-    if failure_mode == "success":
-        return {
-            "project_id": project_id,
-            "status": "active",
-            "source": "external_project_service",
-        }
+    def __init__(
+        self,
+        message: str,
+        code: str = "AGENT_ERROR",
+        retryable: bool = False,
+        status_code: int = 500,
+    ):
+        super().__init__(message)
 
-    if failure_mode == "temporary_failure":
-        raise AgentError(
-            message="Temporary external service failure",
-            code="EXTERNAL_TEMPORARY_FAILURE",
+        self.message = message
+        self.code = code
+        self.retryable = retryable
+        self.status_code = status_code
+
+
+class RetryableError(AgentError):
+    """
+    Exception for temporary failures that can be retried.
+
+    Examples:
+        - Temporary external API failure
+        - Timeout
+        - Service unavailable
+    """
+
+    def __init__(
+        self,
+        message: str,
+        code: str = "RETRYABLE_ERROR",
+        status_code: int = 503,
+    ):
+        super().__init__(
+            message=message,
+            code=code,
             retryable=True,
-            status_code=503,
+            status_code=status_code,
         )
 
-    if failure_mode == "timeout":
-        time.sleep(10)
 
-        raise AgentError(
-            message="External service timed out",
-            code="EXTERNAL_TIMEOUT",
-            retryable=True,
-            status_code=504,
-        )
+class NonRetryableError(AgentError):
+    """
+    Exception for permanent failures that must not be retried.
 
-    if failure_mode == "permanent_failure":
-        raise AgentError(
-            message="Project does not exist in external service",
-            code="PROJECT_NOT_FOUND",
+    Examples:
+        - Invalid request
+        - Project not found
+        - Invalid failure mode
+    """
+
+    def __init__(
+        self,
+        message: str,
+        code: str = "NON_RETRYABLE_ERROR",
+        status_code: int = 400,
+    ):
+        super().__init__(
+            message=message,
+            code=code,
             retryable=False,
-            status_code=404,
+            status_code=status_code,
         )
-
-    raise AgentError(
-        message=f"Unknown failure mode: {failure_mode}",
-        code="INVALID_FAILURE_MODE",
-        retryable=False,
-        status_code=400,
-    )

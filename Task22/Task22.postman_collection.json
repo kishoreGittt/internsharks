@@ -565,6 +565,84 @@
           "body": "{\n  \"detail\": {\n    \"success\": false,\n    \"error_code\": \"RUN_ALREADY_COMPLETED\",\n    \"message\": \"Completed run cannot be resumed\"\n  }\n}"
         }
       ]
+    },
+    {
+      "name": "idempotency request",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": ""
+        }
+      },
+      "response": [
+        {
+          "name": "idempotency request",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"run_id\": \"6aa904231f90aaa798aacfed\",\r\n  \"action_id\": \"project-001\",\r\n  \"project_name\": \"Nova Project\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/agent/actions/idempotent",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "agent",
+                "actions",
+                "idempotent"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "date",
+              "value": "Tue, 15 Sep 2026 11:09:56 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "196"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"success\": true,\n  \"data\": {\n    \"created\": true,\n    \"duplicate\": false,\n    \"idempotency_key\": \"6aa904231f90aaa798aacfed:project-001\",\n    \"result\": {\n      \"project_id\": \"6aa9278423ad322eec55d929\",\n      \"project_name\": \"Nova Project\"\n    }\n  }\n}"
+        }
+      ]
+    },
+    {
+      "name": "New Request",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": ""
+        }
+      },
+      "response": []
     }
   ]
 }
