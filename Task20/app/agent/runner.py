@@ -1,290 +1,151 @@
 import json
 import uuid
+from datetime import datetime, timezone
 from typing import Any, Dict, List
 
 import requests
 
 from app.agent.registry import (
     TOOL_DEFINITIONS,
-    get_tool_function
+    get_tool_function,
 )
-
 from app.config import (
     MAX_AGENT_STEPS,
     OPENROUTER_API_KEY,
+    OPENROUTER_FALLBACK_MODELS,
     OPENROUTER_MODEL,
-    OPENROUTER_URL
+    OPENROUTER_URL,
 )
-
-from app.prompts.agent_prompt import (
-    AGENT_SYSTEM_PROMPT
-)
-
+from app.prompts.agent_prompt import AGENT_SYSTEM_PROMPT
 from app.storage.run_store import runs
 
 
 class AgentRunner:
 
     def __init__(self):
-        self.max_steps = MAX_AGENT_STEPS
+        self.primary_model = OPENROUTER_MODEL
 
-    def _validate_configuration(self):
+        # Create a unique list of models
+        self.models = []
 
-        if not OPENROUTER_API_KEY:
-            raise RuntimeError(
-                "OPENROUTER_API_KEY is not configured."
-            )
+        for model in [self.primary_model] + OPENROUTER_FALLBACK_MODELS:
+            if model and model not in self.models:
+                self.models.append(model)
 
-        if not OPENROUTER_MODEL:
-            raise RuntimeError(
-                "OPENROUTER_MODEL is not configured."
-            )
+    # =========================================================
+    # MAIN AGENT LOOP
+    # =========================================================
 
-    def _call_openrouter(
-        self,
-        messages: List[Dict[str, Any]]
-    ) -> Dict[str, Any]:
+    def run(self, goal: str) -> Dict[str, Any]:
 
-        self._validate_configuration()
+        run_id = str(uuid.uuid4())
 
-        headers = {
-            "Authorization": (
-                f"Bearer {OPENROUTER_API_KEY}"
-            ),
-            "Content-Type": "application/json",
-            "X-Title": "Task 20 Goal Based AI Agent"
-        }
-
-        payload = {
-            "model": OPENROUTER_MODEL,
-            "messages": messages,
-            "tools": TOOL_DEFINITIONS,
-            "tool_choice": "auto"
-        }
-
-        try:
-
-            response = requests.post(
-                OPENROUTER_URL,
-                headers=headers,
-                json=payload,
-                timeout=90
-            )
-
-        except requests.RequestException as exc:
-
-            raise RuntimeError(
-                f"Unable to connect to OpenRouter: {exc}"
-            )
-
-        if response.status_code == 401:
-
-            raise RuntimeError(
-                "OpenRouter authentication failed. "
-                "Check OPENROUTER_API_KEY."
-            )
-
-        if response.status_code == 404:
-
-            raise RuntimeError(
-                "OpenRouter model or tool endpoint is unavailable. "
-                "Check OPENROUTER_MODEL and confirm tool support."
-            )
-
-        if response.status_code == 429:
-
-            raise RuntimeError(
-                "OpenRouter rate limit reached."
-            )
-
-        if response.status_code >= 400:
-
-            try:
-                error_data = response.json()
-            except ValueError:
-                error_data = response.text
-
-            raise RuntimeError(
-                f"OpenRouter API error {response.status_code}: "
-                f"{error_data}"
-            )
-
-        try:
-            return response.json()
-
-        except ValueError:
-
-            raise RuntimeError(
-                "OpenRouter returned invalid JSON."
-            )
-
-    def _execute_tool(
-        self,
-        tool_name: str,
-        arguments: Dict[str, Any]
-    ) -> Dict[str, Any]:
-
-        try:
-
-            tool_function = get_tool_function(
-                tool_name
-            )
-
-            result = tool_function(
-                **arguments
-            )
-
-            return {
-                "success": True,
-                "result": result
-            }
-
-        except TypeError as exc:
-
-            return {
-                "success": False,
-                "error": (
-                    "Invalid tool arguments: "
-                    f"{str(exc)}"
-                )
-            }
-
-        except ValueError as exc:
-
-            return {
-                "success": False,
-                "error": str(exc)
-            }
-
-        except Exception as exc:
-
-            return {
-                "success": False,
-                "error": (
-                    "Tool execution failed."
-                )
-            }
-
-    def run(
-        self,
-        goal: str
-    ) -> Dict[str, Any]:
-
-        run_id = f"run_{uuid.uuid4().hex[:12]}"
-
-        execution_trace = []
-
-        tools_used = []
-
-        messages = [
+        messages: List[Dict[str, Any]] = [
             {
                 "role": "system",
-                "content": AGENT_SYSTEM_PROMPT
+                "content": AGENT_SYSTEM_PROMPT,
             },
             {
                 "role": "user",
-                "content": goal
-            }
+                "content": goal,
+            },
         ]
 
-        runs[run_id] = {
-            "run_id": run_id,
-            "goal": goal,
-            "status": "running",
-            "steps": []
-        }
+        execution_trace = []
+        tools_used = []
 
-        for step_number in range(
-            1,
-            self.max_steps + 1
-        ):
+        for step_number in range(1, MAX_AGENT_STEPS + 1):
 
-            response = self._call_openrouter(
-                messages
+            # -------------------------------------------------
+            # Ask OpenRouter what to do next
+            # -------------------------------------------------
+
+            response, actual_model = (
+                self._call_openrouter_with_fallback(messages)
             )
 
-            choices = response.get(
-                "choices",
-                []
+            print(
+                f"[Agent] Step {step_number} | "
+                f"Model: {actual_model}"
             )
 
-            if not choices:
+            message = self._extract_message(response)
 
-                raise RuntimeError(
-                    "Invalid AI response: "
-                    "no choices returned."
-                )
+            # -------------------------------------------------
+            # Check if AI wants to execute tools
+            # -------------------------------------------------
 
-            message = choices[0].get(
-                "message",
-                {}
-            )
+            tool_calls = message.get("tool_calls", [])
 
-            tool_calls = message.get(
-                "tool_calls"
-            )
+            # -------------------------------------------------
+            # No tool call = final answer
+            # -------------------------------------------------
 
-            # No more tools means the model
-            # has produced the final response.
             if not tool_calls:
 
-                final_response = (
-                    message.get("content")
-                    or "Agent completed execution."
+                final_answer = message.get("content")
+
+                if not final_answer:
+                    final_answer = (
+                        "The agent completed the requested actions."
+                    )
+
+                status = self._calculate_status(
+                    execution_trace,
+                    final_answer,
                 )
 
-                runs[run_id]["status"] = (
-                    "completed"
-                )
-
-                runs[run_id]["steps"] = (
-                    execution_trace
-                )
-
-                return {
+                run_data = {
                     "run_id": run_id,
                     "goal": goal,
-                    "status": self._calculate_status(
-                        execution_trace
-                    ),
-                    "steps_executed": len(
-                        execution_trace
-                    ),
+                    "status": status,
+                    "final_result": final_answer,
                     "tools_used": tools_used,
-                    "response": final_response
+                    "execution_trace": execution_trace,
+                    "created_at": datetime.now(
+                        timezone.utc
+                    ).isoformat(),
                 }
 
-            # Keep the assistant tool-call message
-            # in the conversation.
-            messages.append(message)
+                runs[run_id] = run_data
+
+                return run_data
+
+            # -------------------------------------------------
+            # Add assistant message containing tool calls
+            # -------------------------------------------------
+
+            assistant_message = {
+                "role": "assistant",
+                "content": message.get("content"),
+                "tool_calls": tool_calls,
+            }
+
+            messages.append(assistant_message)
+
+            # -------------------------------------------------
+            # Execute tools
+            # -------------------------------------------------
 
             for tool_call in tool_calls:
 
-                if len(execution_trace) >= self.max_steps:
-
-                    break
-
-                function_data = (
-                    tool_call.get(
-                        "function",
-                        {}
-                    )
+                function_data = tool_call.get(
+                    "function",
+                    {},
                 )
 
-                tool_name = function_data.get(
-                    "name"
+                tool_name = function_data.get("name")
+
+                tool_call_id = tool_call.get("id")
+
+                raw_arguments = function_data.get(
+                    "arguments",
+                    "{}",
                 )
 
-                raw_arguments = (
-                    function_data.get(
-                        "arguments",
-                        "{}"
-                    )
-                )
-
-                tool_call_id = (
-                    tool_call.get("id")
-                )
+                # =================================================
+                # VALIDATE TOOL NAME
+                # =================================================
 
                 if not tool_name:
 
@@ -293,124 +154,450 @@ class AgentRunner:
                         "error": (
                             "AI returned a tool call "
                             "without a tool name."
-                        )
+                        ),
                     }
 
-                    tool_name = "unknown"
+                    execution_trace.append(
+                        self._trace_entry(
+                            step_number,
+                            "unknown",
+                            {},
+                            result,
+                            False,
+                        )
+                    )
 
-                    arguments = {}
-
-                else:
-
-                    try:
-
-                        arguments = json.loads(
-                            raw_arguments
+                    if tool_call_id:
+                        messages.append(
+                            {
+                                "role": "tool",
+                                "tool_call_id": tool_call_id,
+                                "content": json.dumps(result),
+                            }
                         )
 
-                    except json.JSONDecodeError:
+                    continue
 
-                        result = {
-                            "success": False,
-                            "error": (
-                                "Invalid JSON arguments "
-                                "generated by AI."
-                            )
-                        }
+                # =================================================
+                # PARSE TOOL ARGUMENTS
+                # =================================================
 
-                        arguments = {}
+                try:
+
+                    arguments = json.loads(
+                        raw_arguments
+                    )
+
+                    if not isinstance(arguments, dict):
+                        raise ValueError(
+                            "Tool arguments must be "
+                            "a JSON object."
+                        )
+
+                except (
+                    json.JSONDecodeError,
+                    ValueError,
+                ) as exc:
+
+                    result = {
+                        "success": False,
+                        "error": (
+                            f"Invalid tool arguments: {str(exc)}"
+                        ),
+                    }
+
+                    execution_trace.append(
+                        self._trace_entry(
+                            step_number,
+                            tool_name,
+                            {},
+                            result,
+                            False,
+                        )
+                    )
+
+                    if tool_call_id:
+                        messages.append(
+                            {
+                                "role": "tool",
+                                "tool_call_id": tool_call_id,
+                                "content": json.dumps(result),
+                            }
+                        )
+
+                    continue
+
+                # =================================================
+                # GET TOOL FROM CONTROLLED REGISTRY
+                # =================================================
+
+                try:
+
+                    tool_function = get_tool_function(
+                        tool_name
+                    )
+
+                except Exception as exc:
+
+                    result = {
+                        "success": False,
+                        "error": str(exc),
+                    }
+
+                    execution_trace.append(
+                        self._trace_entry(
+                            step_number,
+                            tool_name,
+                            arguments,
+                            result,
+                            False,
+                        )
+                    )
+
+                    if tool_call_id:
+                        messages.append(
+                            {
+                                "role": "tool",
+                                "tool_call_id": tool_call_id,
+                                "content": json.dumps(result),
+                            }
+                        )
+
+                    continue
+
+                # =================================================
+                # EXECUTE TOOL
+                # =================================================
+
+                try:
+
+                    result = tool_function(
+                        **arguments
+                    )
+
+                    if isinstance(result, dict):
+
+                        success = result.get(
+                            "success",
+                            True,
+                        )
 
                     else:
 
-                        result = self._execute_tool(
-                            tool_name,
-                            arguments
-                        )
+                        success = True
 
-                status = (
-                    "success"
-                    if result.get("success")
-                    else "failed"
-                )
+                except Exception as exc:
 
-                trace_item = {
-                    "step": len(
-                        execution_trace
-                    ) + 1,
-                    "tool": tool_name,
-                    "arguments": arguments,
-                    "result": result,
-                    "status": status
-                }
+                    result = {
+                        "success": False,
+                        "error": str(exc),
+                    }
+
+                    success = False
+
+                # =================================================
+                # RECORD EXECUTION TRACE
+                # =================================================
 
                 execution_trace.append(
-                    trace_item
+                    self._trace_entry(
+                        step_number,
+                        tool_name,
+                        arguments,
+                        result,
+                        success,
+                    )
                 )
 
-                tools_used.append(
-                    tool_name
-                )
+                if tool_name not in tools_used:
+                    tools_used.append(tool_name)
 
-                runs[run_id]["steps"] = (
-                    execution_trace
-                )
+                # =================================================
+                # RETURN TOOL RESULT TO AI
+                # =================================================
 
-                # Return actual backend result
-                # to the model.
-                messages.append(
-                    {
-                        "role": "tool",
-                        "tool_call_id": tool_call_id,
-                        "content": json.dumps(
-                            result,
-                            default=str
-                        )
-                    }
-                )
+                if tool_call_id:
 
-        # Maximum step count reached.
-        runs[run_id]["status"] = (
-            "partially_completed"
+                    messages.append(
+                        {
+                            "role": "tool",
+                            "tool_call_id": tool_call_id,
+                            "content": json.dumps(
+                                result
+                            ),
+                        }
+                    )
+
+        # =====================================================
+        # MAXIMUM STEP LIMIT
+        # =====================================================
+
+        final_result = (
+            f"The agent stopped because the maximum "
+            f"number of steps ({MAX_AGENT_STEPS}) "
+            f"was reached."
         )
 
-        runs[run_id]["steps"] = (
-            execution_trace
-        )
-
-        return {
+        run_data = {
             "run_id": run_id,
             "goal": goal,
             "status": "partially_completed",
-            "steps_executed": len(
-                execution_trace
-            ),
+            "final_result": final_result,
             "tools_used": tools_used,
-            "response": (
-                "The agent stopped because the "
-                f"maximum step limit of "
-                f"{self.max_steps} was reached. "
-                "Some operations may have been completed."
-            )
+            "execution_trace": execution_trace,
+            "created_at": datetime.now(
+                timezone.utc
+            ).isoformat(),
         }
+
+        runs[run_id] = run_data
+
+        return run_data
+
+    # =========================================================
+    # OPENROUTER CALL WITH FALLBACK
+    # =========================================================
+
+    def _call_openrouter_with_fallback(
+        self,
+        messages: List[Dict[str, Any]],
+    ):
+
+        if not OPENROUTER_API_KEY:
+
+            raise RuntimeError(
+                "OPENROUTER_API_KEY is not configured."
+            )
+
+        if not self.models:
+
+            raise RuntimeError(
+                "No OpenRouter models are configured."
+            )
+
+        # -----------------------------------------------------
+        # Use OpenRouter's model fallback feature
+        # -----------------------------------------------------
+
+        payload = {
+            "model": self.models[0],
+
+            "models": self.models,
+
+            "messages": messages,
+
+            "tools": TOOL_DEFINITIONS,
+
+            "tool_choice": "auto",
+        }
+
+        headers = {
+            "Authorization": (
+                f"Bearer {OPENROUTER_API_KEY}"
+            ),
+            "Content-Type": "application/json",
+        }
+
+        try:
+
+            response = requests.post(
+                OPENROUTER_URL,
+                headers=headers,
+                json=payload,
+                timeout=120,
+            )
+
+        except requests.RequestException as exc:
+
+            raise RuntimeError(
+                "Unable to connect to OpenRouter."
+            ) from exc
+
+        # =====================================================
+        # SUCCESS
+        # =====================================================
+
+        if response.status_code == 200:
+
+            try:
+
+                data = response.json()
+
+            except ValueError as exc:
+
+                raise RuntimeError(
+                    "OpenRouter returned invalid JSON."
+                ) from exc
+
+            actual_model = data.get(
+                "model",
+                self.models[0],
+            )
+
+            print(
+                f"[OpenRouter] Model used: "
+                f"{actual_model}"
+            )
+
+            return data, actual_model
+
+        # =====================================================
+        # AUTHENTICATION ERROR
+        # =====================================================
+
+        if response.status_code == 401:
+
+            raise RuntimeError(
+                "OpenRouter authentication failed. "
+                "Check your OPENROUTER_API_KEY."
+            )
+
+        # =====================================================
+        # RATE LIMIT
+        # =====================================================
+
+        if response.status_code == 429:
+
+            raise RuntimeError(
+                "OpenRouter rate limit reached for "
+                "the configured models. "
+                "Please try again later."
+            )
+
+        # =====================================================
+        # MODEL / TOOL ENDPOINT NOT AVAILABLE
+        # =====================================================
+
+        if response.status_code == 404:
+
+            try:
+                error_data = response.json()
+
+            except ValueError:
+                error_data = response.text
+
+            raise RuntimeError(
+                "OpenRouter model or tool endpoint "
+                "is unavailable. "
+                f"Configured models: {self.models}. "
+                f"Response: {error_data}"
+            )
+
+        # =====================================================
+        # SERVER ERROR
+        # =====================================================
+
+        if response.status_code in (
+            500,
+            502,
+            503,
+            504,
+        ):
+
+            raise RuntimeError(
+                "OpenRouter service is temporarily "
+                "unavailable. Please try again."
+            )
+
+        # =====================================================
+        # OTHER ERROR
+        # =====================================================
+
+        try:
+            error_data = response.json()
+
+        except ValueError:
+            error_data = response.text
+
+        raise RuntimeError(
+            f"OpenRouter API error "
+            f"(HTTP {response.status_code}): "
+            f"{error_data}"
+        )
+
+    # =========================================================
+    # EXTRACT ASSISTANT MESSAGE
+    # =========================================================
+
+    @staticmethod
+    def _extract_message(
+        response: Dict[str, Any],
+    ) -> Dict[str, Any]:
+
+        choices = response.get("choices")
+
+        if not choices:
+
+            raise RuntimeError(
+                "OpenRouter returned no choices."
+            )
+
+        message = choices[0].get(
+            "message"
+        )
+
+        if not message:
+
+            raise RuntimeError(
+                "OpenRouter returned no assistant message."
+            )
+
+        return message
+
+    # =========================================================
+    # EXECUTION TRACE
+    # =========================================================
+
+    @staticmethod
+    def _trace_entry(
+        step_number: int,
+        tool: str,
+        arguments: Dict[str, Any],
+        result: Any,
+        success: bool,
+    ) -> Dict[str, Any]:
+
+        return {
+            "step": step_number,
+            "tool": tool,
+            "arguments": arguments,
+            "result": result,
+            "success": success,
+        }
+
+    # =========================================================
+    # CALCULATE FINAL STATUS
+    # =========================================================
 
     @staticmethod
     def _calculate_status(
-        trace: List[Dict[str, Any]]
+        execution_trace: List[Dict[str, Any]],
+        final_answer: str,
     ) -> str:
 
-        if not trace:
+        # No tools means the agent simply answered
+        if not execution_trace:
             return "completed"
 
-        failures = [
-            item
-            for item in trace
-            if item["status"] == "failed"
-        ]
+        successful_steps = sum(
+            1
+            for step in execution_trace
+            if step.get("success") is True
+        )
 
-        if failures and len(failures) == len(trace):
-            return "failed"
+        failed_steps = sum(
+            1
+            for step in execution_trace
+            if step.get("success") is False
+        )
 
-        if failures:
+        # All tools succeeded
+        if failed_steps == 0:
+            return "completed"
+
+        # Some succeeded and some failed
+        if successful_steps > 0:
             return "partially_completed"
 
-        return "completed"
+        # Everything failed
+        return "failed"
