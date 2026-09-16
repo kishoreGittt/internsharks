@@ -1,0 +1,85 @@
+{
+  "info": {
+    "name": "Task24 AI Observability MongoDB",
+    "_postman_id": "task24-observability",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://127.0.0.1:8000"
+    },
+    {
+      "key": "trace_id",
+      "value": ""
+    }
+  ],
+  "item": [
+    {
+      "name": "Root",
+      "request": {
+        "method": "GET",
+        "url": "{{base_url}}/"
+      }
+    },
+    {
+      "name": "Health",
+      "request": {
+        "method": "GET",
+        "url": "{{base_url}}/health"
+      }
+    },
+    {
+      "name": "Ask AI",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"message\":\"Explain FastAPI in simple words.\"}"
+        },
+        "url": "{{base_url}}/ai/ask"
+      }
+    },
+    {
+      "name": "Get Trace",
+      "request": {
+        "method": "GET",
+        "url": "{{base_url}}/observability/traces/{{trace_id}}"
+      }
+    },
+    {
+      "name": "Metrics",
+      "request": {
+        "method": "GET",
+        "url": "{{base_url}}/observability/metrics"
+      }
+    },
+    {
+      "name": "Slow Traces",
+      "request": {
+        "method": "GET",
+        "url": "{{base_url}}/observability/traces/slow"
+      }
+    },
+    {
+      "name": "Failure Traces",
+      "request": {
+        "method": "GET",
+        "url": "{{base_url}}/observability/traces/failures"
+      }
+    },
+    {
+      "name": "Filtered Failures",
+      "request": {
+        "method": "GET",
+        "url": "{{base_url}}/observability/traces/failures?error_category=OPENROUTER_TIMEOUT"
+      }
+    }
+  ]
+}

@@ -1,0 +1,763 @@
+{
+  "info": {
+    "_postman_id": "bc1db828-eae2-442a-b834-6c6d2a0eb066",
+    "name": "Task24",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "57366509",
+    "_collection_link": "https://go.postman.co/collection/57366509-bc1db828-eae2-442a-b834-6c6d2a0eb066?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Test AI Ask Endpoint",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"message\": \"Explain what FastAPI is in simple words.\",\r\n  \"prompt_version\": \"v1\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/ai/ask",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "ai",
+            "ask"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Test AI Ask Endpoint",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"message\": \"Explain what FastAPI is in simple words.\",\r\n  \"prompt_version\": \"v1\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/ai/ask",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "ai",
+                "ask"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "date",
+              "value": "Wed, 16 Sep 2026 11:04:42 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "1224"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            },
+            {
+              "key": "x-trace-id",
+              "value": "trace_19b8f7b55bf440bb9c4c9f01c2335652"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"success\": true,\n  \"status_code\": 200,\n  \"data\": {\n    \"response\": \"**FastAPI** is a tool (called a \\\"framework\\\") that helps people build **APIs** using the Python programming language.\\n\\nHere’s what that means in simple terms:\\n\\n- **What is an API?** Think of it as a waiter in a restaurant — it takes requests from one app, brings them to another app, and returns a response. For example, when a weather app shows you the forecast, it’s probably using an API to get that data.\\n\\n- **What does FastAPI do?** It makes writing these APIs very fast and easy. You just tell Python what kind of data you expect (like a username or an email), and FastAPI automatically checks that the data is correct, figure out how to handle it, and even creates helpful documentation for your API — for free.\\n\\n**Why do people like it?**\\n- 🚀 It's **very fast** (nearly as fast as tools written in C or Go).\\n- 🧠 It **automatically checks** your data for errors.\\n- 📄 It **creates documentation** by itself (called Swagger UI).\\n- ✍️ It’s **easy to read and write**, thanks to Python.\\n\\nIn short: **FastAPI is a simple, powerful, and speedy way to build APIs with Python.**\",\n    \"trace_id\": \"trace_089caecee58245948f3282b6b4091955\"\n  }\n}"
+        },
+        {
+          "name": "Test AI Ask Endpoint",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"message\": \"Explain what FastAPI is in simple words.\",\r\n  \"prompt_version\": \"v1\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/ai/ask",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "ai",
+                "ask"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "date",
+              "value": "Wed, 16 Sep 2026 11:36:55 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "1248"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"success\": true,\n  \"status_code\": 200,\n  \"data\": {\n    \"trace_id\": \"trace_9ae51ab3f0034513bbcf7d70484cdaab\",\n    \"response\": \"**FastAPI** is a Python tool (called a \\\"framework\\\") that helps you build APIs — essentially, the behind-the-scenes software that lets different apps talk to each other over the internet.\\n\\nThink of it like this: if a website is a restaurant, the API is the menu and the waiter. FastAPI helps you quickly and easily create that menu and that waiter.\\n\\nHere's what makes FastAPI special, in a nutshell:\\n\\n1. **It's fast** — It's one of the quickest Python frameworks available, comparable to tools built in languages like Go or Node.js.\\n2. **It's easy** — You write less code to get things working, and it uses Python's built-in features (called \\\"type hints\\\") to catch mistakes automatically.\\n3. **It documents itself** — Once you build your API, FastAPI automatically creates a nice, interactive webpage where others can see and test your API (called Swagger/ReDoc).\\n\\nIn short: FastAPI is a fast, simple, and smart way to build the \\\"connectors\\\" (APIs) that let software systems communicate with each other, using Python.\",\n    \"usage\": {\n      \"prompt_tokens\": 29,\n      \"completion_tokens\": 368,\n      \"total_tokens\": 397\n    },\n    \"estimated_cost\": 0.0005665\n  }\n}"
+        }
+      ]
+    },
+    {
+      "name": "Test AI Ask With Another Prompt",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"message\": \"What is the difference between MongoDB and SQLite?\",\r\n  \"prompt_version\": \"v2\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/ai/ask",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "ai",
+            "ask"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Test AI Ask With Another Prompt",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"message\": \"What is the difference between MongoDB and SQLite?\",\r\n  \"prompt_version\": \"v2\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/ai/ask",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "ai",
+                "ask"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "date",
+              "value": "Wed, 16 Sep 2026 11:13:18 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "3399"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            },
+            {
+              "key": "x-trace-id",
+              "value": "trace_f8b00eb7690d4b96805ad7156136a121"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"success\": true,\n  \"status_code\": 200,\n  \"data\": {\n    \"response\": \"## MongoDB vs SQLite: Key Differences\\n\\n### 1. **Database Type**\\n- **MongoDB**: A **NoSQL document-oriented** database. Data is stored as flexible JSON-like documents (BSON).\\n- **SQLite**: A **relational (SQL)** database. Data is stored in traditional tables with rows and columns.\\n\\n### 2. **Architecture**\\n- **MongoDB**: Requires a **separate server process**; follows a client-server model.\\n- **SQLite**: **Serverless and embedded** — the database is a single file on disk that the application reads/writes directly.\\n\\n### 3. **Schema Flexibility**\\n- **MongoDB**: **Dynamic schema** — documents in the same collection can have different fields and structures.\\n- **SQLite**: **Fixed schema** — you must define table structures (columns, types) upfront.\\n\\n### 4. **Scalability**\\n- **MongoDB**: Designed for **horizontal scaling** (sharding across multiple servers), replication, and handling massive datasets.\\n- **SQLite**: Limited to a **single machine/file**; not designed for heavy concurrent writes or distributed environments.\\n\\n### 5. **Query Language**\\n- **MongoDB**: Uses its own **MongoDB Query Language (MQL)**, based on JSON/BSON documents.\\n- **SQLite**: Uses standard **SQL** (Structured Query Language).\\n\\n### 6. **Concurrency**\\n- **MongoDB**: Supports **high concurrency** with document-level locking.\\n- **SQLite**: Uses **file-level locking** — writes block other writers and sometimes readers, making it less suited for high-concurrency write scenarios.\\n\\n### 7. **Use Cases**\\n| MongoDB | SQLite |\\n|---|---|\\n| Large-scale web applications | Mobile applications (e.g., iOS/Android) |\\n| Real-time analytics | Embedded systems |\\n| Content management systems | Browser local storage |\\n| IoT data streams | Small websites / prototyping |\\n| Flexible, evolving data models | Simple, structured data |\\n\\n### 8. **Size & Resource Usage**\\n- **MongoDB**: Relatively **heavy** — requires significant memory and disk space; multiple processes.\\n- **SQLite**: Extremely **lightweight** — the entire database is a single file, often under a few MB for the engine itself.\\n\\n### 9. **Data Relationships**\\n- **MongoDB**: Relationships are handled through **embedding** documents or using **references** (no native SQL JOINs, though `$lookup` provides limited join functionality).\\n- **SQLite**: Full support for **JOINs, foreign keys**, and complex relational queries.\\n\\n### 10. **Transactions**\\n- Both support **ACID transactions**, but MongoDB added multi-document transactions only in version 4.0+ (2018), while SQLite has supported them from the start.\\n\\n---\\n\\n### Summary Table\\n\\n| Feature | MongoDB | SQLite |\\n|---|---|---|\\n| Type | NoSQL (Document) | SQL (Relational) |\\n| Server | Required | Not required (embedded) |\\n| Schema | Dynamic | Static/Fixed |\\n| Scalability | Horizontal (sharding) | Single file |\\n| Storage Format | BSON/JSON documents | Tables (rows & columns) |\\n| Best For | Large, flexible, distributed apps | Lightweight, local, embedded apps |\\n| Resource Usage | Heavy | Very lightweight |\\n\\n**In short**: Choose **MongoDB** when you need scalability, flexibility, and distributed data handling. Choose **SQLite** when you need a simple, lightweight, zero-configuration database for local or single-file storage.\",\n    \"trace_id\": \"trace_394c5f41abc54e8cb1ed72a0fcaf4118\"\n  }\n}"
+        },
+        {
+          "name": "Test AI Ask With Another Prompt",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"message\": \"What is the difference between MongoDB and SQLite?\",\r\n  \"prompt_version\": \"v2\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/ai/ask",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "ai",
+                "ask"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "date",
+              "value": "Wed, 16 Sep 2026 11:37:12 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "3092"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"success\": true,\n  \"status_code\": 200,\n  \"data\": {\n    \"trace_id\": \"trace_3158fa20e522467db2b1901584b55009\",\n    \"response\": \"## MongoDB vs SQLite: Key Differences\\n\\n| Feature | **MongoDB** | **SQLite** |\\n|---|---|---|\\n| **Type** | NoSQL, document-oriented database | Relational database (SQL-based) |\\n| **Architecture** | Client-server (separate server process) | Embedded (runs within the application; no separate server) |\\n| **Data Model** | Flexible JSON-like documents (BSON) | Fixed-schema tables with rows and columns |\\n| **Schema** | Dynamic / schema-less — documents in the same collection can have different fields | Rigid — schema must be defined upfront with strict table structures |\\n| **Query Language** | MongoDB Query Language (MQL) — method-based API | Standard SQL |\\n| **Scalability** | Horizontally scalable (sharding, replica sets) | Single-file; not designed for horizontal scaling |\\n| **Concurrency** | Handles many concurrent readers/writers efficiently | Limited write concurrency (file-level locking; one writer at a time) |\\n| **Deployment** | Requires installing and running a MongoDB server | Zero configuration — just a single file; included as a library |\\n| **Footprint** | Heavy (server process, significant memory/disk) | Extremely lightweight (library is ~1 MB) |\\n| **Typical Use Cases** | Large-scale web apps, real-time analytics, IoT, content platforms | Mobile apps, embedded systems, local caching, small tools, prototypes |\\n| **Data Size** | Designed for very large datasets across distributed systems | Handles up to ~140 TB per file, but best suited for smaller datasets |\\n| **Transactions** | Supports multi-document ACID transactions (since v4.0+) | Full ACID compliance with built-in transactional support |\\n| **Storage** | Data stored as documents with nested structures | Data stored in a single file on disk in a structured binary format |\\n\\n---\\n\\n### When to Use MongoDB\\n- Your data is unstructured or semi-structured (e.g., user profiles with varying attributes)\\n- You need horizontal scaling or high availability (replica sets, sharding)\\n- You're building a large-scale, distributed application with many concurrent users\\n- Your schema evolves frequently\\n\\n### When to Use SQLite\\n- You need a lightweight, zero-configuration database (e.g., mobile or desktop apps)\\n- Your data is structured and fits well into tables\\n- You want to avoid setting up a separate database server\\n- Your application is small-scale or you're prototyping quickly\\n- You need full SQL support and strong ACID guarantees with minimal overhead\\n\\n---\\n\\n### Summary\\n**MongoDB** is a powerful, flexible, server-based NoSQL database built for scale and evolving data structures. **SQLite** is a minimal, serverless, file-based relational database ideal for simplicity and embedded use. They solve fundamentally different problems — MongoDB trades simplicity for flexibility and scalability, while SQLite trades features for portability and ease of use.\",\n    \"usage\": {\n      \"prompt_tokens\": 29,\n      \"completion_tokens\": 1027,\n      \"total_tokens\": 1056\n    },\n    \"estimated_cost\": 0.001555\n  }\n}"
+        }
+      ]
+    },
+    {
+      "name": "Empty Prompt Validation",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"message\": \"\",\r\n  \"prompt_version\": \"v1\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/ai/ask",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "ai",
+            "ask"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Empty Prompt Validation",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"message\": \"\",\r\n  \"prompt_version\": \"v1\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/ai/ask",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "ai",
+                "ask"
+              ]
+            }
+          },
+          "status": "Unprocessable Entity",
+          "code": 422,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "date",
+              "value": "Wed, 16 Sep 2026 11:15:14 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "147"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            },
+            {
+              "key": "x-trace-id",
+              "value": "trace_04cd038775214c8191143fd6ce8b5106"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"detail\": [\n    {\n      \"type\": \"string_too_short\",\n      \"loc\": [\n        \"body\",\n        \"message\"\n      ],\n      \"msg\": \"String should have at least 1 character\",\n      \"input\": \"\",\n      \"ctx\": {\n        \"min_length\": 1\n      }\n    }\n  ]\n}"
+        }
+      ]
+    },
+    {
+      "name": "with long prompt",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"message\": \"Explain artificial intelligence, machine learning, deep learning, neural networks, natural language processing, computer vision, reinforcement learning, and generative AI with examples.\",\r\n  \"prompt_version\": \"v1\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/ai/ask",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "ai",
+            "ask"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "with long prompt",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"message\": \"Explain artificial intelligence, machine learning, deep learning, neural networks, natural language processing, computer vision, reinforcement learning, and generative AI with examples.\",\r\n  \"prompt_version\": \"v1\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/ai/ask",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "ai",
+                "ask"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "date",
+              "value": "Wed, 16 Sep 2026 11:34:12 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "10505"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"success\": true,\n  \"status_code\": 200,\n  \"data\": {\n    \"trace_id\": \"trace_cd484ea7a0854a0693ddfd2ae008aa76\",\n    \"response\": \"# Artificial Intelligence and Its Key Concepts Explained\\n\\n---\\n\\n## 1. Artificial Intelligence (AI)\\n\\n**Definition:** Artificial Intelligence is the broadest concept — the simulation of human intelligence processes (reasoning, learning, problem-solving, perception) by computer systems. AI encompasses everything from simple rule-based systems to advanced learning algorithms.\\n\\n**Types:**\\n- **Narrow AI (Weak AI):** Designed for a specific task (e.g., voice assistants).\\n- **General AI (Strong AI):** Hypothetical AI with human-level understanding across all domains (not yet realized).\\n\\n**Examples:**\\n- **Siri / Alexa** — Virtual assistants that answer questions and perform tasks.\\n- **Google Search** — Ranking and retrieving relevant results from billions of pages.\\n- **Self-driving cars** (Tesla Autopilot) — Making real-time driving decisions.\\n- **Recommendation engines** — Netflix suggesting movies based on your viewing history.\\n\\n---\\n\\n## 2. Machine Learning (ML)\\n\\n**Definition:** Machine Learning is a **subset of AI** that enables systems to **learn patterns from data** and improve their performance over time **without being explicitly programmed**. Instead of writing rules manually, you feed data to an algorithm, and it discovers the rules itself.\\n\\n**Types:**\\n- **Supervised Learning:** Learns from labeled data (input → correct output).\\n- **Unsupervised Learning:** Finds hidden patterns in unlabeled data.\\n- **Semi-supervised / Self-supervised:** Mix of both.\\n\\n**Examples:**\\n- **Email spam filters** — Learning to classify emails as spam or not spam based on thousands of labeled examples.\\n- **Credit card fraud detection** — Identifying unusual transaction patterns that deviate from a user's normal behavior.\\n- **Predictive maintenance** — Predicting when a machine part will fail based on sensor data.\\n- **K-Nearest Neighbors (KNN)** classifying a new flower species based on similarity to known flowers.\\n\\n---\\n\\n## 3. Neural Networks\\n\\n**Definition:** Neural Networks are **computational models inspired by the human brain**, consisting of interconnected nodes (neurons) organized in layers. They form the **structural foundation** of deep learning.\\n\\n**Structure:**\\n- **Input Layer:** Receives raw data.\\n- **Hidden Layer(s):** Processes and transforms data through weighted connections and activation functions.\\n- **Output Layer:** Produces the final result.\\n\\nEach connection has a **weight** that adjusts during training (via backpropagation), allowing the network to learn.\\n\\n**Examples:**\\n- **A simple feedforward neural network** predicting house prices based on features like square footage, number of bedrooms, and location.\\n- **A single-layer perceptron** acting as a basic logic gate (e.g., learning AND/OR operations).\\n- **Radial Basis Function (RBF) networks** used in function approximation.\\n\\n> Neural networks are the **building blocks**; when you stack many hidden layers, you get deep learning.\\n\\n---\\n\\n## 4. Deep Learning (DL)\\n\\n**Definition:** Deep Learning is a **subset of Machine Learning** that uses **neural networks with many hidden layers** (hence \\\"deep\\\"). These deep architectures can automatically learn hierarchical, abstract features from raw data — eliminating much of the manual feature engineering required in traditional ML.\\n\\n**Why \\\"Deep\\\"?**\\n- More layers → ability to learn complex, hierarchical representations.\\n  - Layer 1 might detect edges in an image.\\n  - Layer 2 detects shapes.\\n  - Layer 3 detects objects.\\n\\n**Examples:**\\n- **Convolutional Neural Networks (CNNs):** Used in image classification — e.g., diagnosing diseases from X-ray images (detecting pneumonia from chest X-rays with >90% accuracy).\\n- **Recurrent Neural Networks (RNNs) / LSTMs:** Used in speech recognition — transcribing spoken words into text (e.g., Google Voice Typing).\\n- **Transformer models:** The architecture behind GPT and BERT, enabling sophisticated language understanding and generation.\\n- **AlphaGo** (DeepMind) — Defeated the world champion in Go using deep reinforcement learning.\\n\\n---\\n\\n## 5. Natural Language Processing (NLP)\\n\\n**Definition:** NLP is a **field at the intersection of AI and linguistics** that enables computers to **understand, interpret, and generate human language** (text and speech). It bridges the gap between human communication and machine comprehension.\\n\\n**Key Tasks:**\\n- Text classification, sentiment analysis, machine translation, summarization, question answering, text generation, named entity recognition.\\n\\n**Examples:**\\n- **ChatGPT (OpenAI)** — A conversational AI that understands and generates human-like text in multiple languages.\\n- **Google Translate** — Translating text from one language to another (now powered by neural machine translation).\\n- **Sentiment analysis tools** — Companies analyzing thousands of product reviews to determine if customers feel positively or negatively.\\n- **Grammar checkers** (Grammarly) — Detecting and correcting grammatical errors in real-time.\\n- **Voice assistants** (Siri, Alexa) — Converting speech to text, understanding intent, and responding.\\n- **Legal document summarization** — AI tools that condense lengthy contracts into key points.\\n\\n---\\n\\n## 6. Computer Vision (CV)\\n\\n**Definition:** Computer Vision is a **field of AI** that enables machines to **interpret and make decisions based on visual data** (images, videos, 3D models). It mimics human sight — allowing computers to \\\"see\\\" and understand the visual world.\\n\\n**Key Tasks:**\\n- Image classification, object detection, segmentation, facial recognition, pose estimation, image generation.\\n\\n**Examples:**\\n- **Facial recognition** (Apple Face ID, airport security systems) — Identifying or verifying a person's identity from their face.\\n- **Medical imaging** — AI detecting tumors in MRI scans or identifying fractures in X-rays (e.g., Google DeepMind's eye disease detection).\\n- **Autonomous vehicles** (Tesla, Waymo) — Detecting pedestrians, traffic signs, lane markings, and other vehicles in real time.\\n- **Retail analytics** — Amazon Go stores use computer vision to track what items customers pick up and automatically charge them.\\n- **Agriculture** — Drones with CV analyzing crop health and detecting pest infestations.\\n- **Augmented Reality (AR)** — Snapchat filters that overlay effects on your face in real time.\\n\\n---\\n\\n## 7. Reinforcement Learning (RL)\\n\\n**Definition:** Reinforcement Learning is a **paradigm of machine learning** where an **agent learns to make decisions by interacting with an environment**. The agent takes actions, receives **rewards or penalties**, and learns a strategy (policy) to maximize cumulative rewards over time. It's learning through trial and error — like training a dog with treats.\\n\\n**Key Components:**\\n- **Agent:** The learner/decision-maker.\\n- **Environment:** What the agent interacts with.\\n- **State:** The current situation.\\n- **Action:** What the agent can do.\\n- **Reward:** Feedback signal (positive or negative).\\n- **Policy:** The strategy the agent learns.\\n\\n**Examples:**\\n- **AlphaGo / AlphaZero** (DeepMind) — Learned to play Go and Chess at a superhuman level by playing millions of games against itself.\\n- **Robotics** — Teaching a robotic arm to pick up and stack objects through trial and error.\\n- **Game AI** — Training NPCs in video games to adapt to player behavior.\\n- **Autonomous driving** — An RL agent learning to navigate traffic safely by maximizing a \\\"safety and efficiency\\\" reward.\\n- **Resource management** — Google using RL to reduce energy consumption in data centers by 40% (DeepMind).\\n- **RLHF (Reinforcement Learning from Human Feedback)** — Used to fine-tune ChatGPT: human raters rank AI outputs, and the model learns to generate more helpful, harmless responses.\\n\\n---\\n\\n## 8. Generative AI (GenAI)\\n\\n**Definition:** Generative AI refers to AI systems that can **create new content** — text, images, audio, video, code, 3D models — that didn't exist before. Most generative AI is powered by **deep learning architectures** (particularly transformers, GANs, diffusion models, and VAEs).\\n\\n**Key Architectures:**\\n- **Transformers** → Text generation (GPT, Claude)\\n- **Generative Adversarial Networks (GANs)** → Image generation\\n- **Diffusion Models** → High-quality image/video generation (Stable Diffusion, DALL-E)\\n- **Variational Autoencoders (VAEs)** → Data generation and representation learning\\n\\n**Examples:**\\n- **ChatGPT / Claude / Gemini** — Generating human-like text: essays, code, emails, poems.\\n- **DALL-E / Midjourney / Stable Diffusion** — Creating photorealistic images from text prompts (e.g., \\\"a cat wearing a space suit on Mars\\\").\\n- **Suno / Udio** — Generating music and songs from text descriptions.\\n- **Sora (OpenAI)** — Generating realistic video clips from text prompts.\\n- **GitHub Copilot** — Generating code suggestions as developers type.\\n- **Synthetic data generation** — Creating artificial datasets to train other AI models when real data is scarce.\\n- **Deepfakes** — Generating fake (but realistic) videos of real people, raising ethical concerns.\\n- **Drug discovery** — Generating new molecular structures for potential pharmaceuticals (e.g., Insilico Medicine).\\n\\n---\\n\\n## How They All Relate: The Hierarchy\\n\\n```\\nArtificial Intelligence (AI) — The broadest field\\n├── Machine Learning (ML) — Learning from data\\n│   ├── Neural Networks — Brain-inspired computation\\n│   │   └── Deep Learning — Many-layered neural networks\\n│   ├── Reinforcement Learning — Learning via rewards\\n│   └── Other ML methods (决策 trees, SVMs, etc.)\\n├── Natural Language Processing (NLP) — Understanding language\\n├── Computer Vision (CV) — Understanding visual data\\n└── Generative AI — Creating new content (uses DL, transformers, GANs, etc.)\\n```\\n\\n**In one sentence:** AI is the goal, ML is the method, neural networks are the structure, deep learning is the depth, NLP and Computer Vision are application domains, Reinforcement Learning is a learning paradigm, and Generative AI is the creative frontier.\",\n    \"usage\": {\n      \"prompt_tokens\": 49,\n      \"completion_tokens\": 2711,\n      \"total_tokens\": 2760\n    },\n    \"estimated_cost\": 0.004091\n  }\n}"
+        }
+      ]
+    },
+    {
+      "name": "Get Trace Details",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://127.0.0.1:8000/observability/traces/trace_9ae51ab3f0034513bbcf7d70484cdaab",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "observability",
+            "traces",
+            "trace_9ae51ab3f0034513bbcf7d70484cdaab"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Get Trace Details",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://127.0.0.1:8000/observability/traces/trace_9ae51ab3f0034513bbcf7d70484cdaab",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "observability",
+                "traces",
+                "trace_9ae51ab3f0034513bbcf7d70484cdaab"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "date",
+              "value": "Wed, 16 Sep 2026 11:41:01 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "454"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"success\": true,\n  \"status_code\": 200,\n  \"data\": {\n    \"trace_id\": \"trace_9ae51ab3f0034513bbcf7d70484cdaab\",\n    \"prompt_version\": \"v1\",\n    \"message\": \"Explain what FastAPI is in simple words.\",\n    \"status\": \"success\",\n    \"started_at\": \"2026-09-16T11:36:56.217000\",\n    \"model\": \"inclusionai/ling-3.0-flash-vl:free\",\n    \"usage\": {\n      \"prompt_tokens\": 29,\n      \"completion_tokens\": 368,\n      \"total_tokens\": 397\n    },\n    \"estimated_cost\": 0.0005665,\n    \"duration_ms\": 3484.34,\n    \"error\": null,\n    \"completed_at\": \"2026-09-16T11:36:59.702000\"\n  }\n}"
+        }
+      ]
+    },
+    {
+      "name": "Test Invalid Trace ID",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://127.0.0.1:8000/observability/traces/trace_9ae5ab3f0034513bbcf7d70484cdaab",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "observability",
+            "traces",
+            "trace_9ae5ab3f0034513bbcf7d70484cdaab"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Test Invalid Trace ID",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://127.0.0.1:8000/observability/traces/trace_9ae5ab3f0034513bbcf7d70484cdaab",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "observability",
+                "traces",
+                "trace_9ae5ab3f0034513bbcf7d70484cdaab"
+              ]
+            }
+          },
+          "status": "Not Found",
+          "code": 404,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "date",
+              "value": "Wed, 16 Sep 2026 11:44:47 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "105"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"detail\": {\n    \"success\": false,\n    \"status_code\": 404,\n    \"error\": \"TRACE_NOT_FOUND\",\n    \"message\": \"Trace was not found.\"\n  }\n}"
+        }
+      ]
+    },
+    {
+      "name": "Get Slow Traces",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://127.0.0.1:8000/observability/traces/slow",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "observability",
+            "traces",
+            "slow"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Get Slow Traces",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://127.0.0.1:8000/observability/traces/slow",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "observability",
+                "traces",
+                "slow"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "date",
+              "value": "Wed, 16 Sep 2026 11:51:58 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "1483"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"success\": true,\n  \"status_code\": 200,\n  \"data\": {\n    \"threshold_ms\": 1000,\n    \"count\": 3,\n    \"traces\": [\n      {\n        \"trace_id\": \"trace_cd484ea7a0854a0693ddfd2ae008aa76\",\n        \"prompt_version\": \"v1\",\n        \"message\": \"Explain artificial intelligence, machine learning, deep learning, neural networks, natural language processing, computer vision, reinforcement learning, and generative AI with examples.\",\n        \"status\": \"success\",\n        \"started_at\": \"2026-09-16T11:34:13.723000\",\n        \"model\": \"inclusionai/ling-3.0-flash-vl:free\",\n        \"usage\": {\n          \"prompt_tokens\": 49,\n          \"completion_tokens\": 2711,\n          \"total_tokens\": 2760\n        },\n        \"estimated_cost\": 0.004091,\n        \"duration_ms\": 28332.65,\n        \"error\": null,\n        \"completed_at\": \"2026-09-16T11:34:42.055000\"\n      },\n      {\n        \"trace_id\": \"trace_3158fa20e522467db2b1901584b55009\",\n        \"prompt_version\": \"v2\",\n        \"message\": \"What is the difference between MongoDB and SQLite?\",\n        \"status\": \"success\",\n        \"started_at\": \"2026-09-16T11:37:13.420000\",\n        \"model\": \"inclusionai/ling-3.0-flash-vl:free\",\n        \"usage\": {\n          \"prompt_tokens\": 29,\n          \"completion_tokens\": 1027,\n          \"total_tokens\": 1056\n        },\n        \"estimated_cost\": 0.001555,\n        \"duration_ms\": 8991.27,\n        \"error\": null,\n        \"completed_at\": \"2026-09-16T11:37:22.414000\"\n      },\n      {\n        \"trace_id\": \"trace_9ae51ab3f0034513bbcf7d70484cdaab\",\n        \"prompt_version\": \"v1\",\n        \"message\": \"Explain what FastAPI is in simple words.\",\n        \"status\": \"success\",\n        \"started_at\": \"2026-09-16T11:36:56.217000\",\n        \"model\": \"inclusionai/ling-3.0-flash-vl:free\",\n        \"usage\": {\n          \"prompt_tokens\": 29,\n          \"completion_tokens\": 368,\n          \"total_tokens\": 397\n        },\n        \"estimated_cost\": 0.0005665,\n        \"duration_ms\": 3484.34,\n        \"error\": null,\n        \"completed_at\": \"2026-09-16T11:36:59.702000\"\n      }\n    ]\n  }\n}"
+        }
+      ]
+    },
+    {
+      "name": "for failures",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://127.0.0.1:8000/observability/traces/failures",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "observability",
+            "traces",
+            "failures"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "for failures",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://127.0.0.1:8000/observability/traces/failures",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "observability",
+                "traces",
+                "failures"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "date",
+              "value": "Wed, 16 Sep 2026 11:53:45 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "2071"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"success\": true,\n  \"status_code\": 200,\n  \"data\": {\n    \"count\": 4,\n    \"traces\": [\n      {\n        \"trace_id\": \"trace_cef08bd6e8df41fb98c11828b6f31652\",\n        \"request_type\": \"ai_ask\",\n        \"model\": \"openai/gpt-oss-20b:free\",\n        \"prompt_version\": \"assistant_v1\",\n        \"status\": \"failed\",\n        \"status_code\": 502,\n        \"start_time\": \"2026-09-16T09:59:05.020000\",\n        \"end_time\": \"2026-09-16T09:59:05.566000\",\n        \"total_duration_ms\": 549.49,\n        \"prompt_tokens\": null,\n        \"completion_tokens\": null,\n        \"total_tokens\": null,\n        \"estimated_cost_usd\": null,\n        \"error_category\": \"MODEL_UNAVAILABLE\",\n        \"prompt_length\": 40,\n        \"response_length\": null,\n        \"created_at\": \"2026-09-16T09:59:05.566000\"\n      },\n      {\n        \"trace_id\": \"trace_7985dd4663e94b3cbd42827b94cb060f\",\n        \"request_type\": \"ai_ask\",\n        \"model\": \"openai/gpt-oss-20b/free\",\n        \"prompt_version\": \"assistant_v1\",\n        \"status\": \"failed\",\n        \"status_code\": 502,\n        \"start_time\": \"2026-09-16T10:04:30.836000\",\n        \"end_time\": \"2026-09-16T10:04:31.385000\",\n        \"total_duration_ms\": 545.05,\n        \"prompt_tokens\": null,\n        \"completion_tokens\": null,\n        \"total_tokens\": null,\n        \"estimated_cost_usd\": null,\n        \"error_category\": \"MODEL_UNAVAILABLE\",\n        \"prompt_length\": 40,\n        \"response_length\": null,\n        \"created_at\": \"2026-09-16T10:04:31.385000\"\n      },\n      {\n        \"trace_id\": \"trace_eed3c2f0aef944f1b9821a07e8979630\",\n        \"request_type\": \"ai_ask\",\n        \"model\": \"openai/gpt-oss-20b/free\",\n        \"prompt_version\": \"assistant_v1\",\n        \"status\": \"failed\",\n        \"status_code\": 502,\n        \"start_time\": \"2026-09-16T10:07:31.509000\",\n        \"end_time\": \"2026-09-16T10:07:31.922000\",\n        \"total_duration_ms\": 414.4,\n        \"prompt_tokens\": null,\n        \"completion_tokens\": null,\n        \"total_tokens\": null,\n        \"estimated_cost_usd\": null,\n        \"error_category\": \"MODEL_UNAVAILABLE\",\n        \"prompt_length\": 40,\n        \"response_length\": null,\n        \"created_at\": \"2026-09-16T10:07:31.922000\"\n      },\n      {\n        \"trace_id\": \"trace_d32b5585beea4888af59079700692433\",\n        \"request_type\": \"ai_ask\",\n        \"model\": \"openai/gpt-oss-20b:free\",\n        \"prompt_version\": \"assistant_v1\",\n        \"status\": \"failed\",\n        \"status_code\": 502,\n        \"start_time\": \"2026-09-16T10:16:14.590000\",\n        \"end_time\": \"2026-09-16T10:16:15.051000\",\n        \"total_duration_ms\": 460.64,\n        \"prompt_tokens\": null,\n        \"completion_tokens\": null,\n        \"total_tokens\": null,\n        \"estimated_cost_usd\": null,\n        \"error_category\": \"MODEL_UNAVAILABLE\",\n        \"prompt_length\": 40,\n        \"response_length\": null,\n        \"created_at\": \"2026-09-16T10:16:15.051000\"\n      }\n    ]\n  }\n}"
+        }
+      ]
+    }
+  ]
+}

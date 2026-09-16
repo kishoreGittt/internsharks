@@ -1,30 +1,149 @@
-import os
-from dataclasses import dataclass
+from pathlib import Path
+from typing import Optional
+
 from dotenv import load_dotenv
+from pydantic_settings import BaseSettings, SettingsConfigDict
 
-load_dotenv()
 
-@dataclass(frozen=True)
-class Settings:
-    app_name: str = os.getenv("APP_NAME", "Task 23 - LLM Evaluation")
-    database_path: str = os.getenv("DATABASE_PATH", "data/evaluations.db")
-    dataset_dir: str = os.getenv("DATASET_DIR", "app/datasets")
-    openrouter_api_key: str | None = os.getenv("OPENROUTER_API_KEY")
-    openrouter_model: str = os.getenv("OPENROUTER_MODEL", "openai/gpt-oss-20b:free")
-    judge_enabled: bool = os.getenv("JUDGE_ENABLED", "false").lower() == "true"
-    judge_model: str = os.getenv("JUDGE_MODEL", "openai/gpt-oss-20b:free")
-    request_timeout_seconds: float = float(os.getenv("REQUEST_TIMEOUT_SECONDS", "45"))
-    min_relevance_score: float = float(os.getenv("MIN_RELEVANCE_SCORE", "0.8"))
-    min_groundedness_score: float = float(os.getenv("MIN_GROUNDEDNESS_SCORE", "0.9"))
-    min_correctness_score: float = float(os.getenv("MIN_CORRECTNESS_SCORE", "0.8"))
+# =========================================================
+# Project paths
+# =========================================================
 
-settings = Settings()
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+ENV_FILE = BASE_DIR / ".env"
+
+load_dotenv(ENV_FILE)
+
+
+# =========================================================
+# Model pricing
+# =========================================================
 
 MODEL_PRICING = {
-    # Add real provider pricing here when available.
-    # Values are USD per one million tokens.
     "openai/gpt-oss-20b:free": {
-        "input_cost_per_million_tokens": 0.0,
-        "output_cost_per_million_tokens": 0.0,
-    }
+        "input_per_token": 0.0,
+        "output_per_token": 0.0,
+    },
+    "local-mock": {
+        "input_per_token": 0.0,
+        "output_per_token": 0.0,
+    },
 }
+
+
+# =========================================================
+# Application settings
+# =========================================================
+
+class Settings(BaseSettings):
+    """
+    Central configuration for Task23.
+    """
+
+    # -----------------------------------------------------
+    # Application
+    # -----------------------------------------------------
+
+    app_name: str = "Task23 Evaluation API"
+
+    app_version: str = "1.0.0"
+
+    debug: bool = True
+
+    # -----------------------------------------------------
+    # MongoDB
+    # -----------------------------------------------------
+
+    mongodb_url: str = "mongodb+srv://kishorerajavel003_db_user:0kBzppKAJiTBcJMu@cluster0.wnmsgxj.mongodb.net/?appName=Cluster0"
+
+    mongodb_database: str = "task23_evaluations"
+
+    mongodb_collection: str = "evaluation_runs"
+
+    # -----------------------------------------------------
+    # OpenRouter
+    # -----------------------------------------------------
+
+    openrouter_api_key: Optional[str] = None
+
+    openrouter_base_url: str = (
+        "https://openrouter.ai/api/v1"
+    )
+
+    openrouter_model: str = (
+        "openai/gpt-oss-20b:free"
+    )
+
+    # -----------------------------------------------------
+    # Judge
+    # -----------------------------------------------------
+
+    judge_enabled: bool = False
+
+    judge_model: str = (
+        "openai/gpt-oss-20b:free"
+    )
+
+    # -----------------------------------------------------
+    # Prompt
+    # -----------------------------------------------------
+
+    default_prompt_version: str = "v1"
+
+    # -----------------------------------------------------
+    # Dataset directories
+    # -----------------------------------------------------
+
+    datasets_dir: str = str(
+        BASE_DIR / "app" / "datasets"
+    )
+
+    prompts_dir: str = str(
+        BASE_DIR / "app" / "prompts"
+    )
+
+    # -----------------------------------------------------
+    # Backward-compatible dataset directory
+    # -----------------------------------------------------
+
+    @property
+    def dataset_dir(self) -> str:
+        """
+        Backward-compatible alias.
+
+        Some Task23 files use:
+            settings.dataset_dir
+
+        Other files use:
+            settings.datasets_dir
+        """
+
+        return self.datasets_dir
+
+    # -----------------------------------------------------
+    # Evaluation thresholds
+    # -----------------------------------------------------
+
+    relevance_threshold: float = 0.5
+
+    groundedness_threshold: float = 0.5
+
+    correctness_threshold: float = 0.5
+
+    # -----------------------------------------------------
+    # Pydantic configuration
+    # -----------------------------------------------------
+
+    model_config = SettingsConfigDict(
+        env_file=str(ENV_FILE),
+        env_file_encoding="utf-8",
+        extra="ignore",
+    )
+
+
+# =========================================================
+# Global settings instance
+# =========================================================
+
+settings = Settings()
