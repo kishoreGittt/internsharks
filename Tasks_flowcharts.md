@@ -549,3 +549,220 @@ Does AI Need a Tool?
              AI Assistant
                    ↓
            Final Response
+
+
+Task 20 — Goal-Based AI Agent
+
+USER
+  ↓
+Enter Goal
+  ↓
+AI Agent
+  ↓
+Create Plan
+  ↓
+Select Tool
+  ↓
+Validate Tool Arguments
+  ↓
+Execute Tool
+  ↓
+Backend
+  ↓
+Tool Result
+  ↓
+More Steps Required?
+  ↓
+YES ───────────────┐
+  ↓                │
+Create Next Plan ←─┘
+  ↓
+NO
+  ↓
+Final Answer
+  ↓
+USER
+
+
+Task 21 — Stateful AI Agent with Human Approval
+
+USER
+  ↓
+Submit Goal
+  ↓
+Create Agent Run
+  ↓
+Save Run State
+  ↓
+AI Agent Creates Plan
+  ↓
+Action Requires Approval?
+  ↓
+YES
+  ↓
+Create Approval Request
+  ↓
+Save Pending Approval
+  ↓
+Human Reviews Action
+  ↓
+Approved?
+  ↓
+YES ───────────────┐
+  ↓                │
+Execute Action     │
+  ↓                │
+Backend            │
+  ↓                │
+Action Result      │
+  ↓                │
+More Actions?     │
+  ↓                │
+YES ───────────────┘
+  ↓
+Create Next Plan
+  ↓
+NO
+  ↓
+Run Completed
+  ↓
+Final Response
+
+
+Task 22 — Resilient AI Agent
+
+USER
+  ↓
+Send Request
+  ↓
+Create Request ID
+  ↓
+Check Idempotency Key
+  ↓
+Request Already Completed?
+  ↓
+YES
+  ↓
+Return Stored Result
+
+USER
+  ↓
+Send Request
+  ↓
+Start Agent Execution
+  ↓
+Call LLM / Tool
+  ↓
+Response Received?
+  ↓
+NO
+  ↓
+Classify Failure
+  ↓
+Retryable Failure?
+  ↓
+YES
+  ↓
+Wait Using Backoff
+  ↓
+Retry Limit Reached?
+  ↓
+NO
+  ↓
+Call LLM / Tool Again
+  ↓
+Response Received
+  ↓
+Validate Response
+  ↓
+Valid Response?
+  ↓
+YES
+  ↓
+Save Success
+  ↓
+Return Response
+
+Task 23 — LLM Evaluation & Prompt Regression Testing
+
+
+USER / TEST RUNNER
+  ↓
+Load Evaluation Dataset
+  ↓
+Load Prompt Version
+  ↓
+Load LLM Model
+  ↓
+Run Test Case
+  ↓
+Generate Model Response
+  ↓
+Evaluate Response
+  ↓
+Calculate Metrics
+  ↓
+Store Test Result
+  ↓
+More Test Cases?
+  ↓
+YES ───────────────┐
+  ↓                │
+Run Next Test Case ←┘
+  ↓
+NO
+  ↓
+Calculate Overall Score
+  ↓
+Compare With Baseline
+  ↓
+Regression Detected?
+  ↓
+YES
+  ↓
+Evaluation Failed
+  ↓
+Evaluation Report
+
+
+Task 24 — AI Observability
+
+USER
+  ↓
+Send AI Request
+  ↓
+Create Trace
+  ↓
+Create Root Span
+  ↓
+Record Request Metadata
+  ↓
+Call LLM
+  ↓
+Record Model Span
+  ↓
+Record Token Usage
+  ↓
+Record Latency
+  ↓
+Tool Call Required?
+  ↓
+YES
+  ↓
+Create Tool Span
+  ↓
+Execute Tool
+  ↓
+Record Tool Result / Error
+  ↓
+Continue Agent Execution
+  ↓
+Generate Final Response
+  ↓
+Close Spans
+  ↓
+Close Trace
+  ↓
+Store Observability Data
+  ↓
+Final Response

@@ -163,12 +163,54 @@ Task 18 -- AI Tool Calling
 5.  Validated tool arguments before execution.
 6.  Sent tool results back to the AI for the final response.
 
-Task 19 — AI Employee Assistant with Multi-Tool Calling
 
-1.Understand normal human language.
-2.Find the correct backend tool.
-3.Call multiple tools when necessary.
-4.Use the result of one tool to decide what to do next.
-5.Remember previous messages using session_id.
-6.Perform actions such as applying leave.
-7.Let the backend, not the AI, control business rules.
+Task 19 – AI Tool Calling
+
+1. AI Assistant understands the user’s request and selects the required backend tool.
+2. It calls tools such as get_leave_balance, apply_leave, and get_leave_requests.
+3. The backend processes the tool request and returns the result.
+4. The AI checks conditions, such as whether the user has enough leave balance.
+5. The AI combines the results and sends a final response to the user.
+
+Task 20 – Goal-Based AI Agent
+
+1. The user provides a goal to the AI agent.
+2. The agent creates a step-by-step plan to achieve the goal.
+3. It selects and validates the required tools.
+4. The backend executes the tools and returns the results.
+5. The agent continues the plan until completion and returns the final answer.
+
+
+Task 21 – Stateful AI Agent
+
+1. The system creates an agent run and stores its current state.
+2. The AI creates a plan and identifies the next action.
+3. Actions requiring permission are sent for human approval.
+4. After approval, the backend executes the action and saves the result.
+5. The agent continues from the saved state until the run is completed or rejected.
+
+
+Task 22 – Resilient AI Agent
+
+1. The system creates a request ID and checks the idempotency key.
+2. The agent calls the LLM or backend tool.
+3. Failures are classified as timeout, rate limit, server error, or invalid request.
+4. Retryable failures are handled using backoff, retry limits, and recovery methods.
+5. The system saves the final success or failure and prevents duplicate operations.
+
+
+Task 23 – LLM Evaluation & Prompt Regression Testing
+
+1. The system loads the evaluation dataset, prompt version, and LLM model.
+2. Each test case is executed and the model response is generated.
+3. Responses are evaluated for quality, correctness, relevance, and other metrics.
+4. Test results and overall scores are stored.
+5. New prompt results are compared with the baseline to detect regressions.
+
+Task 24 – AI Observability
+
+1. The system creates a trace and root span for every AI request.
+2. It records request details, model calls, tool calls, and execution steps.
+3. Token usage and response latency are monitored.
+4. Errors, tool failures, and model failures are recorded for analysis.
+5. Trace data is stored to understand performance and improve the AI system.
