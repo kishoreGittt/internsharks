@@ -1,0 +1,405 @@
+{
+  "info": {
+    "_postman_id": "407c2778-f5f7-4be5-9f08-49834bdc2746",
+    "name": "Task23",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "57366509",
+    "_collection_link": "https://go.postman.co/collection/57366509-407c2778-f5f7-4be5-9f08-49834bdc2746?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "full evaluation",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": ""
+        }
+      },
+      "response": [
+        {
+          "name": "full evaluation",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"suite\": \"rag_basic\",\r\n  \"prompt_version\": \"v2\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/eval/run",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "eval",
+                "run"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "date",
+              "value": "Tue, 15 Sep 2026 12:41:51 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "431"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"success\": true,\n  \"status_code\": 200,\n  \"data\": {\n    \"run_id\": \"eval_run_20273aafbd49\",\n    \"model\": \"openai/gpt-oss-20b:free\",\n    \"prompt_version\": \"v2\",\n    \"suite\": \"rag_basic\",\n    \"total_cases\": 15,\n    \"passed\": 0,\n    \"failed\": 15,\n    \"pass_rate\": 0,\n    \"average_latency_ms\": 240.71,\n    \"minimum_latency_ms\": 58.83,\n    \"maximum_latency_ms\": 1366.53,\n    \"p95_latency_ms\": 1033.88,\n    \"total_tokens\": 0,\n    \"estimated_cost_usd\": null,\n    \"average_relevance\": 0,\n    \"average_groundedness\": 0,\n    \"average_correctness\": 0\n  }\n}"
+        }
+      ]
+    },
+    {
+      "name": "v1_prompt",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": ""
+        }
+      },
+      "response": [
+        {
+          "name": "v1_prompt",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"suite\": \"rag_basic\",\r\n  \"prompt_version\": \"v1\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/eval/run",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "eval",
+                "run"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "date",
+              "value": "Wed, 16 Sep 2026 04:34:58 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "429"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"success\": true,\n  \"status_code\": 200,\n  \"data\": {\n    \"run_id\": \"eval_run_32f0989d98cc\",\n    \"model\": \"openai/gpt-oss-20b:free\",\n    \"prompt_version\": \"v1\",\n    \"suite\": \"rag_basic\",\n    \"total_cases\": 15,\n    \"passed\": 0,\n    \"failed\": 15,\n    \"pass_rate\": 0,\n    \"average_latency_ms\": 137.23,\n    \"minimum_latency_ms\": 79.54,\n    \"maximum_latency_ms\": 394.16,\n    \"p95_latency_ms\": 351.16,\n    \"total_tokens\": 0,\n    \"estimated_cost_usd\": null,\n    \"average_relevance\": 0,\n    \"average_groundedness\": 0,\n    \"average_correctness\": 0\n  }\n}"
+        }
+      ]
+    },
+    {
+      "name": "compare v1 and v2",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": ""
+        }
+      },
+      "response": [
+        {
+          "name": "compare v1 and v2",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"suite\": \"rag_basic\",\r\n  \"baseline_prompt\": \"v1\",\r\n  \"candidate_prompt\": \"v2\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/eval/compare",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "eval",
+                "compare"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "date",
+              "value": "Wed, 16 Sep 2026 04:51:54 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "442"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"success\": true,\n  \"status_code\": 200,\n  \"data\": {\n    \"baseline\": {\n      \"prompt_version\": \"v1\",\n      \"pass_rate\": 0,\n      \"passed\": 0,\n      \"failed\": 15\n    },\n    \"candidate\": {\n      \"prompt_version\": \"v2\",\n      \"pass_rate\": 0,\n      \"passed\": 0,\n      \"failed\": 15\n    },\n    \"change\": 0,\n    \"regressions\": [],\n    \"improvements\": [],\n    \"still_passing\": [],\n    \"still_failing\": [\n      \"eval_001\",\n      \"eval_002\",\n      \"eval_003\",\n      \"eval_004\",\n      \"eval_005\",\n      \"eval_006\",\n      \"eval_007\",\n      \"eval_008\",\n      \"eval_009\",\n      \"eval_010\",\n      \"eval_011\",\n      \"eval_012\",\n      \"eval_013\",\n      \"eval_014\",\n      \"eval_015\"\n    ]\n  }\n}"
+        }
+      ]
+    },
+    {
+      "name": "Get complete evaluation report",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://127.0.0.1:8000/eval/runs/eval_run_af304b398d9e",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "eval",
+            "runs",
+            "eval_run_af304b398d9e"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Get complete evaluation report",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://127.0.0.1:8000/eval/runs/eval_run_af304b398d9e",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "eval",
+                "runs",
+                "eval_run_af304b398d9e"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "date",
+              "value": "Wed, 16 Sep 2026 04:58:16 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "6366"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"success\": true,\n  \"status_code\": 200,\n  \"data\": {\n    \"model\": \"openai/gpt-oss-20b:free\",\n    \"prompt_version\": \"v2\",\n    \"suite\": \"rag_basic\",\n    \"total_cases\": 15,\n    \"passed\": 0,\n    \"failed\": 15,\n    \"pass_rate\": 0,\n    \"average_latency_ms\": 120.52,\n    \"minimum_latency_ms\": 51.24,\n    \"maximum_latency_ms\": 552.75,\n    \"p95_latency_ms\": 351.62,\n    \"total_tokens\": 0,\n    \"estimated_cost_usd\": null,\n    \"average_relevance\": 0,\n    \"average_groundedness\": 0,\n    \"average_correctness\": 0,\n    \"cases\": [\n      {\n        \"case_id\": \"eval_001\",\n        \"question\": \"Who manages Project Nova?\",\n        \"actual_answer\": \"\",\n        \"passed\": false,\n        \"scores\": {\n          \"keyword_match\": 0,\n          \"groundedness\": 0,\n          \"relevance\": 0,\n          \"correctness\": 0\n        },\n        \"checks\": {},\n        \"latency_ms\": 552.75,\n        \"prompt_tokens\": null,\n        \"completion_tokens\": null,\n        \"total_tokens\": null,\n        \"estimated_cost_usd\": null,\n        \"error\": \"404 Client Error: Not Found for url: https://openrouter.ai/api/v1/chat/completions\"\n      },\n      {\n        \"case_id\": \"eval_002\",\n        \"question\": \"What database does Project Nova use?\",\n        \"actual_answer\": \"\",\n        \"passed\": false,\n        \"scores\": {\n          \"keyword_match\": 0,\n          \"groundedness\": 0,\n          \"relevance\": 0,\n          \"correctness\": 0\n        },\n        \"checks\": {},\n        \"latency_ms\": 69.28,\n        \"prompt_tokens\": null,\n        \"completion_tokens\": null,\n        \"total_tokens\": null,\n        \"estimated_cost_usd\": null,\n        \"error\": \"404 Client Error: Not Found for url: https://openrouter.ai/api/v1/chat/completions\"\n      },\n      {\n        \"case_id\": \"eval_003\",\n        \"question\": \"Which framework does Project Nova use?\",\n        \"actual_answer\": \"\",\n        \"passed\": false,\n        \"scores\": {\n          \"keyword_match\": 0,\n          \"groundedness\": 0,\n          \"relevance\": 0,\n          \"correctness\": 0\n        },\n        \"checks\": {},\n        \"latency_ms\": 74.38,\n        \"prompt_tokens\": null,\n        \"completion_tokens\": null,\n        \"total_tokens\": null,\n        \"estimated_cost_usd\": null,\n        \"error\": \"404 Client Error: Not Found for url: https://openrouter.ai/api/v1/chat/completions\"\n      },\n      {\n        \"case_id\": \"eval_004\",\n        \"question\": \"Who is the project manager for Nova?\",\n        \"actual_answer\": \"\",\n        \"passed\": false,\n        \"scores\": {\n          \"keyword_match\": 0,\n          \"groundedness\": 0,\n          \"relevance\": 0,\n          \"correctness\": 0\n        },\n        \"checks\": {},\n        \"latency_ms\": 59.17,\n        \"prompt_tokens\": null,\n        \"completion_tokens\": null,\n        \"total_tokens\": null,\n        \"estimated_cost_usd\": null,\n        \"error\": \"404 Client Error: Not Found for url: https://openrouter.ai/api/v1/chat/completions\"\n      },\n      {\n        \"case_id\": \"eval_005\",\n        \"question\": \"What is Arun's salary?\",\n        \"actual_answer\": \"\",\n        \"passed\": false,\n        \"scores\": {\n          \"keyword_match\": 0,\n          \"groundedness\": 0,\n          \"relevance\": 0,\n          \"correctness\": 0\n        },\n        \"checks\": {},\n        \"latency_ms\": 83.8,\n        \"prompt_tokens\": null,\n        \"completion_tokens\": null,\n        \"total_tokens\": null,\n        \"estimated_cost_usd\": null,\n        \"error\": \"404 Client Error: Not Found for url: https://openrouter.ai/api/v1/chat/completions\"\n      },\n      {\n        \"case_id\": \"eval_006\",\n        \"question\": \"Which department does Arun work in?\",\n        \"actual_answer\": \"\",\n        \"passed\": false,\n        \"scores\": {\n          \"keyword_match\": 0,\n          \"groundedness\": 0,\n          \"relevance\": 0,\n          \"correctness\": 0\n        },\n        \"checks\": {},\n        \"latency_ms\": 83.92,\n        \"prompt_tokens\": null,\n        \"completion_tokens\": null,\n        \"total_tokens\": null,\n        \"estimated_cost_usd\": null,\n        \"error\": \"404 Client Error: Not Found for url: https://openrouter.ai/api/v1/chat/completions\"\n      },\n      {\n        \"case_id\": \"eval_007\",\n        \"question\": \"Who manages Project Orion?\",\n        \"actual_answer\": \"\",\n        \"passed\": false,\n        \"scores\": {\n          \"keyword_match\": 0,\n          \"groundedness\": 0,\n          \"relevance\": 0,\n          \"correctness\": 0\n        },\n        \"checks\": {},\n        \"latency_ms\": 65.11,\n        \"prompt_tokens\": null,\n        \"completion_tokens\": null,\n        \"total_tokens\": null,\n        \"estimated_cost_usd\": null,\n        \"error\": \"404 Client Error: Not Found for url: https://openrouter.ai/api/v1/chat/completions\"\n      },\n      {\n        \"case_id\": \"eval_008\",\n        \"question\": \"Which framework does Project Orion use?\",\n        \"actual_answer\": \"\",\n        \"passed\": false,\n        \"scores\": {\n          \"keyword_match\": 0,\n          \"groundedness\": 0,\n          \"relevance\": 0,\n          \"correctness\": 0\n        },\n        \"checks\": {},\n        \"latency_ms\": 87.6,\n        \"prompt_tokens\": null,\n        \"completion_tokens\": null,\n        \"total_tokens\": null,\n        \"estimated_cost_usd\": null,\n        \"error\": \"404 Client Error: Not Found for url: https://openrouter.ai/api/v1/chat/completions\"\n      },\n      {\n        \"case_id\": \"eval_009\",\n        \"question\": \"What technologies are used by Project Nova?\",\n        \"actual_answer\": \"\",\n        \"passed\": false,\n        \"scores\": {\n          \"keyword_match\": 0,\n          \"groundedness\": 0,\n          \"relevance\": 0,\n          \"correctness\": 0\n        },\n        \"checks\": {},\n        \"latency_ms\": 265.42,\n        \"prompt_tokens\": null,\n        \"completion_tokens\": null,\n        \"total_tokens\": null,\n        \"estimated_cost_usd\": null,\n        \"error\": \"404 Client Error: Not Found for url: https://openrouter.ai/api/v1/chat/completions\"\n      },\n      {\n        \"case_id\": \"eval_010\",\n        \"question\": \"Is Project Nova managed by Ravi?\",\n        \"actual_answer\": \"\",\n        \"passed\": false,\n        \"scores\": {\n          \"keyword_match\": 0,\n          \"groundedness\": 0,\n          \"relevance\": 0,\n          \"correctness\": 0\n        },\n        \"checks\": {},\n        \"latency_ms\": 89.58,\n        \"prompt_tokens\": null,\n        \"completion_tokens\": null,\n        \"total_tokens\": null,\n        \"estimated_cost_usd\": null,\n        \"error\": \"404 Client Error: Not Found for url: https://openrouter.ai/api/v1/chat/completions\"\n      },\n      {\n        \"case_id\": \"eval_011\",\n        \"question\": \"What is the name of the project managed by Arun?\",\n        \"actual_answer\": \"\",\n        \"passed\": false,\n        \"scores\": {\n          \"keyword_match\": 0,\n          \"groundedness\": 0,\n          \"relevance\": 0,\n          \"correctness\": 0\n        },\n        \"checks\": {},\n        \"latency_ms\": 93.64,\n        \"prompt_tokens\": null,\n        \"completion_tokens\": null,\n        \"total_tokens\": null,\n        \"estimated_cost_usd\": null,\n        \"error\": \"404 Client Error: Not Found for url: https://openrouter.ai/api/v1/chat/completions\"\n      },\n      {\n        \"case_id\": \"eval_012\",\n        \"question\": \"Does Project Nova use Flask?\",\n        \"actual_answer\": \"\",\n        \"passed\": false,\n        \"scores\": {\n          \"keyword_match\": 0,\n          \"groundedness\": 0,\n          \"relevance\": 0,\n          \"correctness\": 0\n        },\n        \"checks\": {},\n        \"latency_ms\": 98.23,\n        \"prompt_tokens\": null,\n        \"completion_tokens\": null,\n        \"total_tokens\": null,\n        \"estimated_cost_usd\": null,\n        \"error\": \"404 Client Error: Not Found for url: https://openrouter.ai/api/v1/chat/completions\"\n      },\n      {\n        \"case_id\": \"eval_013\",\n        \"question\": \"What database does Project Orion use?\",\n        \"actual_answer\": \"\",\n        \"passed\": false,\n        \"scores\": {\n          \"keyword_match\": 0,\n          \"groundedness\": 0,\n          \"relevance\": 0,\n          \"correctness\": 0\n        },\n        \"checks\": {},\n        \"latency_ms\": 51.24,\n        \"prompt_tokens\": null,\n        \"completion_tokens\": null,\n        \"total_tokens\": null,\n        \"estimated_cost_usd\": null,\n        \"error\": \"404 Client Error: Not Found for url: https://openrouter.ai/api/v1/chat/completions\"\n      },\n      {\n        \"case_id\": \"eval_014\",\n        \"question\": \"Return the manager and confidence as JSON.\",\n        \"actual_answer\": \"\",\n        \"passed\": false,\n        \"scores\": {\n          \"keyword_match\": 0,\n          \"groundedness\": 0,\n          \"relevance\": 0,\n          \"correctness\": 0\n        },\n        \"checks\": {},\n        \"latency_ms\": 76.08,\n        \"prompt_tokens\": null,\n        \"completion_tokens\": null,\n        \"total_tokens\": null,\n        \"estimated_cost_usd\": null,\n        \"error\": \"404 Client Error: Not Found for url: https://openrouter.ai/api/v1/chat/completions\"\n      },\n      {\n        \"case_id\": \"eval_015\",\n        \"question\": \"What is Arun's phone number?\",\n        \"actual_answer\": \"\",\n        \"passed\": false,\n        \"scores\": {\n          \"keyword_match\": 0,\n          \"groundedness\": 0,\n          \"relevance\": 0,\n          \"correctness\": 0\n        },\n        \"checks\": {},\n        \"latency_ms\": 57.66,\n        \"prompt_tokens\": null,\n        \"completion_tokens\": null,\n        \"total_tokens\": null,\n        \"estimated_cost_usd\": null,\n        \"error\": \"404 Client Error: Not Found for url: https://openrouter.ai/api/v1/chat/completions\"\n      }\n    ]\n  }\n}"
+        }
+      ]
+    },
+    {
+      "name": "Get failed cases only",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": ""
+        }
+      },
+      "response": [
+        {
+          "name": "Get failed cases only",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://127.0.0.1:8000/eval/runs/eval_run_af304b398d9e/failures",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "eval",
+                "runs",
+                "eval_run_af304b398d9e",
+                "failures"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "date",
+              "value": "Wed, 16 Sep 2026 04:59:45 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "6003"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"success\": true,\n  \"status_code\": 200,\n  \"data\": [\n    {\n      \"case_id\": \"eval_001\",\n      \"question\": \"Who manages Project Nova?\",\n      \"actual_answer\": \"\",\n      \"passed\": false,\n      \"scores\": {\n        \"keyword_match\": 0,\n        \"groundedness\": 0,\n        \"relevance\": 0,\n        \"correctness\": 0\n      },\n      \"checks\": {},\n      \"latency_ms\": 552.75,\n      \"prompt_tokens\": null,\n      \"completion_tokens\": null,\n      \"total_tokens\": null,\n      \"estimated_cost_usd\": null,\n      \"error\": \"404 Client Error: Not Found for url: https://openrouter.ai/api/v1/chat/completions\"\n    },\n    {\n      \"case_id\": \"eval_002\",\n      \"question\": \"What database does Project Nova use?\",\n      \"actual_answer\": \"\",\n      \"passed\": false,\n      \"scores\": {\n        \"keyword_match\": 0,\n        \"groundedness\": 0,\n        \"relevance\": 0,\n        \"correctness\": 0\n      },\n      \"checks\": {},\n      \"latency_ms\": 69.28,\n      \"prompt_tokens\": null,\n      \"completion_tokens\": null,\n      \"total_tokens\": null,\n      \"estimated_cost_usd\": null,\n      \"error\": \"404 Client Error: Not Found for url: https://openrouter.ai/api/v1/chat/completions\"\n    },\n    {\n      \"case_id\": \"eval_003\",\n      \"question\": \"Which framework does Project Nova use?\",\n      \"actual_answer\": \"\",\n      \"passed\": false,\n      \"scores\": {\n        \"keyword_match\": 0,\n        \"groundedness\": 0,\n        \"relevance\": 0,\n        \"correctness\": 0\n      },\n      \"checks\": {},\n      \"latency_ms\": 74.38,\n      \"prompt_tokens\": null,\n      \"completion_tokens\": null,\n      \"total_tokens\": null,\n      \"estimated_cost_usd\": null,\n      \"error\": \"404 Client Error: Not Found for url: https://openrouter.ai/api/v1/chat/completions\"\n    },\n    {\n      \"case_id\": \"eval_004\",\n      \"question\": \"Who is the project manager for Nova?\",\n      \"actual_answer\": \"\",\n      \"passed\": false,\n      \"scores\": {\n        \"keyword_match\": 0,\n        \"groundedness\": 0,\n        \"relevance\": 0,\n        \"correctness\": 0\n      },\n      \"checks\": {},\n      \"latency_ms\": 59.17,\n      \"prompt_tokens\": null,\n      \"completion_tokens\": null,\n      \"total_tokens\": null,\n      \"estimated_cost_usd\": null,\n      \"error\": \"404 Client Error: Not Found for url: https://openrouter.ai/api/v1/chat/completions\"\n    },\n    {\n      \"case_id\": \"eval_005\",\n      \"question\": \"What is Arun's salary?\",\n      \"actual_answer\": \"\",\n      \"passed\": false,\n      \"scores\": {\n        \"keyword_match\": 0,\n        \"groundedness\": 0,\n        \"relevance\": 0,\n        \"correctness\": 0\n      },\n      \"checks\": {},\n      \"latency_ms\": 83.8,\n      \"prompt_tokens\": null,\n      \"completion_tokens\": null,\n      \"total_tokens\": null,\n      \"estimated_cost_usd\": null,\n      \"error\": \"404 Client Error: Not Found for url: https://openrouter.ai/api/v1/chat/completions\"\n    },\n    {\n      \"case_id\": \"eval_006\",\n      \"question\": \"Which department does Arun work in?\",\n      \"actual_answer\": \"\",\n      \"passed\": false,\n      \"scores\": {\n        \"keyword_match\": 0,\n        \"groundedness\": 0,\n        \"relevance\": 0,\n        \"correctness\": 0\n      },\n      \"checks\": {},\n      \"latency_ms\": 83.92,\n      \"prompt_tokens\": null,\n      \"completion_tokens\": null,\n      \"total_tokens\": null,\n      \"estimated_cost_usd\": null,\n      \"error\": \"404 Client Error: Not Found for url: https://openrouter.ai/api/v1/chat/completions\"\n    },\n    {\n      \"case_id\": \"eval_007\",\n      \"question\": \"Who manages Project Orion?\",\n      \"actual_answer\": \"\",\n      \"passed\": false,\n      \"scores\": {\n        \"keyword_match\": 0,\n        \"groundedness\": 0,\n        \"relevance\": 0,\n        \"correctness\": 0\n      },\n      \"checks\": {},\n      \"latency_ms\": 65.11,\n      \"prompt_tokens\": null,\n      \"completion_tokens\": null,\n      \"total_tokens\": null,\n      \"estimated_cost_usd\": null,\n      \"error\": \"404 Client Error: Not Found for url: https://openrouter.ai/api/v1/chat/completions\"\n    },\n    {\n      \"case_id\": \"eval_008\",\n      \"question\": \"Which framework does Project Orion use?\",\n      \"actual_answer\": \"\",\n      \"passed\": false,\n      \"scores\": {\n        \"keyword_match\": 0,\n        \"groundedness\": 0,\n        \"relevance\": 0,\n        \"correctness\": 0\n      },\n      \"checks\": {},\n      \"latency_ms\": 87.6,\n      \"prompt_tokens\": null,\n      \"completion_tokens\": null,\n      \"total_tokens\": null,\n      \"estimated_cost_usd\": null,\n      \"error\": \"404 Client Error: Not Found for url: https://openrouter.ai/api/v1/chat/completions\"\n    },\n    {\n      \"case_id\": \"eval_009\",\n      \"question\": \"What technologies are used by Project Nova?\",\n      \"actual_answer\": \"\",\n      \"passed\": false,\n      \"scores\": {\n        \"keyword_match\": 0,\n        \"groundedness\": 0,\n        \"relevance\": 0,\n        \"correctness\": 0\n      },\n      \"checks\": {},\n      \"latency_ms\": 265.42,\n      \"prompt_tokens\": null,\n      \"completion_tokens\": null,\n      \"total_tokens\": null,\n      \"estimated_cost_usd\": null,\n      \"error\": \"404 Client Error: Not Found for url: https://openrouter.ai/api/v1/chat/completions\"\n    },\n    {\n      \"case_id\": \"eval_010\",\n      \"question\": \"Is Project Nova managed by Ravi?\",\n      \"actual_answer\": \"\",\n      \"passed\": false,\n      \"scores\": {\n        \"keyword_match\": 0,\n        \"groundedness\": 0,\n        \"relevance\": 0,\n        \"correctness\": 0\n      },\n      \"checks\": {},\n      \"latency_ms\": 89.58,\n      \"prompt_tokens\": null,\n      \"completion_tokens\": null,\n      \"total_tokens\": null,\n      \"estimated_cost_usd\": null,\n      \"error\": \"404 Client Error: Not Found for url: https://openrouter.ai/api/v1/chat/completions\"\n    },\n    {\n      \"case_id\": \"eval_011\",\n      \"question\": \"What is the name of the project managed by Arun?\",\n      \"actual_answer\": \"\",\n      \"passed\": false,\n      \"scores\": {\n        \"keyword_match\": 0,\n        \"groundedness\": 0,\n        \"relevance\": 0,\n        \"correctness\": 0\n      },\n      \"checks\": {},\n      \"latency_ms\": 93.64,\n      \"prompt_tokens\": null,\n      \"completion_tokens\": null,\n      \"total_tokens\": null,\n      \"estimated_cost_usd\": null,\n      \"error\": \"404 Client Error: Not Found for url: https://openrouter.ai/api/v1/chat/completions\"\n    },\n    {\n      \"case_id\": \"eval_012\",\n      \"question\": \"Does Project Nova use Flask?\",\n      \"actual_answer\": \"\",\n      \"passed\": false,\n      \"scores\": {\n        \"keyword_match\": 0,\n        \"groundedness\": 0,\n        \"relevance\": 0,\n        \"correctness\": 0\n      },\n      \"checks\": {},\n      \"latency_ms\": 98.23,\n      \"prompt_tokens\": null,\n      \"completion_tokens\": null,\n      \"total_tokens\": null,\n      \"estimated_cost_usd\": null,\n      \"error\": \"404 Client Error: Not Found for url: https://openrouter.ai/api/v1/chat/completions\"\n    },\n    {\n      \"case_id\": \"eval_013\",\n      \"question\": \"What database does Project Orion use?\",\n      \"actual_answer\": \"\",\n      \"passed\": false,\n      \"scores\": {\n        \"keyword_match\": 0,\n        \"groundedness\": 0,\n        \"relevance\": 0,\n        \"correctness\": 0\n      },\n      \"checks\": {},\n      \"latency_ms\": 51.24,\n      \"prompt_tokens\": null,\n      \"completion_tokens\": null,\n      \"total_tokens\": null,\n      \"estimated_cost_usd\": null,\n      \"error\": \"404 Client Error: Not Found for url: https://openrouter.ai/api/v1/chat/completions\"\n    },\n    {\n      \"case_id\": \"eval_014\",\n      \"question\": \"Return the manager and confidence as JSON.\",\n      \"actual_answer\": \"\",\n      \"passed\": false,\n      \"scores\": {\n        \"keyword_match\": 0,\n        \"groundedness\": 0,\n        \"relevance\": 0,\n        \"correctness\": 0\n      },\n      \"checks\": {},\n      \"latency_ms\": 76.08,\n      \"prompt_tokens\": null,\n      \"completion_tokens\": null,\n      \"total_tokens\": null,\n      \"estimated_cost_usd\": null,\n      \"error\": \"404 Client Error: Not Found for url: https://openrouter.ai/api/v1/chat/completions\"\n    },\n    {\n      \"case_id\": \"eval_015\",\n      \"question\": \"What is Arun's phone number?\",\n      \"actual_answer\": \"\",\n      \"passed\": false,\n      \"scores\": {\n        \"keyword_match\": 0,\n        \"groundedness\": 0,\n        \"relevance\": 0,\n        \"correctness\": 0\n      },\n      \"checks\": {},\n      \"latency_ms\": 57.66,\n      \"prompt_tokens\": null,\n      \"completion_tokens\": null,\n      \"total_tokens\": null,\n      \"estimated_cost_usd\": null,\n      \"error\": \"404 Client Error: Not Found for url: https://openrouter.ai/api/v1/chat/completions\"\n    }\n  ]\n}"
+        }
+      ]
+    },
+    {
+      "name": "Invalid request test cases",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": ""
+        }
+      },
+      "response": [
+        {
+          "name": "Invalid request test cases",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"suite\": \"invalid_suite\",\r\n  \"prompt_version\": \"v2\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/eval/run",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "eval",
+                "run"
+              ]
+            }
+          },
+          "status": "Not Found",
+          "code": 404,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "date",
+              "value": "Wed, 16 Sep 2026 05:01:32 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "45"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"detail\": \"Dataset not found: invalid_suite\"\n}"
+        }
+      ]
+    }
+  ]
+}
