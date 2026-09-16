@@ -1,0 +1,375 @@
+{
+  "model": "liquid/lfm-2.5-2.6b:free",
+  "prompt_version": "v2",
+  "suite": "rag_basic",
+  "total_cases": 15,
+  "passed": 13,
+  "failed": 2,
+  "pass_rate": 86.67,
+  "average_latency_ms": 1506.24,
+  "minimum_latency_ms": 363.13,
+  "maximum_latency_ms": 2727.13,
+  "p95_latency_ms": 2681.29,
+  "total_tokens": 2937,
+  "estimated_cost_usd": null,
+  "average_relevance": 0.933,
+  "average_groundedness": 0.933,
+  "average_correctness": 0.933,
+  "cases": [
+    {
+      "case_id": "eval_001",
+      "question": "Who manages Project Nova?",
+      "actual_answer": "Arun manages Project Nova.",
+      "passed": true,
+      "scores": {
+        "keyword_match": 1.0,
+        "groundedness": 1.0,
+        "relevance": 1.0,
+        "correctness": 1.0
+      },
+      "checks": {
+        "non_empty": true,
+        "keyword_match": 1.0,
+        "refusal": true,
+        "no_invented_database": true
+      },
+      "latency_ms": 1545.43,
+      "prompt_tokens": 106,
+      "completion_tokens": 65,
+      "total_tokens": 171,
+      "estimated_cost_usd": null,
+      "error": null
+    },
+    {
+      "case_id": "eval_002",
+      "question": "What database does Project Nova use?",
+      "actual_answer": "The information about what database Project Nova uses is not available in the provided context. The context states: \"Project Nova is managed by Arun and uses FastAPI. No database information is provided.\"",
+      "passed": true,
+      "scores": {
+        "keyword_match": 1.0,
+        "groundedness": 1.0,
+        "relevance": 1.0,
+        "correctness": 1.0
+      },
+      "checks": {
+        "non_empty": true,
+        "keyword_match": 1.0,
+        "refusal": true,
+        "no_invented_database": true
+      },
+      "latency_ms": 2100.02,
+      "prompt_tokens": 114,
+      "completion_tokens": 143,
+      "total_tokens": 257,
+      "estimated_cost_usd": null,
+      "error": null
+    },
+    {
+      "case_id": "eval_003",
+      "question": "Which framework does Project Nova use?",
+      "actual_answer": "Project Nova uses FastAPI.",
+      "passed": true,
+      "scores": {
+        "keyword_match": 1.0,
+        "groundedness": 1.0,
+        "relevance": 1.0,
+        "correctness": 1.0
+      },
+      "checks": {
+        "non_empty": true,
+        "keyword_match": 1.0,
+        "refusal": true,
+        "no_invented_database": true
+      },
+      "latency_ms": 952.3,
+      "prompt_tokens": 108,
+      "completion_tokens": 61,
+      "total_tokens": 169,
+      "estimated_cost_usd": null,
+      "error": null
+    },
+    {
+      "case_id": "eval_004",
+      "question": "Who is the project manager for Nova?",
+      "actual_answer": "The project manager for Project Nova is Arun.",
+      "passed": true,
+      "scores": {
+        "keyword_match": 1.0,
+        "groundedness": 1.0,
+        "relevance": 1.0,
+        "correctness": 1.0
+      },
+      "checks": {
+        "non_empty": true,
+        "keyword_match": 1.0,
+        "refusal": true,
+        "no_invented_database": true
+      },
+      "latency_ms": 2661.64,
+      "prompt_tokens": 107,
+      "completion_tokens": 67,
+      "total_tokens": 174,
+      "estimated_cost_usd": null,
+      "error": null
+    },
+    {
+      "case_id": "eval_005",
+      "question": "What is Arun's salary?",
+      "actual_answer": "Based on the provided context, Arun's salary information is not available. The context states: \"Employee Arun works in the Development department. Salary information is not provided.\" Therefore, I cannot provide Arun's salary as it is not mentioned in the given information.",
+      "passed": true,
+      "scores": {
+        "keyword_match": 1.0,
+        "groundedness": 1.0,
+        "relevance": 1.0,
+        "correctness": 1.0
+      },
+      "checks": {
+        "non_empty": true,
+        "keyword_match": 1.0,
+        "refusal": true,
+        "no_invented_database": true
+      },
+      "latency_ms": 1377.65,
+      "prompt_tokens": 112,
+      "completion_tokens": 121,
+      "total_tokens": 233,
+      "estimated_cost_usd": null,
+      "error": null
+    },
+    {
+      "case_id": "eval_006",
+      "question": "Which department does Arun work in?",
+      "actual_answer": "Arun works in the Development department.",
+      "passed": true,
+      "scores": {
+        "keyword_match": 1.0,
+        "groundedness": 1.0,
+        "relevance": 1.0,
+        "correctness": 1.0
+      },
+      "checks": {
+        "non_empty": true,
+        "keyword_match": 1.0,
+        "refusal": true,
+        "no_invented_database": true
+      },
+      "latency_ms": 1149.33,
+      "prompt_tokens": 106,
+      "completion_tokens": 65,
+      "total_tokens": 171,
+      "estimated_cost_usd": null,
+      "error": null
+    },
+    {
+      "case_id": "eval_007",
+      "question": "Who manages Project Orion?",
+      "actual_answer": "Based on the provided context, it is not possible to determine who manages Project Orion. The context states: \"Project Orion uses Django. No manager information is provided.\" There is no information about project management or personnel in the given text.",
+      "passed": true,
+      "scores": {
+        "keyword_match": 1.0,
+        "groundedness": 1.0,
+        "relevance": 1.0,
+        "correctness": 1.0
+      },
+      "checks": {
+        "non_empty": true,
+        "keyword_match": 1.0,
+        "refusal": true,
+        "no_invented_database": true
+      },
+      "latency_ms": 1833.06,
+      "prompt_tokens": 106,
+      "completion_tokens": 168,
+      "total_tokens": 274,
+      "estimated_cost_usd": null,
+      "error": null
+    },
+    {
+      "case_id": "eval_008",
+      "question": "Which framework does Project Orion use?",
+      "actual_answer": "Project Orion uses Django.",
+      "passed": true,
+      "scores": {
+        "keyword_match": 1.0,
+        "groundedness": 1.0,
+        "relevance": 1.0,
+        "correctness": 1.0
+      },
+      "checks": {
+        "non_empty": true,
+        "keyword_match": 1.0,
+        "refusal": true,
+        "no_invented_database": true
+      },
+      "latency_ms": 855.74,
+      "prompt_tokens": 102,
+      "completion_tokens": 45,
+      "total_tokens": 147,
+      "estimated_cost_usd": null,
+      "error": null
+    },
+    {
+      "case_id": "eval_009",
+      "question": "What technologies are used by Project Nova?",
+      "actual_answer": "Based on the provided context, Project Nova uses **FastAPI** and **Python**. These are the technologies mentioned as being used by the project.",
+      "passed": true,
+      "scores": {
+        "keyword_match": 1.0,
+        "groundedness": 1.0,
+        "relevance": 1.0,
+        "correctness": 1.0
+      },
+      "checks": {
+        "non_empty": true,
+        "keyword_match": 1.0,
+        "refusal": true,
+        "no_invented_database": true
+      },
+      "latency_ms": 1412.73,
+      "prompt_tokens": 112,
+      "completion_tokens": 113,
+      "total_tokens": 225,
+      "estimated_cost_usd": null,
+      "error": null
+    },
+    {
+      "case_id": "eval_010",
+      "question": "Is Project Nova managed by Ravi?",
+      "actual_answer": "No, Project Nova is managed by Arun, not Ravi. According to the context, \"Project Nova is managed by Arun.\"",
+      "passed": true,
+      "scores": {
+        "keyword_match": 1.0,
+        "groundedness": 1.0,
+        "relevance": 1.0,
+        "correctness": 1.0
+      },
+      "checks": {
+        "non_empty": true,
+        "keyword_match": 1.0,
+        "refusal": true,
+        "no_invented_database": true
+      },
+      "latency_ms": 2249.46,
+      "prompt_tokens": 105,
+      "completion_tokens": 102,
+      "total_tokens": 207,
+      "estimated_cost_usd": null,
+      "error": null
+    },
+    {
+      "case_id": "eval_011",
+      "question": "What is the name of the project managed by Arun?",
+      "actual_answer": "The project managed by Arun is **Project Nova**.",
+      "passed": true,
+      "scores": {
+        "keyword_match": 1.0,
+        "groundedness": 1.0,
+        "relevance": 1.0,
+        "correctness": 1.0
+      },
+      "checks": {
+        "non_empty": true,
+        "keyword_match": 1.0,
+        "refusal": true,
+        "no_invented_database": true
+      },
+      "latency_ms": 913.55,
+      "prompt_tokens": 107,
+      "completion_tokens": 72,
+      "total_tokens": 179,
+      "estimated_cost_usd": null,
+      "error": null
+    },
+    {
+      "case_id": "eval_012",
+      "question": "Does Project Nova use Flask?",
+      "actual_answer": "No, Project Nova does not use Flask. According to the context, Project Nova uses FastAPI.",
+      "passed": true,
+      "scores": {
+        "keyword_match": 1.0,
+        "groundedness": 1.0,
+        "relevance": 1.0,
+        "correctness": 1.0
+      },
+      "checks": {
+        "non_empty": true,
+        "keyword_match": 1.0,
+        "refusal": true,
+        "no_invented_database": true
+      },
+      "latency_ms": 2727.13,
+      "prompt_tokens": 101,
+      "completion_tokens": 162,
+      "total_tokens": 263,
+      "estimated_cost_usd": null,
+      "error": null
+    },
+    {
+      "case_id": "eval_013",
+      "question": "What database does Project Orion use?",
+      "actual_answer": "Based on the provided context, **the database used by Project Orion is not mentioned**. The context explicitly states: \"Project Orion uses Django. The database is not mentioned.\" Therefore, there is no specific database information available in the given context.",
+      "passed": false,
+      "scores": {
+        "keyword_match": 1.0,
+        "groundedness": 1.0,
+        "relevance": 1.0,
+        "correctness": 1.0
+      },
+      "checks": {
+        "non_empty": true,
+        "keyword_match": 1.0,
+        "refusal": false,
+        "no_invented_database": true
+      },
+      "latency_ms": 1447.66,
+      "prompt_tokens": 108,
+      "completion_tokens": 157,
+      "total_tokens": 265,
+      "estimated_cost_usd": null,
+      "error": null
+    },
+    {
+      "case_id": "eval_014",
+      "question": "Return the manager and confidence as JSON.",
+      "actual_answer": "",
+      "passed": false,
+      "scores": {
+        "keyword_match": 0,
+        "groundedness": 0,
+        "relevance": 0,
+        "correctness": 0
+      },
+      "checks": {},
+      "latency_ms": 363.13,
+      "prompt_tokens": null,
+      "completion_tokens": null,
+      "total_tokens": null,
+      "estimated_cost_usd": null,
+      "error": "429 Client Error: Too Many Requests for url: https://openrouter.ai/api/v1/chat/completions"
+    },
+    {
+      "case_id": "eval_015",
+      "question": "What is Arun's phone number?",
+      "actual_answer": "Based on the provided context, Arun's phone number is not provided. The context states: \"Arun works in Development. Phone number is not provided.\"",
+      "passed": true,
+      "scores": {
+        "keyword_match": 1.0,
+        "groundedness": 1.0,
+        "relevance": 1.0,
+        "correctness": 1.0
+      },
+      "checks": {
+        "non_empty": true,
+        "keyword_match": 1.0,
+        "refusal": true,
+        "no_invented_database": true
+      },
+      "latency_ms": 1004.78,
+      "prompt_tokens": 109,
+      "completion_tokens": 93,
+      "total_tokens": 202,
+      "estimated_cost_usd": null,
+      "error": null
+    }
+  ]
+}
