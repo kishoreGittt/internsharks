@@ -1,0 +1,1315 @@
+{
+  "info": {
+    "_postman_id": "ceaaab01-6000-4ecb-8d5e-4ccdfa51d3bf",
+    "name": "Task25",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "57366509",
+    "_collection_link": "https://go.postman.co/collection/57366509-ceaaab01-6000-4ecb-8d5e-4ccdfa51d3bf?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "1_image_testing",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "image",
+              "type": "file",
+              "src": [
+                "postman-cloud:///1f1b27ae-1913-4460-b428-dfa5cacfae53"
+              ]
+            },
+            {
+              "key": "prompt",
+              "value": "Describe this image",
+              "type": "text"
+            },
+            {
+              "key": "analysis_type",
+              "value": "general",
+              "type": "text"
+            }
+          ]
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/vision/analyze",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "vision",
+            "analyze"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "1_image_testing",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "image",
+                  "type": "file",
+                  "src": [
+                    "postman-cloud:///1f1b27ae-1913-4460-b428-dfa5cacfae53"
+                  ]
+                },
+                {
+                  "key": "prompt",
+                  "value": "Describe this image",
+                  "type": "text"
+                },
+                {
+                  "key": "analysis_type",
+                  "value": "general",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/vision/analyze",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "vision",
+                "analyze"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "date",
+              "value": "Thu, 17 Sep 2026 09:43:05 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "1348"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"success\": true,\n  \"status_code\": 200,\n  \"data\": {\n    \"analysis_type\": \"general\",\n    \"description\": \"A close-up portrait of a vividly colored macaw parrot with red, blue, green, yellow, and orange plumage, set against a softly blurred natural background.\",\n    \"visible_text\": [],\n    \"objects\": [\n      \"macaw parrot\",\n      \"feathers\",\n      \"beak\",\n      \"eye\",\n      \"bare facial skin\"\n    ],\n    \"attributes\": {\n      \"subject\": \"large parrot, likely a macaw\",\n      \"beak_color\": \"black\",\n      \"beak_shape\": \"large, hooked\",\n      \"head_feathers\": \"blue on crown and nape, red on forehead\",\n      \"chest_feathers\": \"red and orange\",\n      \"wing_feathers\": \"green and blue with yellow accents\",\n      \"eye\": \"pale iris with dark pupil\",\n      \"facial_skin\": \"white bare skin with fine red feather lines\",\n      \"background\": \"blurred green and light tones, bokeh\",\n      \"lighting\": \"soft, natural daylight\"\n    },\n    \"uncertain_details\": [\n      \"exact species of macaw (could be Scarlet Macaw or a hybrid)\",\n      \"precise geographic location or setting\",\n      \"whether the bird is wild or captive\"\n    ],\n    \"answer\": null,\n    \"observed\": [\n      \"the bird is facing left in profile\",\n      \"feathers appear healthy and vibrant\",\n      \"no visible text or human-made objects\",\n      \"shallow depth of field isolates the subject\"\n    ],\n    \"not_determinable\": [\n      \"age or sex of the bird\",\n      \"brand or origin of any equipment\",\n      \"exact species without further detail\"\n    ]\n  },\n  \"metadata\": {\n    \"file_name\": \"parrot_images.jpg\",\n    \"content_type\": \"image/jpeg\",\n    \"size_bytes\": 32281,\n    \"width\": 452,\n    \"height\": 678\n  }\n}"
+        },
+        {
+          "name": "1_image_testing",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "image",
+                  "type": "file",
+                  "src": [
+                    "/D:/INTERNSHARK-TASKS/Task25/Testing_images/images (8).jpg"
+                  ]
+                },
+                {
+                  "key": "prompt",
+                  "value": "guess the place",
+                  "type": "text"
+                },
+                {
+                  "key": "analysis_type",
+                  "value": "general",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/vision/analyze",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "vision",
+                "analyze"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "date",
+              "value": "Thu, 17 Sep 2026 11:01:35 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "1207"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"success\": true,\n  \"status_code\": 200,\n  \"data\": {\n    \"analysis_type\": \"general\",\n    \"description\": \"A tall, ornate Dravidian-style temple gopuram (tower) with multiple tiers covered in colorful sculptures and intricate carvings, typical of South Indian Hindu temple architecture.\",\n    \"visible_text\": [],\n    \"objects\": [\n      \"temple gopuram\",\n      \"sculptures\",\n      \"carvings\",\n      \"street lights\",\n      \"buildings at base\",\n      \"people at base\"\n    ],\n    \"attributes\": {\n      \"color\": \"multicolored\",\n      \"material\": \"stone\",\n      \"style\": \"Dravidian\",\n      \"condition\": \"well-preserved\",\n      \"size\": \"massive\"\n    },\n    \"uncertain_details\": [\n      \"specific temple name\",\n      \"exact location\",\n      \"date of construction\"\n    ],\n    \"answer\": \"Likely a major Hindu temple in Tamil Nadu, India, possibly the Meenakshi Amman Temple in Madurai or a similar prominent South Indian temple, based on the distinctive colorful Dravidian gopuram architecture.\",\n    \"observed\": [\n      \"tall pyramidal tower with many tiers\",\n      \"colorful figurative sculptures on each level\",\n      \"arched entrance at base\",\n      \"clear blue sky\",\n      \"street-level activity with people and vehicles\"\n    ],\n    \"not_determinable\": [\n      \"exact identity of the temple\",\n      \"city or town\",\n      \"historical period\"\n    ]\n  },\n  \"metadata\": {\n    \"file_name\": \"images (8).jpg\",\n    \"content_type\": \"image/jpeg\",\n    \"size_bytes\": 47608,\n    \"width\": 411,\n    \"height\": 486\n  }\n}"
+        }
+      ]
+    },
+    {
+      "name": "General Analysis Without Prompt",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "image",
+              "type": "file",
+              "src": [
+                "/D:/INTERNSHARK-TASKS/Task25/Testing_images/tiger_images.jpg"
+              ]
+            },
+            {
+              "key": "analysis_type",
+              "value": "general",
+              "type": "text"
+            }
+          ]
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/vision/analyze",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "vision",
+            "analyze"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "General Analysis Without Prompt",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "image",
+                  "type": "file",
+                  "src": [
+                    "/D:/INTERNSHARK-TASKS/Task25/Testing_images/tiger_images.jpg"
+                  ]
+                },
+                {
+                  "key": "analysis_type",
+                  "value": "general",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/vision/analyze",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "vision",
+                "analyze"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "date",
+              "value": "Thu, 17 Sep 2026 09:53:21 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "1549"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"success\": true,\n  \"status_code\": 200,\n  \"data\": {\n    \"analysis_type\": \"general\",\n    \"description\": \"A tiger is partially submerged in water covered with green algae or duckweed, facing directly toward the camera with its head and upper body visible above the surface.\",\n    \"visible_text\": [],\n    \"objects\": [\n      \"tiger\",\n      \"water\",\n      \"green algae/duckweed\",\n      \"reflection\"\n    ],\n    \"attributes\": {\n      \"subject\": \"tiger\",\n      \"color\": \"orange with black stripes and white facial fur\",\n      \"posture\": \"swimming or wading, head held above water\",\n      \"orientation\": \"facing forward toward the camera\",\n      \"water_condition\": \"dark water with patches of bright green floating vegetation\",\n      \"fur_state\": \"wet\",\n      \"whiskers\": \"long, white, prominent\"\n    },\n    \"uncertain_details\": [\n      \"Exact species of tiger (e.g., Bengal vs. Sumatran) cannot be confirmed from the image alone\",\n      \"Specific location or habitat type cannot be determined\",\n      \"Whether the tiger is moving or stationary cannot be confirmed from a still image\"\n    ],\n    \"answer\": null,\n    \"observed\": [\n      \"Tiger's head and upper back are above water\",\n      \"Green floating vegetation covers much of the water surface\",\n      \"A reflection of the tiger's face is visible in the calmer water below\",\n      \"Water splashing around the tiger's body suggests slight movement\",\n      \"Tiger's eyes are open and looking directly at the camera\"\n    ],\n    \"not_determinable\": [\n      \"Tiger's age and sex\",\n      \"Exact geographic location\",\n      \"Time of day (lighting appears diffuse)\",\n      \"Water depth\",\n      \"Presence of other animals or objects outside the frame\"\n    ]\n  },\n  \"metadata\": {\n    \"file_name\": \"tiger_images.jpg\",\n    \"content_type\": \"image/jpeg\",\n    \"size_bytes\": 54679,\n    \"width\": 547,\n    \"height\": 365\n  }\n}"
+        }
+      ]
+    },
+    {
+      "name": "Document Image Analysis",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "image",
+              "type": "file",
+              "src": [
+                "/D:/INTERNSHARK-TASKS/Task25/Testing_images/doc_images.jpg"
+              ]
+            },
+            {
+              "key": "prompt",
+              "value": "Extract all clearly visible text and important fields",
+              "type": "text"
+            },
+            {
+              "key": "analysis_type",
+              "value": "document",
+              "type": "text"
+            }
+          ]
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/vision/analyze",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "vision",
+            "analyze"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Document Image Analysis",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "image",
+                  "type": "file",
+                  "src": [
+                    "/D:/INTERNSHARK-TASKS/Task25/Testing_images/doc_images.jpg"
+                  ]
+                },
+                {
+                  "key": "prompt",
+                  "value": "Extract all clearly visible text and important fields",
+                  "type": "text"
+                },
+                {
+                  "key": "analysis_type",
+                  "value": "document",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/vision/analyze",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "vision",
+                "analyze"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "date",
+              "value": "Thu, 17 Sep 2026 09:58:33 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "1815"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"success\": true,\n  \"status_code\": 200,\n  \"data\": {\n    \"analysis_type\": \"document\",\n    \"description\": \"A simple business requirements document for a team gathering event, shown as a Plaky template.\",\n    \"visible_text\": [\n      \"plaky\",\n      \"Simple Business Requirements Document\",\n      \"Project name\",\n      \"Team gathering\",\n      \"Created by\",\n      \"Luka Bogavac\",\n      \"Date\",\n      \"30.05.2025.\",\n      \"Version no.\",\n      \"#2\",\n      \"Executive summary\",\n      \"Since we run a remote team, our members don't interact much. We want to improve team cohesion and boost collaboration with a team gathering event.\",\n      \"We'd like to take one Friday off for the team, and organize the event in a team-voted venue.\",\n      \"We'd require $100 for the venue reservation, and Jan from HR to organize an activity for the gathering.\",\n      \"Project objectives\",\n      \"Increase team satisfaction, boosting team collaboration and productivity\",\n      \"Increase employee wellbeing, measured through a poll we'll conduct after the gathering.\",\n      \"Project constraints\",\n      \"Timeline: We'll plan and conduct the gathering over the following 2 weeks.\",\n      \"Risk: Lack of employee engagement, lack of interest for the gathering\",\n      \"Budget: $100 for the venue reservation\",\n      \"Requirements\",\n      \"Approve an off day for the team gathering\",\n      \"Decide on a venue for the gathering through an internal poll\",\n      \"Plan an activity for the gathering\",\n      \"Conduct the gathering\",\n      \"Conduct an employee satisfaction poll in the following days\",\n      \"Key stakeholders\",\n      \"Jan, HR: Plan and conduct the activity for the team gathering\",\n      \"Mary, PM: Conduct an employee satisfaction poll and compile results\",\n      \"All team members: Vote on the desired venue.\",\n      \"Implement your project with Plaky.com\"\n    ],\n    \"objects\": [],\n    \"attributes\": {},\n    \"uncertain_details\": [],\n    \"answer\": null,\n    \"observed\": [],\n    \"not_determinable\": []\n  },\n  \"metadata\": {\n    \"file_name\": \"doc_images.jpg\",\n    \"content_type\": \"image/jpeg\",\n    \"size_bytes\": 51642,\n    \"width\": 490,\n    \"height\": 625\n  }\n}"
+        }
+      ]
+    },
+    {
+      "name": "Product Image Analysis",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "prompt",
+              "value": "Describe the visible product features, color, shape, and category",
+              "type": "text"
+            },
+            {
+              "key": "analysis_type",
+              "value": "product",
+              "type": "text"
+            },
+            {
+              "key": "image",
+              "type": "file",
+              "src": [
+                "postman-cloud:///1f1b2800-4952-4fc0-9b39-254565616519"
+              ]
+            }
+          ]
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/vision/analyze",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "vision",
+            "analyze"
+          ],
+          "query": [
+            {
+              "key": "image",
+              "value": "Product image",
+              "disabled": true
+            },
+            {
+              "key": "prompt",
+              "value": "Describe the visible product features, color, shape, and category",
+              "disabled": true
+            },
+            {
+              "key": "analysis_type",
+              "value": "product",
+              "disabled": true
+            }
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Product Image Analysis",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "prompt",
+                  "value": "Describe the visible product features, color, shape, and category",
+                  "type": "text"
+                },
+                {
+                  "key": "analysis_type",
+                  "value": "product",
+                  "type": "text"
+                },
+                {
+                  "key": "image",
+                  "type": "file",
+                  "src": [
+                    "postman-cloud:///1f1b2800-4952-4fc0-9b39-254565616519"
+                  ]
+                }
+              ]
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/vision/analyze",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "vision",
+                "analyze"
+              ],
+              "query": [
+                {
+                  "key": "image",
+                  "value": "Product image",
+                  "disabled": true
+                },
+                {
+                  "key": "prompt",
+                  "value": "Describe the visible product features, color, shape, and category",
+                  "disabled": true
+                },
+                {
+                  "key": "analysis_type",
+                  "value": "product",
+                  "disabled": true
+                }
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "date",
+              "value": "Thu, 17 Sep 2026 10:22:11 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "1960"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"success\": true,\n  \"status_code\": 200,\n  \"data\": {\n    \"analysis_type\": \"product\",\n    \"description\": \"A collection of consumer electronics including a smartphone, laptop, over-ear headphones, smartwatch, wireless earbuds with charging cases, and a tablet, arranged on a reflective surface with a circuit board pattern background.\",\n    \"visible_text\": [\n      \"shutterstock.com · 2664370637\",\n      \"05\"\n    ],\n    \"objects\": [\n      \"smartphone\",\n      \"laptop\",\n      \"over-ear headphones\",\n      \"smartwatch\",\n      \"wireless earbuds\",\n      \"earbuds charging case\",\n      \"tablet\"\n    ],\n    \"attributes\": {\n      \"smartphone\": {\n        \"color\": \"dark gray\",\n        \"shape\": \"rectangular\",\n        \"features\": [\n          \"dual rear camera\",\n          \"rounded corners\"\n        ]\n      },\n      \"laptop\": {\n        \"color\": \"silver\",\n        \"shape\": \"rectangular\",\n        \"features\": [\n          \"thin profile\",\n          \"closed lid\"\n        ]\n      },\n      \"headphones\": {\n        \"color\": \"silver and black\",\n        \"shape\": \"over-ear\",\n        \"features\": [\n          \"headband\",\n          \"circular ear cups\"\n        ]\n      },\n      \"smartwatch\": {\n        \"color\": \"black\",\n        \"shape\": \"rectangular face\",\n        \"features\": [\n          \"digital display\",\n          \"wristband\"\n        ]\n      },\n      \"wireless earbuds\": {\n        \"color\": \"white\",\n        \"shape\": \"small rounded cases\",\n        \"features\": [\n          \"charging case\",\n          \"earbuds visible in one case\"\n        ]\n      },\n      \"tablet\": {\n        \"color\": \"black bezel\",\n        \"shape\": \"rectangular\",\n        \"features\": [\n          \"touchscreen\",\n          \"app icons displayed\"\n        ]\n      }\n    },\n    \"uncertain_details\": [\n      \"exact brand of any product\",\n      \"specific model numbers\",\n      \"screen resolution or specifications\",\n      \"battery capacity\",\n      \"connectivity standards\"\n    ],\n    \"answer\": null,\n    \"observed\": [\n      \"six distinct electronic devices arranged on a dark reflective surface\",\n      \"circuit board-style light patterns in blue and purple in the background\",\n      \"smartphone positioned to the left of the laptop\",\n      \"headphones placed in front of the laptop\",\n      \"two white earbuds cases placed in front of the smartphone\",\n      \"smartwatch positioned to the right of the headphones\",\n      \"tablet on the far right showing a grid of colorful app icons\"\n    ],\n    \"not_determinable\": [\n      \"brand identity\",\n      \"price\",\n      \"internal specifications\",\n      \"operating system\",\n      \"release date\"\n    ]\n  },\n  \"metadata\": {\n    \"file_name\": \"images (2).jpg\",\n    \"content_type\": \"image/jpeg\",\n    \"size_bytes\": 15524,\n    \"width\": 477,\n    \"height\": 279\n  }\n}"
+        }
+      ]
+    },
+    {
+      "name": "UI Screenshot Analysis",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "image",
+              "type": "file",
+              "src": [
+                "/D:/INTERNSHARK-TASKS/Task25/Testing_images/images (3).jpg"
+              ]
+            },
+            {
+              "key": "prompt",
+              "value": "Identify the visible UI components, buttons, input fields, and navigation elements",
+              "type": "text"
+            },
+            {
+              "key": "analysis_type",
+              "value": "ui",
+              "type": "text"
+            }
+          ]
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/vision/analyze",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "vision",
+            "analyze"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "UI Screenshot Analysis",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "image",
+                  "type": "file",
+                  "src": [
+                    "/D:/INTERNSHARK-TASKS/Task25/Testing_images/images (3).jpg"
+                  ]
+                },
+                {
+                  "key": "prompt",
+                  "value": "Identify the visible UI components, buttons, input fields, and navigation elements",
+                  "type": "text"
+                },
+                {
+                  "key": "analysis_type",
+                  "value": "ui",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/vision/analyze",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "vision",
+                "analyze"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "date",
+              "value": "Thu, 17 Sep 2026 10:27:36 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "1454"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"success\": true,\n  \"status_code\": 200,\n  \"data\": {\n    \"analysis_type\": \"ui\",\n    \"description\": \"A sports analytics dashboard for basketball player Marcus Huntington, featuring player profile, statistics cards, game logs, and match highlights.\",\n    \"visible_text\": [\n      \"L\",\n      \"Search...\",\n      \"Marcus Huntington\",\n      \"Liberty Clean\",\n      \"23\",\n      \"84\",\n      \"18\",\n      \"62.3%\",\n      \"2.56 m\",\n      \"102 kg\",\n      \"40 years\",\n      \"USA\",\n      \"Game Logs\",\n      \"In-Depth\",\n      \"Highlights\",\n      \"10th Oct 2024\",\n      \"17th Oct 2024\",\n      \"21st Oct 2024\",\n      \"27th Oct 2024\",\n      \"104\",\n      \"112\",\n      \"109\",\n      \"98\"\n    ],\n    \"objects\": [\n      \"basketball player image\",\n      \"basketball\",\n      \"stat cards\",\n      \"data tables\",\n      \"team logos\",\n      \"profile avatar\",\n      \"search bar\",\n      \"navigation icons\"\n    ],\n    \"attributes\": {\n      \"color_scheme\": \"purple-blue gradient\",\n      \"layout\": \"dashboard grid\",\n      \"style\": \"modern glassmorphism\",\n      \"theme\": \"sports analytics\"\n    },\n    \"uncertain_details\": [\n      \"Exact team names associated with logos\",\n      \"Specific column headers in game logs tables\",\n      \"Exact values in some data table cells\",\n      \"Small icon labels in top navigation bar\"\n    ],\n    \"answer\": null,\n    \"observed\": [\n      \"Player profile section with large photo\",\n      \"Statistics summary cards with key metrics\",\n      \"Game logs table with dates and stats\",\n      \"Match highlights with scores\",\n      \"Top navigation bar with search and icons\"\n    ],\n    \"not_determinable\": [\n      \"Exact brand or platform name\",\n      \"Full data in all table cells\",\n      \"Specific team affiliations from logos alone\",\n      \"Interactive functionality of elements\"\n    ]\n  },\n  \"metadata\": {\n    \"file_name\": \"images (3).jpg\",\n    \"content_type\": \"image/jpeg\",\n    \"size_bytes\": 26950,\n    \"width\": 419,\n    \"height\": 315\n  }\n}"
+        }
+      ]
+    },
+    {
+      "name": "counting peoples",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "image",
+              "type": "file",
+              "src": [
+                "/D:/INTERNSHARK-TASKS/Task25/Testing_images/images (4).jpg"
+              ]
+            },
+            {
+              "key": "prompt",
+              "value": "How many people are visible in this image?",
+              "type": "text"
+            },
+            {
+              "key": "analysis_type",
+              "value": "general",
+              "type": "text"
+            }
+          ]
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/vision/analyze",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "vision",
+            "analyze"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "counting peoples",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "image",
+                  "type": "file",
+                  "src": [
+                    "/D:/INTERNSHARK-TASKS/Task25/Testing_images/images (4).jpg"
+                  ]
+                },
+                {
+                  "key": "prompt",
+                  "value": "How many people are visible in this image?",
+                  "type": "text"
+                },
+                {
+                  "key": "analysis_type",
+                  "value": "general",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/vision/analyze",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "vision",
+                "analyze"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "date",
+              "value": "Thu, 17 Sep 2026 10:36:20 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "1060"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"success\": true,\n  \"status_code\": 200,\n  \"data\": {\n    \"analysis_type\": \"general\",\n    \"description\": \"A very large, dense crowd of people packed closely together, likely in a stadium or arena setting, viewed from an elevated perspective.\",\n    \"visible_text\": [],\n    \"objects\": [\n      \"people\",\n      \"crowd\"\n    ],\n    \"attributes\": {\n      \"setting\": \"stadium or arena\",\n      \"density\": \"extremely high\",\n      \"viewpoint\": \"elevated/overhead\"\n    },\n    \"uncertain_details\": [\n      \"Exact number of people cannot be determined due to extreme density and image resolution\",\n      \"Estimated to be hundreds to possibly thousands of individuals\"\n    ],\n    \"answer\": \"The exact number cannot be determined, but there are hundreds to thousands of people visible in this dense crowd.\",\n    \"observed\": [\n      \"Massive crowd filling the entire frame\",\n      \"People seated or standing very closely together\",\n      \"Varied clothing colors suggesting a public event or gathering\"\n    ],\n    \"not_determinable\": [\n      \"Precise count of individuals\",\n      \"Specific event or occasion\",\n      \"Location or venue name\"\n    ]\n  },\n  \"metadata\": {\n    \"file_name\": \"images (4).jpg\",\n    \"content_type\": \"image/jpeg\",\n    \"size_bytes\": 24322,\n    \"width\": 236,\n    \"height\": 236\n  }\n}"
+        }
+      ]
+    },
+    {
+      "name": "Compare Two Images",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "image1",
+              "type": "file",
+              "src": [
+                "/D:/INTERNSHARK-TASKS/Task25/Testing_images/images (1).jpg"
+              ]
+            },
+            {
+              "key": "image2",
+              "type": "file",
+              "src": [
+                "/D:/INTERNSHARK-TASKS/Task25/Testing_images/peacock_images.jpg"
+              ]
+            },
+            {
+              "key": "prompt",
+              "value": "Compare these images and list the visible differences",
+              "type": "text"
+            }
+          ]
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/vision/compare",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "vision",
+            "compare"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Compare Two Images",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "image1",
+                  "type": "file",
+                  "src": [
+                    "/D:/INTERNSHARK-TASKS/Task25/Testing_images/images (1).jpg"
+                  ]
+                },
+                {
+                  "key": "image2",
+                  "type": "file",
+                  "src": [
+                    "/D:/INTERNSHARK-TASKS/Task25/Testing_images/peacock_images.jpg"
+                  ]
+                },
+                {
+                  "key": "prompt",
+                  "value": "Compare these images and list the visible differences",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/vision/compare",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "vision",
+                "compare"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "date",
+              "value": "Thu, 17 Sep 2026 10:39:41 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "1691"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"success\": true,\n  \"status_code\": 200,\n  \"data\": {\n    \"summary\": \"The two images depict entirely different subjects and settings: the first shows a person in a studio environment, while the second shows a peacock in a natural setting.\",\n    \"differences\": [\n      {\n        \"type\": \"object\",\n        \"description\": \"Image 1 features a human woman; Image 2 features a peacock bird.\"\n      },\n      {\n        \"type\": \"background\",\n        \"description\": \"Image 1 has a solid yellow studio background; Image 2 has a natural outdoor background with green grass and foliage.\"\n      },\n      {\n        \"type\": \"color\",\n        \"description\": \"Image 1 is dominated by yellow, pink/salmon, and blue tones; Image 2 is dominated by vibrant blue, brown, green, and gold tones.\"\n      },\n      {\n        \"type\": \"object\",\n        \"description\": \"Image 1 contains a camera held by the person; Image 2 contains no man-made objects.\"\n      },\n      {\n        \"type\": \"clothing\",\n        \"description\": \"Image 1 shows the person wearing a pink turtleneck sweater, blue jeans, and white sneakers; Image 2 shows natural feathers and plumage instead of clothing.\"\n      },\n      {\n        \"type\": \"pose\",\n        \"description\": \"Image 1 shows a person sitting cross-legged holding a camera up; Image 2 shows a peacock standing with its tail feathers fanned out behind it.\"\n      },\n      {\n        \"type\": \"expression\",\n        \"description\": \"Image 1 shows the person laughing/smiling broadly; Image 2 shows a peacock with a neutral animal expression.\"\n      },\n      {\n        \"type\": \"setting\",\n        \"description\": \"Image 1 appears to be a controlled studio setting; Image 2 appears to be a natural outdoor environment.\"\n      }\n    ],\n    \"uncertain_details\": []\n  },\n  \"metadata\": {\n    \"image1\": {\n      \"file_name\": \"images (1).jpg\",\n      \"content_type\": \"image/jpeg\",\n      \"size_bytes\": 14028,\n      \"width\": 439,\n      \"height\": 455\n    },\n    \"image2\": {\n      \"file_name\": \"peacock_images.jpg\",\n      \"content_type\": \"image/jpeg\",\n      \"size_bytes\": 48582,\n      \"width\": 452,\n      \"height\": 678\n    }\n  }\n}"
+        }
+      ]
+    },
+    {
+      "name": "Invalid Analysis Type",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "image",
+              "type": "file",
+              "src": [
+                "/D:/INTERNSHARK-TASKS/Task25/Testing_images/images.jpg"
+              ]
+            },
+            {
+              "key": "prompt",
+              "value": "Describe the image",
+              "type": "text"
+            },
+            {
+              "key": "analysis_type",
+              "value": "invalid_type",
+              "type": "text"
+            }
+          ]
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/vision/analyze",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "vision",
+            "analyze"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Invalid Analysis Type",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "image",
+                  "type": "file",
+                  "src": [
+                    "/D:/INTERNSHARK-TASKS/Task25/Testing_images/images.jpg"
+                  ]
+                },
+                {
+                  "key": "prompt",
+                  "value": "Describe the image",
+                  "type": "text"
+                },
+                {
+                  "key": "analysis_type",
+                  "value": "invalid_type",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/vision/analyze",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "vision",
+                "analyze"
+              ]
+            }
+          },
+          "status": "Unprocessable Entity",
+          "code": 422,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "date",
+              "value": "Thu, 17 Sep 2026 10:44:23 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "218"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"detail\": [\n    {\n      \"type\": \"literal_error\",\n      \"loc\": [\n        \"body\",\n        \"analysis_type\"\n      ],\n      \"msg\": \"Input should be 'general', 'document', 'product' or 'ui'\",\n      \"input\": \"invalid_type\",\n      \"ctx\": {\n        \"expected\": \"'general', 'document', 'product' or 'ui'\"\n      }\n    }\n  ]\n}"
+        }
+      ]
+    },
+    {
+      "name": "no image test",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "image",
+              "type": "file",
+              "src": []
+            },
+            {
+              "key": "prompt",
+              "value": "how many things in this image\n",
+              "type": "text"
+            }
+          ]
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/vision/analyze",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "vision",
+            "analyze"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "no image test",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "image",
+                  "type": "file",
+                  "src": []
+                },
+                {
+                  "key": "prompt",
+                  "value": "how many things in this image\n",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/vision/analyze",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "vision",
+                "analyze"
+              ]
+            }
+          },
+          "status": "Unprocessable Entity",
+          "code": 422,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "date",
+              "value": "Thu, 17 Sep 2026 10:46:44 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "90"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"detail\": [\n    {\n      \"type\": \"missing\",\n      \"loc\": [\n        \"body\",\n        \"image\"\n      ],\n      \"msg\": \"Field required\",\n      \"input\": null\n    }\n  ]\n}"
+        }
+      ]
+    },
+    {
+      "name": "black_image test",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "image",
+              "type": "file",
+              "src": [
+                "/D:/INTERNSHARK-TASKS/Task25/Testing_images/images (7).jpg"
+              ]
+            },
+            {
+              "key": "prompt",
+              "value": "how is things there in image",
+              "type": "text"
+            }
+          ]
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/vision/analyze",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "vision",
+            "analyze"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "black_image test",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "image",
+                  "type": "file",
+                  "src": [
+                    "/D:/INTERNSHARK-TASKS/Task25/Testing_images/images (7).jpg"
+                  ]
+                },
+                {
+                  "key": "prompt",
+                  "value": "how is things there in image",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/vision/analyze",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "vision",
+                "analyze"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "date",
+              "value": "Thu, 17 Sep 2026 10:56:14 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "1254"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"success\": true,\n  \"status_code\": 200,\n  \"data\": {\n    \"analysis_type\": \"general\",\n    \"description\": \"A very dark image showing a subtle fine mesh or grid-like texture visible primarily in the center, with the edges fading into near-total blackness.\",\n    \"visible_text\": [],\n    \"objects\": [\n      \"mesh/grid pattern\",\n      \"textured surface\"\n    ],\n    \"attributes\": {\n      \"color\": \"predominantly black/dark gray\",\n      \"texture\": \"fine grid or perforated pattern\",\n      \"lighting\": \"dim, centered, with vignetting toward edges\",\n      \"brightness\": \"very low\"\n    },\n    \"uncertain_details\": [\n      \"The exact material or object the mesh texture belongs to cannot be determined.\",\n      \"It is unclear whether this is a close-up of a manufactured object (e.g., speaker grille, filter) or a textured surface.\",\n      \"The cause of the central illumination is uncertain (could be lighting or post-processing vignette).\"\n    ],\n    \"answer\": null,\n    \"observed\": [\n      \"Fine repeating grid/mesh pattern visible in the central region\",\n      \"Overall image is extremely dark with low contrast\",\n      \"Edges are nearly pure black\"\n    ],\n    \"not_determinable\": [\n      \"Specific identity of the subject\",\n      \"Scale or size of the mesh pattern\",\n      \"Any text, labels, or branding\",\n      \"Context or purpose of the image\"\n    ]\n  },\n  \"metadata\": {\n    \"file_name\": \"images (7).jpg\",\n    \"content_type\": \"image/jpeg\",\n    \"size_bytes\": 7744,\n    \"width\": 554,\n    \"height\": 554\n  }\n}"
+        }
+      ]
+    },
+    {
+      "name": "text file testing",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "image",
+              "type": "file",
+              "src": [
+                "postman-cloud:///1f1ac078-356a-4c00-8a16-3aad30fde5f3"
+              ]
+            },
+            {
+              "key": "prompt",
+              "value": "describe the image",
+              "type": "text"
+            }
+          ]
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/vision/analyze",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "vision",
+            "analyze"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "text file testing",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "image",
+                  "type": "file",
+                  "src": [
+                    "postman-cloud:///1f1ac078-356a-4c00-8a16-3aad30fde5f3"
+                  ]
+                },
+                {
+                  "key": "prompt",
+                  "value": "describe the image",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/vision/analyze",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "vision",
+                "analyze"
+              ]
+            }
+          },
+          "status": "Bad Request",
+          "code": 400,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "date",
+              "value": "Thu, 17 Sep 2026 10:59:27 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "65"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"detail\": \"Unsupported image type. Use JPEG, PNG, WEBP, or GIF.\"\n}"
+        }
+      ]
+    }
+  ]
+}
