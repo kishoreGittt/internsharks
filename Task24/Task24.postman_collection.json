@@ -758,6 +758,166 @@
           "body": "{\n  \"success\": true,\n  \"status_code\": 200,\n  \"data\": {\n    \"count\": 4,\n    \"traces\": [\n      {\n        \"trace_id\": \"trace_cef08bd6e8df41fb98c11828b6f31652\",\n        \"request_type\": \"ai_ask\",\n        \"model\": \"openai/gpt-oss-20b:free\",\n        \"prompt_version\": \"assistant_v1\",\n        \"status\": \"failed\",\n        \"status_code\": 502,\n        \"start_time\": \"2026-09-16T09:59:05.020000\",\n        \"end_time\": \"2026-09-16T09:59:05.566000\",\n        \"total_duration_ms\": 549.49,\n        \"prompt_tokens\": null,\n        \"completion_tokens\": null,\n        \"total_tokens\": null,\n        \"estimated_cost_usd\": null,\n        \"error_category\": \"MODEL_UNAVAILABLE\",\n        \"prompt_length\": 40,\n        \"response_length\": null,\n        \"created_at\": \"2026-09-16T09:59:05.566000\"\n      },\n      {\n        \"trace_id\": \"trace_7985dd4663e94b3cbd42827b94cb060f\",\n        \"request_type\": \"ai_ask\",\n        \"model\": \"openai/gpt-oss-20b/free\",\n        \"prompt_version\": \"assistant_v1\",\n        \"status\": \"failed\",\n        \"status_code\": 502,\n        \"start_time\": \"2026-09-16T10:04:30.836000\",\n        \"end_time\": \"2026-09-16T10:04:31.385000\",\n        \"total_duration_ms\": 545.05,\n        \"prompt_tokens\": null,\n        \"completion_tokens\": null,\n        \"total_tokens\": null,\n        \"estimated_cost_usd\": null,\n        \"error_category\": \"MODEL_UNAVAILABLE\",\n        \"prompt_length\": 40,\n        \"response_length\": null,\n        \"created_at\": \"2026-09-16T10:04:31.385000\"\n      },\n      {\n        \"trace_id\": \"trace_eed3c2f0aef944f1b9821a07e8979630\",\n        \"request_type\": \"ai_ask\",\n        \"model\": \"openai/gpt-oss-20b/free\",\n        \"prompt_version\": \"assistant_v1\",\n        \"status\": \"failed\",\n        \"status_code\": 502,\n        \"start_time\": \"2026-09-16T10:07:31.509000\",\n        \"end_time\": \"2026-09-16T10:07:31.922000\",\n        \"total_duration_ms\": 414.4,\n        \"prompt_tokens\": null,\n        \"completion_tokens\": null,\n        \"total_tokens\": null,\n        \"estimated_cost_usd\": null,\n        \"error_category\": \"MODEL_UNAVAILABLE\",\n        \"prompt_length\": 40,\n        \"response_length\": null,\n        \"created_at\": \"2026-09-16T10:07:31.922000\"\n      },\n      {\n        \"trace_id\": \"trace_d32b5585beea4888af59079700692433\",\n        \"request_type\": \"ai_ask\",\n        \"model\": \"openai/gpt-oss-20b:free\",\n        \"prompt_version\": \"assistant_v1\",\n        \"status\": \"failed\",\n        \"status_code\": 502,\n        \"start_time\": \"2026-09-16T10:16:14.590000\",\n        \"end_time\": \"2026-09-16T10:16:15.051000\",\n        \"total_duration_ms\": 460.64,\n        \"prompt_tokens\": null,\n        \"completion_tokens\": null,\n        \"total_tokens\": null,\n        \"estimated_cost_usd\": null,\n        \"error_category\": \"MODEL_UNAVAILABLE\",\n        \"prompt_length\": 40,\n        \"response_length\": null,\n        \"created_at\": \"2026-09-16T10:16:15.051000\"\n      }\n    ]\n  }\n}"
         }
       ]
+    },
+    {
+      "name": "Test metrics API",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://127.0.0.1:8000/observability/metrics",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "observability",
+            "metrics"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Test metrics API",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://127.0.0.1:8000/observability/metrics",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "observability",
+                "metrics"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "date",
+              "value": "Thu, 17 Sep 2026 06:36:47 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "1906"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"success\": true,\n  \"status_code\": 200,\n  \"data\": {\n    \"total_requests\": 17,\n    \"successful_requests\": 11,\n    \"failed_requests\": 6,\n    \"success_rate_percent\": 64.71,\n    \"average_latency_ms\": 10215.89,\n    \"p50_latency_ms\": 3880.34,\n    \"p95_latency_ms\": 39330.18,\n    \"total_tokens\": 5364,\n    \"estimated_cost_usd\": 0.0071,\n    \"requests_by_model\": [\n      {\n        \"name\": \"openai/gpt-oss-20b:free\",\n        \"requests\": 3,\n        \"successful_requests\": 0,\n        \"failed_requests\": 3,\n        \"average_latency_ms\": 21202.01,\n        \"p50_latency_ms\": 549.49,\n        \"p95_latency_ms\": 56391.25,\n        \"total_tokens\": 0,\n        \"estimated_cost_usd\": 0\n      },\n      {\n        \"name\": \"openai/gpt-oss-20b/free\",\n        \"requests\": 2,\n        \"successful_requests\": 0,\n        \"failed_requests\": 2,\n        \"average_latency_ms\": 479.72,\n        \"p50_latency_ms\": 479.72,\n        \"p95_latency_ms\": 538.52,\n        \"total_tokens\": 0,\n        \"estimated_cost_usd\": 0\n      },\n      {\n        \"name\": \"inclusionai/ling-3.0-flash-vl:free\",\n        \"requests\": 11,\n        \"successful_requests\": 11,\n        \"failed_requests\": 0,\n        \"average_latency_ms\": 7968.21,\n        \"p50_latency_ms\": 4703.66,\n        \"p95_latency_ms\": 15725.45,\n        \"total_tokens\": 5364,\n        \"estimated_cost_usd\": 0.0071\n      },\n      {\n        \"name\": \"unknown\",\n        \"requests\": 1,\n        \"successful_requests\": 0,\n        \"failed_requests\": 1,\n        \"average_latency_ms\": 0,\n        \"p50_latency_ms\": 0,\n        \"p95_latency_ms\": 0,\n        \"total_tokens\": 0,\n        \"estimated_cost_usd\": 0\n      }\n    ],\n    \"requests_by_prompt_version\": [\n      {\n        \"name\": \"assistant_v1\",\n        \"requests\": 10,\n        \"successful_requests\": 5,\n        \"failed_requests\": 5,\n        \"average_latency_ms\": 10769.65,\n        \"p50_latency_ms\": 3814.56,\n        \"p95_latency_ms\": 41656.76,\n        \"total_tokens\": 4880,\n        \"estimated_cost_usd\": 0.0071\n      },\n      {\n        \"name\": \"v1\",\n        \"requests\": 6,\n        \"successful_requests\": 5,\n        \"failed_requests\": 1,\n        \"average_latency_ms\": 4678.23,\n        \"p50_latency_ms\": 4678.23,\n        \"p95_latency_ms\": 4678.23,\n        \"total_tokens\": 484,\n        \"estimated_cost_usd\": 0\n      },\n      {\n        \"name\": \"v2\",\n        \"requests\": 1,\n        \"successful_requests\": 1,\n        \"failed_requests\": 0,\n        \"average_latency_ms\": 0,\n        \"p50_latency_ms\": 0,\n        \"p95_latency_ms\": 0,\n        \"total_tokens\": 0,\n        \"estimated_cost_usd\": 0\n      }\n    ],\n    \"failures_by_category\": [\n      {\n        \"error_category\": \"INTERNAL_ERROR\",\n        \"count\": 1\n      },\n      {\n        \"error_category\": \"MODEL_UNAVAILABLE\",\n        \"count\": 4\n      },\n      {\n        \"error_category\": \"OPENROUTER_TIMEOUT\",\n        \"count\": 1\n      }\n    ]\n  }\n}"
+        }
+      ]
+    },
+    {
+      "name": "Check Privacy Again After AI Request",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/observability/privacy",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "observability",
+            "privacy"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Check Privacy Again After AI Request",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/observability/privacy",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "observability",
+                "privacy"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "date",
+              "value": "Thu, 17 Sep 2026 07:06:32 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "229"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            },
+            {
+              "key": "x-trace-id",
+              "value": "trace_7b9f0fa747d44ae796797535d836bcf9"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"success\": true,\n  \"status_code\": 200,\n  \"data\": {\n    \"ai_content_logging_enabled\": false,\n    \"prompt_content_stored\": false,\n    \"response_content_stored\": false,\n    \"metadata_stored\": true,\n    \"message\": \"Sensitive prompt and response content are not stored.\"\n  }\n}"
+        }
+      ]
     }
   ]
 }

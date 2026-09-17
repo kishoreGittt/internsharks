@@ -1,172 +1,95 @@
-"""
-OpenRouter AI service.
-
-This file sends the user's message to OpenRouter
-and returns the AI response together with token usage.
-"""
-
-import time
-from typing import Any, Dict
+import logging
+from typing import Any
 
 import requests
 
 from app.config import (
     OPENROUTER_API_KEY,
     OPENROUTER_MODEL,
+    OPENROUTER_TIMEOUT_SECONDS,
 )
 
-
-OPENROUTER_URL = "https://openrouter.ai/api/v1/chat/completions"
+logger = logging.getLogger("task24.ai_service")
 
 
 class AIServiceError(Exception):
-    """
-    Custom exception for AI service errors.
-    """
+    def __init__(self, category: str, message: str, status_code: int = 500):
+        super().__init__(message)
+        self.category = category
+        self.message = message
+        self.status_code = status_code
 
-    pass
+
+def classify_openrouter_error(status_code: int, response_text: str = ""):
+    text = response_text.lower()
+    if status_code == 401 or status_code == 403:
+        return "OPENROUTER_AUTH_ERROR", "OpenRouter authentication failed.", 502
+    if status_code == 408:
+        return "OPENROUTER_TIMEOUT", "The AI provider timed out.", 504
+    if status_code == 429:
+        return "OPENROUTER_RATE_LIMIT", "OpenRouter rate limit exceeded.", 429
+    if status_code in (400, 404):
+        if "model" in text or "model" == text.strip():
+            return "MODEL_UNAVAILABLE", "The configured model is unavailable.", 502
+        return "MODEL_UNAVAILABLE", "The configured model or request is unavailable.", 502
+    if status_code >= 500:
+        return "OPENROUTER_SERVER_ERROR", "OpenRouter returned a server error.", 502
+    return "INTERNAL_ERROR", "The AI provider request failed.", 502
 
 
-def generate_ai_response(message: str) -> Dict[str, Any]:
-    """
-    Send a message to OpenRouter and return the AI response.
-
-    Args:
-        message: User's input message.
-
-    Returns:
-        Dictionary containing:
-        - response
-        - model
-        - usage
-        - duration_ms
-
-    Raises:
-        AIServiceError: If the OpenRouter request fails.
-    """
-
+def call_openrouter(message: str) -> dict[str, Any]:
     if not OPENROUTER_API_KEY:
         raise AIServiceError(
-            "OPENROUTER_API_KEY is not configured."
+            "OPENROUTER_AUTH_ERROR",
+            "OpenRouter API key is not configured.",
+            500,
         )
-
-    if not OPENROUTER_MODEL:
-        raise AIServiceError(
-            "OPENROUTER_MODEL is not configured."
-        )
-
-    headers = {
-        "Authorization": f"Bearer {OPENROUTER_API_KEY}",
-        "Content-Type": "application/json",
-        "HTTP-Referer": "http://localhost:8000",
-        "X-Title": "Task24 AI Observability API",
-    }
-
-    payload = {
-        "model": OPENROUTER_MODEL,
-        "messages": [
-            {
-                "role": "user",
-                "content": message,
-            }
-        ],
-    }
-
-    start_time = time.perf_counter()
 
     try:
         response = requests.post(
-            OPENROUTER_URL,
-            headers=headers,
-            json=payload,
-            timeout=60,
+            "https://openrouter.ai/api/v1/chat/completions",
+            headers={
+                "Authorization": f"Bearer {OPENROUTER_API_KEY}",
+                "Content-Type": "application/json",
+                "HTTP-Referer": "http://127.0.0.1:8000",
+                "X-Title": "Task24 AI Observability API",
+            },
+            json={
+                "model": OPENROUTER_MODEL,
+                "messages": [
+                    {"role": "system", "content": "You are a helpful AI assistant. Answer clearly."},
+                    {"role": "user", "content": message},
+                ],
+            },
+            timeout=OPENROUTER_TIMEOUT_SECONDS,
         )
-
-    except requests.exceptions.Timeout as exc:
-        raise AIServiceError(
-            "OpenRouter request timed out."
-        ) from exc
-
-    except requests.exceptions.RequestException as exc:
-        raise AIServiceError(
-            f"Unable to connect to OpenRouter: {exc}"
-        ) from exc
-
-    duration_ms = round(
-        (time.perf_counter() - start_time) * 1000,
-        2,
-    )
+    except requests.Timeout as exc:
+        raise AIServiceError("OPENROUTER_TIMEOUT", "The AI provider timed out.", 504) from exc
+    except requests.RequestException as exc:
+        logger.error("openrouter_connection_error error_type=%s", type(exc).__name__)
+        raise AIServiceError("INTERNAL_ERROR", "Could not connect to the AI provider.", 502) from exc
 
     if response.status_code != 200:
-        try:
-            error_data = response.json()
-        except ValueError:
-            error_data = response.text
-
-        raise AIServiceError(
-            f"OpenRouter API error {response.status_code}: "
-            f"{error_data}"
-        )
+        category, text, status = classify_openrouter_error(response.status_code, response.text)
+        raise AIServiceError(category, text, status)
 
     try:
         result = response.json()
-    except ValueError as exc:
+        content = result["choices"][0]["message"]["content"]
+        if not isinstance(content, str) or not content.strip():
+            raise ValueError("empty content")
+    except (ValueError, KeyError, IndexError, TypeError) as exc:
         raise AIServiceError(
-            "OpenRouter returned an invalid JSON response."
+            "INVALID_MODEL_RESPONSE",
+            "The AI provider returned an invalid response.",
+            502,
         ) from exc
 
-    choices = result.get("choices", [])
-
-    if not choices:
-        raise AIServiceError(
-            "OpenRouter response does not contain choices."
-        )
-
-    first_choice = choices[0]
-
-    message_data = first_choice.get("message", {})
-
-    content = message_data.get("content", "")
-
-    if isinstance(content, list):
-        content = "".join(
-            item.get("text", "")
-            for item in content
-            if isinstance(item, dict)
-        )
-
-    if not content:
-        content = "The AI returned an empty response."
-
-    raw_usage = result.get("usage", {}) or {}
-
-    prompt_tokens = raw_usage.get(
-        "prompt_tokens",
-        raw_usage.get("input_tokens", 0),
-    ) or 0
-
-    completion_tokens = raw_usage.get(
-        "completion_tokens",
-        raw_usage.get("output_tokens", 0),
-    ) or 0
-
-    total_tokens = raw_usage.get(
-        "total_tokens",
-        prompt_tokens + completion_tokens,
-    ) or 0
-
-    usage = {
-        "prompt_tokens": int(prompt_tokens),
-        "completion_tokens": int(completion_tokens),
-        "total_tokens": int(total_tokens),
-    }
-
+    usage = result.get("usage") or {}
     return {
         "response": content,
-        "model": result.get(
-            "model",
-            OPENROUTER_MODEL,
-        ),
-        "usage": usage,
-        "duration_ms": duration_ms,
+        "prompt_tokens": usage.get("prompt_tokens"),
+        "completion_tokens": usage.get("completion_tokens"),
+        "total_tokens": usage.get("total_tokens"),
+        "model": result.get("model", OPENROUTER_MODEL),
     }

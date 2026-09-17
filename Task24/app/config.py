@@ -6,43 +6,42 @@ from dotenv import load_dotenv
 load_dotenv()
 
 
-APP_NAME = os.getenv(
-    "APP_NAME",
-    "Task24 AI Observability API",
-).strip()
+MONGODB_URI = os.getenv("MONGODB_URI", "")
+MONGODB_DATABASE = os.getenv("MONGODB_DATABASE", "task24_db")
 
-
-APP_VERSION = os.getenv(
-    "APP_VERSION",
-    "1.0.0",
-).strip()
-
-
-OPENROUTER_API_KEY = os.getenv(
-    "OPENROUTER_API_KEY",
-    "",
-).strip()
-
-
+OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY", "")
 OPENROUTER_MODEL = os.getenv(
     "OPENROUTER_MODEL",
-    "openai/gpt-oss-20b:free",
-).strip()
+    "inclusionai/ling-3.0-flash-vl:free",
+)
 
+APP_NAME = os.getenv(
+    "APP_NAME",
+    "Task24 AI Observability",
+)
 
-MONGODB_URI = os.getenv(
-    "MONGODB_URI",
-    "",
-).strip()
+PROMPT_VERSION = os.getenv(
+    "PROMPT_VERSION",
+    "assistant_v1",
+)
 
+LOG_AI_CONTENT = (
+    os.getenv("LOG_AI_CONTENT", "false").strip().lower()
+    in {"true", "1", "yes", "on"}
+)
 
-MONGODB_DATABASE = os.getenv(
-    "MONGODB_DATABASE",
-    "task24_db",
-).strip()
+SLOW_REQUEST_THRESHOLD_MS = int(
+    os.getenv("SLOW_REQUEST_THRESHOLD_MS", "3000")
+)
 
+OPENROUTER_TIMEOUT_SECONDS = int(
+    os.getenv("OPENROUTER_TIMEOUT_SECONDS", "60")
+)
 
-LOG_AI_CONTENT = os.getenv(
-    "LOG_AI_CONTENT",
-    "false",
-).lower() == "true"
+MODEL_INPUT_PRICE_PER_MILLION = float(
+    os.getenv("MODEL_INPUT_PRICE_PER_MILLION", "0.50")
+)
+
+MODEL_OUTPUT_PRICE_PER_MILLION = float(
+    os.getenv("MODEL_OUTPUT_PRICE_PER_MILLION", "1.50")
+)

@@ -1,13 +1,4 @@
-"""
-MongoDB Atlas connection for Task24.
-"""
-
-from typing import Optional
-
-from motor.motor_asyncio import (
-    AsyncIOMotorClient,
-    AsyncIOMotorDatabase,
-)
+from motor.motor_asyncio import AsyncIOMotorClient
 
 from app.config import (
     MONGODB_DATABASE,
@@ -15,81 +6,88 @@ from app.config import (
 )
 
 
-mongodb_client: Optional[AsyncIOMotorClient] = None
-mongodb_database: Optional[AsyncIOMotorDatabase] = None
+client = None
+db = None
+traces_collection = None
+spans_collection = None
 
 
-async def connect_to_mongodb() -> None:
-    """
-    Connect to MongoDB Atlas when FastAPI starts.
-    """
-
-    global mongodb_client
-    global mongodb_database
+async def connect_to_mongodb():
+    global client
+    global db
+    global traces_collection
+    global spans_collection
 
     if not MONGODB_URI:
-        print(
-            "WARNING: MONGODB_URI is not configured. "
-            "MongoDB features may not work."
-        )
-        return
-
-    try:
-        mongodb_client = AsyncIOMotorClient(
-            MONGODB_URI,
-            serverSelectionTimeoutMS=5000,
-        )
-
-        # Verify the connection.
-        await mongodb_client.admin.command("ping")
-
-        mongodb_database = mongodb_client[
-            MONGODB_DATABASE
-        ]
-
-        print(
-            f"Connected to MongoDB database: "
-            f"{MONGODB_DATABASE}"
-        )
-
-    except Exception as exc:
-        mongodb_client = None
-        mongodb_database = None
-
-        print(
-            f"WARNING: MongoDB connection failed: {exc}"
-        )
-
-
-async def close_mongodb_connection() -> None:
-    """
-    Close MongoDB connection when FastAPI stops.
-    """
-
-    global mongodb_client
-    global mongodb_database
-
-    if mongodb_client is not None:
-        mongodb_client.close()
-
-        mongodb_client = None
-        mongodb_database = None
-
-        print("MongoDB connection closed.")
-
-
-def get_database() -> AsyncIOMotorDatabase:
-    """
-    Return the connected MongoDB database.
-
-    Raises:
-        RuntimeError: If MongoDB is not connected.
-    """
-
-    if mongodb_database is None:
         raise RuntimeError(
-            "MongoDB is not connected. "
-            "Check your MONGODB_URI in the .env file."
+            "MONGODB_URI is not configured."
         )
 
-    return mongodb_database
+    client = AsyncIOMotorClient(
+        MONGODB_URI,
+        serverSelectionTimeoutMS=5000,
+    )
+
+    await client.admin.command(
+        "ping"
+    )
+
+    db = client[MONGODB_DATABASE]
+
+    traces_collection = db["traces"]
+    spans_collection = db["spans"]
+
+    await traces_collection.create_index(
+        "trace_id",
+        unique=True,
+    )
+
+    await traces_collection.create_index(
+        "status"
+    )
+
+    await traces_collection.create_index(
+        "model"
+    )
+
+    await traces_collection.create_index(
+        "prompt_version"
+    )
+
+    await traces_collection.create_index(
+        "start_time"
+    )
+
+    await traces_collection.create_index(
+        "total_duration_ms"
+    )
+
+    await spans_collection.create_index(
+        "trace_id"
+    )
+
+
+async def close_mongodb():
+    global client
+
+    if client is not None:
+        client.close()
+        client = None
+
+
+def get_traces_collection():
+    if traces_collection is None:
+        raise RuntimeError(
+            "MongoDB is not connected."
+        )
+
+    return traces_collection
+
+
+def get_spans_collection():
+    if spans_collection is None:
+        raise RuntimeError(
+            "MongoDB is not connected."
+        )
+
+    return spans_collection

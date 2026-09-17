@@ -2,23 +2,32 @@ import time
 import uuid
 from datetime import datetime, timezone
 from typing import Any, Optional
-from app.database import get_spans_collection, get_traces_collection
+
+from app.config import LOG_AI_CONTENT
+from app.database import (
+    get_spans_collection,
+    get_traces_collection,
+)
+
 
 def generate_trace_id() -> str:
     return f"trace_{uuid.uuid4().hex}"
 
+
 def generate_span_id() -> str:
     return f"span_{uuid.uuid4().hex}"
 
+
 def utc_now() -> datetime:
     return datetime.now(timezone.utc)
+
 
 class TraceManager:
     def __init__(self, trace_id: Optional[str] = None):
         self.trace_id = trace_id or generate_trace_id()
         self.start_time = utc_now()
         self.start_perf = time.perf_counter()
-        self.spans = []
+        self.spans: list[dict[str, Any]] = []
 
     def start_span(self, name: str) -> dict[str, Any]:
         span = {
@@ -28,6 +37,7 @@ class TraceManager:
             "status": "running",
             "_start_perf": time.perf_counter(),
         }
+
         self.spans.append(span)
         return span
 
@@ -36,19 +46,27 @@ class TraceManager:
         span: dict[str, Any],
         status: str = "success",
         error_category: Optional[str] = None,
-    ):
-        duration_ms = (time.perf_counter() - span["_start_perf"]) * 1000
+    ) -> None:
+        duration_ms = (
+            time.perf_counter() - span["_start_perf"]
+        ) * 1000
+
         span["status"] = status
         span["duration_ms"] = round(duration_ms, 2)
         span["end_time"] = utc_now()
+
         if error_category:
             span["error_category"] = error_category
+
         span.pop("_start_perf", None)
 
     def total_duration_ms(self) -> float:
-        return round((time.perf_counter() - self.start_perf) * 1000, 2)
+        return round(
+            (time.perf_counter() - self.start_perf) * 1000,
+            2,
+        )
 
-    def save_trace(
+    async def save_trace(
         self,
         *,
         request_type: str,
@@ -63,7 +81,7 @@ class TraceManager:
         prompt_length: Optional[int] = None,
         response_length: Optional[int] = None,
         status_code: int = 200,
-    ):
+    ) -> dict[str, Any]:
         trace_document = {
             "trace_id": self.trace_id,
             "request_type": request_type,
@@ -81,14 +99,34 @@ class TraceManager:
             "error_category": error_category,
             "prompt_length": prompt_length,
             "response_length": response_length,
+            "content_logging_enabled": LOG_AI_CONTENT,
             "created_at": utc_now(),
         }
 
-        traces = get_traces_collection()
-        spans = get_spans_collection()
-        traces.insert_one(trace_document)
+        if LOG_AI_CONTENT:
+            trace_document["privacy_warning"] = (
+                "AI content logging is enabled."
+            )
+        else:
+            trace_document["privacy_warning"] = (
+                "Prompt and response content are not stored."
+            )
 
-        for span in self.spans:
-            spans.insert_one({**span, "created_at": utc_now()})
+        await get_traces_collection().insert_one(
+            trace_document
+        )
+
+        if self.spans:
+            span_documents = []
+
+            for span in self.spans:
+                span_copy = dict(span)
+                span_copy.pop("_start_perf", None)
+                span_copy["created_at"] = utc_now()
+                span_documents.append(span_copy)
+
+            await get_spans_collection().insert_many(
+                span_documents
+            )
 
         return trace_document

@@ -1,40 +1,13 @@
-"""
-Token pricing and estimated cost calculation.
-
-The prices below are example prices per 1 million tokens.
-Update them according to the model/provider pricing you use.
-"""
-
-INPUT_PRICE_PER_MILLION = 0.50
-OUTPUT_PRICE_PER_MILLION = 1.50
-
+from typing import Optional
+from app.config import MODEL_INPUT_PRICE_PER_MILLION, MODEL_OUTPUT_PRICE_PER_MILLION
 
 def calculate_estimated_cost(
-    prompt_tokens: int,
-    completion_tokens: int,
-) -> float:
-    """
-    Calculate estimated AI request cost.
+    prompt_tokens: Optional[int],
+    completion_tokens: Optional[int],
+) -> Optional[float]:
+    if prompt_tokens is None or completion_tokens is None:
+        return None
 
-    Args:
-        prompt_tokens: Number of input tokens.
-        completion_tokens: Number of output tokens.
-
-    Returns:
-        Estimated cost in USD.
-    """
-
-    prompt_tokens = prompt_tokens or 0
-    completion_tokens = completion_tokens or 0
-
-    input_cost = (
-        prompt_tokens / 1_000_000
-    ) * INPUT_PRICE_PER_MILLION
-
-    output_cost = (
-        completion_tokens / 1_000_000
-    ) * OUTPUT_PRICE_PER_MILLION
-
-    total_cost = input_cost + output_cost
-
-    return round(total_cost, 8)
+    input_cost = prompt_tokens / 1_000_000 * MODEL_INPUT_PRICE_PER_MILLION
+    output_cost = completion_tokens / 1_000_000 * MODEL_OUTPUT_PRICE_PER_MILLION
+    return round(input_cost + output_cost, 8)

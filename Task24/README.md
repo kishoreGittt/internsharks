@@ -1,29 +1,31 @@
 # Task 24 - AI Observability with FastAPI, OpenRouter and MongoDB Atlas
 
-## Features
+Task 24 builds a small observability layer around an AI request. It tracks what happened during a request without storing private prompt/response content by default.
 
-- POST `/ai/ask`
-- Unique trace IDs
-- Trace and span storage in MongoDB Atlas
+## What is implemented
+
+- `POST /ai/ask`
+- Request-level `trace_id` propagation through `RequestTrackingMiddleware`
+- Span-level tracing stored in MongoDB (`prompt_build`, `openrouter_call`, and validation spans when applicable)
+- `GET /observability/traces/{trace_id}` returns the trace plus its spans
 - Token usage and estimated cost
-- Prompt version and model tracking
-- Failure categorization
-- Metrics API
-- Slow request API
-- Failure filtering and pagination
-- Privacy-first metadata logging
-- Pytest tests
+- Prompt-version and exact model tracking
+- Privacy-first telemetry: with `LOG_AI_CONTENT=false`, complete prompt/response text is not stored or logged
+- Structured error categories including `OPENROUTER_TIMEOUT`, `OPENROUTER_RATE_LIMIT`, `OPENROUTER_AUTH_ERROR`, `MODEL_UNAVAILABLE`, `INVALID_MODEL_RESPONSE`, `TOOL_EXECUTION_ERROR`, `RETRIEVAL_ERROR`, `VALIDATION_ERROR`, and `INTERNAL_ERROR`
+- p50 and p95 latency
+- Metrics grouped by model and prompt version
+- Failure filtering by `error_category`
+- Pagination for failure and slow-trace APIs
+- Pytest coverage for tracing, pricing, error classification and privacy defaults
 
 ## Setup
 
 ```powershell
 cd D:\INTERNSHARK-TASKS\Task24
-python -m venv .venv
-.\.venv\Scripts\Activate.ps1
 pip install -r requirements.txt
 ```
 
-Copy `.env.example` to `.env` and add your MongoDB Atlas URI and OpenRouter API key.
+Create `.env` from `.env.example` and add your real MongoDB Atlas URI and OpenRouter API key.
 
 Run:
 
@@ -31,80 +33,87 @@ Run:
 uvicorn app.main:app --reload
 ```
 
-Open Swagger:
+Swagger:
 
-`http://127.0.0.1:8000/docs`
+```text
+http://127.0.0.1:8000/docs
+```
 
-## Endpoints
+## Main endpoints
 
-- `GET /`
-- `GET /health`
-- `POST /ai/ask`
-- `GET /observability/traces/{trace_id}`
-- `GET /observability/metrics`
-- `GET /observability/traces/slow`
-- `GET /observability/traces/failures`
-- `GET /observability/traces/failures?error_category=OPENROUTER_TIMEOUT`
+### Ask AI
 
-## MongoDB collections
+`POST /ai/ask`
 
-Database: `task24_db`
+```json
+{
+  "message": "Explain FastAPI in simple words.",
+  "prompt_version": "assistant_v1"
+}
+```
+
+The response includes `trace_id`, token usage when the provider supplies it, and estimated cost.
+
+### Trace with spans
+
+`GET /observability/traces/{trace_id}`
+
+A successful trace contains spans similar to:
+
+```json
+"spans": [
+  {"name": "prompt_build", "duration_ms": 0.1, "status": "success"},
+  {"name": "openrouter_call", "duration_ms": 900, "status": "success"}
+]
+```
+
+### Metrics
+
+`GET /observability/metrics`
+
+Returns totals, average latency, p50, p95, total tokens, estimated cost, statistics grouped by model and prompt version, and failure counts by category.
+
+**p50** is the median latency: about half of requests are at or below it. **p95** is the latency at or below which about 95% of requests fall; it helps reveal slow-tail behavior that an average can hide.
+
+### Slow traces
+
+`GET /observability/traces/slow`
+
+Optional query parameters:
+
+```text
+?threshold_ms=3000&page=1&page_size=20
+```
+
+### Failure traces
+
+`GET /observability/traces/failures`
+
+Optional filter and pagination:
+
+```text
+?error_category=OPENROUTER_TIMEOUT&page=1&page_size=20
+```
+
+## Privacy
+
+`LOG_AI_CONTENT=false` is the default. The trace stores metadata such as prompt/response lengths, not the complete prompt or response. Application logs also contain operational metadata only.
+
+Never commit `.env`, API keys, MongoDB passwords, `.venv`, `__pycache__`, secrets, or sensitive prompt content.
+
+## MongoDB
+
+Database: `task24_db` by default.
 
 Collections:
 
 - `traces`
 - `spans`
 
-## Privacy
-
-`LOG_AI_CONTENT=false` is the default. The application stores prompt and response lengths, not complete prompt or response content.
-
-Never commit:
-
-- `.env`
-- API keys
-- MongoDB passwords
-- `.venv`
-- `__pycache__`
-
 ## Tests
 
 ```powershell
-pytest -q
+pytest -v tests/
 ```
 
-## Postman
-
-### Ask AI
-
-POST `http://127.0.0.1:8000/ai/ask`
-
-Body:
-
-```json
-{
-  "message": "Explain FastAPI in simple words."
-}
-```
-
-Copy the returned `trace_id`.
-
-### Get trace
-
-GET `http://127.0.0.1:8000/observability/traces/<trace_id>`
-
-### Metrics
-
-GET `http://127.0.0.1:8000/observability/metrics`
-
-### Slow traces
-
-GET `http://127.0.0.1:8000/observability/traces/slow`
-
-### Failures
-
-GET `http://127.0.0.1:8000/observability/traces/failures`
-
-## Important
-
-Update model pricing in `.env` according to the actual model/provider pricing. If OpenRouter does not return token usage, token fields remain null.
+Tests mock/avoid external provider calls where appropriate.
