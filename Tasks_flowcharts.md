@@ -766,3 +766,68 @@ Close Trace
 Store Observability Data
   ↓
 Final Response
+
+
+Task 25 — Multimodal AI
+
+                         USER
+                           ↓
+                 Upload Image + Prompt
+                           ↓
+                    FastAPI API
+                           ↓
+                  Validate Image
+                           ↓
+          ┌────────────────┴────────────────┐
+          ↓                                 ↓
+     Image Valid?                      Prompt Valid?
+          ↓                                 ↓
+         YES                               YES
+          └────────────────┬────────────────┘
+                           ↓
+                Prepare Image Input
+                           ↓
+              Image + Text Prompt
+                           ↓
+                 Vision Model
+                           ↓
+              Visual Understanding
+                           ↓
+              Structured Analysis
+                           ↓
+               Pydantic Validation
+                           ↓
+                 Valid Output?
+                    ↓           ↓
+                   YES          NO
+                    ↓            ↓
+             API Response    Controlled Retry
+                    ↓            ↓
+                    └──────→ Validate Again
+                           ↓
+                    Final Response
+                           ↓
+                         USER
+
+
+Task 26 — Async AI Jobs & Queue Processing
+
+                         USER
+                           ↓
+                  Upload Document
+                           ↓
+                     FastAPI
+                           ↓
+                  Validate File
+                           ↓
+                   Create Job
+                           ↓
+                In-Memory Job Store
+                           ↓
+                  Fake Redis Queue
+                           ↓
+                 Return job_id
+                           ↓
+                    202 Accepted
+                           ↓
+                         USER

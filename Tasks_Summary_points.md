@@ -214,3 +214,21 @@ Task 24 – AI Observability
 3. Token usage and response latency are monitored.
 4. Errors, tool failures, and model failures are recorded for analysis.
 5. Trace data is stored to understand performance and improve the AI system.
+
+
+Task 25 – Multimodal AI: Image Understanding & Structured Visual Analysis
+
+1. The API accepts an image and a text prompt using multipart/form-data.
+2. A vision-capable OpenRouter model analyzes the image together with the user’s instruction.
+3. The system supports general, document, product, and UI screenshot analysis.
+4. Image files are validated for type, size, corruption, and security risks.
+5. The model returns structured, Pydantic-validated results while avoiding hallucinations and clearly identifying uncertain or unavailable information.
+
+
+Task 26 – Async AI Jobs & Queue Processing
+
+1. The API accepts document-analysis requests and immediately creates a background job.
+2. Jobs are stored in an in-memory repository and added to a simulated Redis queue.
+3. Background workers retrieve jobs, process documents using OpenRouter, and update job statuses.
+4. The system supports queued, processing, completed, failed, and cancelled job states.
+5. The task demonstrates asynchronous processing, multiple workers, queue monitoring, cancellation, and the limitations of in-memory queues.
