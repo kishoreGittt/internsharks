@@ -1,13 +1,11 @@
 import asyncio
 
 from app.storage.repositories.job_repository import (
-    get_next_job,
+    claim_next_job,
     update_job
 )
 
-from app.storage.mongodb import (
-    documents_collection
-)
+from app.storage.mongodb import documents_collection
 
 from app.services.document_service import (
     extract_text,
@@ -19,51 +17,90 @@ from app.services.rag_service import (
 )
 
 
-async def process_job(job):
+async def process_job(job: dict):
+    """
+    Process one document ingestion job.
+
+    Flow:
+        queued
+          ↓
+        processing
+          ↓
+        extract text
+          ↓
+        chunk text
+          ↓
+        create embeddings / index
+          ↓
+        completed
+    """
 
     job_id = job["job_id"]
 
     document_id = job["document_id"]
 
-    owner_id = job["owner_id"]
+    owner_id = (
+        job.get("owner_id")
+        or job.get("user_id")
+    )
 
     try:
+
+        print("\n==========================================")
+        print("        DOCUMENT JOB STARTED")
+        print("==========================================")
+        print(f"Job ID       : {job_id}")
+        print(f"Document ID  : {document_id}")
+        print(f"Owner ID     : {owner_id}")
+        print("==========================================\n")
+
+        # -----------------------------------------------------
+        # Find document
+        # -----------------------------------------------------
 
         document = await documents_collection.find_one(
             {
                 "document_id": document_id,
-                "owner_id": owner_id
+                "$or": [
+                    {"user_id": owner_id},
+                    {"owner_id": owner_id}
+                ]
             }
         )
 
         if not document:
 
             await update_job(
-                job_id,
-                {
-                    "status": "failed",
-                    "progress": 100,
-                    "error": "Document not found."
-                }
+                job_id=job_id,
+                status="failed",
+                progress=100,
+                error="Document not found."
+            )
+
+            print(
+                f"Document not found: {document_id}"
             )
 
             return
 
+        # -----------------------------------------------------
+        # PROCESSING
+        # -----------------------------------------------------
+
         await update_job(
-            job_id,
-            {
-                "status": "processing",
-                "progress": 10
-            }
+            job_id=job_id,
+            status="processing",
+            progress=10
         )
 
         await documents_collection.update_one(
-
             {
                 "document_id": document_id,
-                "owner_id": owner_id
+                "$or": [
+                    {"user_id": owner_id},
+                    {"owner_id": owner_id}
+                ]
             },
-
             {
                 "$set": {
                     "status": "processing",
@@ -72,39 +109,65 @@ async def process_job(job):
             }
         )
 
-        # -------------------------
-        # Extract
-        # -------------------------
+        print("Status: processing")
+
+        # -----------------------------------------------------
+        # EXTRACT TEXT
+        # -----------------------------------------------------
+
+        print("Extracting document text...")
 
         text = extract_text(
             document["path"]
         )
 
+        if not text or not text.strip():
+
+            raise ValueError(
+                "No readable text was extracted from the document."
+            )
+
         await update_job(
-            job_id,
-            {
-                "progress": 35
-            }
+            job_id=job_id,
+            status="processing",
+            progress=35
         )
 
-        # -------------------------
-        # Chunk
-        # -------------------------
+        print(
+            f"Extracted characters: {len(text)}"
+        )
+
+        # -----------------------------------------------------
+        # CHUNK TEXT
+        # -----------------------------------------------------
+
+        print("Creating document chunks...")
 
         chunks = chunk_text(
             text
         )
 
+        if not chunks:
+
+            raise ValueError(
+                "Document produced no chunks."
+            )
+
         await update_job(
-            job_id,
-            {
-                "progress": 55
-            }
+            job_id=job_id,
+            status="processing",
+            progress=55
         )
 
-        # -------------------------
-        # Embedding + Vector Store
-        # -------------------------
+        print(
+            f"Created chunks: {len(chunks)}"
+        )
+
+        # -----------------------------------------------------
+        # EMBEDDING + VECTOR INDEX
+        # -----------------------------------------------------
+
+        print("Creating embeddings and indexing document...")
 
         await index_document(
             owner_id=owner_id,
@@ -113,31 +176,23 @@ async def process_job(job):
         )
 
         await update_job(
-            job_id,
-            {
-                "progress": 85
-            }
+            job_id=job_id,
+            status="processing",
+            progress=85
         )
 
-        # -------------------------
-        # READY
-        # -------------------------
-
-        await update_job(
-            job_id,
-            {
-                "status": "ready",
-                "progress": 100
-            }
-        )
+        # -----------------------------------------------------
+        # DOCUMENT READY
+        # -----------------------------------------------------
 
         await documents_collection.update_one(
-
             {
                 "document_id": document_id,
-                "owner_id": owner_id
+                "$or": [
+                    {"user_id": owner_id},
+                    {"owner_id": owner_id}
+                ]
             },
-
             {
                 "$set": {
                     "status": "ready",
@@ -146,24 +201,50 @@ async def process_job(job):
             }
         )
 
+        # IMPORTANT:
+        # Job status should be completed.
+        # Document status should be ready.
+        await update_job(
+            job_id=job_id,
+            status="completed",
+            progress=100
+        )
+
+        print("\n==========================================")
+        print("        DOCUMENT JOB COMPLETED")
+        print("==========================================")
+        print(f"Job ID       : {job_id}")
+        print(f"Document ID  : {document_id}")
+        print("Status       : completed")
+        print("Document     : ready")
+        print("==========================================\n")
+
     except Exception as error:
 
+        print("\n==========================================")
+        print("        DOCUMENT JOB FAILED")
+        print("==========================================")
+        print(f"Job ID       : {job_id}")
+        print(f"Document ID  : {document_id}")
+        print(f"Error type   : {type(error).__name__}")
+        print(f"Error        : {error}")
+        print("==========================================\n")
+
         await update_job(
-            job_id,
-            {
-                "status": "failed",
-                "progress": 100,
-                "error": str(error)
-            }
+            job_id=job_id,
+            status="failed",
+            progress=100,
+            error=str(error)
         )
 
         await documents_collection.update_one(
-
             {
                 "document_id": document_id,
-                "owner_id": owner_id
+                "$or": [
+                    {"user_id": owner_id},
+                    {"owner_id": owner_id}
+                ]
             },
-
             {
                 "$set": {
                     "status": "failed",
@@ -175,24 +256,50 @@ async def process_job(job):
 
 
 async def worker_loop():
+    """
+    Continuously check MongoDB for queued jobs.
+    """
 
-    print(
-        "Task 27 document worker started..."
-    )
+    print("\n==========================================")
+    print("       TASK 27 DOCUMENT WORKER")
+    print("==========================================")
+    print("Document worker started.")
+    print("Waiting for queued jobs...")
+    print("==========================================\n")
 
     while True:
 
-        job = await get_next_job()
+        try:
 
-        if job:
+            job = await claim_next_job()
+
+            if job:
+
+                print(
+                    f"Processing job: {job['job_id']}"
+                )
+
+                await process_job(
+                    job
+                )
+
+            else:
+
+                await asyncio.sleep(2)
+
+        except asyncio.CancelledError:
 
             print(
-                f"Processing job: {job['job_id']}"
+                "Document worker stopped."
             )
 
-            await process_job(job)
+            raise
 
-        else:
+        except Exception as error:
+
+            print(
+                f"Worker loop error: {error}"
+            )
 
             await asyncio.sleep(2)
 

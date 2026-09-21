@@ -232,3 +232,17 @@ Task 26 – Async AI Jobs & Queue Processing
 3. Background workers retrieve jobs, process documents using OpenRouter, and update job statuses.
 4. The system supports queued, processing, completed, failed, and cancelled job states.
 5. The task demonstrates asynchronous processing, multiple workers, queue monitoring, cancellation, and the limitations of in-memory queues.
+
+
+Task 27 – AI Knowledge & Operations Copilot
+
+1. Secure Authentication & User Isolation
+Implements JWT authentication and ensures users can access only their own documents, conversations, projects, and tool operations.
+2. Document Knowledge & RAG
+Supports PDF/TXT uploads, asynchronous document processing, text chunking, embeddings, vector search, and grounded answers using document context.
+3. AI Chat & Conversation Memory
+Provides an AI chat endpoint with conversation history so the assistant can maintain context across multiple messages.
+4. AI Vision & Tool Calling
+Supports image/screenshot analysis and AI function calling for project operations such as retrieving projects, members, tasks, creating tasks, and updating task status.
+5. Production-Style Reliability & Observability
+Includes background jobs, structured responses, error handling, trace IDs, metrics, evaluation, health checks, and safe failure handling using FastAPI and MongoDB.

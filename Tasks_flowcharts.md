@@ -831,3 +831,31 @@ Task 26 — Async AI Jobs & Queue Processing
                     202 Accepted
                            ↓
                          USER
+
+
+
+Task 27 – AI Knowledge & Operations Copilot
+
+User
+ ↓
+JWT Authentication
+ ↓
+FastAPI Backend
+ ↓
+AI Orchestrator
+ ↓
+ ├── RAG → Documents → Embeddings → Vector Search
+ │
+ ├── Chat → Conversation Memory
+ │
+ ├── Vision → Image Analysis
+ │
+ └── Tools → Project Operations
+ ↓
+OpenRouter LLM
+ ↓
+Validated AI Response
+ ↓
+Trace + Metrics + MongoDB
+ ↓
+User                 
