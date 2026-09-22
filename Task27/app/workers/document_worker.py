@@ -260,13 +260,6 @@ async def worker_loop():
     Continuously check MongoDB for queued jobs.
     """
 
-    print("\n==========================================")
-    print("       TASK 27 DOCUMENT WORKER")
-    print("==========================================")
-    print("Document worker started.")
-    print("Waiting for queued jobs...")
-    print("==========================================\n")
-
     while True:
 
         try:

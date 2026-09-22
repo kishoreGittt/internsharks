@@ -2,8 +2,7 @@ from fastapi import (
     APIRouter,
     Depends,
     File,
-    UploadFile,
-    HTTPException
+    UploadFile
 )
 
 from app.auth.dependencies import (
@@ -14,8 +13,8 @@ from app.services.document_service import (
     create_document
 )
 
-from app.storage.repositories.document_repository import (
-    get_document
+from app.storage.mongodb import (
+    documents_collection
 )
 
 
@@ -24,10 +23,6 @@ router = APIRouter(
     tags=["Knowledge"]
 )
 
-
-# ============================================================
-# UPLOAD DOCUMENT
-# ============================================================
 
 @router.post(
     "/documents",
@@ -40,12 +35,15 @@ async def upload_document(
     current_user: dict = Depends(
         get_current_user
     )
+
 ):
 
     document_id, job_id = (
         await create_document(
             file=file,
-            owner_id=current_user["user_id"]
+            owner_id=current_user[
+                "user_id"
+            ]
         )
     )
 
@@ -66,9 +64,47 @@ async def upload_document(
     }
 
 
-# ============================================================
-# GET DOCUMENT
-# ============================================================
+@router.get(
+    "/documents"
+)
+async def get_documents(
+
+    current_user: dict = Depends(
+        get_current_user
+    )
+
+):
+
+    owner_id = current_user[
+        "user_id"
+    ]
+
+    cursor = documents_collection.find(
+        {
+            "owner_id": owner_id
+        },
+        {
+            "_id": 0
+        }
+    )
+
+    documents = []
+
+    async for document in cursor:
+
+        documents.append(
+            document
+        )
+
+    return {
+
+        "success": True,
+
+        "status_code": 200,
+
+        "data": documents
+    }
+
 
 @router.get(
     "/documents/{document_id}"
@@ -80,26 +116,36 @@ async def get_document_details(
     current_user: dict = Depends(
         get_current_user
     )
+
 ):
 
-    user_id = current_user["user_id"]
+    owner_id = current_user[
+        "user_id"
+    ]
 
-    document = await get_document(
-        user_id=user_id,
-        document_id=document_id
+    document = await documents_collection.find_one(
+        {
+            "document_id":
+                document_id,
+
+            "owner_id":
+                owner_id
+        },
+        {
+            "_id": 0
+        }
     )
 
     if not document:
 
-        raise HTTPException(
-            status_code=404,
-            detail={
-                "success": False,
-                "status_code": 404,
-                "error": "DOCUMENT_NOT_FOUND",
-                "message": "Document not found."
-            }
-        )
+        return {
+            "success": False,
+            "status_code": 404,
+            "error": "DOCUMENT_NOT_FOUND",
+            "message": (
+                "Document not found."
+            )
+        }
 
     return {
 
@@ -107,27 +153,5 @@ async def get_document_details(
 
         "status_code": 200,
 
-        "data": {
-
-            "document_id":
-                document.get("document_id"),
-
-            "filename":
-                document.get("filename"),
-
-            "status":
-                document.get("status"),
-
-            "progress":
-                document.get("progress", 0),
-
-            "error":
-                document.get("error"),
-
-            "created_at":
-                document.get("created_at"),
-
-            "updated_at":
-                document.get("updated_at")
-        }
+        "data": document
     }

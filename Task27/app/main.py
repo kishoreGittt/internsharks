@@ -1,10 +1,13 @@
-import asyncio
-
 from contextlib import asynccontextmanager
 
-from fastapi import Depends, FastAPI
+from fastapi import (
+    Depends,
+    FastAPI
+)
 
-from fastapi.responses import JSONResponse
+from fastapi.responses import (
+    JSONResponse
+)
 
 from app.config import settings
 
@@ -40,6 +43,10 @@ from app.routes.eval import (
     router as eval_router
 )
 
+from app.routes.red_team import (
+    router as red_team_router
+)
+
 from app.storage.mongodb import (
     create_indexes,
     ping_mongodb,
@@ -47,25 +54,11 @@ from app.storage.mongodb import (
     get_mongodb_status
 )
 
-from app.workers.document_worker import (
-    worker_loop
-)
-
-
-# =========================================================
-# APPLICATION LIFESPAN
-# =========================================================
 
 @asynccontextmanager
-async def lifespan(app: FastAPI):
-
-    print("\n==========================================")
-    print("          STARTING TASK 27")
-    print("==========================================")
-
-    # -----------------------------------------------------
-    # MongoDB connection
-    # -----------------------------------------------------
+async def lifespan(
+    app: FastAPI
+):
 
     mongo_ok = await ping_mongodb()
 
@@ -75,81 +68,23 @@ async def lifespan(app: FastAPI):
             "WARNING: MongoDB connection failed."
         )
 
-        yield
+    else:
 
-        return
+        await create_indexes()
 
-    print(
-        "MongoDB connection successful."
-    )
+    yield
 
-    # -----------------------------------------------------
-    # MongoDB indexes
-    # -----------------------------------------------------
+    await close_mongodb()
 
-    await create_indexes()
-
-    print(
-        "MongoDB indexes ready."
-    )
-
-    # -----------------------------------------------------
-    # START DOCUMENT WORKER
-    # -----------------------------------------------------
-
-    worker_task = asyncio.create_task(
-        worker_loop()
-    )
-
-    print(
-        "Document worker task started."
-    )
-
-    print("==========================================\n")
-
-    try:
-
-        yield
-
-    finally:
-
-        # -------------------------------------------------
-        # STOP DOCUMENT WORKER
-        # -------------------------------------------------
-
-        print(
-            "Stopping document worker..."
-        )
-
-        worker_task.cancel()
-
-        try:
-
-            await worker_task
-
-        except asyncio.CancelledError:
-
-            pass
-
-        # -------------------------------------------------
-        # CLOSE MONGODB
-        # -------------------------------------------------
-
-        await close_mongodb()
-
-        print(
-            "MongoDB connection closed."
-        )
-
-
-# =========================================================
-# FASTAPI APPLICATION
-# =========================================================
 
 app = FastAPI(
+
     title=settings.APP_NAME,
+
     version="1.0.0",
+
     debug=settings.DEBUG,
+
     lifespan=lifespan
 )
 
@@ -186,88 +121,126 @@ app.include_router(
     eval_router
 )
 
+# RED TEAM
+app.include_router(
+    red_team_router
+)
 
-# =========================================================
-# ROOT
-# =========================================================
 
 @app.get("/")
 async def root():
 
     return {
+
         "success": True,
+
         "status_code": 200,
-        "message": (
+
+        "message":
             "Task 27 AI Knowledge & Operations "
             "Copilot is running"
-        )
     }
 
-
-# =========================================================
-# HEALTH
-# =========================================================
 
 @app.get("/health")
 async def health():
 
-    mongo_status = await get_mongodb_status()
+    mongo_status = (
+        await get_mongodb_status()
+    )
 
-    if mongo_status["status"] != "healthy":
+    if mongo_status[
+        "status"
+    ] != "healthy":
 
         return JSONResponse(
+
             status_code=503,
+
             content={
+
                 "success": False,
+
                 "status_code": 503,
-                "error": "DATABASE_UNAVAILABLE",
-                "message": "MongoDB is unavailable",
+
+                "error":
+                    "DATABASE_UNAVAILABLE",
+
+                "message":
+                    "MongoDB is unavailable",
+
                 "data": {
-                    "api": "healthy",
-                    "mongodb": mongo_status,
-                    "redis": "not_used"
+
+                    "api":
+                        "healthy",
+
+                    "mongodb":
+                        mongo_status,
+
+                    "redis":
+                        "not_used"
                 }
             }
         )
 
     return {
+
         "success": True,
+
         "status_code": 200,
+
         "data": {
-            "api": "healthy",
-            "mongodb": mongo_status,
-            "redis": "not_used"
+
+            "api":
+                "healthy",
+
+            "mongodb":
+                mongo_status,
+
+            "redis":
+                "not_used"
         }
     }
 
 
-# =========================================================
-# CURRENT USER
-# =========================================================
-
-@app.get("/users/me")
+@app.get(
+    "/users/me"
+)
 async def users_me(
+
     current_user: dict = Depends(
         get_current_user
     )
+
 ):
 
     return {
+
         "success": True,
+
         "status_code": 200,
+
         "data": {
-            "user_id": current_user.get(
-                "user_id"
-            ),
-            "email": current_user.get(
-                "email"
-            ),
-            "name": current_user.get(
-                "name"
-            ),
-            "role": current_user.get(
-                "role",
-                "user"
-            )
+
+            "user_id":
+                current_user.get(
+                    "user_id"
+                ),
+
+            "email":
+                current_user.get(
+                    "email"
+                ),
+
+            "name":
+                current_user.get(
+                    "name"
+                ),
+
+            "role":
+                current_user.get(
+                    "role",
+                    "user"
+                )
         }
     }
