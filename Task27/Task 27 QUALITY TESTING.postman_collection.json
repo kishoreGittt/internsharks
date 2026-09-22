@@ -632,7 +632,7 @@
           "bearer": [
             {
               "key": "token",
-              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNmFhZDFiYTE5ZTQxOTZlYWYwYTI0NzVkIiwiZW1haWwiOiJ1c2VyYkBleGFtcGxlLmNvbSIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzg5OTg3ODUzLCJpYXQiOjE3ODk5ODQyNTN9.ehqsFxvF3ubGaDgoLNN72uDGD96zNFU70TqXiLQ-rA4",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNmFhZDFiYTE5ZTQxOTZlYWYwYTI0NzVkIiwiZW1haWwiOiJ1c2VyYkBleGFtcGxlLmNvbSIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzg5OTg3ODUzLCJpYXQiOjE3ODk5ODQyNTN9.ehqsFxvF3ubGaDoLNN72uDGD96zNFU70TqXiLQ-rA4",
               "type": "string"
             }
           ]
@@ -2105,12 +2105,12 @@
           "bearer": [
             {
               "key": "token",
-              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNmFiMGYwZWMzN2IzN2UxMTE3MWJhMWQ4IiwiZW1haWwiOiJ1c2VyYUB0ZXN0LmNvbSIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzkwMDY5OTQyLCJpYXQiOjE3OTAwNjYzNDJ9.GZUBHv-hZtCrgqNmR9ttwoO6aBBqFnU4LQAdiZ_pFD4",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNmFiMGYwZWMzN2IzN2UxMTE3MWJhMWQ4IiwiZW1haWwiOiJ1c2VyYUB0ZXN0LmNvbSIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzkwMDc1ODk4LCJpYXQiOjE3OTAwNzIyOTh9.867oWz7DFJu3iIBLj3s605UTcaf7Gr9i9ZKb-zcXUvk",
               "type": "string"
             }
           ]
         },
-        "method": "GET",
+        "method": "POST",
         "header": [],
         "body": {
           "mode": "raw",
@@ -2122,7 +2122,7 @@
           }
         },
         "url": {
-          "raw": "http://127.0.0.1:8000/chat",
+          "raw": "http://127.0.0.1:8000/ai/chat",
           "protocol": "http",
           "host": [
             "127",
@@ -2132,6 +2132,7 @@
           ],
           "port": "8000",
           "path": [
+            "ai",
             "chat"
           ]
         }
@@ -2189,12 +2190,76 @@
           ],
           "cookie": [],
           "body": "{\n  \"detail\": \"Not Found\"\n}"
+        },
+        {
+          "name": "Tool Should Not Execute on Informational Query",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"message\": \"Explain what a project manager does.\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/ai/chat",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "ai",
+                "chat"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "date",
+              "value": "Tue, 22 Sep 2026 11:11:58 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "1626"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"success\": true,\n  \"status_code\": 200,\n  \"conversation_id\": \"conv_3e41a9040b2e405a90c72c74e382fc38\",\n  \"answer\": \"A project manager plans, leads, and controls work to achieve a defined goal within constraints such as scope, time, budget, quality, and risk.\\n\\nKey responsibilities include:\\n\\n- **Defining objectives and scope:** Clarifying what the project must deliver and what is excluded.\\n- **Planning work:** Breaking the project into tasks, milestones, dependencies, resources, and a schedule.\\n- **Organizing the team:** Assigning responsibilities, coordinating people, and removing obstacles.\\n- **Managing the budget:** Estimating costs, tracking spending, and controlling changes.\\n- **Tracking progress:** Monitoring milestones, deliverables, risks, and issues.\\n- **Communicating:** Keeping stakeholders informed about status, decisions, changes, and problems.\\n- **Managing risks:** Identifying potential problems early and developing responses.\\n- **Controlling changes:** Evaluating requests for changes and their impact on scope, schedule, and cost.\\n- **Ensuring quality:** Confirming that deliverables meet agreed requirements and standards.\\n- **Closing the project:** Confirming acceptance, documenting results, and capturing lessons learned.\\n\\nUltimately, the project manager provides structure and accountability so the team can deliver value predictably and collaboratively. Their level of authority varies by organization; some manage both people and budgets, while others coordinate work without directly supervising team members.\",\n  \"sources\": [],\n  \"tool_calls\": [],\n  \"trace_id\": \"5eeadb64-c3c6-4367-8164-e33a1c00920f\"\n}"
         }
       ]
     },
     {
       "name": "Invalid Backend Project",
       "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNmFiMGYwZWMzN2IzN2UxMTE3MWJhMWQ4IiwiZW1haWwiOiJ1c2VyYUB0ZXN0LmNvbSIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzkwMDc2MDQxLCJpYXQiOjE3OTAwNzI0NDF9.UcNxRLMAD3FpLuIVRTV2LIj2NbgqC3W6UXSCzDafwxc",
+              "type": "string"
+            }
+          ]
+        },
         "method": "POST",
         "header": [],
         "body": {
@@ -2207,7 +2272,7 @@
           }
         },
         "url": {
-          "raw": "http://127.0.0.1:8000/chat",
+          "raw": "http://127.0.0.1:8000/ai/chat",
           "protocol": "http",
           "host": [
             "127",
@@ -2217,6 +2282,7 @@
           ],
           "port": "8000",
           "path": [
+            "ai",
             "chat"
           ]
         }
@@ -2274,6 +2340,60 @@
           ],
           "cookie": [],
           "body": "{\n  \"detail\": \"Not Found\"\n}"
+        },
+        {
+          "name": "Invalid Backend Project",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"message\": \"What is the status of project DOES_NOT_EXIST_999?\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/ai/chat",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "ai",
+                "chat"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "date",
+              "value": "Tue, 22 Sep 2026 11:08:34 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "312"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"success\": true,\n  \"status_code\": 200,\n  \"conversation_id\": \"conv_99c9ec47fd35453ebb4a79c7171f3537\",\n  \"answer\": \"I couldn’t retrieve a status for project `DOES_NOT_EXIST_999`; the project lookup failed.\",\n  \"sources\": [],\n  \"tool_calls\": [\n    {\n      \"tool\": \"get_project\",\n      \"success\": false\n    }\n  ],\n  \"trace_id\": \"1ba47a35-094d-4cd2-b541-c3dc8a0343cd\"\n}"
         }
       ]
     },
@@ -2302,7 +2422,7 @@
           }
         },
         "url": {
-          "raw": "http://127.0.0.1:8000/chat",
+          "raw": "http://127.0.0.1:8000/ai/chat",
           "protocol": "http",
           "host": [
             "127",
@@ -2312,6 +2432,7 @@
           ],
           "port": "8000",
           "path": [
+            "ai",
             "chat"
           ]
         }
@@ -2369,6 +2490,60 @@
           ],
           "cookie": [],
           "body": "{\n  \"detail\": \"Not Found\"\n}"
+        },
+        {
+          "name": "Invalid JSON",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    invalid json\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/ai/chat",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "ai",
+                "chat"
+              ]
+            }
+          },
+          "status": "Unprocessable Entity",
+          "code": 422,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "date",
+              "value": "Tue, 22 Sep 2026 11:09:30 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "158"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"detail\": [\n    {\n      \"type\": \"json_invalid\",\n      \"loc\": [\n        \"body\",\n        7\n      ],\n      \"msg\": \"JSON decode error\",\n      \"input\": {},\n      \"ctx\": {\n        \"error\": \"Expecting property name enclosed in double quotes\"\n      }\n    }\n  ]\n}"
         }
       ]
     },
@@ -2380,7 +2555,7 @@
           "bearer": [
             {
               "key": "token",
-              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNmFiMGYwZWMzN2IzN2UxMTE3MWJhMWQ4IiwiZW1haWwiOiJ1c2VyYUB0ZXN0LmNvbSIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzkwMDcwNjYwLCJpYXQiOjE3OTAwNjcwNjB9.-JsRMI6uaG-lXfQXSw2lg5PIukBPi8xSZmgaMecJTvM",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNmFiMGYwZWMzN2IzN2UxMTE3MWJhMWQ4IiwiZW1haWwiOiJ1c2VyYUB0ZXN0LmNvbSIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzkwMDc5MDI0LCJpYXQiOjE3OTAwNzU0MjR9.brzfaMkh2itmD0OHYHVaueNrLFGUOFXrUV9QcdiRg78",
               "type": "string"
             }
           ]
@@ -2397,7 +2572,7 @@
           }
         },
         "url": {
-          "raw": "http://127.0.0.1:8000/chat",
+          "raw": "http://127.0.0.1:8000/ai/chat",
           "protocol": "http",
           "host": [
             "127",
@@ -2407,6 +2582,7 @@
           ],
           "port": "8000",
           "path": [
+            "ai",
             "chat"
           ]
         }
@@ -2464,6 +2640,60 @@
           ],
           "cookie": [],
           "body": "{\n  \"detail\": \"Not Found\"\n}"
+        },
+        {
+          "name": "Failed Request Must Still Create Trace",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"message\": \"Trigger a controlled OpenRouter failure.\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/ai/chat",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "ai",
+                "chat"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "date",
+              "value": "Tue, 22 Sep 2026 11:10:57 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "527"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"success\": true,\n  \"status_code\": 200,\n  \"conversation_id\": \"conv_fc99e7802e6d4d99b618091c6cbe3bdc\",\n  \"answer\": \"I can’t trigger a real OpenRouter failure from this environment because no OpenRouter administration or request tool is available.\\n\\nFor a safe controlled test, simulate failure locally—e.g., return HTTP `503`, enforce a short timeout, or inject a mock provider error—and verify retries, circuit breaking, fallback routing, and alerting.\",\n  \"sources\": [],\n  \"tool_calls\": [],\n  \"trace_id\": \"3af4ebbd-e411-4e89-a3bd-c258909ba048\"\n}"
         }
       ]
     }

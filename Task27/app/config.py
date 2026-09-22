@@ -15,6 +15,8 @@ class Settings(BaseSettings):
     # MONGODB
     # =====================================================
 
+
+
     MONGODB_URI: str
 
     MONGODB_DB: str = "task27"
@@ -64,12 +66,16 @@ class Settings(BaseSettings):
     CHUNK_OVERLAP: int = 100
 
     TOP_K: int = 3
+    
+
 
     # =====================================================
     # CONVERSATION
     # =====================================================
 
     MAX_HISTORY_MESSAGES: int = 10
+
+    MAX_TOOL_ROUNDS: int = 10
 
     # =====================================================
     # RED TEAM
