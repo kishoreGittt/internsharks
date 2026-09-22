@@ -20,7 +20,9 @@ client = AsyncIOMotorClient(
 # DATABASE
 # =========================================================
 
-db = client[settings.MONGODB_DB]
+db = client[
+    settings.MONGODB_DB
+]
 
 
 # =========================================================
@@ -48,13 +50,19 @@ traces_collection = db["traces"]
 
 async def create_indexes():
 
+    # -----------------------------------------------------
     # USERS
+    # -----------------------------------------------------
+
     await users_collection.create_index(
         "email",
         unique=True
     )
 
+    # -----------------------------------------------------
     # DOCUMENTS
+    # -----------------------------------------------------
+
     await documents_collection.create_index(
         [
             ("user_id", 1),
@@ -70,7 +78,10 @@ async def create_indexes():
         ]
     )
 
+    # -----------------------------------------------------
     # CHUNKS
+    # -----------------------------------------------------
+
     await chunks_collection.create_index(
         [
             ("user_id", 1),
@@ -78,7 +89,10 @@ async def create_indexes():
         ]
     )
 
+    # -----------------------------------------------------
     # JOBS
+    # -----------------------------------------------------
+
     await jobs_collection.create_index(
         [
             ("status", 1),
@@ -94,7 +108,10 @@ async def create_indexes():
         unique=True
     )
 
+    # -----------------------------------------------------
     # CONVERSATIONS
+    # -----------------------------------------------------
+
     await conversations_collection.create_index(
         [
             ("user_id", 1),
@@ -103,7 +120,10 @@ async def create_indexes():
         unique=True
     )
 
+    # -----------------------------------------------------
     # PROJECTS
+    # -----------------------------------------------------
+
     await projects_collection.create_index(
         [
             ("user_id", 1),
@@ -112,7 +132,10 @@ async def create_indexes():
         unique=True
     )
 
+    # -----------------------------------------------------
     # TRACES
+    # -----------------------------------------------------
+
     await traces_collection.create_index(
         [
             ("user_id", 1),
@@ -121,7 +144,9 @@ async def create_indexes():
         unique=True
     )
 
-    print("MongoDB indexes created successfully.")
+    print(
+        "MongoDB indexes created successfully."
+    )
 
 
 # =========================================================
@@ -132,7 +157,9 @@ async def ping_mongodb():
 
     try:
 
-        await client.admin.command("ping")
+        await client.admin.command(
+            "ping"
+        )
 
         return True
 
@@ -153,7 +180,9 @@ async def get_mongodb_status():
 
     try:
 
-        await client.admin.command("ping")
+        await client.admin.command(
+            "ping"
+        )
 
         return {
             "status": "healthy",
@@ -177,4 +206,6 @@ async def close_mongodb():
 
     client.close()
 
-    print("MongoDB connection closed.")
+    print(
+        "MongoDB connection closed."
+    )

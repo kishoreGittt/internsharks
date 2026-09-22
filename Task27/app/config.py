@@ -15,14 +15,16 @@ class Settings(BaseSettings):
     # MONGODB
     # =====================================================
 
-    MONGO_URI: str
-    DATABASE_NAME: str = "task27_db"
+    MONGODB_URI: str
+
+    MONGODB_DB: str = "task27"
 
     # =====================================================
     # JWT
     # =====================================================
 
     JWT_SECRET: str
+
     JWT_ALGORITHM: str = "HS256"
 
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 60
@@ -37,7 +39,9 @@ class Settings(BaseSettings):
         "https://openrouter.ai/api/v1"
     )
 
-    OPENROUTER_MODEL: str = "openai/gpt-oss-20b:free"
+    OPENROUTER_MODEL: str = (
+        "openai/gpt-oss-20b:free"
+    )
 
     OPENROUTER_VISION_MODEL: str = (
         "google/gemini-2.0-flash-exp:free"
@@ -74,8 +78,6 @@ class Settings(BaseSettings):
     RED_TEAM_ENABLED: bool = True
 
     RED_TEAM_ALLOW_SIMULATION: bool = True
-
-    # These are ONLY for controlled testing.
 
     SIMULATE_OPENROUTER_FAILURE: bool = False
 

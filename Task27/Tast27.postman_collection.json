@@ -1,0 +1,1944 @@
+{
+  "info": {
+    "_postman_id": "d38bc2f2-b68d-4486-87f3-067ed7ea7e99",
+    "name": "Tast27",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "57366509",
+    "_collection_link": "https://go.postman.co/collection/57366509-d38bc2f2-b68d-4486-87f3-067ed7ea7e99?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Register User A",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"email\": \"usera@example.com\",\r\n    \"password\": \"UserA@123\",\r\n    \"name\": \"User A\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/auth/register",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "auth",
+            "register"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Register User A",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"email\": \"usera@example.com\",\r\n    \"password\": \"UserA@123\",\r\n    \"name\": \"User A\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/auth/register",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "auth",
+                "register"
+              ]
+            }
+          },
+          "status": "Created",
+          "code": 201,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "date",
+              "value": "Fri, 18 Sep 2026 10:28:28 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "111"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            },
+            {
+              "key": "x-request-id",
+              "value": "e6e708b6-2031-47c7-b71b-fa624c77de88"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"success\": true,\n  \"status_code\": 200,\n  \"user_id\": \"40b95cdd-cac8-4c7f-828e-1cc2d9bd726b\",\n  \"email\": \"usera@example.com\"\n}"
+        }
+      ]
+    },
+    {
+      "name": "Register User B",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"email\": \"userb@example.com\",\r\n    \"password\": \"UserB@123\",\r\n    \"name\": \"User B\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/auth/register",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "auth",
+            "register"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Register User B",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"email\": \"userb@example.com\",\r\n    \"password\": \"UserB@123\",\r\n    \"name\": \"User B\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/auth/register",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "auth",
+                "register"
+              ]
+            }
+          },
+          "status": "Created",
+          "code": 201,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "date",
+              "value": "Fri, 18 Sep 2026 10:29:50 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "111"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            },
+            {
+              "key": "x-request-id",
+              "value": "b61c01dc-4db9-4a0f-86d5-d5b4878a7322"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"success\": true,\n  \"status_code\": 200,\n  \"user_id\": \"d843e775-755d-46b3-b8bc-f7ce68865db8\",\n  \"email\": \"userb@example.com\"\n}"
+        }
+      ]
+    },
+    {
+      "name": "Login User A",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"email\": \"usera@example.com\",\r\n    \"password\": \"UserA@123\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/auth/login",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "auth",
+            "login"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Login User A",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"email\": \"usera@example.com\",\r\n    \"password\": \"UserA@123\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/auth/login",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "auth",
+                "login"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "date",
+              "value": "Fri, 18 Sep 2026 10:33:30 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "239"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            },
+            {
+              "key": "x-request-id",
+              "value": "8b4a88b5-1ccd-4e65-a5df-ed3c35be8820"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"success\": true,\n  \"status_code\": 200,\n  \"access_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI0MGI5NWNkZC1jYWM4LTRjN2YtODI4ZS0xY2MyZDliZDcyNmIiLCJleHAiOjE3ODk3MzEyMTF9.YC2CnYlG4EVPQGjPkGvGoYRVZd9d5t4EZFthDuJKkSw\",\n  \"token_type\": \"bearer\"\n}"
+        }
+      ]
+    },
+    {
+      "name": "Login User B",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"email\": \"userb@example.com\",\r\n    \"password\": \"UserB@123\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/auth/login",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "auth",
+            "login"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Login User B",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"email\": \"userb@example.com\",\r\n    \"password\": \"UserB@123\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/auth/login",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "auth",
+                "login"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "date",
+              "value": "Fri, 18 Sep 2026 10:34:39 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "239"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            },
+            {
+              "key": "x-request-id",
+              "value": "7db61449-b1db-4c8c-bc29-204b2d91c9bb"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"success\": true,\n  \"status_code\": 200,\n  \"access_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkODQzZTc3NS03NTVkLTQ2YjMtYjhiYy1mN2NlNjg4NjVkYjgiLCJleHAiOjE3ODk3MzEyODF9.tFavpGydiv-mU9dlGvmPAck8FLBPaRkOHELaPJ3ax8U\",\n  \"token_type\": \"bearer\"\n}"
+        }
+      ]
+    },
+    {
+      "name": "Test /users/me",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI0MGI5NWNkZC1jYWM4LTRjN2YtODI4ZS0xY2MyZDliZDcyNmIiLCJleHAiOjE3ODk3MzE1MzR9.3elBSiRJWVujQ_KjCoBYQfREVhDzq96wzAmIqryJhaY",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://127.0.0.1:8000/users/me",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "users",
+            "me"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Test /users/me",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://127.0.0.1:8000/users/me",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "users",
+                "me"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "date",
+              "value": "Fri, 18 Sep 2026 10:43:00 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "146"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"success\": true,\n  \"status_code\": 200,\n  \"data\": {\n    \"user_id\": \"40b95cdd-cac8-4c7f-828e-1cc2d9bd726b\",\n    \"email\": \"usera@example.com\",\n    \"name\": null,\n    \"role\": \"user\"\n  }\n}"
+        }
+      ]
+    },
+    {
+      "name": "Upload Knowledge Document",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": ""
+        }
+      },
+      "response": [
+        {
+          "name": "Upload Knowledge Document",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "file",
+                  "type": "file",
+                  "src": [
+                    "/D:/INTERNSHARK-TASKS/Task27/Test_docs/policy.txt"
+                  ]
+                }
+              ]
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/knowledge/documents",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "knowledge",
+                "documents"
+              ]
+            }
+          },
+          "status": "Accepted",
+          "code": 202,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "date",
+              "value": "Fri, 18 Sep 2026 11:22:37 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "153"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"success\": true,\n  \"status_code\": 202,\n  \"document_id\": \"bdfd9907-70a6-448a-b03e-0c1b9ccf90ce\",\n  \"job_id\": \"82669b6e-9096-49f9-aedf-1ee4accff890\",\n  \"status\": \"queued\"\n}"
+        }
+      ]
+    },
+    {
+      "name": "Check Async Job",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": ""
+        }
+      },
+      "response": [
+        {
+          "name": "Check Async Job",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://127.0.0.1:8000/jobs/8dbdd2f1-99af-4acd-87ec-ca316c047013",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "jobs",
+                "8dbdd2f1-99af-4acd-87ec-ca316c047013"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "date",
+              "value": "Fri, 18 Sep 2026 11:47:54 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "334"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"success\": true,\n  \"status_code\": 200,\n  \"data\": {\n    \"job_id\": \"8dbdd2f1-99af-4acd-87ec-ca316c047013\",\n    \"owner_id\": \"6aad1ba19e4196eaf0a2475d\",\n    \"user_id\": \"6aad1ba19e4196eaf0a2475d\",\n    \"document_id\": \"2c8883a2-29f4-40dc-bc60-22cff2c833bd\",\n    \"status\": \"queued\",\n    \"progress\": 0,\n    \"created_at\": \"2026-09-18T11:44:42.982000\",\n    \"updated_at\": \"2026-09-18T11:44:42.982000\"\n  }\n}"
+        }
+      ]
+    },
+    {
+      "name": "Check Job Again",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": ""
+        }
+      },
+      "response": [
+        {
+          "name": "Check Job Again",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://127.0.0.1:8000/jobs/8dbdd2f1-99af-4acd-87ec-ca316c047013",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "jobs",
+                "8dbdd2f1-99af-4acd-87ec-ca316c047013"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "date",
+              "value": "Fri, 18 Sep 2026 11:51:41 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "334"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"success\": true,\n  \"status_code\": 200,\n  \"data\": {\n    \"job_id\": \"8dbdd2f1-99af-4acd-87ec-ca316c047013\",\n    \"owner_id\": \"6aad1ba19e4196eaf0a2475d\",\n    \"user_id\": \"6aad1ba19e4196eaf0a2475d\",\n    \"document_id\": \"2c8883a2-29f4-40dc-bc60-22cff2c833bd\",\n    \"status\": \"queued\",\n    \"progress\": 0,\n    \"created_at\": \"2026-09-18T11:44:42.982000\",\n    \"updated_at\": \"2026-09-18T11:44:42.982000\"\n  }\n}"
+        }
+      ]
+    },
+    {
+      "name": "some_error",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": ""
+        }
+      },
+      "response": [
+        {
+          "name": "some_error",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://127.0.0.1:8000/knowledge/documents/2c8883a2-29f4-40dc-bc60-22cff2c833bd",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "knowledge",
+                "documents",
+                "2c8883a2-29f4-40dc-bc60-22cff2c833bd"
+              ]
+            }
+          },
+          "status": "Not Found",
+          "code": 404,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "date",
+              "value": "Fri, 18 Sep 2026 11:56:04 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "22"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"detail\": \"Not Found\"\n}"
+        }
+      ]
+    },
+    {
+      "name": "Ask Leave Policy",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": ""
+        }
+      },
+      "response": [
+        {
+          "name": "Ask Leave Policy",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"message\": \"What is this project about?\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/ai/chat",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "ai",
+                "chat"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "date",
+              "value": "Fri, 18 Sep 2026 12:28:15 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "315"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"success\": true,\n  \"status_code\": 200,\n  \"conversation_id\": \"conv_bf73131ed0e3436ab0afe1586be6777f\",\n  \"answer\": \"I don’t have enough information to identify the project. Please share the project name, repository, files, or a brief description.\",\n  \"sources\": [],\n  \"tool_calls\": [],\n  \"trace_id\": \"b906f099-d7f2-404c-a917-539becf0501a\"\n}"
+        }
+      ]
+    },
+    {
+      "name": "Test RAG Without Document",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": ""
+        }
+      },
+      "response": [
+        {
+          "name": "Test Conversation Memory",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"message\": \"Explain what a project task is.\",\r\n    \"conversation_id\": null,\r\n    \"document_ids\": []\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/ai/chat",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "ai",
+                "chat"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "date",
+              "value": "Fri, 18 Sep 2026 12:35:01 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "799"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"success\": true,\n  \"status_code\": 200,\n  \"conversation_id\": \"conv_4146ddc58f54412bb788547646a755e7\",\n  \"answer\": \"A **project task** is a specific, discrete piece of work created to move a project toward completion.\\n\\nA task usually has:\\n- **An objective or deliverable** to produce\\n- **An owner or assignee**\\n- **A start date and due date**\\n- **An estimated amount of effort**\\n- **Dependencies** on other tasks\\n- **A status**, such as not started, in progress, blocked, or complete\\n\\nFor example, “Design the login page” is a task within a software-development project. Tasks are typically grouped into larger **work packages, phases, or milestones**, and they help teams plan, assign, track, and manage project work.\",\n  \"sources\": [],\n  \"tool_calls\": [],\n  \"trace_id\": \"16fbd14f-6258-4a6b-a513-58c8beeff875\"\n}"
+        },
+        {
+          "name": "Test RAG Without Document",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"message\": \"Explain what a project task is.\",\r\n    \"conversation_id\": null,\r\n    \"document_ids\": []\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/ai/chat",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "ai",
+                "chat"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "date",
+              "value": "Fri, 18 Sep 2026 12:35:01 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "799"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"success\": true,\n  \"status_code\": 200,\n  \"conversation_id\": \"conv_4146ddc58f54412bb788547646a755e7\",\n  \"answer\": \"A **project task** is a specific, discrete piece of work created to move a project toward completion.\\n\\nA task usually has:\\n- **An objective or deliverable** to produce\\n- **An owner or assignee**\\n- **A start date and due date**\\n- **An estimated amount of effort**\\n- **Dependencies** on other tasks\\n- **A status**, such as not started, in progress, blocked, or complete\\n\\nFor example, “Design the login page” is a task within a software-development project. Tasks are typically grouped into larger **work packages, phases, or milestones**, and they help teams plan, assign, track, and manage project work.\",\n  \"sources\": [],\n  \"tool_calls\": [],\n  \"trace_id\": \"16fbd14f-6258-4a6b-a513-58c8beeff875\"\n}"
+        }
+      ]
+    },
+    {
+      "name": "Test Project Tool Calling",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": ""
+        }
+      },
+      "response": [
+        {
+          "name": "Test Project Tool Calling",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"message\": \"Show me the tasks in the AI Copilot project.\",\r\n    \"conversation_id\": null,\r\n    \"document_ids\": []\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/ai/chat",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "ai",
+                "chat"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "date",
+              "value": "Fri, 18 Sep 2026 12:39:23 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "421"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"success\": true,\n  \"status_code\": 200,\n  \"conversation_id\": \"conv_b7395dc0e7b146ad8406b24e69d05928\",\n  \"answer\": \"I couldn’t retrieve the **AI Copilot** project because the project lookup failed twice. If you have its project ID, please provide it so I can fetch the tasks.\",\n  \"sources\": [],\n  \"tool_calls\": [\n    {\n      \"tool\": \"get_project\",\n      \"success\": false\n    },\n    {\n      \"tool\": \"get_project\",\n      \"success\": false\n    }\n  ],\n  \"trace_id\": \"8532b23d-52d8-439c-b946-5a0f1ac184c5\"\n}"
+        }
+      ]
+    },
+    {
+      "name": "Test Project Members Tool",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": ""
+        }
+      },
+      "response": [
+        {
+          "name": "Test Project Members Tool",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"message\": \"Who are the members of the AI Copilot project?\",\r\n    \"conversation_id\": null,\r\n    \"document_ids\": []\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/ai/chat",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "ai",
+                "chat"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "date",
+              "value": "Fri, 18 Sep 2026 12:41:39 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "589"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"success\": true,\n  \"status_code\": 200,\n  \"conversation_id\": \"conv_8a21b8ec381f4f73b3c9fbd37ab8e781\",\n  \"answer\": \"I’m sorry, but I couldn’t retrieve the member list for the “AI Copilot” project. The project lookup returned an error, so I don’t have reliable information about its members.\\n\\nIf you provide the project ID or grant access to the project records, I can help identify the members.\",\n  \"sources\": [],\n  \"tool_calls\": [\n    {\n      \"tool\": \"get_project\",\n      \"success\": false\n    },\n    {\n      \"tool\": \"get_project\",\n      \"success\": false\n    },\n    {\n      \"tool\": \"get_project\",\n      \"success\": false\n    }\n  ],\n  \"trace_id\": \"ad968902-3129-4986-8227-4bf03fd602a5\"\n}"
+        }
+      ]
+    },
+    {
+      "name": "Test Create Task Tool",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": ""
+        }
+      },
+      "response": [
+        {
+          "name": "Test Create Task Tool",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"message\": \"Create a task called 'Test production deployment' in the AI Copilot project.\",\r\n    \"conversation_id\": null,\r\n    \"document_ids\": []\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/ai/chat",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "ai",
+                "chat"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "date",
+              "value": "Fri, 18 Sep 2026 12:43:01 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "403"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"success\": true,\n  \"status_code\": 200,\n  \"conversation_id\": \"conv_84182e5981e54148bfced8fd55dc1fe2\",\n  \"answer\": \"I couldn’t create the task because the **AI Copilot** project could not be located. Please verify the project name or provide its project ID.\",\n  \"sources\": [],\n  \"tool_calls\": [\n    {\n      \"tool\": \"get_project\",\n      \"success\": false\n    },\n    {\n      \"tool\": \"get_project\",\n      \"success\": false\n    }\n  ],\n  \"trace_id\": \"a9463bcd-a65f-4a17-8755-eefb4ff0bb32\"\n}"
+        }
+      ]
+    },
+    {
+      "name": "Test Vision",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": ""
+        }
+      },
+      "response": [
+        {
+          "name": "Test Vision",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "file",
+                  "type": "file",
+                  "src": [
+                    "/D:/INTERNSHARK-TASKS/Task25/Testing_images/parrot_images.jpg"
+                  ]
+                },
+                {
+                  "key": "prompt",
+                  "value": "Describe this image",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/vision/analyze",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "vision",
+                "analyze"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "date",
+              "value": "Fri, 18 Sep 2026 16:24:53 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "532"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"success\": true,\n  \"status_code\": 200,\n  \"data\": {\n    \"answer\": \"The image features a vibrant parrot, likely a macaw, showcasing a stunning array of colors. Its feathers display bright shades of red, orange, green, and blue, creating a striking visual effect. The parrot has a large, curved black beak and expressive eyes, contributing to its lively appearance. The background appears blurred, emphasizing the bird's vivid plumage. Overall, the image captures the beauty and detail of this colorful avian species.\",\n    \"model\": \"openai/gpt-4o-mini\"\n  }\n}"
+        }
+      ]
+    },
+    {
+      "name": "Vision With Custom Prompt",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNmFhZDFiOGM5ZTQxOTZlYWYwYTI0NzVjIiwiZW1haWwiOiJ1c2VyYUBleGFtcGxlLmNvbSIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzg5NzUyNjgxLCJpYXQiOjE3ODk3NDkwODF9.A9LYzqf50jfImqYp8cZVI6hpstGmChEM7X5ZoPb_cPQ",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "file",
+              "type": "file",
+              "src": [
+                "/D:/INTERNSHARK-TASKS/Task25/Testing_images/images (5).jpg"
+              ]
+            },
+            {
+              "key": "prompt",
+              "value": "What objects, text, or important information can you identify in this image?",
+              "type": "text"
+            }
+          ]
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/vision/analyze",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "vision",
+            "analyze"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Vision With Custom Prompt",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "file",
+                  "type": "file",
+                  "src": [
+                    "/D:/INTERNSHARK-TASKS/Task25/Testing_images/images (5).jpg"
+                  ]
+                },
+                {
+                  "key": "prompt",
+                  "value": "What objects, text, or important information can you identify in this image?",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/vision/analyze",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "vision",
+                "analyze"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "date",
+              "value": "Fri, 18 Sep 2026 16:31:46 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "365"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"success\": true,\n  \"status_code\": 200,\n  \"data\": {\n    \"answer\": \"I can't identify specific people in the image. However, I can see that the person is wearing a blue sports uniform with \\\"INDIA\\\" prominently displayed, and there are logos visible on the uniform. If you have any specific questions about the image or its context, feel free to ask!\",\n    \"model\": \"openai/gpt-4o-mini\"\n  }\n}"
+        }
+      ]
+    },
+    {
+      "name": "observability_metrics",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNmFhZDFiOGM5ZTQxOTZlYWYwYTI0NzVjIiwiZW1haWwiOiJ1c2VyYUBleGFtcGxlLmNvbSIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzg5NzUyNjgxLCJpYXQiOjE3ODk3NDkwODF9.A9LYzqf50jfImqYp8cZVI6hpstGmChEM7X5ZoPb_cPQ",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://127.0.0.1:8000/observability/metrics",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "observability",
+            "metrics"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get Trace",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNmFhZDFiOGM5ZTQxOTZlYWYwYTI0NzVjIiwiZW1haWwiOiJ1c2VyYUBleGFtcGxlLmNvbSIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzg5NzUzMDc5LCJpYXQiOjE3ODk3NDk0Nzl9.aKTDOSvlsRX_pf7KUZYdZclZYE8UqWQQnvinPsyqZq8",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://127.0.0.1:8000/observability/traces/16fbd14f-6258-4a6b-a513-58c8beeff875",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "observability",
+            "traces",
+            "16fbd14f-6258-4a6b-a513-58c8beeff875"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Get Trace",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://127.0.0.1:8000/observability/traces/16fbd14f-6258-4a6b-a513-58c8beeff875",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "observability",
+                "traces",
+                "16fbd14f-6258-4a6b-a513-58c8beeff875"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "date",
+              "value": "Fri, 18 Sep 2026 16:38:24 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "465"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"success\": true,\n  \"status_code\": 200,\n  \"trace\": {\n    \"trace_id\": \"16fbd14f-6258-4a6b-a513-58c8beeff875\",\n    \"owner_id\": \"6aad1b8c9e4196eaf0a2475c\",\n    \"request_type\": \"chat\",\n    \"status\": \"success\",\n    \"started_at\": \"2026-09-18T12:35:01.512000\",\n    \"spans\": [\n      {\n        \"name\": \"llm\",\n        \"duration_ms\": 1996.6,\n        \"metadata\": {\n          \"model\": \"nex-agi/nex-n2.5-mini:free\"\n        }\n      }\n    ],\n    \"errors\": [],\n    \"model\": \"nex-agi/nex-n2.5-mini:free\",\n    \"input_tokens\": 799,\n    \"output_tokens\": 198,\n    \"approximate_cost\": 0,\n    \"finished_at\": \"2026-09-18T12:35:03.643000\"\n  }\n}"
+        }
+      ]
+    },
+    {
+      "name": "evalution",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": ""
+        }
+      },
+      "response": [
+        {
+          "name": "evalution",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/eval/run",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "eval",
+                "run"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "date",
+              "value": "Fri, 18 Sep 2026 16:41:25 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "1117"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"success\": true,\n  \"status_code\": 200,\n  \"run_id\": \"eval_6aad1b8c9e4196eaf0a2475c\",\n  \"total_cases\": 11,\n  \"passed\": 11,\n  \"failed\": 0,\n  \"results\": [\n    {\n      \"id\": \"rag_correct\",\n      \"passed\": true,\n      \"message\": \"RAG retrieval contract available.\"\n    },\n    {\n      \"id\": \"missing_information\",\n      \"passed\": true,\n      \"message\": \"Missing-information refusal is enforced.\"\n    },\n    {\n      \"id\": \"document_isolation\",\n      \"passed\": true,\n      \"message\": \"Documents require owner_id.\"\n    },\n    {\n      \"id\": \"cross_user_isolation\",\n      \"passed\": true,\n      \"message\": \"Repository queries include owner_id.\"\n    },\n    {\n      \"id\": \"hallucination_check\",\n      \"passed\": true,\n      \"message\": \"RAG prompt forbids unsupported claims.\"\n    },\n    {\n      \"id\": \"tool_required\",\n      \"passed\": true,\n      \"message\": \"Project tools are available to the model.\"\n    },\n    {\n      \"id\": \"tool_not_required\",\n      \"passed\": true,\n      \"message\": \"Tool choice is automatic.\"\n    },\n    {\n      \"id\": \"invalid_tool_arguments\",\n      \"passed\": true,\n      \"message\": \"Pydantic rejects invalid tool status.\"\n    },\n    {\n      \"id\": \"structured_output\",\n      \"passed\": true,\n      \"message\": \"Final response is Pydantic validated.\"\n    },\n    {\n      \"id\": \"failure_handling\",\n      \"passed\": true,\n      \"message\": \"Worker has explicit failed state handling.\"\n    },\n    {\n      \"id\": \"vision_grounding\",\n      \"passed\": true,\n      \"message\": \"Vision prompt forbids invented details.\"\n    }\n  ]\n}"
+        }
+      ]
+    },
+    {
+      "name": "User Isolation Test",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"name\": \"Second User\",\r\n    \"email\": \"second27@example.com\",\r\n    \"password\": \"Password123\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/auth/register",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "auth",
+            "register"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "User Isolation Test",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"Second User\",\r\n    \"email\": \"second27@example.com\",\r\n    \"password\": \"Password123\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/auth/register",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "auth",
+                "register"
+              ]
+            }
+          },
+          "status": "Created",
+          "code": 201,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "date",
+              "value": "Fri, 18 Sep 2026 16:43:33 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "146"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"success\": true,\n  \"status_code\": 201,\n  \"data\": {\n    \"user_id\": \"6aad6a3672857fe7ed147297\",\n    \"email\": \"second27@example.com\",\n    \"name\": \"Second User\",\n    \"role\": \"user\"\n  }\n}"
+        }
+      ]
+    },
+    {
+      "name": "Invalid JWT Test",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "2234567834567890864567890",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://127.0.0.1:8000/users/me",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "users",
+            "me"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Invalid JWT Test",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://127.0.0.1:8000/users/me",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "users",
+                "me"
+              ]
+            }
+          },
+          "status": "Unauthorized",
+          "code": 401,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "date",
+              "value": "Fri, 18 Sep 2026 16:46:45 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "108"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"detail\": {\n    \"success\": false,\n    \"status_code\": 401,\n    \"error\": \"INVALID_TOKEN\",\n    \"message\": \"Invalid or expired token.\"\n  }\n}"
+        }
+      ]
+    },
+    {
+      "name": "Document Ready Test",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNmFhZDFiOGM5ZTQxOTZlYWYwYTI0NzVjIiwiZW1haWwiOiJ1c2VyYUBleGFtcGxlLmNvbSIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzg5OTY4MzE0LCJpYXQiOjE3ODk5NjQ3MTR9.TII8ooOXojcY20iI02hAP1EiJPGeXcHxy3EWxQ6jma8",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/knowledge/documents/5ea7a743-fd5a-4be0-8a23-892d56bb3509",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "knowledge",
+            "documents",
+            "5ea7a743-fd5a-4be0-8a23-892d56bb3509"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Document Not Ready Test",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"message\": \"Summarize this document.\",\r\n    \"document_ids\": [\r\n        \"WE235466777777\"\r\n    ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/ai/chat",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "ai",
+                "chat"
+              ]
+            }
+          },
+          "status": "Not Found",
+          "code": 404,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "date",
+              "value": "Fri, 18 Sep 2026 16:50:42 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "120"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"detail\": {\n    \"success\": false,\n    \"status_code\": 404,\n    \"error\": \"DOCUMENT_NOT_FOUND\",\n    \"message\": \"Selected document was not found.\"\n  }\n}"
+        },
+        {
+          "name": "Document  Ready Test",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"message\": \"Summarize this document.\",\r\n    \"document_ids\": [\r\n        \"e905ea0e-84f4-428d-a3a5-4fed2ec61bae\"\r\n    ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/ai/chat",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "ai",
+                "chat"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "date",
+              "value": "Mon, 21 Sep 2026 04:57:27 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "644"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"success\": true,\n  \"status_code\": 200,\n  \"conversation_id\": \"conv_7046f0f3cb834317aadbe8174a65085a\",\n  \"answer\": \"The document states that remote work arrangements should be communicated through the company’s official communication system. Managers are responsible for ensuring remote work does not negatively affect team productivity or project deadlines. The company periodically reviews and may update its remote work policy based on business needs.\",\n  \"sources\": [\n    {\n      \"document_id\": \"e905ea0e-84f4-428d-a3a5-4fed2ec61bae\",\n      \"chunk_id\": \"e905ea0e-84f4-428d-a3a5-4fed2ec61bae_1\",\n      \"score\": 0.1601\n    }\n  ],\n  \"tool_calls\": [],\n  \"trace_id\": \"2fc6f538-060f-4fd3-8579-d40563c02f7f\"\n}"
+        },
+        {
+          "name": "Document Not Ready Test",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/knowledge/documents/5ea7a743-fd5a-4be0-8a23-892d56bb3509",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "knowledge",
+                "documents",
+                "5ea7a743-fd5a-4be0-8a23-892d56bb3509"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "date",
+              "value": "Mon, 21 Sep 2026 05:15:35 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "201"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"success\": true,\n  \"status_code\": 200,\n  \"data\": {\n    \"document_id\": \"5ea7a743-fd5a-4be0-8a23-892d56bb3509\",\n    \"filename\": \"policy.txt\",\n    \"status\": \"ready\",\n    \"progress\": 100,\n    \"error\": null,\n    \"created_at\": null,\n    \"updated_at\": null\n  }\n}"
+        }
+      ]
+    },
+    {
+      "name": "Upload PDF Document",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNmFhZDFiOGM5ZTQxOTZlYWYwYTI0NzVjIiwiZW1haWwiOiJ1c2VyYUBleGFtcGxlLmNvbSIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzg5OTY4NjAxLCJpYXQiOjE3ODk5NjUwMDF9.LWkKMzPQP8zMsVe0Myf1p0jWpVLjktfKWqJZX9TCibo",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "file",
+              "type": "file",
+              "src": [
+                "/D:/INTERNSHARK-TASKS/Task27/Test_docs/policy.txt"
+              ]
+            }
+          ]
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/knowledge/documents",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "knowledge",
+            "documents"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Upload PDF Document",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "file",
+                  "type": "file",
+                  "src": [
+                    "/D:/INTERNSHARK-TASKS/Task27/Test_docs/policy.txt"
+                  ]
+                }
+              ]
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/knowledge/documents",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "knowledge",
+                "documents"
+              ]
+            }
+          },
+          "status": "Accepted",
+          "code": 202,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "date",
+              "value": "Mon, 21 Sep 2026 04:30:14 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "153"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"success\": true,\n  \"status_code\": 202,\n  \"document_id\": \"16d56e66-fe75-459f-8f9b-e061c97b8ce6\",\n  \"job_id\": \"076aba4a-164b-40d5-8a55-3d49c1da36ef\",\n  \"status\": \"queued\"\n}"
+        }
+      ]
+    },
+    {
+      "name": "Test Document → RAG",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": ""
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "New Request",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": ""
+        }
+      },
+      "response": []
+    }
+  ]
+}

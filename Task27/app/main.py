@@ -5,9 +5,7 @@ from fastapi import (
     FastAPI
 )
 
-from fastapi.responses import (
-    JSONResponse
-)
+from fastapi.responses import JSONResponse
 
 from app.config import settings
 
@@ -55,10 +53,16 @@ from app.storage.mongodb import (
 )
 
 
+# =========================================================
+# APPLICATION LIFESPAN
+# =========================================================
+
 @asynccontextmanager
 async def lifespan(
     app: FastAPI
 ):
+
+    print("Starting Task 27...")
 
     mongo_ok = await ping_mongodb()
 
@@ -70,12 +74,20 @@ async def lifespan(
 
     else:
 
+        print(
+            "MongoDB connection successful."
+        )
+
         await create_indexes()
 
     yield
 
     await close_mongodb()
 
+
+# =========================================================
+# FASTAPI APPLICATION
+# =========================================================
 
 app = FastAPI(
 
@@ -121,11 +133,18 @@ app.include_router(
     eval_router
 )
 
-# RED TEAM
+# =========================================================
+# RED TEAM ROUTES
+# =========================================================
+
 app.include_router(
     red_team_router
 )
 
+
+# =========================================================
+# ROOT
+# =========================================================
 
 @app.get("/")
 async def root():
@@ -141,6 +160,10 @@ async def root():
             "Copilot is running"
     }
 
+
+# =========================================================
+# HEALTH
+# =========================================================
 
 @app.get("/health")
 async def health():
@@ -202,6 +225,10 @@ async def health():
         }
     }
 
+
+# =========================================================
+# CURRENT USER
+# =========================================================
 
 @app.get(
     "/users/me"

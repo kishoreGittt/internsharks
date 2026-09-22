@@ -1357,7 +1357,486 @@
       ]
     },
     {
-      "name": "New Request",
+      "name": "big_pdf",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNmFiMGYwZWMzN2IzN2UxMTE3MWJhMWQ4IiwiZW1haWwiOiJ1c2VyYUB0ZXN0LmNvbSIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzkwMDYwNDc4LCJpYXQiOjE3OTAwNTY4Nzh9.fTo4fZ1tCJlUu-_kPw5IhHMffjKnauURkhOEkWM_yJ4",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "file",
+              "type": "file",
+              "src": [
+                "/C:/Users/kisho/Downloads/conferencew link.pptx"
+              ]
+            }
+          ]
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/knowledge/documents",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "knowledge",
+            "documents"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "big_pdf",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "file",
+                  "type": "file",
+                  "src": [
+                    "/C:/Users/kisho/Downloads/conferencew link.pptx"
+                  ]
+                }
+              ]
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/knowledge/documents",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "knowledge",
+                "documents"
+              ]
+            }
+          },
+          "status": "Bad Request",
+          "code": 400,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "date",
+              "value": "Tue, 22 Sep 2026 06:03:59 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "128"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"detail\": {\n    \"success\": false,\n    \"status_code\": 400,\n    \"error\": \"INVALID_DOCUMENT_TYPE\",\n    \"message\": \"Only PDF and TXT files are supported.\"\n  }\n}"
+        }
+      ]
+    },
+    {
+      "name": "trace not found",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNmFiMGYwZWMzN2IzN2UxMTE3MWJhMWQ4IiwiZW1haWwiOiJ1c2VyYUB0ZXN0LmNvbSIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzkwMDYxMDkwLCJpYXQiOjE3OTAwNTc0OTB9.5YkLvhqqsa8e5IjdDUwhxOVnnlBaooyXZ4BpJqdw_Ns",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/observability/traces/021f16b9-c26c-46ac-9661-cfe7e378a596",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "observability",
+            "traces",
+            "021f16b9-c26c-46ac-9661-cfe7e378a596"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "trace not found",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/observability/traces/021f16b9-c26c-46ac-9661-cfe7e378a596",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "observability",
+                "traces",
+                "021f16b9-c26c-46ac-9661-cfe7e378a596"
+              ]
+            }
+          },
+          "status": "Not Found",
+          "code": 404,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "date",
+              "value": "Tue, 22 Sep 2026 06:38:22 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "101"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"detail\": {\n    \"success\": false,\n    \"status_code\": 404,\n    \"error\": \"TRACE_NOT_FOUND\",\n    \"message\": \"Trace not found.\"\n  }\n}"
+        }
+      ]
+    },
+    {
+      "name": "Unauthorized Document Access",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "url": {
+          "raw": "http://127.0.0.1:8000/knowledge/documents",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "knowledge",
+            "documents"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Unauthorized Document Access",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "http://127.0.0.1:8000/knowledge/documents",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "knowledge",
+                "documents"
+              ]
+            }
+          },
+          "status": "Forbidden",
+          "code": 403,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "date",
+              "value": "Tue, 22 Sep 2026 07:04:07 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "30"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"detail\": \"Not authenticated\"\n}"
+        }
+      ]
+    },
+    {
+      "name": "Huge Vision Image",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{json_web_token_12bh}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "file",
+              "type": "file",
+              "src": [
+                "/D:/INTERNSHARK-TASKS/Task27/Test_docs/images.jpg"
+              ]
+            },
+            {
+              "key": "prompt",
+              "value": "Analyze this image",
+              "type": "text"
+            }
+          ]
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/vision/analyze",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "vision",
+            "analyze"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Huge Vision Image",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "file",
+                  "type": "file",
+                  "src": [
+                    "/D:/INTERNSHARK-TASKS/Task27/Test_docs/images.jpg"
+                  ]
+                },
+                {
+                  "key": "prompt",
+                  "value": "Analyze this image",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/vision/analyze",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "vision",
+                "analyze"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "date",
+              "value": "Tue, 22 Sep 2026 06:56:10 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "454"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"success\": true,\n  \"status_code\": 200,\n  \"data\": {\n    \"answer\": \"The image depicts a serene natural landscape featuring a river flowing through a lush green environment. A prominent tree with a gnarled trunk extends its branches over the water, creating a picturesque scene. The surrounding foliage is vibrant, indicating a healthy ecosystem. The overall atmosphere appears tranquil and inviting, suggesting a peaceful outdoor setting.\",\n    \"model\": \"openai/gpt-4o-mini\"\n  }\n}"
+        }
+      ]
+    },
+    {
+      "name": "Combined RAG + Tool Partial Failure",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNmFiMGYwZWMzN2IzN2UxMTE3MWJhMWQ4IiwiZW1haWwiOiJ1c2VyYUB0ZXN0LmNvbSIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzkwMDY0NjExLCJpYXQiOjE3OTAwNjEwMTF9.WWvYqXNKBRY-NCTv3bSsbMivcynm3C_KPLrTV0rdQ_8",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"message\": \"Use the uploaded project policy and current Project Nova status to tell me whether the project is compliant.\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/chat",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "chat"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Combined RAG + Tool Partial Failure",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"message\": \"Use the uploaded project policy and current Project Nova status to tell me whether the project is compliant.\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/chat",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "chat"
+              ]
+            }
+          },
+          "status": "Not Found",
+          "code": 404,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "date",
+              "value": "Tue, 22 Sep 2026 07:10:40 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "22"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"detail\": \"Not Found\"\n}"
+        }
+      ]
+    },
+    {
+      "name": "Invalid Vision File",
       "request": {
         "method": "GET",
         "header": [],
@@ -1365,7 +1844,634 @@
           "raw": ""
         }
       },
-      "response": []
+      "response": [
+        {
+          "name": "Invalid Vision File",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "file",
+                  "type": "file",
+                  "src": [
+                    "/D:/INTERNSHARK-TASKS/Task27/Test_docs/policy.txt"
+                  ]
+                },
+                {
+                  "key": "prompt",
+                  "value": "Analyze this image.",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/vision/analyze",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "vision",
+                "analyze"
+              ]
+            }
+          },
+          "status": "Bad Request",
+          "code": 400,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "date",
+              "value": "Tue, 22 Sep 2026 07:07:42 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "133"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"detail\": {\n    \"success\": false,\n    \"status_code\": 400,\n    \"error\": \"INVALID_IMAGE_TYPE\",\n    \"message\": \"Only JPEG, PNG and WEBP images are supported.\"\n  }\n}"
+        }
+      ]
+    },
+    {
+      "name": "Document Job Status",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://127.0.0.1:8000/jobs/e6r6226729809uuui92",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "jobs",
+            "e6r6226729809uuui92"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Document Job Status",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://127.0.0.1:8000/jobs/e6r6226729809uuui92",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "jobs",
+                "e6r6226729809uuui92"
+              ]
+            }
+          },
+          "status": "Forbidden",
+          "code": 403,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "date",
+              "value": "Tue, 22 Sep 2026 07:17:35 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "30"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"detail\": \"Not authenticated\"\n}"
+        },
+        {
+          "name": "Document Job Status",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://127.0.0.1:8000/jobs/e6r6226729809uuui92",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "jobs",
+                "e6r6226729809uuui92"
+              ]
+            }
+          },
+          "status": "Not Found",
+          "code": 404,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "date",
+              "value": "Tue, 22 Sep 2026 08:28:46 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "97"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"detail\": {\n    \"success\": false,\n    \"status_code\": 404,\n    \"error\": \"JOB_NOT_FOUND\",\n    \"message\": \"Job not found.\"\n  }\n}"
+        }
+      ]
+    },
+    {
+      "name": "Vision Hallucination / Unsupported Claim",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": ""
+        }
+      },
+      "response": [
+        {
+          "name": "Vision Hallucination / Unsupported Claim",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "file",
+                  "type": "file",
+                  "src": [
+                    "/D:/INTERNSHARK-TASKS/Task25/Testing_images/tiger_images.jpg"
+                  ]
+                },
+                {
+                  "key": "prompt",
+                  "value": "What is the exact person's identity?",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/vision/analyze",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "vision",
+                "analyze"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "date",
+              "value": "Tue, 22 Sep 2026 08:35:28 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "182"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"success\": true,\n  \"status_code\": 200,\n  \"data\": {\n    \"answer\": \"I don't know who the person is in the image. However, the image depicts a tiger swimming in water.\",\n    \"model\": \"openai/gpt-4o-mini\"\n  }\n}"
+        }
+      ]
+    },
+    {
+      "name": "Tool Should Not Execute on Informational Query",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNmFiMGYwZWMzN2IzN2UxMTE3MWJhMWQ4IiwiZW1haWwiOiJ1c2VyYUB0ZXN0LmNvbSIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzkwMDY5OTQyLCJpYXQiOjE3OTAwNjYzNDJ9.GZUBHv-hZtCrgqNmR9ttwoO6aBBqFnU4LQAdiZ_pFD4",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"message\": \"Explain what a project manager does.\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/chat",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "chat"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Tool Should Not Execute on Informational Query",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"message\": \"Explain what a project manager does.\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/chat",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "chat"
+              ]
+            }
+          },
+          "status": "Not Found",
+          "code": 404,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "date",
+              "value": "Tue, 22 Sep 2026 08:39:15 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "22"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"detail\": \"Not Found\"\n}"
+        }
+      ]
+    },
+    {
+      "name": "Invalid Backend Project",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"message\": \"What is the status of project DOES_NOT_EXIST_999?\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/chat",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "chat"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Invalid Backend Project",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"message\": \"What is the status of project DOES_NOT_EXIST_999?\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/chat",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "chat"
+              ]
+            }
+          },
+          "status": "Not Found",
+          "code": 404,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "date",
+              "value": "Tue, 22 Sep 2026 08:45:06 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "22"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"detail\": \"Not Found\"\n}"
+        }
+      ]
+    },
+    {
+      "name": "Invalid JSON",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNmFiMGYwZWMzN2IzN2UxMTE3MWJhMWQ4IiwiZW1haWwiOiJ1c2VyYUB0ZXN0LmNvbSIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzkwMDcwNDM2LCJpYXQiOjE3OTAwNjY4MzZ9.Z2hKUCBO-nfmbvJtczLMhkU4VaSXW0zJYgLJwYnLiOI",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    invalid json\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/chat",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "chat"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Invalid JSON",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    invalid json\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/chat",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "chat"
+              ]
+            }
+          },
+          "status": "Not Found",
+          "code": 404,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "date",
+              "value": "Tue, 22 Sep 2026 08:48:14 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "22"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"detail\": \"Not Found\"\n}"
+        }
+      ]
+    },
+    {
+      "name": "Failed Request Must Still Create Trace",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNmFiMGYwZWMzN2IzN2UxMTE3MWJhMWQ4IiwiZW1haWwiOiJ1c2VyYUB0ZXN0LmNvbSIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzkwMDcwNjYwLCJpYXQiOjE3OTAwNjcwNjB9.-JsRMI6uaG-lXfQXSw2lg5PIukBPi8xSZmgaMecJTvM",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"message\": \"Trigger a controlled OpenRouter failure.\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/chat",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "chat"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Failed Request Must Still Create Trace",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"message\": \"Trigger a controlled OpenRouter failure.\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/chat",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "chat"
+              ]
+            }
+          },
+          "status": "Not Found",
+          "code": 404,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "date",
+              "value": "Tue, 22 Sep 2026 08:51:22 GMT"
+            },
+            {
+              "key": "server",
+              "value": "uvicorn"
+            },
+            {
+              "key": "content-length",
+              "value": "22"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"detail\": \"Not Found\"\n}"
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "json_web_token_12bh",
+      "secret": true
     }
   ]
 }
